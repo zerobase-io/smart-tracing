@@ -18,9 +18,10 @@
 	"image": "heroku/nodejs",
 	"addons": [
 		"cloudinary:starter",
+		"timber-logging:free"
 		{
 			"plan": "mongolab:sandbox",
-			"as": "MONGO_URI"
+			"as": "MONGO"
 		}
 	],
 	"env": {
