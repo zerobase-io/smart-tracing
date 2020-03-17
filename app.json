@@ -18,7 +18,10 @@
 	"image": "heroku/nodejs",
 	"addons": [
 		"cloudinary:starter",
-		"mongolab:sandbox"
+		{
+			"plan": "mongolab:sandbox",
+			"as": "MONGO_URI"
+		}
 	],
 	"env": {
 		"MANDRILL_APIKEY": {
