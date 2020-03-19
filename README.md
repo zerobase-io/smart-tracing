@@ -82,7 +82,7 @@ Then, create a `.env` file in the project folder (the one with this readme) and 
 
     NODE_ENV=production
     COOKIE_SECRET={a random string to encrypt cookies}
-    MONGO_URI={your mongo connection uri} // can also be MONGOLAB_URI
+    MONGO_URI={your mongo connection uri}
     GA_DOMAIN={your google analytics domain} // optional
     GA_PROPERTY={your google analytics property} // optional
     PORT={the port to listen on} // defaults to 3000, automatically set by paas (e.g. heroku)

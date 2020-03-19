@@ -1,0 +1,53 @@
+{
+	"name": "smart-tracking",
+	"keywords": [
+		"coronavirus",
+		"covid",
+		"disease tracking"
+	],
+	"website": "https://zerobase.io/",
+	"repository": "https://github.com/zerobase-io/smart-tracing",
+	"logo": "https://zerobase.io/dist/img/zerobase_medium_logo.png",
+	"success_url": "/",
+	"formation": {
+		"web": {
+			"quantity": 1,
+			"size": "free"
+		}
+	},
+	"image": "heroku/nodejs",
+	"addons": [
+		"cloudinary:starter",
+		"papertrail:choklad",
+		{
+			"plan": "mongolab:sandbox",
+			"as": "MONGO"
+		}
+	],
+	"env": {
+		"MANDRILL_APIKEY": {
+			"description": "Your Mandrill API Key"
+		},
+		"MANDRILL_USERNAME": {
+			"description": "Your Mandrill Username"
+		},
+		"EMBEDLY_APIKEY": {
+			"description": "Your embed.ly key"
+		},
+		"NODE_ENV": {
+			"value": "production"
+		},
+		"COOKIE_SECRET": {
+			"description": "A random string to encrypt cookies",
+			"generator": "secret"
+		},
+		"GA_DOMAIN": {
+			"description": "Your Google Analytics domain",
+			"required": false
+		},
+		"GA_PROPERTY": {
+			"description": "Your Google Analytics property",
+			"required": false
+		}
+	}
+}
