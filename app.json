@@ -26,13 +26,16 @@
 	],
 	"env": {
 		"MANDRILL_APIKEY": {
-			"description": "Your Mandrill API Key"
+			"description": "Your Mandrill API Key",
+			"required": false
 		},
 		"MANDRILL_USERNAME": {
-			"description": "Your Mandrill Username"
+			"description": "Your Mandrill Username",
+			"required": false
 		},
 		"EMBEDLY_APIKEY": {
-			"description": "Your embed.ly key"
+			"description": "Your embed.ly key",
+			"required": false
 		},
 		"NODE_ENV": {
 			"value": "production"
