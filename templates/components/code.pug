@@ -1,0 +1,47 @@
+#page-code.tab-pane
+  .content
+    .container.d-flex.flex-column.justify-content-center
+      .page-header
+        .row.align-items-center
+          .col-4
+            a#nav-main(href='#', style='color:inherit;')
+              svg.feather.feather-chevron-left(xmlns='http://www.w3.org/2000/svg', width='32', height='32', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                polyline(points='15 18 9 12 15 6')
+          .col-4.text-center
+            | Device Code
+          .col-4
+      .empty.p-0
+        .card
+          .card-body
+            .notice-code.dimmer.active
+              .dimmer-notice
+                img.p-2.w-6(src='/dist/img/shield-notice.png', alt='Notice')
+                p.empty-subtitle.text-muted
+                  | Only use this for printing a physical copy. Do not send this code to others. This main code should not be used for locations.
+                .empty-action
+                  a#reveal-code.btn.btn-github(href='#')
+                    | OK, I Understand
+              .dimmer-content
+                #qrcode.p-4.text-center.align-items-center
+                  img.qr-logo-overlay(src='/dist/img/qr_logo.png') 
+          a(href="#" class="card-btn" id="generate-alt-code") Generate alternative code
+    footer.footer.footer-transparent
+      .container
+        .row.text-center.align-items-center.flex-row-reverse
+          .col-12.col-lg-auto.mt-3.mt-lg-0
+            div(id="notice-alt-code")
+              | Alternative codes can be printed and posted for locations or businesses, or given to children, elderly who do not have a smartphone. You can generate up to 5 alternative codes. They will be shown here.
+            .card(id="alternative-code-card d-none")
+              .list-group.card-list-group(id="alternative-code-group")
+                .list-group-item(id="template-code-alt" class="reveal-code-alt d-none")
+                  .row.row-sm.align-items-center(style="height:3rem")
+                    .col
+                      .text-muted.title-code-alt
+                        | ALTERNATIVE CODE 1
+                    .col-auto
+                      a.link-secondary(href='#')
+                        svg.feather.feather-chevron-right(xmlns='http://www.w3.org/2000/svg', width='32', height='32', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                          polyline(points='9 18 15 12 9 6')
+            div
+              | If you require more than 5 codes please
+              a(href="mailto:info@zerobase.io") contact us

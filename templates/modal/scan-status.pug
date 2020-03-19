@@ -1,0 +1,41 @@
+#modal-scan-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', style='display:none;', data-backdrop="static", data-keyboard="false")
+  .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+    .modal-content
+      .modal-body.text-center.py-5
+        #scan-notice-loading
+          .spinner-border.text-gray(role='status' style="width:3.5rem;height:3.5rem;")
+          h2.pt-4 Connecting...
+          .text-muted This will only take a moment
+        #scan-notice-error.d-none
+          svg.feather.feather-alert-octagon(xmlns='http://www.w3.org/2000/svg', width='68', height='68', viewbox='0 0 24 24', fill='none', stroke='#fab007', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+            polygon(points='7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2')
+            line(x1='12', y1='8', x2='12', y2='12')
+            line(x1='12', y1='16', x2='12.01', y2='16')
+          h2.pt-4#scan-notice-error-title Error
+          h4#scan-notice-error-code
+          .text-muted#scan-notice-error-message There was a technical error with the request. Please scan again.
+          a.btn.btn-secondary.btn-block.mt-4(href='#' id="nav-scan", data-dismiss="modal")
+            | Scan Again
+          a.btn.btn-secondary.btn-block(href='#', data-dismiss='modal')
+            | Cancel
+        #scan-notice-success.d-none
+          svg.icon.icon-xl.icon-thin.mb-4.text-green(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+            path(d='M22 11.08V12a10 10 0 1 1-5.93-9.14')
+            polyline(points='22 4 12 14.01 9 11.01')
+          h2#scan-notice-success-title.text-green Scan Succeeded
+          .text-muted#scan-notice-success-datetime Jan 19, 2019 01:10:22
+          svg#scan-notice-barcode-id(style="width:100%; height:100px;")
+          //-h4#scan-notice-success-id
+          .text-muted.mt4
+            | You've successfully scanned a Zerobase ID. Please show this message to the accepting party if they require it. You don't need to do anything else.
+          .modal-footer
+            .input-group.mb-0.mt-4
+              //- .input-group-prepend
+              span.input-group-text
+                input.form-check-input.m-0(type='checkbox')
+                a.ml-2.text-blue(href="#") HIPAA Waiver
+              input.form-control(type='text', name='input-mask', data-mask='(000) 000-0000', data-mask-visible='true', placeholder='(000) 000-0000', autocomplete='off')
+            a.btn.btn-primary.btn-block.disabled.mt-0(href='#', style="border-radius: 0px 0px 3px 3px;")
+              | Keep me notified
+            a.btn.btn-secondary.btn-block.mt-4(href='/')
+              | Continue to Zerobase

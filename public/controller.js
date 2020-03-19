@@ -1,5 +1,5 @@
 // Remove Console Log
-// console.log = function() {}
+console.log = function() {}
 //-------------------------------------------------------------------
 var router = (function(){
   return {
@@ -312,16 +312,25 @@ var router = (function(){
 $(function () {
   //- Additional Functionality---------------------------//
 
-  router.fetchNews();
+  //-router.fetchNews();
 
   //https://github.com/kenwheeler/slick/issues/187
-
   $(".info-slider").slick({
     lazyLoad: 'ondemand',
     dots: true,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3
+  });
+
+  // Input Mask
+  var maskElementList = [].slice.call(document.querySelectorAll('[data-mask]'))
+  maskElementList.map(function (maskEl) {
+    console.log('maskEl', maskEl);
+    return new IMask(maskEl, {
+      mask: maskEl.dataset.mask,
+      lazy: maskEl.dataset['mask-visible'] === 'true'
+    })
   });
 
 
@@ -336,14 +345,14 @@ $(function () {
       sdvid    = pathname.split('/')[2]
   var dvid = localStorage.getItem('dvid');
 
-  // if (protocol == 'http:' 
-  // && hostname == 'localhost'
-  // && action   == 's'
-  // && sdvid ){
-  if (protocol  == 'https:' 
-   && (hostname == 'www.zerobase.io' || hostname == 'zerobase.io')
-   && action    == 's'
-   && sdvid ){
+  if (protocol == 'http:' 
+  && hostname == 'localhost'
+  && action   == 's'
+  && sdvid ){
+  // if (protocol  == 'https:' 
+  //  && (hostname == 'www.zerobase.io' || hostname == 'zerobase.io')
+  //  && action    == 's'
+  //  && sdvid ){
     console.log('Scan Access Point')
     window.history.replaceState({},'Home','/')
     if(dvid){
@@ -467,7 +476,7 @@ $(function () {
   // Navigate to Scan
   $('body').on('click', '#nav-scan', function(e){
     // can only initialize sound after user gesture;
-    window.sound = new Howl({src: ['beep.mp3']});
+    window.sound = new Howl({src: ['/dist/audio/beep.mp3']});
 
     $('a[href="#page-scan"]').tab('show')
     // Use facingMode: environment to attemt to get the front camera on phones

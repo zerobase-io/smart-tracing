@@ -28,6 +28,69 @@ body *::-webkit-scrollbar-thumb {
 
 /*-------------------------------------*/
 
+.modal-dialog{
+  margin: 0;
+}
+
+/*-------------------------------------*/
+.form-check-input:checked {
+  background-color: #2a3742;
+}
+
+.card-footer {
+  background-color: rgba(255, 255, 255, 0.024);
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom-color: #2a3742;
+}
+
+.navbar-dark {
+  background: #2a3742;
+  color: #fff;
+  box-shadow: 0 0 0 1px #2f3949;
+}
+.bg-dark {
+  background: #2a3742 !important;
+}
+a {
+  color: #7799b5;
+  text-decoration: none;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #2a3742;
+  border-color: #2a3742;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #4a5f71;
+  border-color: #1e282f;
+}
+.text-standard{
+  color: #2a3742;
+}
+.alert-standard {
+  color: white;
+  background-color: #465a6b;
+  border-color: #2a3742;
+}
+.btn-outline-standard {
+    color: #cfd7e6;
+    border-color: #868c97;
+}
+
+.dropdown-menu-overflow {
+  position: fixed;
+  top: auto;
+  left: auto;
+}
+
+.card-hover:hover {
+  text-decoration: none;
+  box-shadow: rgba(53,64,82,.16) 0 2px 16px 0;
+}
+
 .qr-logo-overlay{
   position: absolute;
   top: 50%;

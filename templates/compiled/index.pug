@@ -1,0 +1,675 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, viewport-fit=cover')
+  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  title Zerobase - Efficient Trace with Strong Privacy
+  link(rel='preconnect', href='https://fonts.gstatic.com/', crossorigin='')
+  meta(name='msapplication-TileColor', content='#206bc4')
+  meta(name='theme-color', content='#206bc4')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='mobile-web-app-capable', content='yes')
+  meta(name='HandheldFriendly', content='True')
+  meta(name='MobileOptimized', content='320')
+  meta(name='robots', content='noindex,nofollow,noarchive')
+  link(rel='icon', href='/favicon.ico', type='image/x-icon')
+  link(rel='shortcut icon', href='favicon.ico', type='image/x-icon')
+  //-Global site tag (gtag.js) - Google Analytics
+  script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-159876597-1');
+  //-Libs CSS
+  //- link(href='/dist/libs/jqvmap/dist/jqvmap.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/selectize/dist/css/selectize-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/fullcalendar/core/main.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/fullcalendar/daygrid/main.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/fullcalendar/timegrid/main.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/fullcalendar/list/main.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/flatpickr/dist/flatpickr.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/nouislider/distribute/nouislider.min-1582732176.css', rel='stylesheet')
+  //-//- link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css', rel='stylesheet')
+  //- link(href='/dist/libs/mapbox/styles.css', rel='stylesheet')
+  //- //-Zerobase Core
+  //- link(href='/dist/css/tabler.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/css/icons.css', rel='stylesheet')
+  //- //-Zerobase Plugins
+  //- link(href='/dist/css/tabler-flags.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/css/tabler-payments.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/css/tabler-buttons.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/css/demo.min-1582732176.css', rel='stylesheet')
+  //- link(href='/dist/libs/scan-animation/style.css', rel='stylesheet')
+  //- link(href='/overrides.css', rel='stylesheet')
+  link(href='/styles.min.css', rel='stylesheet')
+
+.card.d-none
+  ul.nav.nav-tabs.nav-fill(data-toggle='tabs')
+    li.nav-item
+      a.nav-link.active(href='#page-main', data-toggle='tab')
+        | Main
+    li.nav-item
+      a.nav-link(href='#page-scan', data-toggle='tab')
+        | Scan
+    li.nav-item
+      a.nav-link(href='#page-code', data-toggle='tab')
+        | Code
+    li.nav-item
+      a.nav-link(href='#page-code-alt', data-toggle='tab')
+        | Code Alt
+
+.tab-content
+  #page-main.tab-pane.active.show
+    .page
+      nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
+        .container.navbar-mobile
+          .navbar-collapse.scroll
+            h6.navbar-heading Navigation
+            ul.nav.nav-tabs.flex-scroll(data-toggle='tabs')
+              li.nav-item
+                a.nav-link.active(href='#tabs-home', data-toggle='tab')
+                  | Home
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Use Case
+                .dropdown-menu-overflow.dropdown-menu
+                  a.dropdown-item(href='#')
+                    | Individual
+                  a.dropdown-item(href='#')
+                    | Business or Location
+                  a.dropdown-item(href='#')
+                    | Healthcare Provider
+                  a.dropdown-item(href='#')
+                    | Community Leader
+
+              li.nav-item
+                a.nav-link(href='#tabs-about', data-toggle='tab')
+                  | About
+              li.nav-item
+                a.nav-link(href='#tabs-updates', data-toggle='tab')
+                  | Updates
+              li.nav-item
+                a.nav-link(href='#tabs-notifications', data-toggle='tab')
+                  | Notifications
+              li.nav-item
+                a.nav-link(href='#tabs-news', data-toggle='tab')
+                  | News
+      nav#navbar-secondary.navbar.navbar-dark.navbar-secondary.navbar-expand
+        .container
+          a.navbar-brand.navbar-brand-autodark.d-none-navbar-vertical(href='/')
+            img.navbar-brand-logo.navbar-brand-logo-medium.mr-4(src='/dist/img/zerobase_logo_300_white.png', alt='Zerobase')
+            img.navbar-brand-logo.navbar-brand-logo-small(src='/dist/img/zerobase_logo_300_white.png', alt='Zerobase')
+            h4.d-none.d-sm-inline-block.text-standard.text-muted Smart Tracing that Keeps Communities Safe
+          //-
+          //- form.form-inline.w-50.mr-4.d-none.d-md-flex
+          //-   .input-icon.w-100
+          //-     span.input-icon-addon
+          //-       svg.icon(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+          //-         circle(cx='11', cy='11', r='8')
+          //-         line(x1='21', y1='21', x2='16.65', y2='16.65')
+          //-     input.form-control.form-control-flush.w-100(type='text', placeholder='Search…')
+          ul.navbar-nav.ml-auto
+            li.nav-item.dropdown.pl-3
+              a.nav-link.d-flex.lh-1.text-reset.p-0.text-left(href='#', data-toggle='dropdown')
+                svg.feather.feather-plus-circle(xmlns='http://www.w3.org/2000/svg', width='28', height='28', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                  circle(cx='12', cy='12', r='10')
+                  line(x1='12', y1='8', x2='12', y2='16')
+                  line(x1='8', y1='12', x2='16', y2='12')
+              .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
+                #mobile-functions.d-none
+                  a#nav-scan.dropdown-item(href='#')
+                    i.fe.fe-maximize.mr-2
+                    | Scan
+                  a#nav-code.dropdown-item(href='#')
+                    svg.mr-2(height='10pt', viewbox='0 0 512 512', width='10pt', xmlns='http://www.w3.org/2000/svg')
+                      path(d='m256 60v40h-40v-40zm-40 235v57h40v-57zm120 217v-40h-40v-40h-40v80zm80-297h-120v40h120zm0 80h56v-40h-56zm0 57v40h96v-97h-40v57zm-120-352h-40v60h40zm-40 180h40v-80h-40v40h-40v115h40zm-256 35v80h40v-40h60v-40zm296 80v-40h-40v40zm80 40h40v-40h-40zm96-80h40v-40h-40zm-136 40h-40v57h-40v40h80zm-120 137h40v-40h-40zm120-40v40h80v-40zm120 80v-40h-40v40zm56 40v-40h-56v40zm-136 0h40v-40h-40zm-196-257v-40h-40v40h-40v40h116v-40zm0-75h-180v-180h180zm-40-140h-100v100h100zm-30 30h-40v40h40zm402-70v180h-180v-180zm-40 40h-100v100h100zm-30 30h-40v40h40zm-442 262h180v180h-180zm40 140h100v-100h-100zm30-30h40v-40h-40zm0 0')
+                    | Device Code
+                #desktop-notice
+                  a#nav-non-mobile.dropdown-item(class="disabled")
+                    i.fe.fe-smartphone.mr-2
+                    | Please visit on a smartphone to access functions
+                #registration-notice.d-none
+                  a#show-registration.dropdown-item(href='#')
+                    i.fe.fe-smartphone.mr-2
+                    | Enroll device to access functions
+                .dropdown-divider
+                a.dropdown-item(href="mailto:info@zerobase.io") Contact Us
+
+      .tab-content
+        #tabs-home.tab-pane.active.show
+          .content.pt-0.pt-lg-4
+            .container(style='padding:0;')
+              .row
+                .col-12.col-lg-6
+                  .m-4.forMobile
+                    a.btn.btn-primary.btn-block.p-3(id="nav-scan", href='#')
+                      i.fe.fe-maximize.mr-2
+                      | Scan Zerobase Code
+                  .card
+                    img.card-img-top(src='/dist/img/info/business.jpg', alt='Location Image')
+                    .card-body
+                      h3.card-title Are you a business or public location?
+                      p
+                        | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check ins at your door in seconds. Community check-ins are vital to public health tracing efforts.
+                        //- | Help your community build up resistance to COVID-19 now by enabling private check-ins in under 5 seconds. Community check-ins are vital to public health tracing efforts.
+                    .card-footer
+                      .row.align-items-center
+                        .col-auto
+                          a(href='#', id="landing-about") More information
+                        .col-auto.ml-auto.forMobile
+                          .justify-content-end
+                            a.btn.btn-primary(href='#', id="landing-generate")
+                              i.fe.fe-check-square.mr-2
+                              | Generate and Print QR
+                .col-12.col-lg-6
+                  .row
+                    //- .col-12
+                    //-   .alert.alert-standard.alert-dismissible(role='alert')
+                    //-     | Zerobase is deploying to
+                    //-     //- a.btn.btn-outline-standard.btn-outline-secondary.ml-4(href='#') Read more here
+                    //-     a.close(href='#', data-dismiss='alert', aria-label='close') &times;
+
+                    .col-12.col-lg-6.order-1
+                      .card
+                        img.card-img-top(src='/dist/img/info/healthcare.jpg', alt='Card top image')
+                        .card-body
+                          h3.card-title Are you a healthcare provider?
+                          p
+                            | Get actionable insight into the dynamics of the infection in your locality through smart contact tracing.
+                        .card-footer
+                          .row.align-items-center
+                            .col-auto
+                              a(href='#', id="landing-about") More information
+                    .col-12.col-lg-6.order-2
+                      .card
+                        img.card-img-top(src='/dist/img/info/government.jpg', alt='Card top image')
+                        .card-body
+                          h3.card-title Are you a public official?
+                          p
+                            | Deploy our powerful tracing technology to supercharge the effectiveness of every COVID-19 test in your area and keep your community safe.
+                        .card-footer
+                          .row.align-items-center
+                            .col-auto
+                              a(href='#', id="landing-about") More information
+                    .col-12.order-0.order-lg-3
+                      .card
+                        .card-body
+                          p
+                            | If you're an 
+                            b individual, 
+                            | welcome! We believe smart technology built by caring humans can help keep every community safe. 
+                            a(href="#") Learn more about Zerobase
+                        .card-footer
+                          .row.align-items-center
+                            .col-auto
+                              a(href='https://necsi-edu.slack.com/join/shared_invite/zt-cu5215sg-63h4A7uCy~ehDsrfAIJ~_Q', target='_blank') Join our volunteer core
+                            .col-auto.ml-auto
+                              .avatar-list.avatar-list-stacked
+                                span.avatar(style='background-image: url(/dist/img/avatars/020m.png)')
+                                span.avatar(style='background-image: url(/dist/img/avatars/021m.png)')
+                                span.avatar(style='background-image: url(/dist/img/avatars/022m.png)')
+                                span.avatar(style='background-image: url(/dist/img/avatars/023m.png)')
+                                span.avatar.bg-blue-lt GW
+                                span.avatar.bg-purple-lt EM
+                                span.avatar +900
+
+            footer#footer-main.position-relative
+              .footer.pt-lg-6.footer-dark.bg-dark
+                .container
+                  .row.justify-content-center
+                    .col-lg-12
+                      .row.align-items-center
+                        .col-lg-7
+                          h3.text-secondary.mb-2 Smart Tracing that Keeps Communities Safe
+                          p.lead.mb-0.text-white.opacity-8 Built for real humans in need by real humans who care.
+                        .col-lg-5.text-lg-right.mt-4.mt-lg-0
+                          a.btn.btn-white.btn-icon.my-2(href='https://www.github.com/zerobase-io/smart-tracing/wiki', target='_blank')
+                            span.btn-inner--icon.mr-2
+                              svg.feather.feather-book.text-primary(xmlns='http://www.w3.org/2000/svg', width='1em', height='1em', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                path(d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20')
+                                path(d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z')
+                            span.btn-inner--text Documentation
+                          a.btn.btn-github.my-2.ml-0.ml-sm-3(href='#', target='_blank') Join Us
+                  hr.divider.divider-fade.divider-dark.my-5
+                  .row
+                    .col-lg-4.mb-5.mb-lg-0
+                      a(href='index.html')
+                        img(alt='Zerobase logo', src='/dist/img/zerobase_logo_300_white.png', style="width:100px;")
+                      p.mt-4.text-sm.opacity-8.pr-lg-4
+                        | Zerobase Foundation builds open source resources for public health. We believe virtual resources can be infinitely scalable for good in the absence of physical resources.
+                      ul.nav.mt-4
+                        li.nav-item
+                          a.nav-link(href='https://github.com/zerobase-io', target='_blank')
+                            i.fe.fe-github
+                        li.nav-item
+                          a.nav-link(href='https://www.instagram.com/zerobase.app', target='_blank')
+                            i.fe.fe-instagram
+                        li.nav-item
+                          a.nav-link(href='https://www.twitter.com/zerobase', target='_blank')
+                            i.fe.fe-twitter
+                        li.nav-item
+                          a.nav-link(href='https://www.twitter.com/zerobase', target='_blank')
+                            i.fe.fe-slack
+                        //- li.nav-item
+                        //-   a.nav-link(href='https://www.facebook.com/webpixels', target='_blank')
+                        //-     i.fe.fe-facebook
+                    .col-lg-2.col-6.col-sm-4.ml-lg-auto.mb-5.mb-lg-0
+                      h6.heading.mb-3 Use Cases
+                      ul.list-unstyled
+                        li
+                          a(href='#') Individual
+                        li
+                          a(href='#') Business or Location
+                        li
+                          a(href='#') Healthcare Provider
+                        li
+                          a(href='#') Community Leader
+                    .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
+                      h6.heading.mb-3 About
+                      ul.list-unstyled
+                        li
+                          a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") How to Deploy
+                        li
+                          a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") HIPAA
+                        li
+                          a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") GDPR
+                        li
+                          a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") Roadmap
+                    .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
+                      h6.heading.mb-3 Foundation
+                      ul.list-unstyled
+                        li
+                          a(href='#') Community
+                        li
+                          a(href='https://github.com/zerobase-io/', target="_blank") Help center
+                        li
+                          a(href='mailto:info@zerobase.io', target="_blank") Support
+                  hr.divider.divider-fade.divider-dark.my-4
+                  .row.align-items-center.justify-content-md-between.pb-4
+                    .col-md-6
+                      .copyright.text-sm.font-weight-bold.text-center.text-md-left
+                        | &copy; 2020 
+                        a.font-weight-bold(href='https://github.com/zerobase-io/', target='_blank') Zerobase
+                        | . All rights reserved
+                    .col-md-6
+                      ul.nav.justify-content-center.justify-content-md-end.mt-3.mt-md-0
+                        li.nav-item
+                          a.nav-link(href='#') Terms
+                        li.nav-item
+                          a.nav-link(href='#') Privacy
+                        li.nav-item
+                          a.nav-link(href='#') Cookies
+
+
+        #tabs-about.tab-pane
+          .content
+            .container(style='padding:0;')
+              .card.card-lg
+                .card-body
+                  .markdown
+                    .d-flex
+                      h2.h1.mt-0 Introduction
+                    h2#what-is-tabler What is Zerobase?
+                    p
+                      | Zerobase (0base) is a smart tracing solution to inform individuals and agencies of potential COVID-19 exposure in a passive, non intrusive manner. Our secure solution allows public health officials to recreate travel chains in order to estimate exposure, notify those at risk and effectively contain community spread of the novel coronavirus. It's free, privacy enabled, easy to use, fast to deploy, and ready now.
+                    p
+                      | If you're visiting from a smartphone you are already deploying Zerobase.
+                    a.btn.btn-secondary.mb-4(href='https://necsi-edu.slack.com/join/shared_invite/zt-cu5215sg-63h4A7uCy~ehDsrfAIJ~_Q', target='_blank')
+                      svg.mr-2(enable-background='new 0 0 24 24', height='20', viewbox='0 0 24 24', width='20', xmlns='http://www.w3.org/2000/svg')
+                        path(d='m8.843 12.651c-1.392 0-2.521 1.129-2.521 2.521v6.306c0 1.392 1.129 2.521 2.521 2.521s2.521-1.129 2.521-2.521v-6.306c-.001-1.392-1.13-2.521-2.521-2.521z', fill='#e91e63')
+                        path(d='m.019 15.172c0 1.393 1.13 2.523 2.523 2.523s2.523-1.13 2.523-2.523v-2.523h-2.521c-.001 0-.001 0-.002 0-1.393 0-2.523 1.13-2.523 2.523z', fill='#e91e63')
+                        path(d='m8.846-.001c-.001 0-.002 0-.003 0-1.393 0-2.523 1.13-2.523 2.523s1.13 2.523 2.523 2.523h2.521v-2.523c0-.001 0-.003 0-.005-.001-1.391-1.128-2.518-2.518-2.518z', fill='#00bcd4')
+                        path(d='m2.525 11.37h6.318c1.393 0 2.523-1.13 2.523-2.523s-1.13-2.523-2.523-2.523h-6.318c-1.393 0-2.523 1.13-2.523 2.523s1.13 2.523 2.523 2.523z', fill='#00bcd4')
+                        path(d='m21.457 6.323c-1.391 0-2.518 1.127-2.518 2.518v.005 2.523h2.521c1.393 0 2.523-1.13 2.523-2.523s-1.13-2.523-2.523-2.523c-.001 0-.002 0-.003 0z', fill='#4caf50')
+                        path(d='m12.641 2.522v6.325c0 1.392 1.129 2.521 2.521 2.521s2.521-1.129 2.521-2.521v-6.325c0-1.392-1.129-2.521-2.521-2.521-1.392 0-2.521 1.129-2.521 2.521z', fill='#4caf50')
+                        g(fill='#ff9800')
+                          path(d='m17.682 21.476c0-1.392-1.129-2.521-2.521-2.521h-2.521v2.523c.001 1.391 1.129 2.519 2.521 2.519s2.521-1.129 2.521-2.521z')
+                          path(d='m21.479 12.649h-6.318c-1.393 0-2.523 1.13-2.523 2.523s1.13 2.523 2.523 2.523h6.318c1.393 0 2.523-1.13 2.523-2.523s-1.13-2.523-2.523-2.523z')
+                      span Join us on Slack
+                    p Want to help? Join our Slack messaging group or reach out to us by email: info@zerobase.io. Collaborate with us, we have a patent pending to ensure this system and similar systems stay open and accessible for all.
+
+                    h2 How it Works
+
+                    div(style="position:relative")
+                      section.slider.info-slider
+                        img(data-lazy="/dist/img/info/1.png")
+                        img(data-lazy="/dist/img/info/2.png")
+                        img(data-lazy="/dist/img/info/3.png")
+                        img(data-lazy="/dist/img/info/4.png")
+                        img(data-lazy="/dist/img/info/5.png")
+                        //- img(data-lazy="/dist/img/info/6.png")
+                        //- img(data-lazy="/dist/img/info/7.png")
+                    p
+                      | At its core Zerobase is a location tracker for community hot spots. Businesses, organizations, locations use a designated smartphone to enroll, print out a QR code and request that every individual entering the premise scan the code. We work with public health agencies to then backtrace potential exposure events in the case that an individual tests positive and notify all affected locations and individuals with next steps.
+
+                    h2 Who can deploy it and where?
+                    p
+                      | Anyone with a smartphone with internet connection can deploy Zerobase in their communities in under 5 seconds. We recommend communities prioritize Zerobase deployment in high risk touch points (Doctor's Offices, Hospitals) and community touch points (Churches, Grocery Stores, Pharmacies). We make it extremely easy for event venues (Concerts, Tradeshows, Movie Theaters) to deploy Zerobase in order to enable responsible cooperation with public health agencies.
+                    p Need help with deployment? Send us an email at info@zerobase.io. We'll get you set up in less than a minute.
+                    h2 Ease of Use
+                    p
+                      | A universally acceptable solution is the best solution. Zerobase leverages the assumption that most individuals have a smartphone. We offer easy solutions to accommodate those who also do not own a smartphone such as children or the elderly. Additionally we leverage the fact that up to 90% of smartphone default cameras allow for QR scanning functionality. This reduces the need for cumbersome installation of a third party app or visiting a third party website. Users can simply open their camera and point it at a location&apos;s code to register with no extra steps.
+                    h2 Security
+                    p
+                      | The best security is having nothing to steal. We do not record any personally identifiable information or metadata for either users or locations. We also do not require users to set up any account. Once a location code is scanned by the default camera application, an anonymized id is registered for that device. We assume most individuals only use one device as they move about locations. Our solution is passive in nature and in practice follows fundamentals of zero knowledge proofs. We work with public health agencies build a historical snapshot of exposure:
+                    ol
+                      li
+                        | If a patient 0 receives a positive test, local public health agencies will ask for a public key of the patient&apos;s anonymized id that we will generate. This is voluntary and a public key does not reveal the patient&apos;s true id. Please read about Zero Knowledge Proofs.
+                      li
+                        | Afterwords, a notification will be sent to all anonymized ids (users and locations) which had a scanned timestamp coincide with the patient 0, notifying of potential exposure and recommended steps.
+                      li
+                        | Those receiving a notification can choose to reach out to their public health agencies or not.
+                    p
+                      | The process is entirely voluntary and passive in nature leading to high levels of security and privacy.
+                    h2 Effectiveness
+                    p
+                      | Some may ask if its private, how can it be effective? Public health efficacy can be distilled into the following components:
+                    ol
+                      li
+                        | Do you have a direct line of communication with individuals?
+                      li
+                        | Can you administer individualized public health guidance at scale?
+                      li
+                        | Can you establish some baseline metrics in order to automate triage?
+                    p
+                      | Using modern technologies, knowing an individual patient may not be necessary from a public health perspective. Strong privacy guarantees enable high levels of trust and high levels of user adoption. Strong community adoption enables a strong feedback mechanism.
+                    h2 Containment
+                    p
+                      | The cornerstones of any public health response is Test, Isolate, Trace, Contain. Zerobase algorithms allow public health officials to reconstruct and trace the historical path of exposure and estimate exposure severity. This will allow for more informed and measured public policy decisions and allow for more surgical containment if necessary. Currently city wide or regional containment is equivalent to using a hammer to nail, zerobase enables a more efficient and low impact solution equivalent to threading a needle.
+                    h2 Inspiration
+                    p
+                      | After the outbreak of the novel coronavirus in China, many businesses and public locations required temperature readings when entering a location. While this mitigates exposure, COVID-19 has shown challenging properties such as asymptomatic spread and a long incubation period that reduces temperature reading effectiveness. Further case studies are needed to gauge the impact of temperature reading checkpoints, however this new paradigm of checkpoints allowed us to innovate less intrusive solutions, while providing a useful historical reference necessary for effective exposure estimates and response. Additionally, Zerobase may actually prove more effective in developing countries, where mobile penetration is high for activities such as payments.
+                    h2 Patent
+                    p
+                      | This protocol has a Patent Pending no. 62/987,3281 for the express purpose of enabling the unification, standardization, and accessibility of collated, anonymized data of similar systems in the future. We hope to organize these vital open source efforts and keep this system and similar systems open for everyone. Our patent aims to:
+                    ol
+                      li Fully disclose the process and methods utilized
+                      li Allow other communities and organizations to readily adopt
+                      li Enable data standardization
+
+                    h2 Our Team
+
+                    .card
+                      .card-body
+                        .row.row-sm.align-items-center
+                          //- .col-auto
+                          //-   span.avatar.avatar-lg.rounded(style='background-image: url(./static/avatars/000m.jpg)')
+                          .col
+                            h4.card-title.m-0
+                              | John Lo
+                            p
+                              | Current entrepreneurial resident in Cologne, Germany. Specialization in Statistics and Computer Science from Harvard University with experience in public health policy.
+                            p
+                              a.btn.btn-facebook(href="https://linkedin.com/in/john-lo-2b95a0169", target="_blank")
+                                | My Linkedin Profile
+                                i.fe.fe-arrow-up-right.ml-3
+                            p
+                              | I developed Zerobase protocol in four days in response to increasingly urgent WHO guidelines for communities to take preemptive action, but unfortunately not having the basic infrastructure to do so. I hope Zerobase can serve to provide a basic line of community defense against a spreading pandemic.
+
+                    .card
+                      .card-body
+                        .row.row-sm.align-items-center
+                          //- .col-auto
+                          //-   span.avatar.avatar-lg.rounded(style='background-image: url(./static/avatars/000m.jpg)')
+                          .col
+                            h4.card-title.m-0
+                              | Aron Szanto
+                            p
+                              | Machine learning engineer at Kensho Technologies and a researcher at Harvard University. His background is in applied artificial intelligence, including misinformation detection, social network analysis, and natural language processing.
+                            P
+                              | Past work has also involved data privacy, high performance computing, distributed data systems, and tech x social activism.
+                            p
+                              a.btn.btn-facebook(href="https://www.linkedin.com/in/aronszanto", target="_blank")
+                                | My Linkedin Profile
+                                i.fe.fe-arrow-up-right.ml-3
+
+                    p Want to help or join our team? Please reach out to us by email info@zerobase.io or join our Slack Group Chat.
+        #tabs-updates.tab-pane
+          .content
+            .container(style='padding:0;')
+              .card(style="max-width:32rem;margin:0 auto;")
+                ul.list-group.card-list-group
+                  li.list-group-item.py-4
+                    .d-flex
+                      div
+                        span.avatar.mr-3(style="background-image: url('/dist/img/avatars/019bnd.jpg')")
+                      .flex-fill
+                        div
+                          small.float-right.text-muted
+                            i.fe.fe-paperclip
+                          h4 Bundesgesundheitsministerium
+                        div
+                          | When it comes to health, everyone wants what's best for themselves and their families. See the latest information from the Federal Ministry of Health so you can help prevent the spread of novel coronavirus (COVID-19).
+                        a.btn.btn-secondary.btn-block.mt-4(style='font-size:12px;', href='https://www.bundesgesundheitsministerium.de/',target='_blank')
+                          | bundesgesundheitsministerium.de
+
+                  li.list-group-item.py-4
+                    .d-flex
+                      div
+                        span.avatar.mr-3(style="background-image: url('/dist/img/avatars/019m.jpg')")
+                      .flex-fill
+                        div
+                          small.float-right.text-muted 3 days ago
+                          h4 John Lo
+                        div
+                          | How long will COVID-19 persist? If the virus is not locally contained, the virus will probably see a resurgence in the fall season since vaccine development has been estimated to take another 12 - 14 months at least. With the help of community participation, Zerobase provides an effective infrastructure to identify and contain local clusters until a vaccine is developed and produced.
+                  li.list-group-item.py-4
+                    .d-flex
+                      div
+                        span.avatar.mr-3(style="background-image: url('/dist/img/avatars/019m.jpg')")
+                      .flex-fill
+                        div
+                          small.float-right.text-muted 3 days ago
+                          h4 John Lo
+                        div
+                          | What is the best way to prevent the spread of COVID-19? Based on multiple studies, washing your hands frequently with soap and warm water is the most effective method. Avoid touching your face, nose, and mouth. Wearing masks develops community resistance, but studies regarding individual usage seems only effective in preventing those already infected from spreading it further. There is some evidence to suggest that masks have a secondary effect on preventing one from touching their face thereby reducing transmission.
+        #tabs-news.tab-pane
+          .content
+            .container(style='padding:0;')
+              .card
+                ul.list-group.card-list-group(id="news-feed-container")
+                  li.list-group-item.py-4.d-none(id="template-news")
+                    a.news-href(href="https://www.google.com", target="_blank", style="text-decoration:none;")
+                      .d-flex
+                        .flex-fill
+                          div
+                            h4.small.news-source Bloomberg.com
+                          div
+                            .text-muted.news-title Thousands rally in Asia for International Women's Day despite COVID-19 fears
+                          div.mt-2
+                            .small.text-muted.news-published 12:40 PM on March 08, 2020
+                        div
+                          span.news-image.ml-3.mt-3(style="background-image: url('/dist/img/avatars/019bnd.jpg')")
+
+        #tabs-notifications.tab-pane
+          .content
+            .container(style='padding:0;')
+              .container
+                h4.text-muted You currently have no notifications.
+                p.text-muted
+                  | If the device ID has coincided with another device ID confirmed with a positive test result, you will be notified here. If your local public health requests you share your public key, you will also be notified. Your participation is optional and your device ID is never revealed.
+  #page-scan.tab-pane
+    div(style='position: relative; height: 100vh; background: #000000; overflow: hidden;')
+      canvas#canvas(style='position: absolute; height:100vh; display: block; left: -50vw;')
+      .ocrloader(style="position: absolute;")
+        em
+        div
+        span
+      .content(style='position: absolute;')
+        .container.d-flex.flex-column.justify-content-center
+          .page-header
+            .row.align-items-center
+              .col-4
+                a#nav-main-x(href='#', style='color:inherit;')
+                  img(src='/dist/img/filled-white-x.png', style='width:100%')
+              .col-4.text-center
+              .col-4
+          .empty.p-0
+
+  #page-code.tab-pane
+    .content
+      .container.d-flex.flex-column.justify-content-center
+        .page-header
+          .row.align-items-center
+            .col-4
+              a#nav-main(href='#', style='color:inherit;')
+                svg.feather.feather-chevron-left(xmlns='http://www.w3.org/2000/svg', width='32', height='32', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                  polyline(points='15 18 9 12 15 6')
+            .col-4.text-center
+              | Device Code
+            .col-4
+        .empty.p-0
+          .card
+            .card-body
+              .notice-code.dimmer.active
+                .dimmer-notice
+                  img.p-2.w-6(src='/dist/img/shield-notice.png', alt='Notice')
+                  p.empty-subtitle.text-muted
+                    | Only use this for printing a physical copy. Do not send this code to others. This main code should not be used for locations.
+                  .empty-action
+                    a#reveal-code.btn.btn-github(href='#')
+                      | OK, I Understand
+                .dimmer-content
+                  #qrcode.p-4.text-center.align-items-center
+                    img.qr-logo-overlay(src='/dist/img/qr_logo.png') 
+            a(href="#" class="card-btn" id="generate-alt-code") Generate alternative code
+      footer.footer.footer-transparent
+        .container
+          .row.text-center.align-items-center.flex-row-reverse
+            .col-12.col-lg-auto.mt-3.mt-lg-0
+              div(id="notice-alt-code")
+                | Alternative codes can be printed and posted for locations or businesses, or given to children, elderly who do not have a smartphone. You can generate up to 5 alternative codes. They will be shown here.
+              .card(id="alternative-code-card d-none")
+                .list-group.card-list-group(id="alternative-code-group")
+                  .list-group-item(id="template-code-alt" class="reveal-code-alt d-none")
+                    .row.row-sm.align-items-center(style="height:3rem")
+                      .col
+                        .text-muted.title-code-alt
+                          | ALTERNATIVE CODE 1
+                      .col-auto
+                        a.link-secondary(href='#')
+                          svg.feather.feather-chevron-right(xmlns='http://www.w3.org/2000/svg', width='32', height='32', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                            polyline(points='9 18 15 12 9 6')
+              div
+                | If you require more than 5 codes please
+                a(href="mailto:info@zerobase.io") contact us
+
+  #page-code-alt.tab-pane
+    .content
+      .container.d-flex.flex-column.justify-content-center
+        .page-header
+          .row.align-items-center
+            .col-2
+              a#nav-code(href='#', style='color:inherit;')
+                svg.feather.feather-chevron-left(xmlns='http://www.w3.org/2000/svg', width='32', height='32', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+                  polyline(points='15 18 9 12 15 6')
+            .col-8.text-center(id="title-code-alt")
+              | Alternative Code 1
+            .col-2
+        .empty.p-0
+          .card
+            .card-body
+              .notice-code.dimmer.active
+                .dimmer-notice
+                  img.p-2.w-6(src='/dist/img/shield-notice.png', alt='Notice')
+                  p.empty-subtitle.text-muted
+                    | Only use this for printing a physical copy. Do not send this code to others.
+                  .empty-action
+                    a#reveal-code.btn.btn-github(href='#')
+                      | OK, I Understand
+                .dimmer-content
+                  #qrcode-alt.p-4.text-center.align-items-center
+                    img.qr-logo-overlay(src='/dist/img/qr_logo.png')
+      footer.footer.footer-transparent
+        .container
+          .row.text-center.align-items-center.flex-row-reverse
+            .col-12.col-lg-auto.mt-3.mt-lg-0
+              div
+              | If you require more than 5 codes please
+              a(href="mailto:info@zerobase.io") contact us
+
+
+
+#modal-register-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', data-redirect='false', style='display: none;')
+  .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+    .modal-content
+      //-button.close(type='button', data-dismiss='modal', aria-label='Close')
+        svg.icon(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+          line(x1='18', y1='6', x2='6', y2='18')
+          line(x1='6', y1='6', x2='18', y2='18')
+      .modal-body.text-center.py-5
+        h3 Device Registration
+        .text-muted
+          | By continuing you agree to automatically register this device. You only need to do this once.
+          br
+          br
+          |We do not ask for any personally identifiable information and do not store any personal non anonymized data. Please view our Security section for more details
+      .modal-footer
+        a.btn.btn-primary.btn-block(href='#' id="register-notice-agree")
+          | Agree and Continue
+        a.btn.btn-secondary.btn-block(href='#', data-dismiss='modal')
+          | Cancel
+
+#modal-scan-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', style='display:none;', data-backdrop="static", data-keyboard="false")
+  .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+    .modal-content
+      .modal-body.text-center.py-5
+        #scan-notice-loading
+          .spinner-border.text-gray(role='status' style="width:3.5rem;height:3.5rem;")
+          h2.pt-4 Connecting...
+          .text-muted This will only take a moment
+        #scan-notice-error.d-none
+          svg.feather.feather-alert-octagon(xmlns='http://www.w3.org/2000/svg', width='68', height='68', viewbox='0 0 24 24', fill='none', stroke='#fab007', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+            polygon(points='7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2')
+            line(x1='12', y1='8', x2='12', y2='12')
+            line(x1='12', y1='16', x2='12.01', y2='16')
+          h2.pt-4#scan-notice-error-title Error
+          h4#scan-notice-error-code
+          .text-muted#scan-notice-error-message There was a technical error with the request. Please scan again.
+          a.btn.btn-secondary.btn-block.mt-4(href='#' id="nav-scan", data-dismiss="modal")
+            | Scan Again
+          a.btn.btn-secondary.btn-block(href='#', data-dismiss='modal')
+            | Cancel
+        #scan-notice-success.d-none
+          svg.icon.icon-xl.icon-thin.mb-4.text-green(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+            path(d='M22 11.08V12a10 10 0 1 1-5.93-9.14')
+            polyline(points='22 4 12 14.01 9 11.01')
+          h2#scan-notice-success-title.text-green Scan Succeeded
+          .text-muted#scan-notice-success-datetime Jan 19, 2019 01:10:22
+          svg#scan-notice-barcode-id(style="width:100%; height:100px;")
+          //-h4#scan-notice-success-id
+          .text-muted.mt4
+            | You've successfully scanned a Zerobase ID. Please show this message to the accepting party if they require it. You don't need to do anything else.
+          .modal-footer
+            .input-group.mb-0.mt-4
+              //- .input-group-prepend
+              span.input-group-text
+                input.form-check-input.m-0(type='checkbox')
+                a.ml-2.text-blue(href="#") HIPAA Waiver
+              input.form-control(type='text', name='input-mask', data-mask='(000) 000-0000', data-mask-visible='true', placeholder='(000) 000-0000', autocomplete='off')
+            a.btn.btn-primary.btn-block.mt-0(href='#', style="border-radius: 0px 0px 3px 3px;")
+              | Keep me notified
+            a.btn.btn-secondary.btn-block.mt-4(href='/')
+              | Continue to Zerobase
+
+
+//-Libs JS
+//- script(src='/dist/libs/jquery/dist/jquery.min.js')
+//- //-<script src="dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+//- script(src='/dist/libs/bootstrap/dist/js/bootstrap.bundle.min-1582732176.js')
+//- script(src='/dist/libs/qrcodejs/qrcode.min.js')
+//- script(src='/dist/libs/jsQR/jsQR.js')
+//- script(src='/dist/libs/jsbarcode/script.min.js')
+//- script(src='/dist/libs/howler/howler.core.min.js')
+//- script(src='/dist/libs/fingerprint/fingerprint2.js')
+//- //-script(src='https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js')
+//- //-Tabler Core
+//- script(src='/dist/js/tabler.min-1582732176.js')
+//- //-Controller
+//- script(src='/controller.js')
+//-script(src='https://host.relaychat.app')
+//-script(src='/dist/libs/imask/dist/imask.min-1582732176.js')
+//-script(src='/dist/libs/relaychat/script.min.js')
+script(src='/main.min.js')
+//-script(src='/controller.js')

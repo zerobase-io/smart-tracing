@@ -48,6 +48,22 @@ When you run in production, it is strongly recommended you change your password 
 
 ### Run it!
 
+You'll need to start a local mongodb instance: 
+
+If you installed from a .zip on Mac, open new terminal window and run
+
+    mongod
+
+If you installed mongodb using docker
+
+    docker run -d -p 27017:27017 mongo:latest
+
+
+If you installed mongodb using brew
+
+    brew services start mongodb
+
+
 To initialize the project you'll want to build all the JS and CSS files and then initialize the keystone instance like so:
 
     node build.js

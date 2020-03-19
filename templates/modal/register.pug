@@ -1,0 +1,19 @@
+#modal-register-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', data-redirect='false', style='display: none;')
+  .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+    .modal-content
+      //-button.close(type='button', data-dismiss='modal', aria-label='Close')
+        svg.icon(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+          line(x1='18', y1='6', x2='6', y2='18')
+          line(x1='6', y1='6', x2='18', y2='18')
+      .modal-body.text-center.py-5
+        h3 Device Registration
+        .text-muted
+          | By continuing you agree to automatically register this device. You only need to do this once.
+          br
+          br
+          |We do not ask for any personally identifiable information and do not store any personal non anonymized data. Please view our Security section for more details
+      .modal-footer
+        a.btn.btn-primary.btn-block(href='#' id="register-notice-agree")
+          | Agree and Continue
+        a.btn.btn-secondary.btn-block(href='#', data-dismiss='modal')
+          | Cancel
