@@ -20,14 +20,14 @@ class GraphDao(private val driver: Driver) {
         }
     }
 
-    fun recordCheckIn(device: DeviceId, qrCode: QrCode): ScanId? {
+    fun recordCheckIn(scanner: DeviceId, scanned: DeviceId): ScanId? {
         return driver.session().use {
             it.writeTransaction { txn ->
                 val result = txn.run(
                         """
-                            MATCH (d:Device) WHERE ID(d) = $device
-                            MATCH (qr:QrCode) WHERE ID(qr) = $qrCode
-                            CREATE (d)-[r:SCAN{id: '${UUID.randomUUID()}', timestamp: TIMESTAMP()}]->(qr)
+                            MATCH (d:Device) WHERE ID(d) = ${scanner.value}
+                            MATCH (d2:Device) WHERE ID(d2) = ${scanned.value}
+                            CREATE (d)-[r:SCAN{id: '${UUID.randomUUID()}', timestamp: TIMESTAMP()}]->(d2)
                             RETURN r.id as id
                         """.trimIndent()
                 ).single()["id"].asString()

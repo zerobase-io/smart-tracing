@@ -17,7 +17,7 @@ data class DeviceCreatedResponse(@JsonProperty("dvid") val id: String): ApiRespo
 data class ScanRecordedResponse(@JsonProperty("scan") val id: String): ApiResponse(success = true)
 
 data class CreateDeviceRequest(val fingerprint: String?, val ip: String?)
-data class CheckInRequest(@JsonProperty("dvid") val deviceId: String, @JsonProperty("sdvid") val qrCode: String)
+data class CheckInRequest(@JsonProperty("dvid") val scanningDevice: String, @JsonProperty("sdvid") val scannedDevice: String)
 
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -37,7 +37,7 @@ class Router(val dao: GraphDao) {
     @Path("/s-id/{deviceId}")
     @POST
     fun recordCheckIn(@PathParam("deviceId") deviceId: DeviceId, req: CheckInRequest): ApiResponse {
-        val id = dao.recordCheckIn(DeviceId(req.deviceId), QrCode(req.qrCode))
+        val id = dao.recordCheckIn(DeviceId(req.scanningDevice), DeviceId(req.scannedDevice))
         return when (id) {
             null -> ApiResponse(success = false, message = "At least one provided ID is not valid.")
             else -> ScanRecordedResponse(id.value)
