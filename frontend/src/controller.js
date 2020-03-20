@@ -450,7 +450,7 @@ $(function () {
   $('body').on('click', '.reveal-code-alt', function(e){
     // for resetting canvas
     $("#qrcode-alt").empty();
-    $("#qrcode-alt").append('<img class="qr-logo-overlay" src="/dist/img/qr_logo.png">')
+    $("#qrcode-alt").append('<img class="qr-logo-overlay" src="/assets/img/qr_logo.png">')
     // for when revealing main code, but navigating to alt code
     $('.notice-code').addClass('active')
     $('.notice-code .dimmer-notice').show();

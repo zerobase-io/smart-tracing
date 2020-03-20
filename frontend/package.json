@@ -1,0 +1,20 @@
+{
+  "name": "keystone-demo",
+  "version": "1.0.3",
+  "engines": {
+    "node": "8.11.4"
+  },
+  "devDependencies": {
+    "@node-minify/core": "^4.1.2",
+    "@node-minify/google-closure-compiler": "^4.1.2",
+    "@node-minify/uglify-js": "^4.1.2",
+    "http-server": "^0.12.1",
+    "node-minify": "^3.6.0",
+    "pug": "^2.0.3",
+    "uglifycss": "0.0.29"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "serve": "http-server /public"
+  }
+}

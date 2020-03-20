@@ -38,6 +38,6 @@
     "uglifycss": "0.0.29"
   },
   "scripts": {
-    "start": "node keystone.js"
+    "build": "node build.js"
   }
 }

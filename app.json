@@ -7,7 +7,7 @@
 	],
 	"website": "https://zerobase.io/",
 	"repository": "https://github.com/zerobase-io/smart-tracing",
-	"logo": "https://zerobase.io/dist/img/zerobase_medium_logo.png",
+	"logo": "https://zerobase.io/assets/img/zerobase_medium_logo.png",
 	"success_url": "/",
 	"formation": {
 		"web": {
