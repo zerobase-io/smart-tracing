@@ -1,0 +1,17 @@
+#page-scan.tab-pane
+  div(style='position: relative; height: 100vh; background: #000000; overflow: hidden;')
+    canvas#canvas(style='position: absolute; height:100vh; display: block; left: -50vw;')
+    .ocrloader(style="position: absolute;")
+      em
+      div
+      span
+    .content(style='position: absolute;')
+      .container.d-flex.flex-column.justify-content-center
+        .page-header
+          .row.align-items-center
+            .col-4
+              a#nav-main-x(href='#', style='color:inherit;')
+                img(src='/dist/img/filled-white-x.png', style='width:100%')
+            .col-4.text-center
+            .col-4
+        .empty.p-0

@@ -46,8 +46,9 @@ minify({
         __dirname+'/public/dist/libs/howler/howler.core.min.js',
         __dirname+'/public/dist/libs/slick/slick.min.js',
         __dirname+'/public/dist/libs/fingerprint/fingerprint2.js',
+        __dirname+'/public/dist/libs/imask/dist/imask.min-1582732176.js',
         __dirname+'/public/dist/js/tabler.min-1582732176.js',
-        //-__dirname+'/public/controller.min.js'
+        __dirname+'/public/controller.min.js'
       ],
       output: __dirname+'/public/main.min.js',
       type: 'js',
