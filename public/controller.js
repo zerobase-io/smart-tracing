@@ -345,14 +345,14 @@ $(function () {
       sdvid    = pathname.split('/')[2]
   var dvid = localStorage.getItem('dvid');
 
-  if (protocol == 'http:' 
-  && hostname == 'localhost'
-  && action   == 's'
-  && sdvid ){
-  // if (protocol  == 'https:' 
-  //  && (hostname == 'www.zerobase.io' || hostname == 'zerobase.io')
-  //  && action    == 's'
-  //  && sdvid ){
+  // if (protocol == 'http:' 
+  // && hostname == 'localhost'
+  // && action   == 's'
+  // && sdvid ){
+  if (protocol  == 'https:' 
+   && (hostname == 'www.zerobase.io' || hostname == 'zerobase.io')
+   && action    == 's'
+   && sdvid ){
     console.log('Scan Access Point')
     window.history.replaceState({},'Home','/')
     if(dvid){
