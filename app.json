@@ -30,32 +30,8 @@
 		}
 	],
 	"env": {
-		"MANDRILL_APIKEY": {
-			"description": "Your Mandrill API Key",
-			"required": false
-		},
-		"MANDRILL_USERNAME": {
-			"description": "Your Mandrill Username",
-			"required": false
-		},
-		"EMBEDLY_APIKEY": {
-			"description": "Your embed.ly key",
-			"required": false
-		},
-		"NODE_ENV": {
-			"value": "production"
-		},
-		"COOKIE_SECRET": {
-			"description": "A random string to encrypt cookies",
-			"generator": "secret"
-		},
-		"GA_DOMAIN": {
-			"description": "Your Google Analytics domain",
-			"required": false
-		},
-		"GA_PROPERTY": {
-			"description": "Your Google Analytics property",
-			"required": false
+		"PORT": {
+			"value": 3000
 		}
 	}
 }
