@@ -1,6 +1,11 @@
 declare var jsQR: typeof import("jsqr").default;
 declare var Fingerprint2: typeof import("fingerprintjs2");
 
+type RuntimeConfig = {
+  API_HOST: string;
+  ENV: "dev" | "prod";
+};
+
 declare module QRCode {
   export enum CorrectLevel {
     L,

@@ -16,7 +16,7 @@ This repository contains the front end for the Zerobase smart tracing platform. 
     git clone https://github.com/zerobase-io/smart-tracing.git
     cd smart-tracing
     npm install
-    npm run build
+    npm run build:dev
     npm run serve
 
 ### Building

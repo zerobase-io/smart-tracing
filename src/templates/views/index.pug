@@ -1,29 +1,31 @@
 doctype html
 head
   meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1, viewport-fit=cover')
-  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
   title Zerobase - Smart Tracing That Keeps Communities Safe
-  link(rel='preconnect', href='https://fonts.gstatic.com/', crossorigin='')
-  meta(name='msapplication-TileColor', content='#206bc4')
-  meta(name='theme-color', content='#206bc4')
-  meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
-  meta(name='apple-mobile-web-app-capable', content='yes')
-  meta(name='mobile-web-app-capable', content='yes')
-  meta(name='HandheldFriendly', content='True')
-  meta(name='MobileOptimized', content='320')
-  meta(name='robots', content='noindex,nofollow,noarchive')
-  link(rel='icon', href='/favicon.ico', type='image/x-icon')
-  link(rel='shortcut icon', href='favicon.ico', type='image/x-icon')
+  link(rel='preconnect' href='https://fonts.gstatic.com/' crossorigin='')
+  meta(name='msapplication-TileColor' content='#206bc4')
+  meta(name='theme-color' content='#206bc4')
+  meta(name='apple-mobile-web-app-status-bar-style' content='black-translucent')
+  meta(name='apple-mobile-web-app-capable' content='yes')
+  meta(name='mobile-web-app-capable' content='yes')
+  meta(name='HandheldFriendly' content='True')
+  meta(name='MobileOptimized' content='320')
+  meta(name='robots' content='noindex,nofollow,noarchive')
+  link(rel='icon' href='/favicon.ico' type='image/x-icon')
+  link(rel='shortcut icon' href='favicon.ico' type='image/x-icon')
   //-Global site tag (gtag.js) - Google Analytics
-  script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
+  script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
+  script(type="application/json" id="runtime-config").
+    {{ RUNTIME_CONFIG }}
   script.
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'UA-159876597-1');
 
-  link(href='/styles.min.css', rel='stylesheet')
+  link(href='/styles.min.css' rel='stylesheet')
 
 body
 
@@ -31,13 +33,13 @@ body
   .d-none
     ul.nav.nav-tabs.nav-fill(data-toggle='tabs')
       li.nav-item
-        a.nav-link.active(href='#page-main', data-toggle='tab')
+        a.nav-link.active(href='#page-main' data-toggle='tab')
       li.nav-item
-        a.nav-link(href='#page-scan', data-toggle='tab')
+        a.nav-link(href='#page-scan' data-toggle='tab')
       li.nav-item
-        a.nav-link(href='#page-code', data-toggle='tab')
+        a.nav-link(href='#page-code' data-toggle='tab')
       li.nav-item
-        a.nav-link(href='#page-code-alt', data-toggle='tab')
+        a.nav-link(href='#page-code-alt' data-toggle='tab')
 
   .tab-content
     //- Main Component

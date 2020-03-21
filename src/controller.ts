@@ -1,9 +1,21 @@
 import { Point } from "jsqr/dist/locator";
 
-// Remove Console Log
-console.log = function() {};
+function getRuntimeConfig(): RuntimeConfig {
+  return JSON.parse(document.getElementById("runtime-config").innerHTML);
+}
 
-const API_HOST = "http://localhost:8088";
+const runtimeConfig = getRuntimeConfig();
+const { ENV, API_HOST } = runtimeConfig;
+
+// Remove Console Log for non-dev environment
+console.log = ENV === "dev" ? console.log : function() {};
+
+console.log("runtime config: ", runtimeConfig);
+
+if (API_HOST == null) {
+  throw new Error("API_HOST not in runtime config!");
+}
+
 //-------------------------------------------------------------------
 var router = (function() {
   return {

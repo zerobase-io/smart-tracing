@@ -115,8 +115,29 @@ const minifyCss = () => {
   });
 };
 
+// Environment variables should be prefixed with the following prefix
+// Example: RUNTIME_CONFIG_API_HOST will inject API_HOST into the runtime config
+const PREFIX = "RUNTIME_";
+const environmentVarsToJSON = () => {
+  const config = {};
+
+  Object.entries(process.env).forEach(([name, value]) => {
+    if (name.startsWith(PREFIX)) {
+      config[name.slice(PREFIX.length)] = value;
+    }
+  });
+
+  return JSON.stringify(config);
+};
+
 const convertPugtoHTML = () => {
-  const html = pug.renderFile(__dirname + "/src/templates/views/index.pug");
+  var html = pug.renderFile(__dirname + "/src/templates/views/index.pug");
+
+  const runtimeConfig = environmentVarsToJSON();
+  console.log({ runtimeConfig });
+
+  // Replace runtime config with environment variables
+  html = html.replace("{{ RUNTIME_CONFIG }}", runtimeConfig);
 
   fs.writeFile(__dirname + "/public/index.html", html, function(err) {
     if (err) {

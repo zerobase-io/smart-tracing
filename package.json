@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "node build.js",
-    "serve": "http-server ./public"
+    "build:dev": "RUNTIME_API_HOST='http://localhost:8080' RUNTIME_ENV=dev node build.js",
+    "serve": "http-server -p 3000 ./public"
   }
 }
