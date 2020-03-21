@@ -23,7 +23,7 @@ const transpileToJavascript = () =>
         if (err) {
           reject(err);
         }
-        console.log(`${fileName} converted to Typescript`);
+        console.log(`Javascript transpiled for ${fileName}`);
         resolve();
       });
     });
