@@ -19,7 +19,7 @@ const transpileToJavascript = () =>
         `Object.defineProperty(exports, "__esModule", { value: true });`,
         ""
       );
-      fs.writeFile(`${__dirname}/build/controller.js`, data, function(err) {
+      fs.writeFile(`${__dirname}/public/controller.js`, data, function(err) {
         if (err) {
           reject(err);
         }
@@ -38,7 +38,7 @@ const minifyJs = () => {
       compilation_level: "ADVANCED",
       externs: [__dirname + "/build-externs/jquery-3.3.js"]
     },
-    input: [__dirname + "/build/controller.js"],
+    input: [__dirname + "/public/controller.js"],
     output: __dirname + "/public/controller.min.js",
     type: "js",
     sync: true,
