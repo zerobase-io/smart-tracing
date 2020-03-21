@@ -581,7 +581,7 @@ $(function() {
   $("body").on("click", "#nav-scan", function(e) {
     // can only initialize sound after user gesture;
     // @ts-ignore
-    window.sound = new Howl({ src: ["/dist/audio/beep.mp3"] });
+    window.sound = new Howl({ src: ["/assets/audio/beep.mp3"] });
 
     $('a[href="#page-scan"]').tab("show");
     // Use facingMode: environment to attemt to get the front camera on phones
