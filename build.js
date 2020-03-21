@@ -116,7 +116,7 @@ const minifyCss = () => {
 };
 
 // Environment variables should be prefixed with the following prefix
-// Example: RUNTIME_CONFIG_API_HOST will inject API_HOST into the runtime config
+// Example: RUNTIME_API_HOST will inject API_HOST into the runtime config
 const PREFIX = "RUNTIME_";
 const environmentVarsToJSON = () => {
   const config = {};
