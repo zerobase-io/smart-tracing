@@ -16,7 +16,6 @@ if (API_HOST == null) {
   throw new Error("API_HOST not in runtime config!");
 }
 
-//-------------------------------------------------------------------
 var router = (function() {
   return {
     genQR: function(dvid: string, elementId: string) {
@@ -34,20 +33,20 @@ var router = (function() {
       cb?: (inputs?: { ip?: string; fingerprint?: string }) => void
     ) {
       var uniqD = Date.now();
-      var submit = new FormData();
-      // @ts-ignore
-      submit.append("ip", inputs && inputs.ip ? inputs.ip : undefined);
 
-      submit.append(
-        "fingerprint",
-        // @ts-ignore
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined
-      );
+      const ip = inputs && inputs.ip ? inputs.ip : undefined;
+      const fingerprint =
+        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/c/${uniqD}`,
-        data: submit,
+        data: JSON.stringify({
+          ip,
+          fingerprint
+        }),
         cache: false,
-        contentType: false,
+        dataType: "json",
+        contentType: "application/json",
         processData: false,
         type: "POST",
         success: function(data: { dvid: string }) {
@@ -87,14 +86,6 @@ var router = (function() {
       const fingerprint =
         inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
 
-      var submit = new FormData();
-      // @ts-ignore
-      submit.append("dvid", dvid);
-      submit.append("dvid_c", dvid_c);
-      // @ts-ignore
-      submit.append("ip", ip);
-      // @ts-ignore
-      submit.append("fingerprint", fingerprint);
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/ca/${dvid}`,
         data: JSON.stringify({
@@ -166,23 +157,12 @@ var router = (function() {
       inputs: { sdvid?: string; ip?: string; fingerprint?: string } | undefined,
       cb: () => void
     ) {
-      // data = [sdvid, fingerprint]
       var dvid = localStorage.getItem("dvid");
 
       const sdvid = inputs && inputs.sdvid ? inputs.sdvid : undefined;
       const ip = inputs && inputs.ip ? inputs.ip : undefined;
       const fingerprint =
         inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
-
-      var submit = new FormData();
-      // @ts-ignore
-      submit.append("dvid", dvid);
-      // @ts-ignore
-      submit.append("sdvid", sdvid);
-      // @ts-ignore
-      submit.append("ip", ip);
-      // @ts-ignore
-      submit.append("fingerprint", fingerprint);
 
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/s-id/${dvid}`,
@@ -362,11 +342,6 @@ var router = (function() {
           } else {
             return murmur;
           }
-          // for (var index in components) {
-          //   var obj = components[index]
-          //   var line = obj.key + " = " + String(obj.value).substr(0, 100)
-          //   console.log(line);
-          // }
         });
       };
 
@@ -381,7 +356,7 @@ var router = (function() {
     },
     init: function() {
       console.log("Initialized");
-      //alert(window.innerWidth, window.visualViewport.width);
+
       if (window.innerWidth < 750) {
         $("#mobile-functions").removeClass("d-none");
         $("#desktop-notice").addClass("d-none");
@@ -389,7 +364,7 @@ var router = (function() {
         var dvid_c = localStorage.getItem("dvid_alt")
           ? JSON.parse(localStorage.getItem("dvid_alt")!).length
           : 0;
-        //localStorage.removeItem('dvid');
+
         if (!dvid) {
           console.log("no registered dvid");
 
@@ -459,23 +434,12 @@ $(function() {
 
   var scan_parser = document.createElement("a");
   scan_parser.href = window.location.href;
-  var protocol = scan_parser.protocol,
-    hostname = scan_parser.hostname,
-    pathname = scan_parser.pathname,
+  var pathname = scan_parser.pathname,
     action = pathname.split("/")[1],
     sdvid = pathname.split("/")[2];
   var dvid = localStorage.getItem("dvid");
 
-  if (
-    protocol == "http:" &&
-    hostname == "localhost" &&
-    action == "s" &&
-    sdvid
-  ) {
-    // if (protocol  == 'https:'
-    //  && (hostname == 'www.zerobase.io' || hostname == 'zerobase.io')
-    //  && action    == 's'
-    //  && sdvid ){
+  if (action == "s" && sdvid) {
     console.log("Scan Access Point");
     window.history.replaceState({}, "Home", "/");
     if (dvid) {
@@ -484,11 +448,8 @@ $(function() {
       // Please note this callback pattern to pass data down the "chain"
       // Unfortunately cannot use Async Await due to coverage issues.
       router.fetchIP({ sdvid }, data => {
-        //console.log('IP -> fingerprint:', data);
         router.fingerprint(data, data => {
-          //console.log('fingerprint -> scan :', data);
           router.scan(data, () => {
-            //console.log('scan -> init :', data)
             router.init();
           });
         });
@@ -510,11 +471,11 @@ $(function() {
         $("#modal-scan-notice").modal("show");
 
         router.fetchIP({ sdvid }, data => {
-          //console.log('IP -> fingerprint:', data);
+          console.log("IP -> fingerprint:", data);
           router.fingerprint(data, data => {
-            //console.log('fingerprint -> create :', data);
+            console.log("fingerprint -> create :", data);
             router.create(data, data => {
-              //console.log('create -> scan: ', data)
+              console.log("create -> scan: ", data);
               router.scan(data, () => {
                 router.init();
               });
@@ -659,7 +620,7 @@ $(function() {
       canvasElement.hidden = false;
       canvasElement.height = video.videoHeight;
       canvasElement.width = video.videoWidth;
-      //console.log(canvasElement.width, canvasElement.height);
+
       canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
       var imageData = canvas.getImageData(
         0,
@@ -695,34 +656,19 @@ $(function() {
 
         var parser = document.createElement("a");
         parser.href = code.data;
-        var protocol = parser.protocol,
-          hostname = parser.hostname,
-          pathname = parser.pathname,
+        var pathname = parser.pathname,
           action = pathname.split("/")[1],
           sdvid = pathname.split("/")[2];
-        console.log(protocol, hostname, pathname, action, sdvid);
-        // if (protocol == 'http:'
-        //   && hostname == 'localhost'
-        //   && action   == 's'
-        //   && sdvid ){
-        if (
-          protocol == "https:" &&
-          hostname == "www.zerobase.io" &&
-          action == "s" &&
-          sdvid
-        ) {
+
+        if (action == "s" && sdvid) {
           // @ts-ignore
           sound.play();
-          //console.log('CODE:', code.data);
           window.location.replace(code.data);
           return;
         }
-      } else {
-        //outputMessage.hidden = false;
-        //outputData.parentElement.hidden = true;
       }
     }
-    //- requestAnimationFrame(loop);
+
     scanStart();
   }
 });
