@@ -15,7 +15,8 @@
     "pug": "^2.0.3",
     "qrcodejs": "^1.0.0",
     "typescript": "^3.8.3",
-    "uglifycss": "0.0.29"
+    "uglifycss": "0.0.29",
+    "imask": "^6.0.3"
   },
   "scripts": {
     "build": "node build.js",

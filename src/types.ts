@@ -1,7 +1,6 @@
 declare var jsQR: typeof import("jsqr").default;
 declare var Fingerprint2: typeof import("fingerprintjs2");
 
-
 declare module QRCode {
   export enum CorrectLevel {
     L,
@@ -25,4 +24,21 @@ declare class QRCode {
   makeCode(sText: string): void;
   makeImage(): void;
   clear(): void;
+}
+
+type RequestIdleCallbackHandle = any;
+type RequestIdleCallbackOptions = {
+  timeout: number;
+};
+type RequestIdleCallbackDeadline = {
+  readonly didTimeout: boolean;
+  timeRemaining: () => number;
+};
+
+declare interface Window {
+  requestIdleCallback: (
+    callback: (deadline: RequestIdleCallbackDeadline) => void,
+    opts?: RequestIdleCallbackOptions
+  ) => RequestIdleCallbackHandle;
+  cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void;
 }
