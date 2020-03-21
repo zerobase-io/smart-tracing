@@ -3,8 +3,9 @@ node_modules
 
 # Build files
 build/**
+public/controller.min.js
 public/main.min.js
-public/styles.min.js
+public/styles.min.css
 public/index.html
 
 .DS_Store
