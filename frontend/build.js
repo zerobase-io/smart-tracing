@@ -4,7 +4,6 @@ const gcc = require("@node-minify/google-closure-compiler");
 const ts = require("typescript");
 const fs = require("fs");
 const pug = require("pug");
-const html = pug.renderFile(__dirname + "/src/templates/views/index.pug");
 
 const transpileToTypescript = () =>
   new Promise((resolve, reject) => {
@@ -15,8 +14,11 @@ const transpileToTypescript = () =>
     );
 
     program.emit(undefined, (fileName, data) => {
-      // hack to remove exports definition which breaks the build    
-      data = data.replace(`Object.defineProperty(exports, "__esModule", { value: true });`, "");
+      // hack to remove exports definition which breaks the build
+      data = data.replace(
+        `Object.defineProperty(exports, "__esModule", { value: true });`,
+        ""
+      );
       fs.writeFile(`${__dirname}/build/controller.js`, data, function(err) {
         if (err) {
           reject(err);
@@ -114,6 +116,8 @@ const minifyCss = () => {
 };
 
 const convertPugtoHTML = () => {
+  const html = pug.renderFile(__dirname + "/src/templates/views/index.pug");
+
   fs.writeFile(__dirname + "/public/index.html", html, function(err) {
     if (err) {
       return console.log(err);
