@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "build": "ES5",
+    "target": "ES5",
+    "strict": true,
+    "allowJs": false,
+    "noUnusedLocals": true
+  },
+  "include": ["src"]
+}
