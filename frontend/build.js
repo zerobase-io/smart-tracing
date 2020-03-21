@@ -9,7 +9,6 @@ const html = pug.renderFile(__dirname + "/src/templates/views/index.pug");
 const transpileToTypescript = () =>
   new Promise((resolve, reject) => {
     const tsConfig = fs.readFileSync(__dirname + "/tsconfig.json");
-    console.log(JSON.parse(tsConfig).compilerOptions);
     const program = ts.createProgram(
       ["src/controller.ts"],
       JSON.parse(tsConfig).compilerOptions
@@ -18,7 +17,6 @@ const transpileToTypescript = () =>
     program.emit(undefined, (fileName, data) => {
       // hack to remove exports definition which breaks the build    
       data = data.replace(`Object.defineProperty(exports, "__esModule", { value: true });`, "");
-      console.log(data)
       fs.writeFile(`${__dirname}/build/controller.js`, data, function(err) {
         if (err) {
           reject(err);
