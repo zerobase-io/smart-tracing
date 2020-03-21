@@ -15,6 +15,11 @@
 			"size": "hobby"
 		}
 	},
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	],
 	"image": "heroku/nodejs",
 	"addons": [
 		"cloudinary:starter",
