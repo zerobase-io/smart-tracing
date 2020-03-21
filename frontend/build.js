@@ -5,7 +5,7 @@ const ts = require("typescript");
 const fs = require("fs");
 const pug = require("pug");
 
-const transpileToTypescript = () =>
+const transpileToJavascript = () =>
   new Promise((resolve, reject) => {
     const tsConfig = fs.readFileSync(__dirname + "/tsconfig.json");
     const program = ts.createProgram(
@@ -126,7 +126,7 @@ const convertPugtoHTML = () => {
   });
 };
 
-transpileToTypescript()
+transpileToJavascript()
   .then(() => {
     minifyJs();
     minifyCss();
