@@ -1,4 +1,11 @@
 node_modules
 
+
+# Build files
+build/**
+public/main.min.js
+public/styles.min.js
+public/index.html
+
 .DS_Store
 .env
