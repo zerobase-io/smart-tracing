@@ -21,17 +21,6 @@
 		}
 	],
 	"image": "heroku/nodejs",
-	"addons": [
-		"cloudinary:starter",
-		"papertrail:choklad",
-		{
-			"plan": "mongolab:sandbox",
-			"as": "MONGO"
-		}
-	],
-	"env": {
-		"PORT": {
-			"value": 3000
-		}
-	}
+	"addons": [],
+	"env": {}
 }
