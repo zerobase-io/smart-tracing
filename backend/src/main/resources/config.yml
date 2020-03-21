@@ -1,3 +1,5 @@
 ---
-views:
-  pug:
+database:
+  url: ${NEO4J_URL:-bolt://localhost:7474}
+  username: ${NEO4J_USERNAME:-neo4j}
+  password: ${NEO4J_PASSWORD}

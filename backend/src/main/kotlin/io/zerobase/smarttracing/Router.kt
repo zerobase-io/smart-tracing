@@ -3,9 +3,6 @@ package io.zerobase.smarttracing
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.zerobase.smarttracing.models.DeviceId
 import io.zerobase.smarttracing.models.Fingerprint
-import io.zerobase.smarttracing.models.QrCode
-import io.zerobase.smarttracing.models.ScanId
-import org.checkerframework.common.reflection.qual.GetClass
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
@@ -37,7 +34,7 @@ class Router(val dao: GraphDao) {
     @Path("/s-id/{deviceId}")
     @POST
     fun recordCheckIn(@PathParam("deviceId") deviceId: DeviceId, req: CheckInRequest): ApiResponse {
-        val id = dao.recordCheckIn(DeviceId(req.scanningDevice), DeviceId(req.scannedDevice))
+        val id = dao.recordPeerToPeerScan(DeviceId(req.scanningDevice), DeviceId(req.scannedDevice))
         return when (id) {
             null -> ApiResponse(success = false, message = "At least one provided ID is not valid.")
             else -> ScanRecordedResponse(id.value)
