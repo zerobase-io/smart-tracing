@@ -17,6 +17,8 @@ head
   link(rel='shortcut icon', href='favicon.ico', type='image/x-icon')
   //-Global site tag (gtag.js) - Google Analytics
   script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
+  script(type="application/json" id="runtime-config").
+    {{ RUNTIME_CONFIG }}
   script.
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}

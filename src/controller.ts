@@ -1,13 +1,27 @@
 import { Point } from "jsqr/dist/locator";
 
-// Remove Console Log
-console.log = function() {};
+function getRuntimeConfig(): RuntimeConfig {
+  return JSON.parse(document.getElementById("runtime-config").innerHTML);
+}
+
+const runtimeConfig = getRuntimeConfig();
+const { ENV, API_HOST } = runtimeConfig;
+
+// Remove Console Log for non-dev environment
+console.log = ENV === "dev" ? console.log : function() {};
+
+console.log("runtime config: ", runtimeConfig);
+
+if (API_HOST == null) {
+  throw new Error("API_HOST not in runtime config!");
+}
+
 //-------------------------------------------------------------------
 var router = (function() {
   return {
     genQR: function(dvid: string, elementId: string) {
       new QRCode(document.getElementById(elementId)!, {
-        text: "https://www.zerobase.io/s/" + dvid,
+        text: `${API_HOST}/s/${dvid}`,
         width: 300,
         height: 300,
         colorDark: "#000000",
@@ -30,7 +44,7 @@ var router = (function() {
         inputs && inputs.fingerprint ? inputs.fingerprint : undefined
       );
       var opts: JQuery.AjaxSettings = {
-        url: "/c/" + uniqD,
+        url: `${API_HOST}/c/${uniqD}`,
         data: submit,
         cache: false,
         contentType: false,
@@ -61,27 +75,37 @@ var router = (function() {
       };
       jQuery.ajax(opts);
     },
-    createAlt: function(inputs: { ip?: string } | undefined, cb?: Function) {
+    createAlt: function(
+      inputs: { ip?: string; fingerprint?: string } | undefined,
+      cb?: Function
+    ) {
       var dvid = localStorage.getItem("dvid");
       var dvid_c = localStorage.getItem("dvid_alt")
         ? JSON.parse(localStorage.getItem("dvid_alt")!).length
         : 0;
+      const ip = inputs && inputs.ip ? inputs.ip : undefined;
+      const fingerprint =
+        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+
       var submit = new FormData();
       // @ts-ignore
       submit.append("dvid", dvid);
       submit.append("dvid_c", dvid_c);
       // @ts-ignore
-      submit.append("ip", inputs && inputs.ip ? inputs.ip : undefined);
-      submit.append(
-        "fingerprint",
-        // @ts-ignore
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined
-      );
+      submit.append("ip", ip);
+      // @ts-ignore
+      submit.append("fingerprint", fingerprint);
       var opts: JQuery.AjaxSettings = {
-        url: "/ca/" + dvid,
-        data: submit,
+        url: `${API_HOST}/ca/${dvid}`,
+        data: JSON.stringify({
+          dvid,
+          dvid_c,
+          ip,
+          fingerprint
+        }),
         cache: false,
-        contentType: false,
+        dataType: "json",
+        contentType: "application/json",
         processData: false,
         type: "POST",
         success: function(data: { success: boolean; dvid: string }) {
@@ -139,29 +163,38 @@ var router = (function() {
       );
     },
     scan: function(
-      inputs: { sdvid?: string; ip?: string } | undefined,
+      inputs: { sdvid?: string; ip?: string; fingerprint?: string } | undefined,
       cb: () => void
     ) {
       // data = [sdvid, fingerprint]
       var dvid = localStorage.getItem("dvid");
+
+      const sdvid = inputs && inputs.sdvid ? inputs.sdvid : undefined;
+      const ip = inputs && inputs.ip ? inputs.ip : undefined;
+      const fingerprint =
+        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+
       var submit = new FormData();
       // @ts-ignore
       submit.append("dvid", dvid);
       // @ts-ignore
-      submit.append("sdvid", inputs && inputs.sdvid ? inputs.sdvid : undefined);
+      submit.append("sdvid", sdvid);
       // @ts-ignore
-      submit.append("ip", inputs && inputs.ip ? inputs.ip : undefined);
+      submit.append("ip", ip);
+      // @ts-ignore
+      submit.append("fingerprint", fingerprint);
 
-      submit.append(
-        "fingerprint",
-        // @ts-ignore
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined
-      );
       var opts: JQuery.AjaxSettings = {
-        url: "/s-id/" + dvid,
-        data: submit,
+        url: `${API_HOST}/s-id/${dvid}`,
+        data: JSON.stringify({
+          dvid,
+          sdvid,
+          ip,
+          fingerprint
+        }),
         cache: false,
-        contentType: false,
+        dataType: "json",
+        contentType: "application/json",
         processData: false,
         type: "POST",
         success: function(data: { success: boolean; name: string }) {
@@ -336,22 +369,14 @@ var router = (function() {
           // }
         });
       };
-      // @ts-ignore
-      var cancelId;
-      // @ts-ignore
-      var cancelFunction;
+
       // see usage note in the README
-      // @ts-ignore
       if (window.requestIdleCallback) {
         console.log("Fingerprint: requestIdleCallback");
-        // @ts-ignore
-        cancelId = requestIdleCallback(fingerprintReport);
-        // @ts-ignore
-        cancelFunction = cancelIdleCallback;
+        window.requestIdleCallback(fingerprintReport);
       } else {
         console.log("Fingerprint: setTimeout");
-        cancelId = setTimeout(fingerprintReport, 500);
-        cancelFunction = clearTimeout;
+        setTimeout(fingerprintReport, 500);
       }
     },
     init: function() {
@@ -422,8 +447,9 @@ $(function() {
   }[] = [].slice.call(document.querySelectorAll("[data-mask]"));
   maskElementList.map(function(maskEl) {
     console.log("maskEl", maskEl);
+
     // @ts-ignore
-    return new IMask(maskEl, {
+    return IMask(maskEl, {
       mask: maskEl.dataset.mask,
       lazy: maskEl.dataset["mask-visible"] === "true"
     });
