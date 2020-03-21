@@ -34,9 +34,8 @@ var router = (function() {
     ) {
       var uniqD = Date.now();
 
-      const ip = inputs && inputs.ip ? inputs.ip : undefined;
-      const fingerprint =
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+      const ip = inputs?.ip;
+      const fingerprint = inputs?.fingerprint;
 
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/c/${uniqD}`,
@@ -82,9 +81,9 @@ var router = (function() {
       var dvid_c = localStorage.getItem("dvid_alt")
         ? JSON.parse(localStorage.getItem("dvid_alt")!).length
         : 0;
-      const ip = inputs && inputs.ip ? inputs.ip : undefined;
-      const fingerprint =
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+
+      const ip = inputs?.ip;
+      const fingerprint = inputs?.fingerprint;
 
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/ca/${dvid}`,
@@ -159,10 +158,9 @@ var router = (function() {
     ) {
       var dvid = localStorage.getItem("dvid");
 
-      const sdvid = inputs && inputs.sdvid ? inputs.sdvid : undefined;
-      const ip = inputs && inputs.ip ? inputs.ip : undefined;
-      const fingerprint =
-        inputs && inputs.fingerprint ? inputs.fingerprint : undefined;
+      const sdvid = inputs?.sdvid;
+      const ip = inputs?.ip;
+      const fingerprint = inputs?.fingerprint;
 
       var opts: JQuery.AjaxSettings = {
         url: `${API_HOST}/s-id/${dvid}`,
