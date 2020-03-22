@@ -7,8 +7,8 @@ interface Point {
 }
 
 type RuntimeConfig = {
-  API_HOST: string;
-  ENV: 'dev' | 'prod';
+  API_HOST?: string;
+  ENV?: 'dev' | 'prod';
 };
 
 declare module QRCode {
