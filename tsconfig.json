@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "build": "ES5",
-    "target": "ES5",
+    "target": "es5",
+    "lib": ["es6", "dom"],
     "strict": true,
     "allowJs": false,
     "noUnusedLocals": true
