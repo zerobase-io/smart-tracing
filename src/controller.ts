@@ -3,7 +3,7 @@ function getRuntimeConfig(): RuntimeConfig {
 }
 
 const runtimeConfig = getRuntimeConfig();
-console.log('rt', runtimeConfig);
+
 const { ENV, API_HOST } = runtimeConfig;
 
 // Remove Console Log for non-dev environment
@@ -34,8 +34,8 @@ const router = (() => ({
   ) => {
     const uniqD = Date.now();
 
-    const ip = inputs?.ip;
-    const fingerprint = inputs?.fingerprint;
+    const ip = inputs != null ? inputs.ip : undefined;
+    const fingerprint = inputs != null ? inputs.fingerprint : undefined;
 
     const opts: JQuery.AjaxSettings = {
       url: `${API_HOST}/c/${uniqD}`,
@@ -81,8 +81,8 @@ const router = (() => ({
       dvid_c: localStorage.getItem('dvid_alt')
         ? JSON.parse(localStorage.getItem('dvid_alt')!).length
         : 0,
-      ip: inputs?.ip,
-      fingerprint: inputs?.fingerprint,
+      ip: inputs != null ? inputs.ip : undefined,
+      fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
 
     const opts: JQuery.AjaxSettings = {
@@ -147,10 +147,10 @@ const router = (() => ({
     const dvid = localStorage.getItem('dvid');
 
     const postData = JSON.stringify({
-      dvid,
-      sdvid: inputs?.sdvid,
-      ip: inputs?.ip,
-      fingerprint: inputs?.fingerprint,
+      dvid: 1,
+      sdvid: inputs != null ? inputs.sdvid : undefined,
+      ip: inputs != null ? inputs.ip : undefined,
+      fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
 
     const opts: JQuery.AjaxSettings = {
