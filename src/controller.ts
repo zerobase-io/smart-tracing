@@ -1,5 +1,9 @@
 function getRuntimeConfig(): RuntimeConfig {
-  return JSON.parse(document.getElementById('runtime-config')!.innerHTML);
+  const runtimeConfigEl = document.getElementById('runtime-config');
+  if (runtimeConfigEl == null) {
+    return {};
+  }
+  return JSON.parse(runtimeConfigEl.innerHTML);
 }
 
 const runtimeConfig = getRuntimeConfig();
