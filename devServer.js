@@ -12,8 +12,12 @@ const apiHosts = {
   Local: 'http://localhost:9000',
 };
 
-const promptForApiServer = () =>
-  inquirer
+const promptForApiServer = () => {
+  if (process.env.RUNTIME_API_HOST != null) {
+    return Promise.resolve();
+  }
+
+  return inquirer
     .prompt({
       name: 'API',
       type: 'list',
@@ -24,6 +28,7 @@ const promptForApiServer = () =>
       // Override API host env var
       process.env.RUNTIME_API_HOST = result.API;
     });
+};
 
 // Dummy compressor for local dev
 const nonCompressor = ({ settings: { output, options }, content, callback }) => {
