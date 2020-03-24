@@ -21,7 +21,7 @@
   "scripts": {
     "build": "node build.js",
     "build:dev": "RUNTIME_API_HOST='https://zerobase-api-stage.herokuapp.com' RUNTIME_ENV=dev node build.js",
-    "start:dev": "RUNTIME_API_HOST='https://zerobase-api-stage.herokuapp.com' RUNTIME_ENV=dev node devServer.js",
+    "start:dev": "RUNTIME_ENV=dev node devServer.js",
     "serve": "http-server ./public"
   },
   "devDependencies": {
@@ -34,6 +34,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "express": "^4.17.1",
+    "inquirer": "^7.1.0",
+    "lodash": "^4.17.15",
     "node-watch": "^0.6.3"
   }
 }

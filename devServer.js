@@ -4,6 +4,26 @@ const { transpileToJavascript, minifyJs, minifyCss, convertPugtoHTML } = require
 const watch = require('node-watch');
 const fs = require('fs');
 const express = require('express');
+const inquirer = require('inquirer');
+const _ = require('lodash');
+
+const apiHosts = {
+  Staging: 'https://zerobase-api-stage.herokuapp.com',
+  Local: 'http://localhost:9000',
+};
+
+const promptForApiServer = () =>
+  inquirer
+    .prompt({
+      name: 'API',
+      type: 'list',
+      message: 'Which API server do you want to use?',
+      choices: _.map(apiHosts, (host, label) => ({ name: `${label} - ${host}`, value: host })),
+    })
+    .then(result => {
+      // Override API host env var
+      process.env.RUNTIME_API_HOST = result.API;
+    });
 
 // Dummy compressor for local dev
 const nonCompressor = ({ settings: { output, options }, content, callback }) => {
@@ -20,25 +40,25 @@ const nonCompressor = ({ settings: { output, options }, content, callback }) => 
   callback && callback();
 };
 
-transpileToJavascript()
-  .then(() => {
-    minifyJs(nonCompressor);
-    minifyCss();
-    convertPugtoHTML();
-  })
-  .catch(console.log);
+promptForApiServer().then(() =>
+  transpileToJavascript()
+    .then(() => {
+      console.log('Running dev server on port:', port);
+      console.log(`Watching for file changes on ${srcDir}`);
+      minifyJs(nonCompressor);
+      minifyCss();
+      convertPugtoHTML();
+    })
+    .catch(console.log),
+);
 
 const app = express();
 const port = process.env.PORT || 8080;
-
-console.log('Running dev server on port:', port);
 
 app.use(express.static(__dirname + '/public'));
 app.listen(port);
 
 const srcDir = 'src';
-
-console.log(`Watching for file changes on ${srcDir}`);
 
 watch(srcDir, { recursive: true }, (evt, fileName) => {
   console.log('Rebuilding due to change:', fileName);
