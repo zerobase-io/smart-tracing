@@ -127,20 +127,31 @@ const environmentVarsToJSON = () => {
 };
 
 const convertPugtoHTML = () => {
-  var html = pug.renderFile(__dirname + '/src/templates/views/index.pug');
+  var index = pug.renderFile(__dirname + '/src/templates/views/index.pug');
+  var about = pug.renderFile(__dirname + '/src/templates/views/about.pug');
+  var news = pug.renderFile(__dirname + '/src/templates/views/news.pug');
+  var notifications = pug.renderFile(__dirname + '/src/templates/views/notifications.pug');
+  var updates = pug.renderFile(__dirname + '/src/templates/views/updates.pug');
+  var pages = { index, about, news, notifications, updates };
 
   const runtimeConfig = environmentVarsToJSON();
   console.log({ runtimeConfig });
 
   // Replace runtime config with environment variables
-  html = html.replace('{{ RUNTIME_CONFIG }}', runtimeConfig);
-
-  fs.writeFile(__dirname + '/public/index.html', html, function(err) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log('HTML generated from Pug file');
+  Object.keys(pages).forEach(page => {
+    pages[page] = pages[page].replace('{{ RUNTIME_CONFIG }}', runtimeConfig)
   });
+
+  Object.keys(pages).forEach(page => {
+    var html = pages[page];
+    fs.writeFile(__dirname + `/public/${page}.html`, html, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('HTML generated from Pug file');
+    });
+  });
+  
 };
 
 module.exports = { transpileToJavascript, minifyJs, minifyCss, convertPugtoHTML };
