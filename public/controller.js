@@ -409,7 +409,11 @@ $(function () {
 
 
   //  View / Naviation Controllers ------------------------------------------------------ //
-
+  $('body').on('click', "a[data-toggle='view']", function(e){
+    e.preventDefault();
+    window.scrollTo(0,0);
+    $('a[href="'+$(e.currentTarget).attr('href')+'"]').tab('show');
+  });
   $('body').on('click', '#landing-about', function(e){
     console.log('hello')
     $('a[href="#tabs-about"]').tab('show')
@@ -476,7 +480,7 @@ $(function () {
   // Navigate to Scan
   $('body').on('click', '#nav-scan', function(e){
     // can only initialize sound after user gesture;
-    window.sound = new Howl({src: ['/dist/audio/beep.mp3']});
+    window.sound = new Howl({src: ['/assets/audio/beep.mp3']});
 
     $('a[href="#page-scan"]').tab('show')
     // Use facingMode: environment to attemt to get the front camera on phones
