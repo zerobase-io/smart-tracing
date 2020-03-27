@@ -10,6 +10,12 @@
   display: flex;
   flex-wrap: nowrap; 
 }
+.example-two-header {
+  .logo {
+    width: 25%; }
+  nav {
+    width: 75%; } }
+
 .nav-tabs .nav-item {
   margin-bottom: 0px;
 }
