@@ -1,4 +1,5 @@
 name: Prepare and Deploy master
+
 on:
   push:
     branches:
