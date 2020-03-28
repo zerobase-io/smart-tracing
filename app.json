@@ -23,7 +23,7 @@
 	"image": "heroku/nodejs",
 	"addons": [],
 	"env": {
-		"RUNTIME_API_HOST ": {
+		"RUNTIME_API_HOST": {
   			"value": "https://zerobase-api-stage.herokuapp.com"
 		}
 	}
