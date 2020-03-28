@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a8d81954-9033-452a-a6ff-df0b19fe2f27" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZXsFdspRYFWokzhrqW65CQEkYd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8d81954-9033-452a-a6ff-df0b19fe2f27" name="Default Changelist" comment="" />
+      <created>1584996670729</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584996670729</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="267" key="IDE.errors.dialog" timestamp="1585365788248">
+      <screen x="0" y="23" width="1680" height="989" />
+    </state>
+    <state x="0" y="267" key="IDE.errors.dialog/0.23.1680.989@0.23.1680.989" timestamp="1585365788248" />
+    <state x="864" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1585027032674">
+      <screen x="0" y="23" width="1680" height="989" />
+    </state>
+    <state x="864" y="349" key="com.intellij.ide.util.TipDialog/0.23.1680.989@0.23.1680.989" timestamp="1585027032674" />
+    <state x="419" y="178" width="901" height="486" key="find.popup" timestamp="1585416265602">
+      <screen x="0" y="23" width="1680" height="989" />
+    </state>
+    <state x="419" y="178" width="901" height="486" key="find.popup/0.23.1680.989@0.23.1680.989" timestamp="1585416265602" />
+    <state x="850" y="241" key="search.everywhere.popup" timestamp="1585027163264">
+      <screen x="0" y="23" width="1680" height="989" />
+    </state>
+    <state x="850" y="241" key="search.everywhere.popup/0.23.1680.989@0.23.1680.989" timestamp="1585027163264" />
+  </component>
+</project>
