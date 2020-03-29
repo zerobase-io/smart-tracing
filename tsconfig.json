@@ -4,7 +4,13 @@
     "lib": ["es6", "dom"],
     "strict": true,
     "allowJs": false,
-    "noUnusedLocals": true
+    "jsx": "react",
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "baseUrl": ".",
+    "paths": {
+      "@images/*": ["src/assets/img/*"]
+    },
   },
   "include": ["src"]
 }

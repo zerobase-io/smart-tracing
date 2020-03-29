@@ -4,16 +4,18 @@
     "es6": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "eslint-config-airbnb"
+    "airbnb-typescript",
+    "prettier",
+    "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+      "project": "./tsconfig.json",
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
-  "rules": {"no-undef": 0, "no-console": 0, "arrow-parens": 0, "no-use-before-define": 0, "consistent-return": 0},
+  "settings": { "import/extensions": [".ts", ".tsx"],    "import/resolver": "webpack" },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {"import/order": ["error", {"newlines-between": "always", "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]}], "jsx-one-expression-per-line": 0, "no-undef": 0, "no-console": 0, "arrow-parens": 0, "no-use-before-define": 0, "consistent-return": 0,  "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]},
   "ignorePatterns": ["node_modules/", "*.js"]
 }

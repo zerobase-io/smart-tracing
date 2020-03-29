@@ -1,5 +1,5 @@
-declare var jsQR: typeof import('jsqr').default;
-declare var Fingerprint2: typeof import('fingerprintjs2');
+declare module '*.jpg';
+declare module '*.png';
 
 interface Point {
   x: number;
@@ -11,29 +11,30 @@ type RuntimeConfig = {
   ENV?: 'dev' | 'prod';
 };
 
-declare module QRCode {
-  export enum CorrectLevel {
+declare module 'qrcodejs2' {
+  enum CorrectLevel {
     L,
     M,
     Q,
     H,
   }
-}
 
-interface QRCodeOption {
-  text?: string;
-  width?: number;
-  height?: number;
-  colorDark?: string;
-  colorLight?: string;
-  correctLevel?: QRCode.CorrectLevel;
-}
+  interface QRCodeOption {
+    text?: string;
+    width?: number;
+    height?: number;
+    colorDark?: string;
+    colorLight?: string;
+    correctLevel?: CorrectLevel;
+  }
 
-declare class QRCode {
-  constructor(el: HTMLElement | String, vOption?: String | QRCodeOption);
-  makeCode(sText: string): void;
-  makeImage(): void;
-  clear(): void;
+  export default class {
+    static CorrectLevel: typeof CorrectLevel;
+    constructor(el: HTMLElement | String, vOption?: String | QRCodeOption);
+    makeCode(sText: string): void;
+    makeImage(): void;
+    clear(): void;
+  }
 }
 
 type RequestIdleCallbackHandle = any;
