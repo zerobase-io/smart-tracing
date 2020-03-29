@@ -1,3 +1,61 @@
+/*
+======================================Hero Formatting======================================
+*/
+.hero{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-image: url('/assets/img/info/ZB_containers_location.jpg')
+}
+.hero-text{
+    color: black;
+}
+.hero-top-text{
+    color: white;
+    text-align: left;
+    padding-left: 20%;
+    font-size: 36px;
+}
+.hero-sub-text{
+    color: black;
+    text-align: right;
+    font-weight: normal;
+    font-size: 24px;
+    padding-right: 1%;
+    padding-left: 1%;
+    margin-top: 1%;
+    display: table;
+    background-color: white;
+    opacity:0.7;
+
+}
+
+.sub-1{
+    margin-top: 1%;
+    margin-left: 50%
+}
+.sub-2{
+    margin-top: 1%;
+    margin-left: 55%
+}
+.sub-3{
+    margin-top: 1%;
+    margin-left: 60%
+}
+
+.privacy-sub{
+    background-color: #65C6E1;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+.privacy{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 16px;
+
+}
+
 /* Nav Scroll -------------------------*/
 .scroll {
   display: flex;

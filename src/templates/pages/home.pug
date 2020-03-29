@@ -1,3 +1,18 @@
+
+.homepage-hero
+  .hero
+    .hero-top-text.h1 Help your community manage COVID-19
+    .sub-1
+        .hero-sub-text Privacy First
+    .sub-2
+        .hero-sub-text Annonymous
+    .sub-3
+        .hero-sub-text Accessible to All
+
+  .privacy-sub
+    a.privacy(href='#tabs-privacy', data-toggle='view') Our view on privacy
+
+
 .content.pt-0.pt-lg-4
   .container(style='padding:0;')
     .row
@@ -62,7 +77,7 @@
               .col-auto
                 a(href='/assets/docs/official_package_24.pdf', target='_blank') View our official release
 
-    .row#individual
+    //-.row#individual
       .col-12.order-0.order-lg-3
         .card
           .card-body
@@ -95,13 +110,13 @@
                 h3.text-secondary.mb-2.text-white.opacity-8 Privacy-First Contact Tracing for Communities
                 //-p.lead.mb-0.text-white.opacity-8 Built for real humans in need by real humans who care.
               .col-lg-5.text-lg-right.mt-4.mt-lg-0
-                a.btn.btn-white.btn-icon.my-2(href='https://www.github.com/zerobase-io/smart-tracing/wiki', target='_blank')
+                //-a.btn.btn-white.btn-icon.my-2(href='https://www.github.com/zerobase-io/smart-tracing/wiki', target='_blank')
                   span.btn-inner--icon.mr-2
                     svg.feather.feather-book.text-primary(xmlns='http://www.w3.org/2000/svg', width='1em', height='1em', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
                       path(d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20')
                       path(d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z')
                   span.btn-inner--text Documentation
-                a.btn.btn-github.my-2.ml-0.ml-sm-3(href='https://necsi-edu.slack.com/join/shared_invite/zt-cu5215sg-63h4A7uCy~ehDsrfAIJ~_Q', target='_blank') Join Us
+                a.btn.btn-github.btn-white.my-2.ml-0.ml-sm-3(href='https://necsi-edu.slack.com/join/shared_invite/zt-cu5215sg-63h4A7uCy~ehDsrfAIJ~_Q', target='_blank') Join Us
         hr.divider.divider-fade.divider-dark.my-5
         .row
           .col-lg-4.mb-5.mb-lg-0
@@ -133,7 +148,7 @@
               li
                 a(href='#tabs-businesses', data-toggle='view') Business or Location
               li
-                a(href='#tabs-healthcare', data-toggle='view') Healthcare Provider
+                a(href='#tabs-healthcare', data-toggle='view') Testing Site
               li
                 a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") Public Official
           .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
@@ -142,18 +157,18 @@
               li
                 a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") How to Deploy
               li
-                a(href='#tabs-privacy', data-toggle='view') Privacy Policy
+                a(href='#tabs-privacy', data-toggle='view') Privacy & Cookies Policy
               li
-                a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") HIPAA
-              li
+                a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") Terms
+              //-li
                 a(href='#tabs-privacy', data-toggle='view') GDPR
-              li
+              //-li
                 a(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") Roadmap
           .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
             h6.heading.mb-3 Foundation
             ul.list-unstyled
               li
-                a(href='#') Community
+                a(href='#')
               li
                 a(href='https://github.com/zerobase-io/', target="_blank") Help center
               li
@@ -165,7 +180,7 @@
               | &copy; 2020 
               a.font-weight-bold(href='https://github.com/zerobase-io/', target='_blank') Zerobase
               | . All rights reserved.
-          .col-md-6
+          //.col-md-6
             ul.nav.justify-content-center.justify-content-md-end.mt-3.mt-md-0
               li.nav-item
                 a.nav-link(href='https://github.com/zerobase-io/smart-tracing/wiki', target='_blank') Terms
