@@ -41,6 +41,8 @@ body
       li.nav-item
         a.nav-link(href='#page-code-alt', data-toggle='tab')
 
+  //-include ../toast/submit
+
   .tab-content
     //- Main Component
     #page-main.tab-pane.active.show
@@ -60,6 +62,8 @@ body
             include ../pages/healthcare
           #tabs-community-officials.tab-pane
             include ../pages/community
+          #tabs-privacy.tab-pane
+            include ../pages/privacy
           //- #tabs-privacy.tab-pane
           //-   include ../pages/privacy
           //- #tabs-updates.tab-pane
@@ -71,11 +75,14 @@ body
 
     //- Additional Components
     include ../components/scan
-    include ../components/code
-    include ../components/code-alt
+    //-include ../components/code
+    //-include ../components/code-alt
 
   include ../modal/register
+  include ../modal/register-business
+  include ../modal/register-healthcare
   include ../modal/scan-status
+  include ../modal/privacy-policy
 
 script(src='/main.min.js')
 //-script(src='/controller.js')
