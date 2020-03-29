@@ -17,7 +17,7 @@ console.log('runtime config: ', runtimeConfig);
 
 if (API_HOST == null) {
    throw new Error('API_HOST not in runtime config!');
- } 
+ }
 
 const router = (() => ({
   genQR: (dvid: string, elementId: string) => {
