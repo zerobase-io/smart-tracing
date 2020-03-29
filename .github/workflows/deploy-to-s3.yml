@@ -17,6 +17,8 @@ jobs:
       
     - name: Run npm build
       run: npm run build
+      env:
+        RUNTIME_API_HOST: 'https://zerobase-api-stage.herokuapp.com'
       
     - name: Run npm install production
       run: npm install --production
