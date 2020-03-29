@@ -55,6 +55,10 @@
     font-size: 16px;
 
 }
+.bold{
+    font-weight:bold;
+
+}
 
 /*
 ======================================Our mission box Formatting======================================
@@ -75,6 +79,7 @@
 .mb-4{
     margin-bottom: 4%
 }
+
 /* Nav Scroll -------------------------*/
 .scroll {
   display: flex;
