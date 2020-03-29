@@ -1,8 +1,8 @@
 nav#navbar-secondary.navbar.navbar-dark.navbar-secondary.navbar-expand
   .container
-    a.navbar-brand.navbar-brand-autodark.d-none-navbar-vertical(href='/')
-      img.navbar-brand-logo.navbar-brand-logo-medium.mr-4(src='/assets/img/zerobase_logo_300_white.png', alt='Zerobase')
-      img.navbar-brand-logo.navbar-brand-logo-small(src='/assets/img/zerobase_logo_300_white.png', alt='Zerobase')
+    a.navbar-brand.d-none-navbar-vertical(href='/')
+      img.navbar-brand-logo.navbar-brand-logo-medium.mr-4(src='/assets/img/ZerobaseLogo_Dark.png', alt='Zerobase')
+      img.navbar-brand-logo.navbar-brand-logo-small(src='/assets/img/ZerobaseLogo_Dark.png', alt='Zerobase')
       h4.d-none.d-sm-inline-block.text-standard.text-muted Smart Tracing That Keeps Communities Safe
     //-
     //- form.form-inline.w-50.mr-4.d-none.d-md-flex
@@ -12,14 +12,15 @@ nav#navbar-secondary.navbar.navbar-dark.navbar-secondary.navbar-expand
     //-         circle(cx='11', cy='11', r='8')
     //-         line(x1='21', y1='21', x2='16.65', y2='16.65')
     //-     input.form-control.form-control-flush.w-100(type='text', placeholder='Search…')
-    ul.navbar-nav.ml-auto
+    ul.navbar-nav.ml-auto.forMobile
       li.nav-item.dropdown.pl-3
-        a.nav-link.d-flex.lh-1.text-reset.p-0.text-left(href='#', data-toggle='dropdown')
-          svg.feather.feather-plus-circle(xmlns='http://www.w3.org/2000/svg', width='28', height='28', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
-            circle(cx='12', cy='12', r='10')
-            line(x1='12', y1='8', x2='12', y2='16')
-            line(x1='8', y1='12', x2='16', y2='12')
-        .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
+        a.btn.btn-white.btn-icon.my-2#nav-scan(href='#')
+          span.btn-inner--text Scan Code
+          //-svg.feather.feather-plus-circle.forMobile(xmlns='http://www.w3.org/2000/svg', width='28', height='28', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='1', stroke-linecap='round', stroke-linejoin='round')
+
+            //- line(x1='12', y1='8', x2='12', y2='16')
+            //- line(x1='8', y1='12', x2='16', y2='12')
+        //-.dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
           #mobile-functions.d-none
             a#nav-scan.dropdown-item(href='#')
               i.fe.fe-maximize.mr-2

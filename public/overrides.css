@@ -127,6 +127,10 @@ a {
 #qrcode img {
   margin: 0 auto;
 }
+
+/*
+============================== Button styling ==============================
+*/
 .btn-loading-dark {
   position: relative;
   color: transparent!important;
@@ -149,6 +153,10 @@ a {
   -webkit-animation: spinner-border .75s linear infinite;
   animation: spinner-border .75s linear infinite;
 }
+
+/*
+===========================================================================
+*/
 .dimmer-notice{
 position: absolute;
 top: 50%;
@@ -180,6 +188,9 @@ position: relative;
 .reveal-code-alt{
   cursor: pointer
 }
+/*
+===============================================mobile controller===============================================
+*/
 @media only screen and (max-device-width:750px) {
   .forMobile {
     display:block;
