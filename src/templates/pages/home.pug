@@ -58,7 +58,9 @@
             .card-body
               h3.card-title Are you a business or public location?
               p
-                | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Community check-ins are vital to public health tracing efforts.
+                | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Location check-ins are vital to public health tracing efforts.
+
+                //- | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Community check-ins are vital to public health tracing efforts.
                 //- | Help your community build up resistance to COVID-19 now by enabling private check-ins in under 5 seconds. Community check-ins are vital to public health tracing efforts.
             .card-footer
               .row.align-items-center
@@ -75,19 +77,26 @@
           .card-body
             h3.card-title Are you a testing center?
             p
-              | Get actionable insight into the dynamics of the infection in your locality through smart contact tracing.
+              | Greatly reduce the spread of the infection in your community through smart contact tracing and by providing instant, individualized guidance to community members.
               a.ml-2(href='#tabs-healthcare', data-toggle='view') More information
           .card-footer
             .row.align-items-center
               .col-auto
-                a(href='#' id='register-healthcare') Register now
+                a.ml-2(href='#tabs-healthcare', data-toggle='view') Details
+              .col-auto.ml-auto
+                .justify-content-end
+                    a.btn.btn-primary(href='#', id="register-healthcar")
+                      i.fe.fe-check-square.mr-2
+                      | Register now
+                //-a(href='#' id='register-healthcare') Register now
       .col-12.col-lg-4.order-3
         .card
           img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Card top image')
           .card-body
             h3.card-title Are you a public official?
             p
-              | Deploy our powerful tracing technology to supercharge the effectiveness of every COVID-19 test in your area and keep your community safe.
+              | Deploy our powerful tracing technology to maximize the value of every COVID-19 test in your area and keep your community safe.
+
           .card-footer
             .row.align-items-center
               .col-auto
