@@ -1,50 +1,52 @@
 function getRuntimeConfig(): RuntimeConfig {
-   const runtimeConfigEl = document.getElementById('runtime-config');
-   if (runtimeConfigEl == null) {
-     return {};
-   }
-   return JSON.parse(runtimeConfigEl.innerHTML);
- }
+
+  const runtimeConfigEl = document.getElementById('runtime-config');
+  if (runtimeConfigEl == null) {
+    return {};
+  }
+  return JSON.parse(runtimeConfigEl.innerHTML);
+}
 
 const runtimeConfig = getRuntimeConfig();
 
 const { ENV, API_HOST } = runtimeConfig;
 
-// // Remove Console Log for non-dev environment
+// Remove Console Log for non-dev environment
 console.log = ENV === 'dev' ? console.log : () => {};
 
 console.log('runtime config: ', runtimeConfig);
 
 if (API_HOST == null) {
-   throw new Error('API_HOST not in runtime config!');
- }
+  throw new Error('API_HOST not in runtime config!');
+}
 
-const router = (() => ({
-  genQR: (dvid: string, elementId: string) => {
-    const generatedQr = new QRCode(document.getElementById(elementId)!, {
-      text: `${API_HOST}/s/${dvid}`,
-      width: 300,
-      height: 300,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H,
-    });
+const controller = (() => ({
+  // genQR: (dvid: string, elementId: string) => {
+  //   const generatedQr = new QRCode(document.getElementById(elementId)!, {
+  //     text: `${API_HOST}/s/${dvid}`,
+  //     width: 300,
+  //     height: 300,
+  //     colorDark: '#000000',
+  //     colorLight: '#ffffff',
+  //     correctLevel: QRCode.CorrectLevel.H,
+  //   });
 
-    return generatedQr;
-  },
+  //   return generatedQr;
+  // },
   create: (
     inputs: { ip?: string; fingerprint?: string } | undefined,
     cb?: (inputs?: { ip?: string; fingerprint?: string }) => void,
   ) => {
     const uniqD = Date.now();
 
+    const id = 1;
     const ip = inputs != null ? inputs.ip : undefined;
     const fingerprint = inputs != null ? inputs.fingerprint : undefined;
 
     const opts: JQuery.AjaxSettings = {
-      url: `${API_HOST}/c/${uniqD}`,
+      url: `${API_HOST}/devices/`,
       data: JSON.stringify({
-        ip,
+        id,
         fingerprint,
       }),
       cache: false,
@@ -52,15 +54,15 @@ const router = (() => ({
       contentType: 'application/json',
       processData: false,
       type: 'POST',
-      success: (data: { dvid: string }) => {
-        console.log('Device ID Created:', data.dvid);
-        localStorage.setItem('dvid', String(data.dvid));
+      success: (data: { id: object }) => {
+        console.log('Device ID Created:', data.id.value);
+        localStorage.setItem('dvid', String(data.id.value));
         $('#register-notice-agree').removeClass('btn-loading');
         $('#mobile-functions').removeClass('d-none');
         $('#registration-notice').addClass('d-none');
 
         $('#modal-register-notice').modal('hide');
-        router.genQR(data.dvid, 'qrcode');
+        //controller.genQR(data.dvid, 'qrcode');
         // TODO is this the best way to trigger a variable redirect?
         if ($('#modal-register-notice').attr('data-redirect') === 'true') {
           $('#modal-register-notice').attr('data-redirect', 'false');
@@ -77,73 +79,154 @@ const router = (() => ({
     };
     jQuery.ajax(opts);
   },
-  createAlt: (inputs: { ip?: string; fingerprint?: string } | undefined) => {
+  create_user : (
+    inputs: {button_id?:string; phone?:string;}
+  ) => {
     const dvid = localStorage.getItem('dvid');
-
     const postData = JSON.stringify({
-      dvid,
-      dvid_c: localStorage.getItem('dvid_alt')
-        ? JSON.parse(localStorage.getItem('dvid_alt')!).length
-        : 0,
-      ip: inputs != null ? inputs.ip : undefined,
-      fingerprint: inputs != null ? inputs.fingerprint : undefined,
+      contact: {
+        "phone": inputs.phone,
+      },
+      deviceId: dvid
     });
-
+    console.log(postData);
     const opts: JQuery.AjaxSettings = {
-      url: `${API_HOST}/ca/${dvid}`,
+      url: `${API_HOST}/users/`,
       data: postData,
       cache: false,
       dataType: 'json',
       contentType: 'application/json',
       processData: false,
       type: 'POST',
-      success: (data: { success: boolean; dvid: string }) => {
-        if (data.success === true) {
-          console.log(data.dvid);
-          const dvidAlts = localStorage.getItem('dvid_alt')
-            ? JSON.parse(localStorage.getItem('dvid_alt')!)
-            : [];
-          dvidAlts.push(data.dvid);
-          localStorage.setItem('dvid_alt', JSON.stringify(dvidAlts));
-          console.log(JSON.parse(localStorage.getItem('dvid_alt')!));
-          const newLength = JSON.parse(localStorage.getItem('dvid_alt')!).length;
-          const template = $('#template-code-alt').clone();
-          template.find('.title-code-alt').text(`Alternative Code ${newLength}`);
-          template.attr('data-id', data.dvid);
-          template.removeAttr('id');
-          template.removeClass('d-none');
-          $('#alternative-code-group').append(template);
-          $('#notice-alt-code').addClass('d-none');
-          $('#generate-alt-code').removeClass('btn-loading-dark');
-        } else {
-          // exceeded limit
-          console.log('exceeded limit');
-          $('#generate-alt-code').removeClass('btn-loading-dark');
-        }
+      success: (data: { id: string }) => {
+        console.log('User ID Created:', data.id);
+        $('#notify-warning').addClass('d-none');
+        $('#notify-success').removeClass('d-none');
+        $(inputs.button_id).removeClass('btn-loading');
+        $(inputs.button_id).attr("disabled", true);
+        
       },
       error: err => {
-        $('#generate-alt-code').removeClass('btn-loading-dark');
         console.log(err);
+        $('#notify-warning').removeClass('d-none');
+        $(inputs.button_id).removeClass('btn-loading');
+        $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
+        console.log('warning: create user');
       },
     };
+    jQuery.ajax(opts);
+  },
+  submit_organization: (
+    inputs: { modal_id?: string; button_id?: string; org_name?: string; email?: string; phone?: string; contact_name?: string; address?: string; type?: string; hasTestingFacilities?: boolean; } | undefined,
+  ) => {
 
-    if (dvid) {
-      jQuery.ajax(opts);
-    } else {
-      $('#generate-alt-code').removeClass('btn-loading-dark');
-      console.log('Cannot create Alt without Parent');
-    }
-  },
-  displayAlt: () => {
-    JSON.parse(localStorage.getItem('dvid_alt')!).forEach((alt: string, index: number) => {
-      const template = $('#template-code-alt').clone();
-      template.find('.title-code-alt').text(`Alternative Code ${index + 1}`);
-      template.attr('data-id', alt);
-      template.removeAttr('id');
-      template.removeClass('d-none');
-      $('#alternative-code-group').append(template);
+    const postData = JSON.stringify({
+      name: inputs != null ? inputs.org_name : undefined,
+      contactInfo: {
+        phone: inputs != null ? inputs.phone : undefined,
+        email: inputs != null ? inputs.email : undefined,
+        contactName: inputs != null ? inputs.contact_name : undefined
+      },
+      address: inputs != null ? inputs.address : undefined,
+      hasMultipleSites: false,
+      hasTestingFacilities: inputs != null ? inputs.hasTestingFacilities : undefined
     });
+    console.log(postData);
+    const opts: JQuery.AjaxSettings = {
+      url: `${API_HOST}/organizations/`,
+      data: postData,
+      cache: false,
+      dataType: 'json',
+      contentType: 'application/json',
+      processData: false,
+      type: 'POST',
+      success: (data: { id: string }) => {
+        console.log('Org ID Created:', data.id);
+        $(inputs.button_id).removeClass('btn-loading');
+        $(inputs.modal_id).find('.alert-warning').addClass('d-none');
+        $(inputs.modal_id).find('.alert-success a').attr('href', 'https://'+inputs.email.split('@')[1]).attr("target","_blank");
+        $(inputs.modal_id).find('.alert-success').removeClass('d-none');
+        $(inputs.button_id).attr("disabled", true);
+        
+      },
+      error: err => {
+        console.log(err);
+        $(inputs.button_id).removeClass('btn-loading');
+        $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
+        console.log('WARNING')
+
+        // TODO
+      },
+    };
+    jQuery.ajax(opts);
   },
+  // createAlt: (inputs: { ip?: string; fingerprint?: string } | undefined) => {
+  //   const dvid = localStorage.getItem('dvid');
+
+  //   const postData = JSON.stringify({
+  //     dvid,
+  //     dvid_c: localStorage.getItem('dvid_alt')
+  //       ? JSON.parse(localStorage.getItem('dvid_alt')!).length
+  //       : 0,
+  //     ip: inputs != null ? inputs.ip : undefined,
+  //     fingerprint: inputs != null ? inputs.fingerprint : undefined,
+  //   });
+
+  //   const opts: JQuery.AjaxSettings = {
+  //     url: `${API_HOST}/ca/${dvid}`,
+  //     data: postData,
+  //     cache: false,
+  //     dataType: 'json',
+  //     contentType: 'application/json',
+  //     processData: false,
+  //     type: 'POST',
+  //     success: (data: { success: boolean; dvid: string }) => {
+  //       if (data.success === true) {
+  //         console.log(data.dvid);
+  //         const dvidAlts = localStorage.getItem('dvid_alt')
+  //           ? JSON.parse(localStorage.getItem('dvid_alt')!)
+  //           : [];
+  //         dvidAlts.push(data.dvid);
+  //         localStorage.setItem('dvid_alt', JSON.stringify(dvidAlts));
+  //         console.log(JSON.parse(localStorage.getItem('dvid_alt')!));
+  //         const newLength = JSON.parse(localStorage.getItem('dvid_alt')!).length;
+  //         const template = $('#template-code-alt').clone();
+  //         template.find('.title-code-alt').text(`Alternative Code ${newLength}`);
+  //         template.attr('data-id', data.dvid);
+  //         template.removeAttr('id');
+  //         template.removeClass('d-none');
+  //         $('#alternative-code-group').append(template);
+  //         $('#notice-alt-code').addClass('d-none');
+  //         $('#generate-alt-code').removeClass('btn-loading-dark');
+  //       } else {
+  //         // exceeded limit
+  //         console.log('exceeded limit');
+  //         $('#generate-alt-code').removeClass('btn-loading-dark');
+  //       }
+  //     },
+  //     error: err => {
+  //       $('#generate-alt-code').removeClass('btn-loading-dark');
+  //       console.log(err);
+  //     },
+  //   };
+
+  //   if (dvid) {
+  //     jQuery.ajax(opts);
+  //   } else {
+  //     $('#generate-alt-code').removeClass('btn-loading-dark');
+  //     console.log('Cannot create Alt without Parent');
+  //   }
+  // },
+  // displayAlt: () => {
+  //   JSON.parse(localStorage.getItem('dvid_alt')!).forEach((alt: string, index: number) => {
+  //     const template = $('#template-code-alt').clone();
+  //     template.find('.title-code-alt').text(`Alternative Code ${index + 1}`);
+  //     template.attr('data-id', alt);
+  //     template.removeAttr('id');
+  //     template.removeClass('d-none');
+  //     $('#alternative-code-group').append(template);
+  //   });
+  // },
   scan: (
     inputs: { sdvid?: string; ip?: string; fingerprint?: string } | undefined,
     cb: () => void,
@@ -151,45 +234,45 @@ const router = (() => ({
     const dvid = localStorage.getItem('dvid');
 
     const postData = JSON.stringify({
-      dvid: 1,
-      sdvid: inputs != null ? inputs.sdvid : undefined,
-      ip: inputs != null ? inputs.ip : undefined,
-      fingerprint: inputs != null ? inputs.fingerprint : undefined,
+      scannedId: inputs != null ? inputs.sdvid : undefined,
+      type: 'DEVICE_TO_DEVICE',
+      // fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
 
     const opts: JQuery.AjaxSettings = {
-      url: `${API_HOST}/s-id/${dvid}`,
+      url: `${API_HOST}/devices/${dvid}/check-ins`,
       data: postData,
       cache: false,
       dataType: 'json',
       contentType: 'application/json',
       processData: false,
       type: 'POST',
-      success: (data: { success: boolean; name: string }) => {
-        if (data.success === true) {
-          console.log('Scan (Success):', data);
-          $('#scan-notice-loading').addClass('d-none');
-          // @ts-ignore
-          $('#scan-notice-success-datetime').text(new Date());
-          // @ts-ignore
-          JsBarcode('#scan-notice-barcode-id', data.scan);
-          $('#scan-notice-success').removeClass('d-none');
-        } else if (data.success === false) {
-          if (data.name === 'ValidationError') {
-            console.log('Scan (Validation Error):', data);
-            $('#scan-notice-loading').addClass('d-none');
-            $('#scan-notice-error-title').text('ID Error');
-            $('#scan-notice-error-code').text('Not a Zerobase ID');
-            $('#scan-notice-error-message').text(
-              'The ID you scanned is not a zerobase ID. Please inform the party that their ID is either damaged or not registered. We have registered this error.',
-            );
-            $('#scan-notice-error').removeClass('d-none');
-          } else {
-            console.log('Scan (Other Error):', data);
-            $('#scan-notice-loading').addClass('d-none');
-            $('#scan-notice-error').removeClass('d-none');
-          }
-        }
+      success: (data: { id: string }) => {
+        console.log('Scan (Success):', data);
+
+
+        $('#scan-notice-loading').addClass('d-none');
+        // @ts-ignore
+        $('#scan-notice-success-datetime').text(new Date());
+        // @ts-ignore
+        JsBarcode('#scan-notice-barcode-id', data.id.value);
+        $('#scan-notice-success').removeClass('d-none');
+        // else if (data.success === false) {
+        //   if (data.name === 'ValidationError') {
+        //     console.log('Scan (Validation Error):', data);
+        //     $('#scan-notice-loading').addClass('d-none');
+        //     $('#scan-notice-error-title').text('ID Error');
+        //     $('#scan-notice-error-code').text('Not a Zerobase ID');
+        //     $('#scan-notice-error-message').text(
+        //       'The ID you scanned is not a zerobase ID. Please inform the party that their ID is either damaged or not registered. We have registered this error.',
+        //     );
+        //     $('#scan-notice-error').removeClass('d-none');
+        //   } else {
+        //     console.log('Scan (Other Error):', data);
+        //     $('#scan-notice-loading').addClass('d-none');
+        //     $('#scan-notice-error').removeClass('d-none');
+        //   }
+        // }
         console.log('Scan (Callback):', cb);
         console.log('Scan (Data):', inputs);
         // scan only routes to init for now, so no data pass through required.
@@ -211,46 +294,46 @@ const router = (() => ({
     };
     jQuery.ajax(opts);
   },
-  fetchNews: () => {
-    const opts: JQuery.AjaxSettings = {
-      url:
-        'https://newsapi.org/v2/top-headlines?q=coronavirus&country=de&apiKey=84ca05784bfb4228b4dc2396fd09d950',
-      cache: false,
-      contentType: false,
-      processData: false,
-      type: 'GET',
-      success: (data: {
-        status: string;
-        articles: {
-          url: string;
-          source: { name: string };
-          title: string;
-          publishedAt: string;
-          urlToImage: string;
-        }[];
-      }) => {
-        if (data.status === 'ok' && data.articles) {
-          console.log('Fetched News:');
-          console.log(data);
-          data.articles.forEach(article => {
-            const template = $('#template-news').clone();
-            template.find('.news-href').attr('href', article.url);
-            template.find('.news-source').text(article.source.name);
-            template.find('.news-title').text(article.title);
-            template.find('.news-published').text(article.publishedAt);
-            template.find('.news-image').css('background-image', `url(${article.urlToImage})`);
-            template.removeAttr('id');
-            template.removeClass('d-none');
-            $('#news-feed-container').append(template);
-          });
-        }
-      },
-      error: err => {
-        console.log(err);
-      },
-    };
-    jQuery.ajax(opts);
-  },
+  // fetchNews: () => {
+  //   const opts: JQuery.AjaxSettings = {
+  //     url:
+  //       'https://newsapi.org/v2/top-headlines?q=coronavirus&country=de&apiKey=84ca05784bfb4228b4dc2396fd09d950',
+  //     cache: false,
+  //     contentType: false,
+  //     processData: false,
+  //     type: 'GET',
+  //     success: (data: {
+  //       status: string;
+  //       articles: {
+  //         url: string;
+  //         source: { name: string };
+  //         title: string;
+  //         publishedAt: string;
+  //         urlToImage: string;
+  //       }[];
+  //     }) => {
+  //       if (data.status === 'ok' && data.articles) {
+  //         console.log('Fetched News:');
+  //         console.log(data);
+  //         data.articles.forEach(article => {
+  //           const template = $('#template-news').clone();
+  //           template.find('.news-href').attr('href', article.url);
+  //           template.find('.news-source').text(article.source.name);
+  //           template.find('.news-title').text(article.title);
+  //           template.find('.news-published').text(article.publishedAt);
+  //           template.find('.news-image').css('background-image', `url(${article.urlToImage})`);
+  //           template.removeAttr('id');
+  //           template.removeClass('d-none');
+  //           $('#news-feed-container').append(template);
+  //         });
+  //       }
+  //     },
+  //     error: err => {
+  //       console.log(err);
+  //     },
+  //   };
+  //   jQuery.ajax(opts);
+  // },
   fetchIP: (
     data: { ip?: string; sdvid?: string },
     cb: (data: { ip?: string; sdvid?: string }) => void,
@@ -337,6 +420,7 @@ const router = (() => ({
     console.log('Initialized');
 
     if (window.innerWidth < 750) {
+      console.log(window.innerWidth);
       $('#mobile-functions').removeClass('d-none');
       $('#desktop-notice').addClass('d-none');
       const dvid = localStorage.getItem('dvid');
@@ -353,10 +437,10 @@ const router = (() => ({
 
         $('body').on('click', '#register-notice-agree', () => {
           $('#register-notice-agree').addClass('btn-loading');
-          router.fetchIP({}, data => {
-            router.fingerprint(data, fingerprintData => {
+          controller.fetchIP({}, data => {
+            controller.fingerprint(data, fingerprintData => {
               console.log('cancel-route: register -> create:', fingerprintData);
-              router.create(fingerprintData);
+              controller.create(fingerprintData);
             });
           });
         });
@@ -367,11 +451,11 @@ const router = (() => ({
         if ($('#qrcode').children().length > 1) {
           console.log('QR already generated');
         } else {
-          router.genQR(dvid, 'qrcode');
+          //controller.genQR(dvid, 'qrcode');
         }
         if (dvidC > 0) {
           console.log('alts available:', dvidC);
-          router.displayAlt();
+          controller.displayAlt();
           $('#alternative-code-card').removeClass('d-none');
           $('#notice-alt-code').addClass('d-none');
         }
@@ -383,7 +467,7 @@ const router = (() => ({
 $(() => {
   // - Additional Functionality---------------------------//
 
-  // -router.fetchNews();
+  // -controller.fetchNews();
 
   // https://github.com/kenwheeler/slick/issues/187
   ($('.info-slider') as any).slick({
@@ -425,10 +509,10 @@ $(() => {
       $('#modal-scan-notice').modal('show');
       // Please note this callback pattern to pass data down the "chain"
       // Unfortunately cannot use Async Await due to coverage issues.
-      router.fetchIP({ sdvid }, data => {
-        router.fingerprint(data, fingerprintData => {
-          router.scan(fingerprintData, () => {
-            router.init();
+      controller.fetchIP({ sdvid }, data => {
+        controller.fingerprint(data, fingerprintData => {
+          controller.scan(fingerprintData, () => {
+            controller.init();
           });
         });
       });
@@ -448,14 +532,14 @@ $(() => {
         $('#register-notice-agree').addClass('btn-loading');
         $('#modal-scan-notice').modal('show');
 
-        router.fetchIP({ sdvid }, data => {
+        controller.fetchIP({ sdvid }, data => {
           console.log('IP -> fingerprint:', data);
-          router.fingerprint(data, fingerprintData => {
+          controller.fingerprint(data, fingerprintData => {
             console.log('fingerprint -> create :', fingerprintData);
-            router.create(fingerprintData, createData => {
+            controller.create(fingerprintData, createData => {
               console.log('create -> scan: ', createData);
-              router.scan(createData, () => {
-                router.init();
+              controller.scan(createData, () => {
+                controller.init();
               });
             });
           });
@@ -465,10 +549,10 @@ $(() => {
   } else if (action === 's') {
     console.log('Invalid Access Point');
     window.history.replaceState({}, 'Home', '/');
-    router.init();
+    controller.init();
   } else {
     console.log('No Conditions Met');
-    router.init();
+    controller.init();
   }
 
   //  View / Naviation Controllers ------------------------------------------------------ //
@@ -481,24 +565,18 @@ $(() => {
     console.log('hello');
     $('a[href="#tabs-about"]').tab('show');
   });
-  $('body').on('click', '#landing-generate', () => {
-    if (localStorage.getItem('dvid') == null) {
-      $('#modal-register-notice').attr('data-redirect', 'true');
-      $('#modal-register-notice').modal('show');
-    } else {
-      $('a[href="#page-code"]').tab('show');
-    }
+  $('body').on('click', '#register-healthcare', () => {
+    $('#modal-register-healthcare').modal('show');
   });
-
+  $('body').on('click', '#register-business', () => {
+    $('#modal-register-business').modal('show');
+  });
+  $('body').on('click', '#privacy-policy', () => {
+    console.log('show policy');
+    $('#modal-privacy-policy').modal('show');
+  });
   $('body').on('click', '#show-registration', () => {
     $('#modal-register-notice').modal('show');
-  });
-  // Navigate to Code
-  $('body').on('click', '#nav-code', () => {
-    $('a[href="#page-code"]').tab('show');
-    // for when navigating from alt code to main code
-    $('.notice-code').addClass('active');
-    $('.notice-code .dimmer-notice').show();
   });
   // Navigate to Main
   $('body').on('click', '#nav-main', () => {
@@ -506,43 +584,87 @@ $(() => {
     $('.notice-code').addClass('active');
     $('.notice-code .dimmer-notice').show();
   });
-  // Reveal Code
-  $('body').on('click', '#reveal-code', () => {
-    console.log('Reveal');
-    $('.notice-code').removeClass('active');
-    $('.notice-code .dimmer-notice').hide();
-  });
-  // Reveal Alt Code
-  $('body').on('click', '.reveal-code-alt', () => {
-    // for resetting canvas
-    $('#qrcode-alt').empty();
-    $('#qrcode-alt').append('<img class="qr-logo-overlay" src="/assets/img/qr_logo.png">');
-    // for when revealing main code, but navigating to alt code
-    $('.notice-code').addClass('active');
-    $('.notice-code .dimmer-notice').show();
-    // check if alt code exists, if not throw error
-    if ($().attr('data-id')) {
-      router.genQR($().attr('data-id')!, 'qrcode-alt');
-      $('#title-code-alt').text(
-        $()
-          .find('.title-code-alt')
-          .text(),
-      );
-      $('a[href="#page-code-alt"]').tab('show');
-    } else {
-      console.log('error displaying alt');
-    }
-  });
-  // Generating Alt Code
-  $('body').on('click', '#generate-alt-code', () => {
-    $('#generate-alt-code').addClass('btn-loading-dark');
-
-    router.fetchIP({}, data => {
-      router.fingerprint(data, fingerprintData => {
-        router.createAlt(fingerprintData);
-      });
+  $('body').on('submit','form.register-business', (e)=>{
+    e.preventDefault();
+    $('#submit-business').addClass('btn-loading');
+    const formElements = {};
+    $(e.currentTarget).serializeArray().map((entry) => {
+      formElements[entry['name']] = entry['value']
     });
+    formElements['modal_id'] = '#modal-register-business';
+    formElements['button_id'] = '#submit-business';
+    formElements['hasTestingFacilities'] = false;
+    console.log(formElements);
+    controller.submit_organization(formElements);
+
   });
+  $('body').on('submit','form.register-healthcare', (e)=>{
+    e.preventDefault();
+    $('#submit-business').addClass('btn-loading');
+    const formElements = {};
+    $(e.currentTarget).serializeArray().map((entry) => {
+      formElements[entry['name']] = entry['value']
+    });
+    formElements['modal_id'] = '#modal-register-healthcare';
+    formElements['button_id'] = '#submit-healthcare';
+    formElements['hasTestingFacilities'] = formElements['hasTestingFacilities'] =='on' ? true : false;
+    console.log(formElements);
+    controller.submit_organization(formElements);
+  });
+  $('body').on('click', '#notify-submit', (e)=>{
+    e.preventDefault();
+    if($('#notify-agree').prop('checked') === true){
+      $('#notify-submit').addClass('btn-loading');
+      controller.create_user({'phone': $('#notify-phone').val(), 'button_id':'#notify-submit'})
+    }else{
+      $('#notify-warning').removeClass('d-none');
+    }
+  })
+
+  // Navigate to Code
+  // $('body').on('click', '#nav-code', () => {
+  //   $('a[href="#page-code"]').tab('show');
+  //   // for when navigating from alt code to main code
+  //   $('.notice-code').addClass('active');
+  //   $('.notice-code .dimmer-notice').show();
+  // });
+  // Reveal Code
+  // $('body').on('click', '#reveal-code', () => {
+  //   console.log('Reveal');
+  //   $('.notice-code').removeClass('active');
+  //   $('.notice-code .dimmer-notice').hide();
+  // });
+  // Reveal Alt Code
+  // $('body').on('click', '.reveal-code-alt', () => {
+  //   // for resetting canvas
+  //   $('#qrcode-alt').empty();
+  //   $('#qrcode-alt').append('<img class="qr-logo-overlay" src="/assets/img/qr_logo.png">');
+  //   // for when revealing main code, but navigating to alt code
+  //   $('.notice-code').addClass('active');
+  //   $('.notice-code .dimmer-notice').show();
+  //   // check if alt code exists, if not throw error
+  //   if ($().attr('data-id')) {
+  //     controller.genQR($().attr('data-id')!, 'qrcode-alt');
+  //     $('#title-code-alt').text(
+  //       $()
+  //         .find('.title-code-alt')
+  //         .text(),
+  //     );
+  //     $('a[href="#page-code-alt"]').tab('show');
+  //   } else {
+  //     console.log('error displaying alt');
+  //   }
+  // });
+  // Generating Alt Code
+  // $('body').on('click', '#generate-alt-code', () => {
+  //   $('#generate-alt-code').addClass('btn-loading-dark');
+
+  //   controller.fetchIP({}, data => {
+  //     controller.fingerprint(data, fingerprintData => {
+  //       controller.createAlt(fingerprintData);
+  //     });
+  //   });
+  // });
   // Navigate to Scan
   $('body').on('click', '#nav-scan', () => {
     // can only initialize sound after user gesture;
@@ -553,6 +675,7 @@ $(() => {
     // Use facingMode: environment to attemt to get the front camera on phones
     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then(stream => {
       // @ts-ignore
+      video.srcObject = stream;
       video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
       video.play();
       scanStart();

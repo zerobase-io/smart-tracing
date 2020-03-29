@@ -24,7 +24,7 @@
 	"addons": [],
 	"env": {
 		"RUNTIME_API_HOST": {
-			"value": "https://zerobase-api-stage.herokuapp.com"
+  			"value": "https://zerobase-api-stage.herokuapp.com"
 		}
 	}
 }
