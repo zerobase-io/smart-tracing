@@ -18,8 +18,6 @@ import PageScan from './PageScan';
 import RegisterNoticeModal from './RegisterNoticeModal';
 import ScanNoticeModal from './ScanNoticeModal';
 
-import '../addtlFunc';
-
 type TabName = 'home' | 'about' | 'individuals' | 'businesses' | 'notifications' | 'healthcare';
 
 const tabToComponent: { [tab in TabName]: () => JSX.Element | null } = {
