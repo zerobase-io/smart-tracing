@@ -10,6 +10,7 @@ public/index.html
 
 .DS_Store
 .env
+
 .python-version
 # OS generated files #
 ######################
