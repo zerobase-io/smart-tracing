@@ -2,19 +2,37 @@
 ======================================Hero Formatting======================================
 */
 .hero{
-    padding-top: 2%;
-    padding-bottom: 2%;
-    background-image: url('/assets/img/info/ZB_containers_location.jpg')
+    padding-top: 15%;
+    padding-bottom: 5%;
+    background:
+        linear-gradient(
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.3)
+            ),
+        url('/assets/img/QR_Codes_Main.jpg') no-repeat center;
+    filter: grayscale(0%);
+    background-size: cover;
+}
+.mb-10p{
+    margin-bottom: 10%;
+
+}
+.explore{
+    color: #2a3742;
+    text-align: center;
+    margin-bottom: 5%;
+
 }
 .hero-text{
     color: black;
 }
+
 .hero-top-text{
     color: white;
-    text-align: left;
-    padding-left: 20%;
+    text-align: center;
     font-size: 36px;
 }
+
 .hero-sub-text{
     color: black;
     text-align: right;
@@ -26,7 +44,6 @@
     display: table;
     background-color: white;
     opacity:0.7;
-
 }
 
 .sub-1{
@@ -43,10 +60,12 @@
 }
 
 .privacy-sub{
-    background-color: #65C6E1;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    margin-top: 10%
+    padding-top: 2%;
+    padding-bottom: 2%;
     text-align: center;
+    filter: grayscale(0%);
+    vertical-align: sub;
 }
 .privacy{
     color: white;
@@ -57,7 +76,21 @@
 }
 .bold{
     font-weight:bold;
+}
 
+.btn-trq {
+    color: #fff;
+    background-color: #65C6E1;
+    filter: grayscale(0%);
+    font-size: 36px;
+    border-radius: 15px;
+
+}
+
+.navbar-nav {
+    line-height: 300px;
+    height: 150px;
+    padding-top: 0;
 }
 
 /*
@@ -68,7 +101,7 @@
 }
 
 .mission-font{
-    font-size: 18px;
+    font-size: 24px;
 }
 .indent{
     margin-left: 10%
@@ -78,6 +111,18 @@
 }
 .mb-4{
     margin-bottom: 4%
+}
+.our-mission{
+    font-size: 72px;
+
+}
+.vertical-align{
+    vertical-align: middle;
+
+}
+
+.grid-container {
+  grid-gap: 50px;
 }
 
 /* Nav Scroll -------------------------*/
