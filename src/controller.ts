@@ -1,23 +1,23 @@
-// function getRuntimeConfig(): RuntimeConfig {
-//   const runtimeConfigEl = document.getElementById('runtime-config');
-//   if (runtimeConfigEl == null) {
-//     return {};
-//   }
-//   return JSON.parse(runtimeConfigEl.innerHTML);
-// }
+function getRuntimeConfig(): RuntimeConfig {
+    const runtimeConfigEl = document.getElementById('runtime-config');
+    if (runtimeConfigEl == null) {
+        return {};
+    }
+    return JSON.parse(runtimeConfigEl.innerHTML);
+}
 
-// const runtimeConfig = getRuntimeConfig();
+const runtimeConfig = getRuntimeConfig();
 
-// const { ENV, API_HOST } = runtimeConfig;
+const { ENV, API_HOST } = runtimeConfig;
 
-// // Remove Console Log for non-dev environment
-// console.log = ENV === 'dev' ? console.log : () => {};
+// Remove Console Log for non-dev environment
+console.log = ENV === 'dev' ? console.log : () => {};
 
-// console.log('runtime config: ', runtimeConfig);
+console.log('runtime config: ', runtimeConfig);
 
-// if (API_HOST == null) {
-//   throw new Error('API_HOST not in runtime config!');
-// }
+if (API_HOST == null) {
+    throw new Error('API_HOST not in runtime config!');
+}
 
 const router = (() => ({
   genQR: (dvid: string, elementId: string) => {
