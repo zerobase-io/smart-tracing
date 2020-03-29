@@ -61,6 +61,9 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/public'));
+app.get('*', function(req, res){
+  res.sendFile(__dirname + '/public/index.html')
+});
 app.listen(port);
 
 const srcDir = 'src';

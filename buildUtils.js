@@ -56,6 +56,7 @@ const minifyJs = compressor => {
           __dirname + '/public/vendor/fingerprint/fingerprint2.js',
           __dirname + '/public/vendor/imask/dist/imask.min-1582732176.js',
           __dirname + '/public/assets/js/tabler.min-1582732176.js',
+          __dirname + '/public/templates.js',
           __dirname + '/public/controller.min.js',
         ],
         output: __dirname + '/public/main.min.js',

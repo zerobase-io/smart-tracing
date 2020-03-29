@@ -23,10 +23,10 @@
           .card-footer
             .row.align-items-center
               .col-auto
-                a(href='#', id="landing-about") Details
-              .col-auto.ml-auto.forMobile
+                a(href='#tabs-businesses', data-toggle='view') Details
+              .col-auto.ml-auto
                 .justify-content-end
-                  a.btn.btn-primary(href='#', id="landing-generate")
+                  a.btn.btn-primary(href='#', id="register-business")
                     i.fe.fe-check-square.mr-2
                     | Generate and Print QR
       .col-12.col-lg-6
@@ -44,10 +44,11 @@
                 h3.card-title Are you a healthcare provider?
                 p
                   | Get actionable insight into the dynamics of the infection in your locality through smart contact tracing.
+                  a.ml-2(href='#tabs-healthcare', data-toggle='view') More information
               .card-footer
                 .row.align-items-center
                   .col-auto
-                    a(href='#', id="landing-about") More information
+                    a(href='#' id='register-healthcare') Register now
           .col-12.col-lg-6.order-2
             .card
               img.card-img-top(src='/assets/img/info/government.jpg', alt='Card top image')
@@ -58,7 +59,7 @@
               .card-footer
                 .row.align-items-center
                   .col-auto
-                    a(href='#', id="landing-about") More information
+                    a(href='/assets/docs/official_package_24.pdf', target='_blank') View our official release
           .col-12.order-0.order-lg-3
             .card
               .card-body
@@ -70,7 +71,7 @@
               .card-footer
                 .row.align-items-center
                   .col-auto
-                    a(href='https://necsi-edu.slack.com/join/shared_invite/zt-cu5215sg-63h4A7uCy~ehDsrfAIJ~_Q', target='_blank') Join our volunteers!
+                    a(href='https://tinyurl.com/zerobase-volunteer', target='_blank') Join our volunteers!
                   .col-auto.ml-auto
                     .avatar-list.avatar-list-stacked
                       span.avatar(style='background-image: url(/assets/img/avatars/020m.png)')
@@ -143,6 +144,7 @@
 
           //- .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
             h6.heading.mb-3 Zerobase Foundation
+
             ul.list-unstyled
 
               li
