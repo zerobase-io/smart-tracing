@@ -56,6 +56,25 @@
 
 }
 
+/*
+======================================Our mission box Formatting======================================
+*/
+.white{
+    color:white;
+}
+
+.mission-font{
+    font-size: 18px;
+}
+.indent{
+    margin-left: 10%
+}
+.indent-half{
+    margin-left: 5%
+}
+.mb-4{
+    margin-bottom: 4%
+}
 /* Nav Scroll -------------------------*/
 .scroll {
   display: flex;
