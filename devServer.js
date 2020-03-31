@@ -1,5 +1,5 @@
 /* Dev server rebuilds when pug templates or typescript files change */
-const { transpileToJavascript, minifyJs, minifyCss, convertPugtoHTML } = require('./buildUtils');
+const { transpileToJavascript, pugToJs, minifyJs, minifyCss, convertPugtoHTML } = require('./buildUtils');
 
 const watch = require('node-watch');
 const fs = require('fs');
@@ -48,11 +48,15 @@ const nonCompressor = ({ settings: { output, options }, content, callback }) => 
 promptForApiServer().then(() =>
   transpileToJavascript()
     .then(() => {
-      console.log('Running dev server on port:', port);
-      console.log(`Watching for file changes on ${srcDir}`);
-      minifyJs(nonCompressor);
-      minifyCss();
-      convertPugtoHTML();
+      pugToJs()
+        .then(()=>{
+          console.log('Running dev server on port:', port);
+          console.log(`Watching for file changes on ${srcDir}`);
+          minifyJs(nonCompressor);
+          minifyCss();
+          convertPugtoHTML();
+      })
+      .catch(console.log)
     })
     .catch(console.log),
 );
@@ -74,11 +78,17 @@ watch(srcDir, { recursive: true }, (evt, fileName) => {
   const fileExt = fileName.split('.').pop();
 
   if (fileExt === 'pug') {
-    convertPugtoHTML();
+    pugToJs().then(()=>{
+      convertPugtoHTML();
+    })
+    .catch(console.log);
   } else if (fileExt === 'ts') {
     transpileToJavascript()
       .then(() => {
-        minifyJs(nonCompressor);
+        pugToJs().then(()=>{
+          minifyJs(nonCompressor);
+        })
+        .catch(console.log);
       })
       .catch(console.log);
   }

@@ -4,22 +4,47 @@ const gcc = require('@node-minify/google-closure-compiler');
 const ts = require('typescript');
 const fs = require('fs');
 const pug = require('pug');
+const puglatizer = require('puglatizer');
 
 const transpileToJavascript = () =>
   new Promise((resolve, reject) => {
-    const tsConfig = fs.readFileSync(__dirname + '/tsconfig.json');
-    const program = ts.createProgram(['src/controller.ts'], JSON.parse(tsConfig).compilerOptions);
+    fs.writeFile(`${__dirname}/public/controller.js`,'', function(err){
+      if(err){
+        reject(err);
+      }
+      const tsConfig = fs.readFileSync(__dirname + '/tsconfig.json');
+      const program = ts.createProgram(['src/controller.ts','src/scanner.ts','src/router.ts'], JSON.parse(tsConfig).compilerOptions);
 
-    program.emit(undefined, (fileName, data) => {
-      // hack to remove exports definition which breaks the build
-      data = data.replace(`Object.defineProperty(exports, "__esModule", { value: true });`, '');
-      fs.writeFile(`${__dirname}/public/controller.js`, data, function(err) {
-        if (err) {
-          reject(err);
-        }
-        console.log(`Javascript transpiled for ${fileName}`);
-        resolve();
+      program.emit(undefined, (fileName, data) => {
+        // hack to remove exports definition which breaks the build
+        data = data.replace(`Object.defineProperty(exports, "__esModule", { value: true });`, '');
+         fs.appendFile(`${__dirname}/public/controller.js`, data, {flag: "a+"}, function(err) {
+          if (err) {
+            reject(err);
+          }
+          console.log(`Javascript transpiled for ${fileName}`);
+          resolve();
+        });
+        // fs.writeFile(`${__dirname}/public/controller.js`, data, function(err) {
+        //   if (err) {
+        //     reject(err);
+        //   }
+        //   console.log(`Javascript transpiled for ${fileName}`);
+        //   resolve();
+        // });
       });
+    })
+  });
+
+
+const pugToJs = () => 
+  new Promise((resolve, reject)=> {
+    puglatizer(__dirname + '/src/templates',__dirname + '/public/templates.js', {}, function (err, templates) {
+      if(err){
+        reject(err);
+      }
+      console.log('Pug transpiled to JS')
+      resolve();
     });
   });
 
@@ -144,4 +169,4 @@ const convertPugtoHTML = () => {
   });
 };
 
-module.exports = { transpileToJavascript, minifyJs, minifyCss, convertPugtoHTML };
+module.exports = { transpileToJavascript, pugToJs, minifyJs, minifyCss, convertPugtoHTML };

@@ -10,13 +10,14 @@
     "@types/howler": "^2.1.2",
     "@types/jquery": "^3.3.33",
     "http-server": "^0.12.1",
+    "imask": "^6.0.3",
     "jsqr": "^1.2.0",
     "node-minify": "^3.6.0",
     "pug": "^2.0.3",
+    "puglatizer": "^1.1.9",
     "qrcodejs": "^1.0.0",
     "typescript": "^3.8.3",
-    "uglifycss": "0.0.29",
-    "imask": "^6.0.3"
+    "uglifycss": "0.0.29"
   },
   "scripts": {
     "build": "node build.js",
