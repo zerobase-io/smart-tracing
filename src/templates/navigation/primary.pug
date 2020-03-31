@@ -4,29 +4,23 @@ nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
       h6.navbar-heading Navigation
       ul.nav.nav-tabs(data-toggle='tabs')
         li.nav-item
-          a.nav-link.active(href='#tabs-home', data-toggle='tab')
-            | Home
+          router-link.nav-link(to='/') Home
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Information
           .dropdown-menu
-            a.dropdown-item(href='#tabs-about', data-toggle='tab')
-              | Overview
-            a.dropdown-item(href='#tabs-privacy', data-toggle='tab')
-              | Privacy
+            router-link.dropdown-item(to='/about') About
+            router-link.dropdown-item(to='/privacy-policy') Privacy
             .dropdown-divider
             span.dropdown-header Use Cases
-            a.dropdown-item(href='#tabs-individuals', data-toggle='tab')
+            router-link.dropdown-item(to='/individual')
               i.fe.fe-user.mr-2
-              | Individual
-            a.dropdown-item(href='#tabs-businesses', data-toggle='tab')
+              | Individual 
+            router-link.dropdown-item(to='/businesses')
               i.fe.fe-home.mr-2
-              | Business or Public Location
-            a.dropdown-item(href='#tabs-healthcare', data-toggle='tab')
+              | Business or Public Location 
+            router-link.dropdown-item(to='/healthcare')
               i.fe.fe-thermometer.mr-2
-              | Healthcare
-            a.dropdown-item(href='#tabs-community-officials', data-toggle='tab')
+              | Healthcare 
+            router-link.dropdown-item(to='/community')
               i.fe.fe-shield.mr-2
-              | Community Officials
-        //- li.nav-item
-          a.nav-link(href='#tabs-notifications', data-toggle='tab')
-            | Notifications
+              | Community 

@@ -29,54 +29,14 @@ head
 
 body
 
-  //- Component "Router"
-  .d-none
-    ul.nav.nav-tabs.nav-fill(data-toggle='tabs')
-      li.nav-item
-        a.nav-link.active(href='#page-main', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-scan', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-code', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-code-alt', data-toggle='tab')
+  #app
+    .page(style="overflow:hidden;")
+      include ../navigation/primary
+      include ../navigation/secondary
+    
+      router-view
 
-  //-include ../toast/submit
-
-  .tab-content
-    //- Main Component
-    #page-main.tab-pane.active.show
-      .page
-        include ../navigation/primary
-        include ../navigation/secondary
-        .tab-content
-          #tabs-home.tab-pane.active.show
-            include ../pages/home
-          #tabs-about.tab-pane
-            include ../pages/about
-          #tabs-individuals.tab-pane
-            include ../pages/individuals
-          #tabs-businesses.tab-pane
-            include ../pages/businesses
-          #tabs-healthcare.tab-pane
-            include ../pages/healthcare
-          #tabs-community-officials.tab-pane
-            include ../pages/community
-          #tabs-privacy.tab-pane
-            include ../pages/privacy
-          //- #tabs-privacy.tab-pane
-          //-   include ../pages/privacy
-          //- #tabs-updates.tab-pane
-          //-   include ../pages/updates
-          //- #tabs-news.tab-pane
-          //-   include ../pages/news
-          #tabs-notifications.tab-pane
-            include ../pages/notifications
-
-    //- Additional Components
-    include ../components/scan
-    //-include ../components/code
-    //-include ../components/code-alt
+    include ../navigation/footer
 
   include ../modal/register
   include ../modal/register-business
@@ -84,5 +44,8 @@ body
   include ../modal/scan-status
   include ../modal/privacy-policy
 
+
+script(src='https://unpkg.com/vue/dist/vue.js')
+script(src='https://unpkg.com/vue-router/dist/vue-router.js')
 script(src='/main.min.js')
 //-script(src='/controller.js')

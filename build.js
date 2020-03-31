@@ -1,9 +1,12 @@
-const { transpileToJavascript, minifyJs, minifyCss, convertPugtoHTML } = require('./buildUtils');
+const { transpileToJavascript, pugToJs, minifyJs, minifyCss, convertPugtoHTML } = require('./buildUtils');
 
 transpileToJavascript()
-  .then(() => {
-    minifyJs();
-    minifyCss();
-    convertPugtoHTML();
-  })
-  .catch(console.log);
+	.then(() => {
+		pugToJs().then(()=>{
+			minifyJs();
+			minifyCss();
+			convertPugtoHTML();
+		})
+		.catch(console.log);
+	})
+	.catch(console.log);
