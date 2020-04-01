@@ -8,7 +8,7 @@
                 .container
                   //-h1.text-white Everything You Need To Know About Zerobase
 
-  .container.p-0
+  .container
     .row.m-2
       .col-12(style="margin: 0 auto;")
         .card(style="border:none; background-color:").shadow-none
@@ -23,10 +23,10 @@
 
 
     .row.m-4.mt-7.mb-5
-        .col-6.col-lg-6.pr-lg-5
+        .col-lg-6.col-12.pr-lg-5
           p.h1.lh-180.mb-3
             | Zerobase is a free, privacy-first contact tracing platform that empowers both individuals and local officials to stop the spread of COVID-19.
-        .col-lg-6
+        .col-lg-6.col-12
           p.lead.lh-180
             | Contact tracing is the identification of likely disease-spreading interaction between individuals－it is a crucial part of modern pandemic response.
           p.lead.lh-180
@@ -46,27 +46,27 @@
 
 
     .row
-        .col-4.col-lg-4.text-center
-           img.w-50.mt-7.card-img(src='/assets/img/earth.png', alt='Card image', style="opacity:0.7; transform:rotate(15deg)")
+        .col-lg-4.col-12.text-center.mb-2
+           img.w-50.mt-3.mb-3.card-img(src='/assets/img/earth.png', alt='Card image', style="opacity:0.7; transform:rotate(15deg)")
         .col-12.col-lg-8
             .row
                 .col-12
                     p.h1.lh-180.mb-4.text-justify
                         | Zerobase:
-                .col-lg-6.col-6
+                .col-lg-6.col-12
 
                   h2 Puts Privacy First.
                   p
                     | We provide an effective tracing solution for local governments and communities without compromising individual privacy or reducing trust.
 
 
-                .col-lg-6.col-6
+                .col-lg-6.col-12
                   h2 Is Easy to Use.
                   p
                     | Anyone with a smartphone can use Zerobase by simply opening their camera. New users are enrolled immediately without any signup process.
 
             .row
-                .col-lg-6.col-6
+                .col-lg-6.col-12
                   h2 Is Accessible.
                   p
                     | Zerobase’s coverage is worldwide, supporting Edge (low speed cellular), 3G, 4G, or Wifi. We offer
@@ -75,7 +75,7 @@
                   p
 
 
-                .col-lg-6.col-6
+                .col-lg-6.col-12
                   h2 Is Free.
                   p
                     | Our infrastructure is free to use. From New York City to Nairobi, anyone can use Zerobase to begin keeping themselves and their community safe. Zerobase has been organized as a nonprofit effort and labor has been donated.
@@ -86,17 +86,16 @@
                | Here’s how Zerobase could protect your community:
 
     .row.text-align-center
-        .col-4
+        .col-lg-4.col-12
             img(src='/assets/img/info/1.png' style='width: 100%; display: inline-block; opacity: 1;')
-        .col-4
+        .col-lg-4.col-12
             img(style='width: 100%; display: inline-block; opacity: 1;' src='/assets/img/info/3.png')
-
-        .col-4
+        .col-lg-4.col-12
             img(style='width: 100%; display: inline-block; opacity: 1;' src='/assets/img/info/4.png')
     .row.text-align-center.mt-5
         .col-12
             .card.m-5
-                .card-body.m-6.p-5
+                .card-body.p-5
                    ol.h4.font-weight-normal
                      li.mb-4
                         strong Paper printouts with unique Zerobase QR codes
@@ -106,9 +105,12 @@
                         strong People entering a participating location scan the code
                         |   – this is as simple as pointing a phone’s camera at the sign; it takes just a few seconds, and no app download is required. Here is an example code that you can scan right now:
                         br
-                        | INSERT SCAN
-                        br
-                        |Individuals may choose to share their phone number in order to be notified by public health authorities (or automatically by Zerobase, if so desired) if they have been exposed. By default, no personal information is required.
+
+                     li.mb-4(style='text-align: center; display: block')
+                        img.text-align-center(style='width: 25%; display: inline-block; opacity: 1;' src='/assets/img/qr_scan_temp.jpg')
+
+                     li.mb-4(style='display: block')
+                        | Individuals may choose to share their phone number in order to be notified by public health authorities (or automatically by Zerobase, if so desired) if they have been exposed. By default, no personal information is required.
                      li.mb-4
                         strong If an individual receives a COVID-19 test,
                         |   they are given a sheet of paper with a Zerobase QR code on it to scan as part of the intake process. Each code sheet is unique and anonymous. Batches of code sheets can be printed at testing centers or distributed to drive-through sites.
@@ -138,11 +140,11 @@
             p.h1.lh-180.mb-3.font-weight-normal.text-align-center
                | FAQs
     .row.justify-content-between.mb-5
-      .col-lg-3.text-lg-right
+      .col-lg-3.col-12.text-lg-right
         h4.m-0 Can’t large companies do this at scale
         h4.m-0 with their location history?
         h4.mb-4 How is Zerobase unique?
-      .col-lg-8
+      .col-lg-8.col-12
         p.h3.font-weight-normal
           | Other approaches can indeed geo-tag your movements at all times. But there are tradeoffs to those approaches:
         ul
@@ -157,12 +159,15 @@
     br
     br
     .row.justify-content-between.mb-5
-      .col-lg-3.text-lg-right
+      .col-lg-3.col-12.text-lg-right
         h4.mb-0 What information is collected
         h4.mb-4 by Zerobase?
-      .col-lg-8
+      .col-lg-8.col-12
           p
-            | An individual’s identity is never deduced by the system, and any personal information shared voluntarily is stored securely. Zerobase is built from the ground up with security and privacy in mind and abides by relevant local, state, and federal laws. Click here[link: /privacy-first] to read more about how we put your privacy first.
+            | An individual’s identity is never deduced by the system, and any personal information shared voluntarily is stored securely. Zerobase is built from the ground up with security and privacy in mind and abides by relevant local, state, and federal laws.
+            | To read more about how we put your privacy first, click
+            router-link.text-wrap(to='/privacy-policy')     here.
+
 
     br
     br
@@ -175,9 +180,11 @@
             | A computer and a printer are all that is required for businesses, public locations, and healthcare providers to activate Zerobase. Individual community members only need a mobile phone.
 
     .row.justify-content-between
-      .col-lg-3.text-lg-right
-        h4.mb-4 Register
-      .col-lg-8
+      .col-lg-3.text-lg-right.mt-8
+        //-h4.mb-4 Register
+
+
+  //-.col-lg-8
         .card.mb-0
           .card-body.p-lg-5
             form

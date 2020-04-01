@@ -7,7 +7,7 @@ $(() => {
     { path: '*',               redirect: '/404' }, 
 
     //- Static Pages --------------------------------------------------------------//
-    { path: '/about',          component: { template: window.puglatizer.pages.about()}},
+    { path: '/about',          component: { template: window.puglatizer.pages.about_us()}},
     { path: '/individual',     component: { template: window.puglatizer.pages.individuals_landing()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/businesses',     component: { template: window.puglatizer.pages.businesses()}},
@@ -15,9 +15,8 @@ $(() => {
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
-    { path: '/about-aly', component: { template: window.puglatizer.pages.about_us()}},
     { path: '/business-aly', component: { template: window.puglatizer.pages.business_landing()}},
-    { path: '/privacy-aly', component: { template: window.puglatizer.pages.privacy_landing()}},
+    { path: '/privacy', component: { template: window.puglatizer.pages.privacy_landing()}},
     { path: '/feedback-aly', component: { template: window.puglatizer.pages.feedback()}},
     { path: '/individual-aly', component: { template: window.puglatizer.pages.individuals_landing()}},
     //- special routes-------------------------------------------------------------//

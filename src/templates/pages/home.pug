@@ -9,21 +9,23 @@
               h1.text-white Help Your Community End Coronavirus
               h3.text-white Essential. Anonymous. Accessible to all.
               
-              a.btn.btn-primary.mt-0.mt-md-6(href='#')
+              a.btn.btn-primary.mt-6.md-5(href='#')
                 i.fe.fe-eye.mr-2
                 | Our Privacy First Commitment
   .container(style='padding:0;')
     .row
       .col-12(style="margin: 0 auto;")
-        .card
+        .card.mt-4.mb-4(style="border:none; background-color:").shadow-none
           .card-body
-            .row.row-sm.align-items-center
-              .d-none.d-md-block.col-auto
-                span.avatar.avatar-xl.rounded.mr-5(style='background-image: url(/assets/img/ZerobaseLogo_icon.png); background-color:white;')
-              .col
-                h3.h2 Our Mission
+            .row.row-sm.align-items-center.shadow-none
+              .col-lg-4.col-12.text-center
+                img.w-50(src="/assets/img/ZerobaseLogo_icon.png")
+                //-span.avatar.avatar-xl.rounded.mr-5(style='background-image: url(/assets/img/ZerobaseLogo_icon.png); background-color:white;')
+              .col-lg-8.col-12
+                h1 Our Mission
                 p.lead.lh-190
-                  | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world. Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
+                  | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world.
+                  | Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
     .row.mt-0.mt-md-4
       .col-12.col-lg-4.order-1
         .card.hover-translate-y-n10.hover-shadow-lg
