@@ -5,22 +5,28 @@ nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
       ul.nav.nav-tabs(data-toggle='tabs')
         li.nav-item
           router-link.nav-link(to='/') Home
+        li.nav-item
+          router-link.nav-link(to='/about') About
+        li.nav-item
+          router-link.nav-link(to='/privacy') Privacy
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Information
           .dropdown-menu
-            router-link.dropdown-item(to='/about') About
-            router-link.dropdown-item(to='/privacy') Privacy
-            .dropdown-divider
-            span.dropdown-header Use Cases
-            router-link.dropdown-item(to='/individual')
-              i.fe.fe-user.mr-2
-              | Individual 
-            router-link.dropdown-item(to='/businesses')
-              i.fe.fe-home.mr-2
-              | Business or Public Location 
-            router-link.dropdown-item(to='/healthcare')
-              i.fe.fe-thermometer.mr-2
-              | Healthcare 
-            router-link.dropdown-item(to='/community')
-              i.fe.fe-shield.mr-2
-              | Community 
+            router-link.dropdown-item(to='/individual') Individual
+            router-link.dropdown-item(to='/community') Community
+            router-link.dropdown-item(to='/businesses') Business or Public Location
+            router-link.dropdown-item(to='/healthcare') Healthcare Testing Site
+
+            //-.dropdown-divider
+                router-link.dropdown-item(to='/individual')
+                  i.fe.fe-user.mr-2
+                  | Individual
+                router-link.dropdown-item(to='/businesses')
+                  i.fe.fe-home.mr-2
+                  | Business or Public Location
+                router-link.dropdown-item(to='/healthcare')
+                  i.fe.fe-thermometer.mr-2
+                  | Healthcare
+                router-link.dropdown-item(to='/community')
+                  i.fe.fe-shield.mr-2
+                  | Community
