@@ -27,6 +27,9 @@ body *::-webkit-scrollbar {
 body *::-webkit-scrollbar-thumb {
   background: transparent;
 }
+body {
+    background-color: white;
+}
 /* -------------------------------------*/
 
 .tab-content>.tab-pane{ display: block; height: 0px; overflow: hidden; }
