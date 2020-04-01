@@ -23,7 +23,8 @@
     "build": "node build.js",
     "build:dev": "RUNTIME_API_HOST='https://zerobase-api-stage.herokuapp.com' RUNTIME_ENV=dev node build.js",
     "start:dev": "RUNTIME_ENV=dev node devServer.js",
-    "serve": "http-server ./public"
+    "serve": "http-server ./public",
+    "start": "node devServer.js"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.24.0",

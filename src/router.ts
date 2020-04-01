@@ -11,7 +11,7 @@ $(() => {
     { path: '/individual',     component: { template: window.puglatizer.pages.individuals()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/businesses',     component: { template: window.puglatizer.pages.businesses()}},
-    { path: '/healthcare',     component: { template: window.puglatizer.pages.healthcare()}},
+    { path: '/testing-facility',     component: { template: window.puglatizer.pages.testing_facility()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
