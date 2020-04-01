@@ -79,6 +79,7 @@ watch(srcDir, { recursive: true }, (evt, fileName) => {
 
   if (fileExt === 'pug') {
     pugToJs().then(()=>{
+      minifyJs(nonCompressor);
       convertPugtoHTML();
     })
     .catch(console.log);
@@ -87,6 +88,7 @@ watch(srcDir, { recursive: true }, (evt, fileName) => {
       .then(() => {
         pugToJs().then(()=>{
           minifyJs(nonCompressor);
+          convertPugtoHTML();
         })
         .catch(console.log);
       })

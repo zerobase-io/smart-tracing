@@ -1,84 +1,74 @@
-.content.pt-0.pt-lg-4
+.content.pt-0.pt-md-4
   .container(style='padding:0;')
     .row
-      .col-12.col-lg-6
-        //-.m-4.forMobile
-          a.btn.btn-primary.btn-block.p-3(id="nav-scan", href='#')
-            i.fe.fe-maximize.mr-2
-            | Scan Zerobase Code
-        .m-4.m-md-0
-          .alert.alert-standard.alert-dismissible(role='alert')
-            i.fe.fe-eye.mr-2
-            | Privacy comes first.
-            a.ml-2(href='https://github.com/zerobase-io/smart-tracing/wiki', target="_blank") Read more.
-            a.close(href='#', data-dismiss='alert', aria-label='close') &times;
-
+      .col-12
+        .card.mb-0
+          img.card-img(src='/assets/img/QR_Codes_Main ZB_dark.jpg', alt='Card image')
+          .card-img-overlay.text-center.d-flex.align-items-center
+            .container
+              h1.text-white Help Your Community End Coronavirus
+              h3.text-white Essential. Anonymous. Accessible to all.
+              
+              a.btn.btn-primary.mt-0.mt-md-6(href='#')
+                i.fe.fe-eye.mr-2
+                | Our Privacy First Commitment
+      .col-12(style="margin: 0 auto;")
         .card
-          img.card-img-top(src='/assets/img/info/business.jpg', alt='Location Image')
           .card-body
-            h3.card-title Are you a business or public location?
+            .row.row-sm.align-items-center
+              .d-none.d-md-block.col-auto
+                span.avatar.avatar-xl.rounded.mr-5(style='background-image: url(/assets/img/ZerobaseLogo_icon.png); background-color:white;')
+              .col
+                h3.h2 Our Mission
+                p.lead.lh-190
+                  | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world. Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
+    .row.mt-0.mt-md-4
+      .col-12.col-lg-4.order-1
+        .card.hover-translate-y-n10.hover-shadow-lg
+          img.card-img-top(src='/assets/img/info/ZB_containers_location.jpg', alt='Location Image')
+          .card-body
+            h3.card-title Business and Public Locations
             p
-              | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Community check-ins are vital to public health tracing efforts.
-              //- | Help your community build up resistance to COVID-19 now by enabling private check-ins in under 5 seconds. Community check-ins are vital to public health tracing efforts.
+              | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Stay ahead of the curve and keep your patrons and staff safe.
+
           .card-footer
             .row.align-items-center
-              .col-auto
+              //- .col-auto
                 a(href='#tabs-businesses', data-toggle='view') Details
-              .col-auto.ml-auto
+              .col-auto
                 .justify-content-end
                   a.btn.btn-primary(href='#', id="register-business")
                     i.fe.fe-check-square.mr-2
                     | Generate and Print QR
-      .col-12.col-lg-6
-        .row
-          //- .col-12
-          //-   .alert.alert-standard.alert-dismissible(role='alert')
-          //-     | Zerobase is deploying to
-          //-     //- a.btn.btn-outline-standard.btn-outline-secondary.ml-4(href='#') Read more here
-          //-     a.close(href='#', data-dismiss='alert', aria-label='close') &times;
-
-          .col-12.col-lg-6.order-1
-            .card
-              img.card-img-top(src='/assets/img/info/healthcare.jpg', alt='Card top image')
-              .card-body
-                h3.card-title Are you a healthcare provider?
-                p
-                  | Get actionable insight into the dynamics of the infection in your locality through smart contact tracing.
-                  a.ml-2(href='#tabs-healthcare', data-toggle='view') More information
-              .card-footer
-                .row.align-items-center
-                  .col-auto
-                    a(href='#' id='register-healthcare') Register now
-          .col-12.col-lg-6.order-2
-            .card
-              img.card-img-top(src='/assets/img/info/government.jpg', alt='Card top image')
-              .card-body
-                h3.card-title Are you a public official?
-                p
-                  | Deploy our powerful tracing technology to supercharge the effectiveness of every COVID-19 test in your area and keep your community safe.
-              .card-footer
-                .row.align-items-center
-                  .col-auto
-                    a(href='/assets/docs/official_package_24.pdf', target='_blank') View our official release
-          .col-12.order-0.order-lg-3
-            .card
-              .card-body
-                p
-                  | If you're an 
-                  b individual, 
-                  | welcome! We believe smart technology built by caring humans can help keep every community safe. 
-                  a(href="#") Learn more about Zerobase
-              .card-footer
-                .row.align-items-center
-                  .col-auto
-                    a(href='https://tinyurl.com/zerobase-volunteer', target='_blank') Join our volunteers!
-                  .col-auto.ml-auto
-                    .avatar-list.avatar-list-stacked
-                      span.avatar(style='background-image: url(/assets/img/avatars/020m.png)')
-                      span.avatar(style='background-image: url(/assets/img/avatars/021m.png)')
-                      span.avatar(style='background-image: url(/assets/img/avatars/022m.png)')
-                      span.avatar(style='background-image: url(/assets/img/avatars/023m.png)')
-                      span.avatar.bg-blue-lt GW
-                      span.avatar.bg-purple-lt EM
-                      span.avatar +900
-                      
+      .col-12.col-lg-4.order-2
+        .card.hover-translate-y-n10.hover-shadow-lg
+          img.card-img-top(src='/assets/img/info/ZB_containers_testing.jpg', alt='Card top image')
+          .card-body
+            h3.card-title Testing Centers
+            p
+                | Use our powerful tracing technology to maximize the value of every COVID-19 test in your area and keep your community safe.
+          .card-footer
+            .row.align-items-center
+              //-.col-auto
+                a.ml-2(href='#tabs-healthcare', data-toggle='view') Details
+              .col-auto
+                .justify-content-end
+                    a.btn.btn-primary(href='#', id="register-healthcare")
+                      i.fe.fe-check-square.mr-2
+                      | Register now
+                //-a(href='#' id='register-healthcare') Register now
+      .col-12.col-lg-4.order-3
+        .card.hover-translate-y-n10.hover-shadow-lg
+          img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Card top image')
+          .card-body
+            h3.card-title Public Officials
+            p
+                | Use our smart contact tracing platform to get customized, deep insight into the local dynamics of the epidemic and provide instant, individualized guidance to community members.
+          .card-footer
+            .row.align-items-center
+              .col-auto
+                .justify-content-end
+                    a.btn.btn-primary(href='/assets/docs/official_package_24.pdf', id="register-healthcar")
+                      i.fe.fe-check-square.mr-2
+                      | View our official release
+                //- a(href='/assets/docs/official_package_24.pdf', target='_blank') View our official release
