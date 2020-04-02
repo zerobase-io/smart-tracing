@@ -7,15 +7,18 @@ $(() => {
     { path: '*',               redirect: '/404' }, 
 
     //- Static Pages --------------------------------------------------------------//
-    { path: '/about',          component: { template: window.puglatizer.pages.about()}},
-    { path: '/individual',     component: { template: window.puglatizer.pages.individuals()}},
+    { path: '/about',          component: { template: window.puglatizer.pages.about_us()}},
+    { path: '/individual',     component: { template: window.puglatizer.pages.individuals_landing()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
-    { path: '/businesses',     component: { template: window.puglatizer.pages.businesses()}},
-    { path: '/healthcare',     component: { template: window.puglatizer.pages.healthcare()}},
+    { path: '/businesses',     component: { template: window.puglatizer.pages.business_landing()}},
+    { path: '/testing',     component: { template: window.puglatizer.pages.testingsite_landing()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
-    
+    { path: '/privacy', component: { template: window.puglatizer.pages.privacy_landing()}},
+    { path: '/feedback-aly', component: { template: window.puglatizer.pages.feedback()}},
+    { path: '/individual-aly', component: { template: window.puglatizer.pages.individuals_landing()}},
+
     //- special routes-------------------------------------------------------------//
     { path: '/s/*', 
       component: { template: window.puglatizer.pages.home()},
