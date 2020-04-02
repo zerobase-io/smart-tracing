@@ -11,12 +11,12 @@ $(() => {
     { path: '/individual',     component: { template: window.puglatizer.pages.individuals_landing()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/businesses',     component: { template: window.puglatizer.pages.business_landing()}},
-    { path: '/testing',     component: { template: window.puglatizer.pages.testingsite_landing()}},
+    { path: '/testing',        component: { template: window.puglatizer.pages.testingsite_landing()}},
     { path: '/community',      component: { template: window.puglatizer.pages.community()}},
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
-    { path: '/privacy', component: { template: window.puglatizer.pages.privacy_landing()}},
-    { path: '/feedback-aly', component: { template: window.puglatizer.pages.feedback()}},
+    { path: '/privacy',        component: { template: window.puglatizer.pages.privacy_landing()}},
+    { path: '/feedback-aly',   component: { template: window.puglatizer.pages.feedback()}},
     { path: '/individual-aly', component: { template: window.puglatizer.pages.individuals_landing()}},
 
     //- special routes-------------------------------------------------------------//
@@ -98,13 +98,13 @@ $(() => {
             video.srcObject = stream;
             video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
             video.play();
-            scanStart(video, canvasElement, canvas);
+            scanning.start(video, canvasElement, canvas);
             $('body').on('click', '#nav-main-x', () => {
               stream.getTracks().forEach(track => {
                 track.stop();
               });
-              scanStop();
-              router.push('/')
+              scanning.stop();
+              router.push('/').catch(err => {})
             });
           });
         }
@@ -141,7 +141,7 @@ $(() => {
     $('#modal-register-notice').modal('show');
   });
 
-  // Forms --------------------------------------------------//
+  // Forms (Need refactor) --------------------------------------------------//
 
 
   $('body').on('submit','form.register-business', (e)=>{
@@ -179,94 +179,6 @@ $(() => {
     }else{
       $('#notify-warning').removeClass('d-none');
     }
-  })
-  // Navigate to Scan
-  // $('body').on('click', '#nav-scan', () => {
-  //   // can only initialize sound after user gesture;
-  //   // @ts-ignore
-  //   window.sound = new Howl({ src: ['/assets/audio/beep.mp3'] });
+  });
 
-  //   $('a[href="#page-scan"]').tab('show');
-  //   const video = document.createElement('video');
-  //   const canvasElement = document.getElementById('canvas') as HTMLCanvasElement;
-  //   const canvas = canvasElement.getContext('2d') as CanvasRenderingContext2D;
-  //   // Use facingMode: environment to attemt to get the front camera on phones
-  //   navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then(stream => {
-  //     // @ts-ignore
-
-  //     video.srcObject = stream;
-  //     video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
-  //     video.play();
-  //     scanStart();
-  //     $('body').on('click', '#nav-main-x', () => {
-  //       $('a[href="#page-main"]').tab('show');
-  //       stream.getTracks().forEach(track => {
-  //         track.stop();
-  //       });
-  //       scanStop();
-  //     });
-  //   });
-  // });
-
-  // Need to find a way to break this up into YUI pattern -> scanner.ts
-  // Video Scanning ---------------------------------------------------------//
-
-  function drawLine(begin: Point, end: Point, color: string) {
-    canvas.beginPath();
-    canvas.moveTo(begin.x, begin.y);
-    canvas.lineTo(end.x, end.y);
-    canvas.lineWidth = 4;
-    canvas.strokeStyle = color;
-    canvas.stroke();
-  }
-  let requestId: number | undefined;
-  function scanStop() {
-    if (requestId) {
-      window.cancelAnimationFrame(requestId);
-      requestId = undefined;
-    }
-  }
-  function scanStart(video, canvasElement, canvas) {
-    //console.log(video);
-    if (!requestId) {
-      requestId = window.requestAnimationFrame(function(){
-        scanLoop(video, canvasElement, canvas);
-      });
-    }
-  }
-  function scanLoop(video, canvasElement, canvas) {
-    requestId = undefined;
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      canvasElement.hidden = false;
-      canvasElement.height = video.videoHeight;
-      canvasElement.width = video.videoWidth;
-
-      canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-      const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-
-      const code = jsQR(imageData.data, imageData.width, imageData.height, {
-        inversionAttempts: 'dontInvert',
-      });
-      if (code) {
-        drawLine(code.location.topLeftCorner, code.location.topRightCorner, '#1AAD19');
-        drawLine(code.location.topRightCorner, code.location.bottomRightCorner, '#1AAD19');
-        drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#1AAD19');
-        drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#1AAD19');
-
-        const parser = document.createElement('a');
-        parser.href = code.data;
-        const { pathname: actionPath } = parser;
-        const codeAction = actionPath.split('/')[1];
-        const codeSdvid = actionPath.split('/')[2];
-
-        if (codeAction === 's' && codeSdvid) {
-          // @ts-ignore
-          sound.play();
-          window.location.replace(code.data);
-          return;
-        }
-      }
-    }
-    scanStart(video, canvasElement, canvas);
-  }
 });

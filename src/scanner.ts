@@ -6,7 +6,7 @@ const scanning = (() => {
   let requestId: number | undefined;
   return {
     //video: document.createElement('video'),
-    drawline: (begin: Point, end: Point, color: string) => {
+    drawLine: (canvas: string, begin: Point, end: Point, color: string) => {
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
       canvas.lineTo(end.x, end.y);
@@ -20,12 +20,14 @@ const scanning = (() => {
         requestId = undefined;
       }
     },
-    start: () => {
+    start: (video: string, canvasElement: string, canvas: string) => {
       if (!requestId) {
-        requestId = window.requestAnimationFrame(scanning.loop);
+        requestId = window.requestAnimationFrame(function(){
+          scanning.loop(video, canvasElement, canvas);
+        });
       }
     },
-    loop: () => {
+    loop: (video:string, canvasElement:string, canvas:string) => {
       requestId = undefined;
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvasElement.hidden = false;
@@ -37,15 +39,17 @@ const scanning = (() => {
           inversionAttempts: 'dontInvert',
         });
         if (code) {
-          scanning.drawLine(code.location.topLeftCorner, code.location.topRightCorner, '#1AAD19');
-          scanning.drawLine(code.location.topRightCorner, code.location.bottomRightCorner, '#1AAD19');
-          scanning.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#1AAD19');
-          scanning.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#1AAD19');
+          scanning.drawLine(canvas, code.location.topLeftCorner, code.location.topRightCorner, '#1AAD19');
+          scanning.drawLine(canvas, code.location.topRightCorner, code.location.bottomRightCorner, '#1AAD19');
+          scanning.drawLine(canvas, code.location.bottomRightCorner, code.location.bottomLeftCorner, '#1AAD19');
+          scanning.drawLine(canvas, code.location.bottomLeftCorner, code.location.topLeftCorner, '#1AAD19');
+          
           const parser = document.createElement('a');
                 parser.href = code.data;
           const { pathname: actionPath } = parser;
           const codeAction = actionPath.split('/')[1];
           const codeSdvid = actionPath.split('/')[2];
+
           if (codeAction === 's' && codeSdvid) {
             // @ts-ignore
             sound.play();
@@ -54,6 +58,7 @@ const scanning = (() => {
           }
         }    
       }
+      scanning.start(video, canvasElement, canvas);
     }
   }
 })();
