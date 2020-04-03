@@ -5,10 +5,6 @@ nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
       ul.nav.nav-tabs(data-toggle='tabs')
         li.nav-item
           router-link.nav-link(to='/') Home
-        li.nav-item
-          router-link.nav-link(to='/about') About
-        li.nav-item
-          router-link.nav-link(to='/privacy') Privacy
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Uses
           .dropdown-menu
@@ -16,17 +12,7 @@ nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
             router-link.dropdown-item(to='/community') Community Officials
             router-link.dropdown-item(to='/businesses') Business or Public Locations
             router-link.dropdown-item(to='/testing') Healthcare Testing Sites
-
-            //-.dropdown-divider
-                router-link.dropdown-item(to='/individual')
-                  i.fe.fe-user.mr-2
-                  | Individual
-                router-link.dropdown-item(to='/businesses')
-                  i.fe.fe-home.mr-2
-                  | Business or Public Location
-                router-link.dropdown-item(to='/healthcare')
-                  i.fe.fe-thermometer.mr-2
-                  | Healthcare
-                router-link.dropdown-item(to='/community')
-                  i.fe.fe-shield.mr-2
-                  | Community
+        li.nav-item
+          router-link.nav-link(to='/about') About
+        li.nav-item
+          router-link.nav-link(to='/privacy') Privacy
