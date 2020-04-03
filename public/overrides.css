@@ -1,3 +1,12 @@
+/*Intl Phone Number Input ---------------*/
+
+.iti__flag {background-image: url("/vendor/intl-tel-input/img/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: url("/vendor/intl-tel-input/img/flags@2x.png");}
+}
+
+
 /* Nav Scroll -------------------------*/
 .scroll {
   display: flex;
@@ -42,6 +51,12 @@ body {
 }
 
 /*-------------------------------------*/
+footer a:hover{
+  color:white;
+  text-decoration:none;
+  cursor: pointer;
+}
+
 .form-check-input:checked {
   background-color: #2a3742;
 }
