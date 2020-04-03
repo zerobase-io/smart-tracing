@@ -6,6 +6,22 @@
   .iti__flag {background-image: url("/vendor/intl-tel-input/img/flags@2x.png");}
 }
 
+/* Hero Image -------------------------*/
+
+.hero-img-height {
+  height: 20rem;
+  background: #e9ecef;
+}
+.hero-img-cover {
+  background: no-repeat center;
+  background-size: cover;
+}
+@media only screen and (max-device-width:750px) {
+  .hero-img-height {
+    height: 13rem;
+  }
+}
+
 
 /* Nav Scroll -------------------------*/
 .scroll {
