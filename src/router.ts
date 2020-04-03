@@ -16,9 +16,7 @@ $(() => {
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
     { path: '/privacy',        component: { template: window.puglatizer.pages.privacy_landing()}},
-    // { path: '/feedback-aly',   component: { template: window.puglatizer.pages.feedback()}},
-    { path: '/individual-aly', component: { template: window.puglatizer.pages.individuals_landing()}},
-
+    { path: '/terms',        component: { template: window.puglatizer.pages.terms()}},
     { path: '/feedback',            component: { template: window.puglatizer.pages.feedback()}},
     { path: '/contact',             component: { template: window.puglatizer.pages.contact()}},
     { path: '/business/register',   component: { template: window.puglatizer.pages.business_register()}},
