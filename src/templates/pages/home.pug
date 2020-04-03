@@ -27,7 +27,7 @@
                   | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world.
                   | Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
     .row.mt-0.mt-md-4
-      .col-12.col-lg-4.order-1
+      router-link(to='/businesses').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_location.jpg', alt='Location Image')
           .card-body
@@ -35,45 +35,19 @@
             p
               | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Stay ahead of the curve and keep your patrons and staff safe.
 
-          .card-footer
-            .row.align-items-center
-              //- .col-auto
-                a(href='#tabs-businesses', data-toggle='view') Details
-              .col-auto
-                .justify-content-end
-                  a.btn.btn-primary(href='#', id="register-business")
-                    i.fe.fe-check-square.mr-2
-                    | Generate and Print QR
-      .col-12.col-lg-4.order-2
+
+      router-link(to='/testing').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_testing.jpg', alt='Card top image')
           .card-body
             h3.card-title Testing Centers
             p
                 | Use our powerful tracing technology to maximize the value of every COVID-19 test in your area and keep your community safe.
-          .card-footer
-            .row.align-items-center
-              //-.col-auto
-                a.ml-2(href='#tabs-healthcare', data-toggle='view') Details
-              .col-auto
-                .justify-content-end
-                    a.btn.btn-primary(href='#', id="register-healthcare")
-                      i.fe.fe-check-square.mr-2
-                      | Register now
-                //-a(href='#' id='register-healthcare') Register now
 
-      .col-12.col-lg-4.order-3
+      router-link(to='/community').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Card top image')
           .card-body
             h3.card-title Public Officials
             p
                 | Use our smart contact tracing platform to get customized, deep insight into the local dynamics of the epidemic and provide instant, individualized guidance to community members.
-          .card-footer
-            .row.align-items-center
-              .col-auto
-                .justify-content-end
-                    a.btn.btn-primary(href='/assets/docs/official_package_24.pdf', id="register-healthcare")
-                      i.fe.fe-check-square.mr-2
-                      | View our official release
-                //- a(href='/assets/docs/official_package_24.pdf', target='_blank') View our official release

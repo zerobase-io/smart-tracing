@@ -192,6 +192,11 @@ position: relative;
   cursor: pointer
 }
 
+a:hover i,
+a,
+i {
+  text-decoration: none !important;
+}
 
 /*
 ===============================================mobile controller===============================================
