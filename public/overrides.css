@@ -192,6 +192,7 @@ position: relative;
   cursor: pointer
 }
 
+
 /*
 ===============================================mobile controller===============================================
 */
@@ -201,5 +202,14 @@ position: relative;
   }
   .navbar-mobile {
     padding: 0px;
+  }
+  .forScreen{
+  display: none;
+  }
+}
+
+@media only screen and (min-device-width:750px) {
+  .forScreen {
+    display:block;
   }
 }
