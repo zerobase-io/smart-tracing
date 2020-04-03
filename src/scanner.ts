@@ -1,8 +1,4 @@
 const scanning = (() => {
-  //const video =         document.createElement('video');
-  // const canvasElement = document.getElementById('canvas') as HTMLCanvasElement;
-  // const canvas =        canvasElement.getContext('2d') as CanvasRenderingContext2D;
-  // const sound =         new Howl({ src: ['/assets/audio/beep.mp3'] });
   let requestId: number | undefined;
   return {
     //video: document.createElement('video'),
