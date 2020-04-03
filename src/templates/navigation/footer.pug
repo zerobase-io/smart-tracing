@@ -42,7 +42,7 @@ footer#footer-main.position-relative
           h6.heading.mb-3 Information For
           ul.list-unstyled
             li
-              router-link(to='/individual') Individual
+              router-link(to='/individual') Individuals
             li
               router-link(to='/businesses') Locations
             li
@@ -57,18 +57,8 @@ footer#footer-main.position-relative
             li
               router-link(to='/contact') Contact Us
             li
-              router-link(to='/privacy-policy') Privacy & Cookie Policy
-
-        .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
-          h6.heading.mb-3 Alys Rows
-          ul.list-unstyled
-
-            li
               router-link(to='/feedback') Feedback
-            li
-              router-link(to='/individual-aly') Individual
-            li
-              router-link(to='/community') Community
+
 
 
       hr.divider.divider-fade.divider-dark.my-4
@@ -81,8 +71,8 @@ footer#footer-main.position-relative
         .col-md-6
           ul.nav.justify-content-center.justify-content-md-end.mt-3.mt-md-0
             li.nav-item
-              a.nav-link(href='https://github.com/zerobase-io/smart-tracing/wiki', target='_blank') Terms
+              a.nav-link(href='/terms', target='_blank') Terms
             li.nav-item
-              router-link.nav-link(to='/privacy-policy') Privacy
-            li.nav-item
+              router-link.nav-link(to='/privacy-policy') Privacy & Cookies Policy
+            //-li.nav-item
               router-link.nav-link(to='/privacy-policy') Cookies
