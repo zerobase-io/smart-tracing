@@ -1,29 +1,26 @@
 .content.m-0.p-0.w-100
-  .container-fluid.w-100.p-0.mb-8
+  .container-fluid.w-100.p-0.mb-2.mb-md-6
     .row
        .col-12
           .card.mb-0
-            img.card-img(src='/assets/img/info/ZB_containers_testing.jpg', alt='Card image' style="filter:brightness(70%)")
-            //-.card-img-overlay.text-center.d-flex.align-items-center
-              .container
-                 h1.text-white(style="font-size:300%;") Businesses and Public Locations
+            .hero-img-height.hero-img-cover(style='background-image: url(/assets/img/info/ZB_containers_testing.jpg); filter:brightness(70%)', alt='Card image')
   .container
-    .media-container-row
-      .title.col-12.col-md-8
+    .row.m-2.mb-6
+      .title.col-12.col-md-6
         h2.align-center.pb-3.mbr-fonts-style.display-2
           | Healthcare and Testing Sites
         h3.mbr-section-subtitle.align-center.mbr-light.mbr-fonts-style.display-5
           | Support your community in the fight against COVID-19.
 
-    .row.m-4.mt-7.mb-5
-        .col-lg-6.col-12.pr-lg-5
-          p.h1.lh-180.mb-3(style="font-size:30px;")
-            | Zerobase is a free, HIPAA/GDPR-compliant contact tracing platform that helps healthcare providers, local officials, and individuals contain and eliminate COVID-19.
-        .col-lg-6.col-12
-          p.lead.lh-180(style="font-size:24px;")
-            | Providers who administer COVID-19 tests can deploy Zerobase with nothing more than paper printouts.
-          p.lead.lh-180(style="font-size:24px;")
-            | Because of this, Zerobase can be used at any freestanding, mobile, and temporary testing site.
+    .row.m-2.mb-md-5
+      .col-lg-6.col-12.pr-lg-5
+        p.h1.lh-180.mb-3(style="font-size:30px;")
+          | Zerobase is a free, HIPAA/GDPR-compliant contact tracing platform that helps healthcare providers, local officials, and individuals contain and eliminate COVID-19.
+      .col-lg-6.col-12
+        p.lead.lh-180(style="font-size:24px;")
+          | Providers who administer COVID-19 tests can deploy Zerobase with nothing more than paper printouts.
+        p.lead.lh-180(style="font-size:24px;")
+          | Because of this, Zerobase can be used at any freestanding, mobile, and temporary testing site.
 
     .container
       .media-container-row.mt-6
@@ -109,8 +106,8 @@
 
             .col-lg-4.col-12.align-middle.mt-6
 
-                a.btn.btn-primary.btn-lg.align-middle(href='#', id="register-healthcare")
-                    | Register your site
+                router-link.btn.btn-primary.btn-lg.align-middle(to='/healthcare/register') 
+                  | Register your site
 
 
 

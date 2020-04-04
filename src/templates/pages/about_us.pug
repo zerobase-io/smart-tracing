@@ -1,53 +1,40 @@
 .content.m-0.p-0.w-100
-  .container-fluid.w-100.p-0.mb-8
+  .container-fluid.w-100.p-0.mb-2.mb-md-6
     .row
        .col-12
           .card.mb-0
-              img.card-img(src='/assets/img/info/ZBHero_Mission.jpg', alt='Card image')
-              .card-img-overlay.text-center.d-flex.align-items-center
-                .container
-                  //-h1.text-white Everything You Need To Know About Zerobase
-
+            .hero-img-height.hero-img-cover(style='background-image: url(/assets/img/info/ZBHero_Mission.jpg); filter:brightness(70%)', alt='Our Mission')
   .container
     .row.m-2
       .col-12(style="margin: 0 auto;")
         .card(style="border:none; background-color:").shadow-none
           .card-body.shadow-none
             .row.align-items-center
-              .col-lg-12.d-flex.justify-content-center
+              .col-lg-12.d-flex.justify-content-center.text-center
                 h1 Everything You Need To Know About
 
             .row.align-items-center
-              .col-lg-12.d-flex.justify-content-center
-                img.w-50(src="/assets/img/info/ZerobaseLogo_light.png")
+              .col-lg-12.text-center
+                img(src="/assets/img/info/ZerobaseLogo_light.png" style="width:50%")
 
-
-    .row.m-4.mt-7.mb-5
+    .row.m-4.mb-6
         .col-lg-6.col-12.pr-lg-5
           p.h1.lh-180.mb-3
-            | Zerobase is a free, privacy-first contact tracing platform that empowers both individuals and local officials to stop the spread of COVID-19.
+            | Zerobase is a free, privacy first contact tracing platform that empowers both individuals and local officials to stop the spread of COVID-19.
         .col-lg-6.col-12
           p.lead.lh-180
             | Contact tracing is the identification of likely disease-spreading interaction between individuals－it is a crucial part of modern pandemic response.
           p.lead.lh-180
             | Zerobase enables local communities to establish their first line of defense against COVID-19 outbreaks in a way that is private, easy to use, and helps to alleviate the manual issues involved in contact tracing and individualized testing.
           a.btn.btn-outline-dark.font-weight-normal(href='https://www.who.int/features/qa/contact-tracing/en/' role="button" style="border-color: #65C6E1; color:#65C6E1") More about contact tracing
-    br
-    br
-
 
     .row.m-4.p-5.mt-5.border-top.border-secondary.pb-4.pt-4
         .col-12.col-lg-12.pr-lg-5.mt-6
             p.h1.lh-180.mb-3.font-weight-normal
                | We built Zerobase to help real people
-
-
-
-
-
-    .row
+    .row.m-4
         .col-lg-4.col-12.text-center.mb-2
-           img.w-50.mt-3.mb-3.card-img(src='/assets/img/earth.png', alt='Card image', style="opacity:0.7; transform:rotate(15deg)")
+           img.w-75.mt-3.mb-3.card-img(src='/assets/img/earth.png', alt='Zerobase Shield')
         .col-12.col-lg-8
             .row
                 .col-12
@@ -123,15 +110,13 @@
                         strong Public health officials can identify
                         |   the community touchpoints through which the virus seems to be spreading most rapidly. They can also notify the individuals who may have been exposed and advise them to self-quarantine, even before they exhibit symptoms.
 
+    hr
+    .row.m-4.p-5.mt-5.pb-4.pt-4
 
-
-
-
-    .row.m-4.p-5.mt-5.border-top.border-secondary.pb-4.pt-4
         .col-12.col-lg-12.pr-lg-5.mt-6
             p.h1.lh-180.mb-1.font-weight-normal.text-align-center
                | FAQs
-    .row.justify-content-between.mb-5
+    .row.m-4.justify-content-between.mb-5
       .col-lg-3.col-md-12.col-12.text-lg-right
         h4.m-0 Can’t large companies do this at scale with their location history?
 
@@ -151,9 +136,7 @@
             |
             |Community adoption and trustworthiness have been key design criteria since Zerobase’s inception. We believe in “Big Data without Big Brother.”
 
-    br
-    br
-    .row.justify-content-between.mb-5
+    .row.m-4.justify-content-between.mb-5
       .col-lg-3.col-md-12.col-12.text-lg-right
         h4.mb-0 What information is collected
         h4.mb-4 by Zerobase?
@@ -163,68 +146,13 @@
             | To read more about how we put your privacy first, click
             router-link.text-wrap(to='/privacy-policy')     here.
 
-
-    br
-    br
-
-    .row.justify-content-between.mb-5
+    .row.m-4.justify-content-between.mb-5
       .col-lg-3.col-md-12.col-12.text-lg-right
         h4.mb-4 What is required to use Zerobase in your community?
       .col-lg-8.col-md-12.col-12.
          p
             | A computer and a printer are all that is required for businesses, public locations, and healthcare providers to activate Zerobase. Individual community members only need a smartphone.
     hr
-
-    br
-    br
-    br
-    .row.align-items-center
-       .col-lg-12.d-flex.justify-content-center
+    .row.m-4.align-items-center
+       .col-lg-12.text-center
           h2 For press inquiries, please contact press@zerobase.io
-    .row.justify-content-between
-      .col-lg-3.text-lg-right.mt-8
-        //-h4.mb-4 Register
-
-  //-.col-lg-8
-        .card.mb-0
-          .card-body.p-lg-5
-            form
-              .row
-                .col-md-6
-                  .form-group
-                    label.form-control-label First name
-                    input.form-control(type='text' placeholder='Enter your first name')
-                .col-md-6
-                  .form-group
-                    label.form-control-label Last name
-                    input.form-control(type='text' placeholder='Also your last name')
-              .row.align-items-center
-                .col-md-6
-                  .form-group
-                    label.form-control-label Email
-                    input.form-control(type='text' placeholder='Address, Number')
-                .col-md-6
-                  .form-group
-                    label.form-control-label Online resume
-                    input.form-control(type='text' placeholder='Linkedin username')
-              .row
-                .col-md-6
-                  .form-group
-                    label.form-control-label Resume/CV
-                    div
-                      input#file-1.custom-input-file.custom-input-file-link(type='file' name='file-1[]' data-multiple-caption='{count} files selected')
-                      label(for='file-1')
-                        span Attach your file
-                .col-md-6
-                  .form-group
-                    label.form-control-label Cover letter
-                    div
-                      input#file-2.custom-input-file.custom-input-file-link(type='file' name='file-1[]' data-multiple-caption='{count} files selected')
-                      label(for='file-2')
-                        span Attach your file
-              .row
-                .col-md-12
-                  .form-group
-                    textarea.form-control(placeholder='Where do you see yourself in years?' rows='3')
-              .mt-4
-                button.btn.btn-primary(type='button') Submit your application

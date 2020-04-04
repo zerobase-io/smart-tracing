@@ -1,24 +1,22 @@
 .content.m-0.p-0.w-100
-  .container-fluid.w-100.p-0.mb-8
+  .container-fluid.w-100.p-0.mb-2.mb-md-6
     .row
        .col-12
           .card.mb-0
-            img.card-img(src='/assets/img/info/ZB_containers_location.jpg', alt='Card image' style="filter:brightness(70%)")
-            //-.card-img-overlay.text-center.d-flex.align-items-center
-              .container
-                 h1.text-white(style="font-size:300%;") Businesses and Public Locations
+            .hero-img-height.hero-img-cover(style='background-image: url(/assets/img/info/ZB_containers_location.jpg); filter:brightness(70%)')
+  
   .container
-    .media-container-row
+    .row.m-2.mb-6
       .title.col-12.col-md-8
         h2.align-center.pb-3.mbr-fonts-style.display-2
           | Businesses and Public Locations
         h3.mbr-section-subtitle.align-center.mbr-light.mbr-fonts-style.display-5
           | Lead your community in the fight against COVID-19.
 
-    .row.m-4.mt-7.mb-5
+    .row.m-2.mb-md-5
         .col-lg-6.col-12.pr-lg-5
           p.h1.lh-180.mb-3(style="font-size:36px;")
-            | Zerobase is a free, privacy-first contact tracing platform that empowers both individuals and local officials to stop the spread of COVID-19.
+            | Zerobase is a free, privacy first contact tracing platform that empowers both individuals and local officials to stop the spread of COVID-19.
         .col-lg-6.col-12
           p.lead.lh-180(style="font-size:24px;")
             | Zerobase anonymously monitors the spread of the virus and warns exposed individuals to stay at home and avoid infecting other members of the community.
@@ -81,9 +79,8 @@
                    |Zerobase is free, it’s ready, and it saves lives.
 
             .col-lg-4.col-12.align-middle.mt-6
-
-                a.btn.btn-primary.btn-lg.align-middle(href='#', id="register-business")
-                    | Enroll in under a minute
+                router-link.btn.btn-primary.btn-lg.align-middle(to='/business/register') 
+                  | Enroll in under a minute
 
 
 

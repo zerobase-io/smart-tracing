@@ -79,7 +79,7 @@ $(() => {
 
         console.log(from);
         console.log('No Conditions Met');
-        controller.init();
+        //controller.init();
         next();
       }
     },
