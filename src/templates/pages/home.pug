@@ -3,7 +3,7 @@
     .row(style='padding:0;')
       .col-12
         .card.mb-0
-          .hero-img-height.hero-img-cover(style='background-image: url(/assets/img/QR_Codes_Main_ZB_dark.jpg); filter:brightness(70%);')
+          .hero-img-height.hero-img-cover(style='background-image: url(/assets/img/QR_Codes_Main_ZB_dark.jpg); filter:brightness(70%);', alt='Phone scanning Zerobase QR code.')
           .card-img-overlay.text-center.d-flex.align-items-center
             .container
               h1.text-white Help Your Community End Coronavirus
@@ -18,7 +18,7 @@
           .card-body
             .row.row-sm.align-items-center.shadow-none
               .col-lg-4.col-12.text-center
-                img.w-50(src="/assets/img/ZerobaseLogo_icon.png")
+                img.w-50(src="/assets/img/ZerobaseLogo_icon.png", alt='Zerobase Logo')
                 //-span.avatar.avatar-xl.rounded.mr-5(style='background-image: url(/assets/img/ZerobaseLogo_icon.png); background-color:white;')
               .col-lg-8.col-12
                 h1 Our Mission
@@ -28,7 +28,7 @@
     .row.mt-0.mt-md-4
       router-link(to='/businesses').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
-          img.card-img-top(src='/assets/img/info/ZB_containers_location.jpg', alt='Location Image')
+          img.card-img-top(src='/assets/img/info/ZB_containers_location.jpg', alt='Man putting open sign in window.')
           .card-body
             h3.card-title Business and Public Locations
             p
@@ -37,7 +37,7 @@
 
       router-link(to='/testing').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
-          img.card-img-top(src='/assets/img/info/ZB_containers_testing.jpg', alt='Card top image')
+          img.card-img-top(src='/assets/img/info/ZB_containers_testing.jpg', alt='Nurse with clip board talking to patient.')
           .card-body
             h3.card-title Testing Centers
             p
@@ -45,7 +45,7 @@
 
       router-link(to='/community').col-12.col-lg-4.order-1.d-flex.align-items-stretch(style="color:black")
         .card.hover-translate-y-n10.hover-shadow-lg
-          img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Card top image')
+          img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Woman at podium speaking to audience.')
           .card-body
             h3.card-title Public Officials
             p
