@@ -93,6 +93,20 @@ footer a:hover{
   .navbar-secondary-blue {
     background: #63c6e1;
   }
+  .navbar-secondary-blue .navbar-toggler {
+    color: rgba(0,0,0,1);
+    border-color: #63c6e1;
+  }
+  .navbar-secondary-blue .navbar-nav .nav-link {
+    color: rgba(0,0,0,1);
+    font-weight: 800;
+    border: solid 1px #4a91a5;
+    border-width: 1px 0px 0px 0px;
+  }
+  .navbar-secondary-blue .navbar-nav .nav-item:last-child .nav-link{
+    background: #000000;
+    color: white;
+  }
 }
 
 
