@@ -20,6 +20,8 @@ $(() => {
     { path: '/feedback',            component: { template: window.puglatizer.pages.feedback()}},
     { path: '/contact',             component: { template: window.puglatizer.pages.contact()}},
 
+
+
     //- special routes-------------------------------------------------------------//
     { path: '/business/register',   
       component: { 
