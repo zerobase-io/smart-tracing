@@ -13,7 +13,7 @@ const transpileToJavascript = () =>
         reject(err);
       }
       const tsConfig = fs.readFileSync(__dirname + '/tsconfig.json');
-      const program = ts.createProgram(['src/controller.ts','src/scanner.ts','src/inputMask.ts','src/router.ts'], JSON.parse(tsConfig).compilerOptions);
+      const program = ts.createProgram(['src/controller.ts','src/scanner.ts','src/addressVal.ts', 'src/phoneVal.ts','src/router.ts'], JSON.parse(tsConfig).compilerOptions);
 
       program.emit(undefined, (fileName, data) => {
         // hack to remove exports definition which breaks the build
@@ -80,7 +80,7 @@ const minifyJs = compressor => {
           __dirname + '/public/vendor/slick/slick.min.js',
           __dirname + '/public/vendor/fingerprint/fingerprint2.js',
           __dirname + '/public/vendor/imask/dist/imask.min-1582732176.js',
-          //-__dirname + '/public/vendor/intl-tel-input/js/intlTelInput.min.js',
+          __dirname + '/public/vendor/intl-tel-input/js/intlTelInput.min.js',
           __dirname + '/public/assets/js/tabler.min-1582732176.js',
           __dirname + '/public/templates.js',
           __dirname + '/public/controller.min.js',
@@ -122,7 +122,7 @@ const minifyCss = () => {
       __dirname + '/public/assets/css/tabler-buttons.min-1582732176.css',
       __dirname + '/public/assets/css/demo.min-1582732176.css',
       __dirname + '/public/vendor/scan-animation/style.css',
-      //-__dirname + '/public/vendor/intl-tel-input/css/intlTelInput.min.css',
+      __dirname + '/public/vendor/intl-tel-input/css/intlTelInput.min.css',
       __dirname + '/public/vendor/slick/slick.css',
       __dirname + '/public/vendor/slick/slick.css',
       __dirname + '/public/vendor/slick/slick-theme.css',

@@ -39,6 +39,15 @@ footer#footer-main.position-relative
             //-   a.nav-link(href='https://www.facebook.com/webpixels', target='_blank')
             //-     i.fe.fe-facebook
         .col-lg-2.col-6.col-sm-4.ml-lg-auto.mb-5.mb-lg-0
+          h6.heading.mb-3 Register
+          ul.list-unstyled
+            li
+              router-link(to='/business/register') As a Business
+            li
+              router-link(to='/healthcare/register') As a Healthcare Provider
+            li
+              router-link(to='/healthcare/register') As a Testing Facility
+        .col-lg-2.col-6.col-sm-4.ml-lg-auto.mb-5.mb-lg-0
           h6.heading.mb-3 Information For
           ul.list-unstyled
             li
@@ -46,7 +55,7 @@ footer#footer-main.position-relative
             li
               router-link(to='/businesses') Businesses & Locations
             li
-              router-link(to='/healthcare') Testing Facilities
+              router-link(to='/testing') Testing Facilities
             li
               router-link(to='/community') Community
         .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0

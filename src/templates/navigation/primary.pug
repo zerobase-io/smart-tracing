@@ -1,20 +1,24 @@
-nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
-  .container.navbar-mobile
-    .navbar-collapse
-      h6.navbar-heading Navigation
-      ul.nav.nav-tabs(data-toggle='tabs')
-        li.nav-item
+nav#navbar-primary.navbar.navbar-expand-sm.navbar-light.navbar-secondary-blue.navbar-primary.py-2
+  //-.container.navbar-mobile
+  .container
+    .d-block.d-sm-none.small Privacy First Contact Tracing
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+      i.fe.fe-menu.mr-2
+      | Menu
+    .collapse.navbar-collapse(id="navbarNav")
+      ul.nav.nav-tabs.navbar-nav
+        li.nav-item.w-md-100
           router-link.nav-link(to='/') Home
-        li.nav-item.dropdown
+        li.nav-item.dropdown.w-md-100
           a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Uses
           .dropdown-menu
             router-link.dropdown-item(to='/individual') Individuals
             router-link.dropdown-item(to='/community') Community Officials
             router-link.dropdown-item(to='/businesses') Business or Public Locations
             router-link.dropdown-item(to='/testing') Healthcare Testing Sites
-        li.nav-item
+        li.nav-item.w-md-100
           router-link.nav-link(to='/about') About
-        li.nav-item
+        li.nav-item.w-md-100
           router-link.nav-link(to='/privacy') Privacy
-        li.nav-item
+        li.nav-item.w-md-100
           router-link.nav-link(to='/contact') Contact Us

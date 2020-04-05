@@ -19,10 +19,26 @@ $(() => {
     { path: '/terms',        component: { template: window.puglatizer.pages.terms()}},
     { path: '/feedback',            component: { template: window.puglatizer.pages.feedback()}},
     { path: '/contact',             component: { template: window.puglatizer.pages.contact()}},
-    { path: '/business/register',   component: { template: window.puglatizer.pages.business_register()}},
-    { path: '/healthcare/register', component: { template: window.puglatizer.pages.healthcare_register()}},
 
     //- special routes-------------------------------------------------------------//
+    { path: '/business/register',   
+      component: { 
+        template: window.puglatizer.pages.business_register(),
+        mounted(){
+          addressVal.init('#business','#business-addr');
+          phoneVal.init('#business-phone');
+        }
+      }
+    },
+    { path: '/healthcare/register', 
+      component: { 
+        template: window.puglatizer.pages.healthcare_register(),
+        mounted(){
+          addressVal.init('#healthcare','#healthcare-addr');
+          phoneVal.init('#healthcare-phone');
+        }
+      }
+    },
     { path: '/s/*', 
       component: { template: window.puglatizer.pages.home()},
       beforeEnter: (to, from, next) => {
@@ -130,12 +146,13 @@ $(() => {
 
   // Modals --------------------------------------------------//
 
-  $('body').on('click', '#register-healthcare', () => {
-    $('#modal-register-healthcare').modal('show');
-  });
-  $('body').on('click', '#register-business', () => {
-    $('#modal-register-business').modal('show');
-  });
+  // $('body').on('click', '#register-healthcare', () => {
+  //   $('#modal-register-healthcare').modal('show');
+  // });
+  // $('body').on('click', '#register-business', () => {
+  //   $('#modal-register-business').modal('show');
+  // });
+  
   $('body').on('click', '#privacy-policy', () => {
     console.log('show policy');
     $('#modal-privacy-policy').modal('show');
@@ -143,6 +160,23 @@ $(() => {
   $('body').on('click', '#show-registration', () => {
     $('#modal-register-notice').modal('show');
   });
+
+  // Form Handlers (Need refactor) --------------------------------------------------//
+
+    // Input Mask
+  const maskElementList: {
+    dataset: { mask: any; 'mask-visible': string };
+    }[] = [].slice.call(document.querySelectorAll('[data-mask]'));
+    maskElementList.map(maskEl => {
+      console.log('maskEl', maskEl);
+
+    // @ts-ignore
+    return IMask(maskEl, {
+      mask: maskEl.dataset.mask,
+      lazy: maskEl.dataset['mask-visible'] === 'true',
+    });
+  });
+
 
   // Forms (Need refactor) --------------------------------------------------//
 
@@ -154,7 +188,8 @@ $(() => {
     $(e.currentTarget).serializeArray().map((entry) => {
       formElements[entry['name']] = entry['value']
     });
-    formElements['modal_id'] = '#modal-register-business';
+    //formElements['modal_id'] = '#modal-register-business';
+    formElements['modal_id'] = '#body-business-register';
     formElements['button_id'] = '#submit-business';
     formElements['hasTestingFacilities'] = false;
     console.log(formElements);
@@ -168,7 +203,8 @@ $(() => {
     $(e.currentTarget).serializeArray().map((entry) => {
       formElements[entry['name']] = entry['value']
     });
-    formElements['modal_id'] = '#modal-register-healthcare';
+    //formElements['modal_id'] = '#modal-register-healthcare';
+    formElements['modal_id'] = '#body-healthcare-register';
     formElements['button_id'] = '#submit-healthcare';
     formElements['hasTestingFacilities'] = formElements['hasTestingFacilities'] =='on' ? true : false;
     console.log(formElements);

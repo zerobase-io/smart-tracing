@@ -117,20 +117,48 @@ const controller = (() => ({
     jQuery.ajax(opts);
   },
   submit_organization: (
-    inputs: { modal_id?: string; button_id?: string; org_name?: string; email?: string; phone?: string; contact_name?: string; address?: string; type?: string; hasTestingFacilities?: boolean; } | undefined,
+    inputs: { 
+      modal_id?:     string; 
+      button_id?:    string; 
+
+      org_name?:     string; 
+      email?:        string; 
+      phone?:        string; 
+      contact_name?: string; 
+
+      // Address
+      premise?:            string;
+      thoroughfare?:       string;
+      locality?:           string;
+      administrativeArea?: string;
+      postalCode?:         string;
+      country?:            string;
+
+      type?:  string; 
+      hasTestingFacilities?: boolean; 
+
+    } | undefined,
   ) => {
 
     const postData = JSON.stringify({
       name: inputs != null ? inputs.org_name : undefined,
       contactInfo: {
-        phone: inputs != null ? inputs.phone : undefined,
-        email: inputs != null ? inputs.email : undefined,
+        phone:       inputs != null ? inputs.phone : undefined,
+        email:       inputs != null ? inputs.email : undefined,
         contactName: inputs != null ? inputs.contact_name : undefined
       },
-      address: inputs != null ? inputs.address : undefined,
+      address: {
+        premise:            inputs != null ? inputs.premise            : undefined,
+        thoroughfare:       inputs != null ? inputs.thoroughfare       : undefined,
+        locality:           inputs != null ? inputs.locality           : undefined,
+        administrativeArea: inputs != null ? inputs.administrativeArea : undefined,
+        postalCode:         inputs != null ? inputs.postalCode         : undefined,
+        country:            inputs != null ? inputs.country            : undefined
+      },
       hasMultipleSites: false,
       hasTestingFacilities: inputs != null ? inputs.hasTestingFacilities : undefined
     });
+
     console.log(postData);
     const opts: JQuery.AjaxSettings = {
       url: `${API_HOST}/organizations/`,
@@ -142,6 +170,61 @@ const controller = (() => ({
       type: 'POST',
       success: (data: { id: string }) => {
         console.log('Org ID Created:', data.id);
+        console.log(inputs.modal_id, inputs.button_id, data.id, inputs.org_name, inputs.hasTestingFacilities, inputs.email, inputs.phone, inputs.contact_name, inputs.type);
+        
+        controller.submit_site(inputs.modal_id, inputs.button_id, data.id, inputs.org_name, inputs.hasTestingFacilities, inputs.email, inputs.phone, inputs.contact_name, inputs.type)
+        
+      },
+      error: err => {
+        console.log(err);
+        $(inputs.button_id).removeClass('btn-loading');
+        $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
+      },
+    };
+    jQuery.ajax(opts);
+  },
+  submit_site: (
+    inputs: { 
+      modal_id?:     string; 
+      button_id?:    string; 
+      org_id?:       string;
+
+      org_name?:     string;
+
+      isTesting?:    boolean; 
+
+      email?:        string; 
+      phone?:        string; 
+      contact_name?: string; 
+
+      category?:     string; 
+
+    } | undefined,
+  ) => {
+    const postData = JSON.stringify({
+      name:          inputs != null ? inputs.org_name :     undefined,
+      isTesting:     inputs != null ? inputs.isTesting :    undefined,
+      siteManagerContactInfo: {
+        phone:       inputs != null ? inputs.phone :        undefined,
+        email:       inputs != null ? inputs.email :        undefined,
+        contactName: inputs != null ? inputs.contact_name : undefined
+      },
+      category:      inputs != null ? inputs.category :     undefined,
+      //-subcategory:   inputs != null ? inputs.subcategory :  undefined
+    });
+
+    console.log(postData);
+    const opts: JQuery.AjaxSettings = {
+      url: `${API_HOST}/organizations/`+org_id+'/sites',
+      data: postData,
+      cache: false,
+      dataType: 'json',
+      contentType: 'application/json',
+      processData: false,
+      type: 'POST',
+      success: (data: { id: string }) => {
+
+        console.log('Site ID Created:', data.id);
         $(inputs.button_id).removeClass('btn-loading');
         $(inputs.modal_id).find('.alert-warning').addClass('d-none');
         $(inputs.modal_id).find('.alert-success a').attr('href', 'https://'+inputs.email.split('@')[1]).attr("target","_blank");
@@ -153,13 +236,12 @@ const controller = (() => ({
         console.log(err);
         $(inputs.button_id).removeClass('btn-loading');
         $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
-        console.log('WARNING')
 
-        // TODO
       },
     };
     jQuery.ajax(opts);
   },
+
   // createAlt: (inputs: { ip?: string; fingerprint?: string } | undefined) => {
   //   const dvid = localStorage.getItem('dvid');
 
