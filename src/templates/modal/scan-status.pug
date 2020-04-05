@@ -34,6 +34,20 @@
           .alert.alert-success.text-left.mt-4(role='alert')
             i.fe.fe-info.mr-2
             | You've successfully scanned a Zerobase ID. Please show this message to the accepting party if they require it.
+          .alert.alert-warning.text-left.d-none.mt-4(role='alert', id='notify-warning')
+            i.fe.fe-alert-triangle.mr-2
+            | Please accept the privacy policy and enter a valid phone number
+          .alert.alert-success.text-left.d-none.mt-4(role='alert', id='notify-success')
+            i.fe.fe-check.mr-2
+            | You are now registered for alerts.
+          .input-group.mb-0.mt-4
+            //- .input-group-prepend
+            span.input-group-text
+              input.form-check-input.m-0(type='checkbox', id='notify-agree')
+              a.ml-2.text-blue(id="privacy-policy") Privacy Policy
+            input.form-control(id='notify-phone' type='text', name='input-mask', data-mask='+0 (000) 000-0000', data-mask-visible='true', placeholder='+0 (000) 000-0000', autocomplete='off')
+          a.btn.btn-primary.btn-block.mt-0(href='#', id="notify-submit" style="border-radius: 0px 0px 3px 3px;")
+            | Keep me notified
           a.btn.btn-secondary.btn-block.mt-4(href='/')
             | Continue to Zerobase
           svg#scan-notice-barcode-id(style="width:100%;")

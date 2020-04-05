@@ -18,7 +18,7 @@ declare module QRCode {
     Q,
     H,
   }
-}
+} 
 
 interface QRCodeOption {
   text?: string;

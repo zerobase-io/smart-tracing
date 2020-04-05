@@ -8,7 +8,7 @@ const inquirer = require('inquirer');
 const _ = require('lodash');
 
 const apiHosts = {
-  Staging: 'https://zerobase-api-stage.herokuapp.com',
+  Staging: 'https://api.staging.zerobase.io',
   Local: 'http://localhost:9000',
 };
 

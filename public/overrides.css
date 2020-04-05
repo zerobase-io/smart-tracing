@@ -1,6 +1,10 @@
 /*Intl Phone Number Input ---------------*/
 
 .iti__flag {background-image: url("/vendor/intl-tel-input/img/flags.png");}
+.iti {width: 100%;}
+.input-icon .form-control:not(:first-child) {
+  padding-left: 3.5rem;
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .iti__flag {background-image: url("/vendor/intl-tel-input/img/flags@2x.png");}
@@ -9,7 +13,7 @@
 /* Hero Image -------------------------*/
 
 .hero-img-height {
-  height: 20rem;
+  height: 24rem;
   background: #e9ecef;
 }
 .hero-img-cover {
@@ -18,7 +22,7 @@
 }
 @media only screen and (max-device-width:750px) {
   .hero-img-height {
-    height: 13rem;
+    height: 14rem;
   }
 }
 
@@ -84,6 +88,13 @@ footer a:hover{
 .nav-tabs .nav-link.active {
   border-bottom-color: #2a3742;
 }
+
+@media only screen and (max-device-width:750px) {
+  .navbar-secondary-blue {
+    background: #63c6e1;
+  }
+}
+
 
 .navbar-dark {
   background: #2a3742;
@@ -241,6 +252,12 @@ i {
   }
   .forScreen{
   display: none;
+  }
+  .w-md-100 {
+    width: 100% !important;
+  }
+  .navbar:not(.navbar-vertical) .dropdown-menu {
+    margin-right: 0rem;
   }
 }
 

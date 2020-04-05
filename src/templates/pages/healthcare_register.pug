@@ -1,7 +1,7 @@
 .content
   .container(style='padding:0;')
     .card
-      .card-body
+      .card-body#body-healthcare-register
         h3.mb-5 Register your healthcare organization
         .alert.alert-warning.d-none(role='alert')
           | Some of your information could not be verified, please try again
@@ -16,7 +16,15 @@
               label.form-label Organization Name
                 input.form-control(type='text', name='org_name', placeholder='Organization name', required)
               .input-icon.mb-2
-                input.form-control(type='text', name='address', placeholder='Facility address', required)
+                input.form-control(type='text', name='org_place', placeholder='Type and select location', id="healthcare-addr", autocomplete="off", autocorrect="off", autocapitalize="none", spellcheck="false", required)
+
+                input(type='hidden', name='premise',            id="healthcare-premise")
+                input(type='hidden', name='thoroughfare',       id="healthcare-thoroughfare")
+                input(type='hidden', name='locality',           id="healthcare-locality")
+                input(type='hidden', name='administrativeArea', id="healthcare-administrativeArea")
+                input(type='hidden', name='postalCode',         id="healthcare-postalCode")
+                input(type='hidden', name='country',            id="healthcare-country")
+
               label.form-label Facility Type
               .mb-2
                 select.form-select.healthcare-type(name='type')
@@ -34,7 +42,7 @@
               .input-icon.mb-2
                 input.form-control(type='email', name='email', placeholder='Email address', required)
               .input-icon.mb-2
-                input.form-control(type='tel', name='phone', placeholder='Phone number', required)
+                input.form-control(type='tel', name='phone', placeholder='Phone number', id='healthcare-phone', required)
               .form-footer
                 button.btn.btn-primary.btn-block(type="submit", id="submit-healthcare") Generate your codes
           .col-12.col-md-5
