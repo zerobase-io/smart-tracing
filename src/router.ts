@@ -16,9 +16,9 @@ $(() => {
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
     { path: '/privacy',        component: { template: window.puglatizer.pages.privacy_landing()}},
-    { path: '/terms',        component: { template: window.puglatizer.pages.terms()}},
-    { path: '/feedback',            component: { template: window.puglatizer.pages.feedback()}},
-    { path: '/contact',             component: { template: window.puglatizer.pages.contact()}},
+    { path: '/terms',          component: { template: window.puglatizer.pages.terms()}},
+    { path: '/feedback',       component: { template: window.puglatizer.pages.feedback()}},
+    { path: '/contact',        component: { template: window.puglatizer.pages.contact()}},
 
 
 
@@ -130,10 +130,7 @@ $(() => {
               router.push('/').catch(err => {})
             });
           });
-        },
-        // beforeDestroy(){
-          
-        // }
+        }
       }
     }
   ]

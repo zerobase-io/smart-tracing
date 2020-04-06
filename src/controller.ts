@@ -107,7 +107,7 @@ const controller = (() => ({
         $('#notify-warning').addClass('d-none');
         $('#notify-success').removeClass('d-none');
         $(inputs.button_id).removeClass('btn-loading');
-        $(inputs.button_id).replaceWith('<a class="btn btn-secondary btn-block mt-0" href="/" style="border-radius: 0px 0px 3px 3px;">Continue to Zerobase</a>')
+        $(inputs.button_id).replaceWith('<a class="btn btn-secondary btn-block mt-0" href="/" style="border-radius: 0px 0px 3px 3px;">Continue to Zerobase</a>');
         
       },
       error: err => {
@@ -264,8 +264,7 @@ const controller = (() => ({
         $(inputs.modal_id).find('.alert-warning').addClass('d-none');
         $(inputs.modal_id).find('.alert-success a').attr('href', 'https://'+emailDomain).attr("target","_blank");
         $(inputs.modal_id).find('.alert-success').removeClass('d-none');
-        $(inputs.button_id)
-          .replaceWith('<a href="https://'+emailDomain+'", target="_blank", class="btn btn-secondary btn-block">Check your email</a>');
+        $(inputs.button_id).replaceWith('<a href="https://'+emailDomain+'", target="_blank", class="btn btn-secondary btn-block">Check your email</a>');
         
       },
       error: err => {
@@ -355,7 +354,7 @@ const controller = (() => ({
       type: 'DEVICE_TO_SCANNABLE',
       location: {
         lat: 0,
-        long: 0,
+        long: 0
       }
       // fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
