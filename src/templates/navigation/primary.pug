@@ -8,17 +8,17 @@ nav#navbar-primary.navbar.navbar-expand-sm.navbar-light.navbar-secondary-blue.na
     .collapse.navbar-collapse(id="navbarNav")
       ul.nav.nav-tabs.navbar-nav
         li.nav-item.w-md-100
-          router-link.nav-link(to='/') Home
+          router-link.nav-link(to='/', id="nav-item-home") Home
         li.nav-item.dropdown.w-md-100
-          a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Uses
+          a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Use Cases
           .dropdown-menu
-            router-link.dropdown-item(to='/individual') Individuals
-            router-link.dropdown-item(to='/community') Community Officials
-            router-link.dropdown-item(to='/businesses') Business or Public Locations
-            router-link.dropdown-item(to='/testing') Healthcare Testing Sites
+            router-link.dropdown-item(to='/individual', id="nav-item-individuals") Individuals
+            router-link.dropdown-item(to='/community', id="nav-item-community") Community Officials
+            router-link.dropdown-item(to='/businesses', id="nav-item-business") Business or Public Locations
+            router-link.dropdown-item(to='/testing', id="nav-item-healthcare") Healthcare Testing Sites
         li.nav-item.w-md-100
-          router-link.nav-link(to='/about') About
+          router-link.nav-link(to='/about', id="nav-item-about") About
         li.nav-item.w-md-100
-          router-link.nav-link(to='/privacy') Privacy
+          router-link.nav-link(to='/privacy', id="nav-item-privacy") Privacy
         li.nav-item.w-md-100
-          router-link.nav-link(to='/contact') Contact Us
+          router-link.nav-link(to='/contact', id="nav-item-contact") Contact Us
