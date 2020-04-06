@@ -84,6 +84,7 @@ const controller = (() => ({
   ) => {
     const dvid = localStorage.getItem('dvid');
     const postData = JSON.stringify({
+      name:'',
       contact: {
         "phone": inputs.phone,
         "email": ''
@@ -351,7 +352,7 @@ const controller = (() => ({
       location: {lat:0, long:0}
       // fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
-    
+
     console.log('Scanning with: ', dvid);
     console.log(postData);
     const opts: JQuery.AjaxSettings = {
