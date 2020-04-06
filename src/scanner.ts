@@ -49,6 +49,7 @@ const scanning = (() => {
           if (codeAction === 's' && codeSdvid) {
             // @ts-ignore
             sound.play();
+            console.log(code.data);
             window.location.replace(code.data);
             return;
           }

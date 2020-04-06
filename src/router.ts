@@ -46,9 +46,11 @@ $(() => {
       beforeEnter: (to, from, next) => {
         const sdvid = to.params.pathMatch
         const dvid  = localStorage.getItem('dvid');
+        // fix for people who might have undefined in their localStorage
+        if(dvid === "undefined"){dvid = undefined}
         history.replaceState(null, null, '/');
 
-        if(sdvid){
+        if(sdvid && window.innerWidth < 750){
           if(dvid){
             console.log('Has registered ID on scan');
             $('#modal-scan-notice').modal('show');
@@ -128,7 +130,10 @@ $(() => {
               router.push('/').catch(err => {})
             });
           });
-        }
+        },
+        // beforeDestroy(){
+          
+        // }
       }
     }
   ]

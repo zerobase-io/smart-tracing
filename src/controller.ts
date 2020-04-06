@@ -54,9 +54,10 @@ const controller = (() => ({
       contentType: 'application/json',
       processData: false,
       type: 'POST',
-      success: (data: { id: object }) => {
-        console.log('Device ID Created:', data.id.value);
-        localStorage.setItem('dvid', String(data.id.value));
+      success: (data: { id: string }) => {
+        console.log(data);
+        console.log('Device ID Created:', data.id);
+        localStorage.setItem('dvid', data.id);
         $('#register-notice-agree').removeClass('btn-loading');
         $('#mobile-functions').removeClass('d-none');
         $('#registration-notice').addClass('d-none');
@@ -84,8 +85,10 @@ const controller = (() => ({
   ) => {
     const dvid = localStorage.getItem('dvid');
     const postData = JSON.stringify({
+      name: '';
       contact: {
         "phone": inputs.phone,
+        "email": '';
       },
       deviceId: dvid
     });
@@ -99,11 +102,12 @@ const controller = (() => ({
       processData: false,
       type: 'POST',
       success: (data: { id: string }) => {
+
         console.log('User ID Created:', data.id);
         $('#notify-warning').addClass('d-none');
         $('#notify-success').removeClass('d-none');
         $(inputs.button_id).removeClass('btn-loading');
-        $(inputs.button_id).attr("disabled", true);
+        $(inputs.button_id).replaceWith('<a class="btn btn-secondary btn-block mt-0" href="/" style="border-radius: 0px 0px 3px 3px;">Continue to Zerobase</a>')
         
       },
       error: err => {
@@ -139,7 +143,6 @@ const controller = (() => ({
 
     } | undefined,
   ) => {
-
 
     const postData = JSON.stringify({
       name: inputs != null ? inputs.org_name : undefined,
@@ -347,15 +350,19 @@ const controller = (() => ({
     cb: () => void,
   ) => {
     const dvid = localStorage.getItem('dvid');
-
     const postData = JSON.stringify({
       scannedId: inputs != null ? inputs.sdvid : undefined,
-      type: 'DEVICE_TO_DEVICE',
+      type: 'DEVICE_TO_SCANNABLE',
+      location: {
+        lat: '',
+        long: '',
+      }
       // fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
-
+    console.log('Scanning with: '+dvid);
+    console.log(postData);
     const opts: JQuery.AjaxSettings = {
-      url: `${API_HOST}/devices/${dvid}/check-ins`,
+      url: `${API_HOST}/devices/`+dvid+`/check-ins`,
       data: postData,
       cache: false,
       dataType: 'json',
