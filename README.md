@@ -18,6 +18,10 @@ This repository contains the front end for the Zerobase smart tracing platform. 
     npm install
     npm run start:dev
 
+### GitHub Actions
+
+Commits to master will automatically rebuild staging.zerobase.io.
+
 ### Building
 
 /build.js is our build process. It will compress all js to /public/main.min.js and css to /public/styles.min.css. You can add new front end dependancies by specifying the pathname to the front end dependancies. 
