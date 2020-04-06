@@ -88,7 +88,7 @@ const controller = (() => ({
       name: '';
       contact: {
         "phone": inputs.phone,
-        "email": ''
+        "email": '';
       },
       deviceId: dvid
     });
