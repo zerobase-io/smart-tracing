@@ -140,6 +140,7 @@ const controller = (() => ({
     } | undefined,
   ) => {
 
+
     const postData = JSON.stringify({
       name: inputs != null ? inputs.org_name : undefined,
       contactInfo: {
@@ -159,7 +160,7 @@ const controller = (() => ({
       hasTestingFacilities: inputs != null ? inputs.hasTestingFacilities : undefined
     });
 
-    console.log(postData);
+    console.log('Org Submission Object:', postData);
     const opts: JQuery.AjaxSettings = {
       url: `${API_HOST}/organizations/`,
       data: postData,
@@ -170,10 +171,38 @@ const controller = (() => ({
       type: 'POST',
       success: (data: { id: string }) => {
         console.log('Org ID Created:', data.id);
-        console.log(inputs.modal_id, inputs.button_id, data.id, inputs.org_name, inputs.hasTestingFacilities, inputs.email, inputs.phone, inputs.contact_name, inputs.type);
-        
-        controller.submit_site(inputs.modal_id, inputs.button_id, data.id, inputs.org_name, inputs.hasTestingFacilities, inputs.email, inputs.phone, inputs.contact_name, inputs.type)
-        
+        console.log(
+          inputs.modal_id, 
+          inputs.button_id, 
+          data.id, 
+          inputs.org_name, 
+          inputs.hasTestingFacilities, 
+          inputs.email, 
+          inputs.phone, 
+          inputs.contact_name, 
+          inputs.type
+        );
+
+        var category, subcategory;
+        if(inputs.type.length > 0){
+          category =    inputs.type.split('/')[0]
+          subcategory = inputs.type.split('/')[1]
+        } else {
+          category = null;
+          subcategory= null;
+        }
+        controller.submit_site({
+          modal_id:     inputs.modal_id,
+          button_id:    inputs.button_id,
+          org_id:       data.id,
+          org_name:     inputs.org_name,
+          isTesting:    inputs.hasTestingFacilities,
+          email:        inputs.email,
+          phone:        inputs.phone,
+          contact_name: inputs.contact_name,
+          category:     category,
+          subcategory:  subcategory
+        });
       },
       error: err => {
         console.log(err);
@@ -198,6 +227,7 @@ const controller = (() => ({
       contact_name?: string; 
 
       category?:     string; 
+      subcategory?:  string;
 
     } | undefined,
   ) => {
@@ -210,12 +240,13 @@ const controller = (() => ({
         contactName: inputs != null ? inputs.contact_name : undefined
       },
       category:      inputs != null ? inputs.category :     undefined,
+      subcategory:   inputs != null ? inputs.subcategory :  undefined,
       //-subcategory:   inputs != null ? inputs.subcategory :  undefined
     });
+    console.log('Site Submission Object:', postData);
 
-    console.log(postData);
     const opts: JQuery.AjaxSettings = {
-      url: `${API_HOST}/organizations/`+org_id+'/sites',
+      url: `${API_HOST}/organizations/`+inputs.org_id+'/sites',
       data: postData,
       cache: false,
       dataType: 'json',
@@ -225,11 +256,13 @@ const controller = (() => ({
       success: (data: { id: string }) => {
 
         console.log('Site ID Created:', data.id);
+        var emailDomain = inputs.email.split('@')[1]
         $(inputs.button_id).removeClass('btn-loading');
         $(inputs.modal_id).find('.alert-warning').addClass('d-none');
-        $(inputs.modal_id).find('.alert-success a').attr('href', 'https://'+inputs.email.split('@')[1]).attr("target","_blank");
+        $(inputs.modal_id).find('.alert-success a').attr('href', 'https://'+emailDomain).attr("target","_blank");
         $(inputs.modal_id).find('.alert-success').removeClass('d-none');
-        $(inputs.button_id).attr("disabled", true);
+        $(inputs.button_id)
+          .replaceWith('<a href="https://'+emailDomain+'", target="_blank", class="btn btn-secondary btn-block">Check your email</a>');
         
       },
       error: err => {

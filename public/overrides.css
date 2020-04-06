@@ -16,7 +16,11 @@
   height: 24rem;
   background: #e9ecef;
 }
-.hero-img-cover {
+.hero-img-cover-top {
+  background: no-repeat top;
+  background-size: cover;
+}
+.hero-img-cover-center {
   background: no-repeat center;
   background-size: cover;
 }
@@ -278,5 +282,8 @@ i {
 @media only screen and (min-device-width:750px) {
   .forScreen {
     display:block;
+  }
+  .w-lg-30 {
+    width: 30% !important;
   }
 }
