@@ -16,9 +16,9 @@ $(() => {
     { path: '/notifications',  component: { template: window.puglatizer.pages.notifications()}},
     { path: '/privacy-policy', component: { template: window.puglatizer.pages.privacy()}},
     { path: '/privacy',        component: { template: window.puglatizer.pages.privacy_landing()}},
-    { path: '/terms',        component: { template: window.puglatizer.pages.terms()}},
-    { path: '/feedback',            component: { template: window.puglatizer.pages.feedback()}},
-    { path: '/contact',             component: { template: window.puglatizer.pages.contact()}},
+    { path: '/terms',          component: { template: window.puglatizer.pages.terms()}},
+    { path: '/feedback',       component: { template: window.puglatizer.pages.feedback()}},
+    { path: '/contact',        component: { template: window.puglatizer.pages.contact()}},
 
 
 
@@ -45,10 +45,10 @@ $(() => {
       component: { template: window.puglatizer.pages.home()},
       beforeEnter: (to, from, next) => {
         const sdvid = to.params.pathMatch
-        const dvid  = localStorage.getItem('dvid');
+        const dvid  = localStorage.getItem('dvid') == "undefined" ? undefined : localStorage.getItem('dvid');
         history.replaceState(null, null, '/');
 
-        if(sdvid){
+        if(sdvid && window.innerWidth < 750){
           if(dvid){
             console.log('Has registered ID on scan');
             $('#modal-scan-notice').modal('show');
