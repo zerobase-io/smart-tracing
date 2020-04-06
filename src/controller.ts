@@ -354,8 +354,8 @@ const controller = (() => ({
       scannedId: inputs != null ? inputs.sdvid : undefined,
       type: 'DEVICE_TO_SCANNABLE',
       location: {
-        lat: '',
-        long: '',
+        lat: 0,
+        long: 0,
       }
       // fingerprint: inputs != null ? inputs.fingerprint : undefined,
     });
