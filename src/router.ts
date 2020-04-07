@@ -162,6 +162,12 @@ $(() => {
   $('body').on('click', '#show-registration', () => {
     $('#modal-register-notice').modal('show');
   });
+  $('body').on('click', '#show-feedback', () => {
+    $('#modal-feedback').modal('show');
+  });
+  $('body').on('click', '#show-register-notifications', () => {
+    $('#modal-register-notifications').modal('show');
+  });
 
   // Form Handlers (Need refactor) --------------------------------------------------//
 
