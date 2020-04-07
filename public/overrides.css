@@ -32,6 +32,17 @@
 
 /* Scan success ----------------------------*/
 
+.vertical-center {
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 .avatar-shadow{
   box-shadow: 0 1px 5px rgba(27,31,35,.15);
 }
