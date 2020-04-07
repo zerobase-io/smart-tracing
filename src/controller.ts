@@ -371,8 +371,10 @@ const controller = (() => ({
         // @ts-ignore
         $('#scan-notice-success-datetime').text(new Date());
         // @ts-ignore
-        JsBarcode('#scan-notice-barcode-id', data.id.value);
+        //JsBarcode('#scan-notice-barcode-id', data.id);
+        $('#scan-notice-id').text(data.id);
         $('#scan-notice-success').removeClass('d-none');
+
         // else if (data.success === false) {
         //   if (data.name === 'ValidationError') {
         //     console.log('Scan (Validation Error):', data);
