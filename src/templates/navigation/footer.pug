@@ -14,11 +14,12 @@ footer#footer-main.position-relative
               //-       path(d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20')
               //-       path(d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z')
               //-   span.btn-inner--text Documentation
-              a.btn.btn-github.my-2.ml-0.ml-sm-3(href='https://join.slack.com/t/necsi-edu/shared_invite/zt-d86ge6g0-sgLKgyhRpFBJq2VrnJOdhg', target='_blank') Join Us
+              router-link.btn.btn-github.my-2.ml-0.ml-sm-3(to='/volunteer') Join Us
+
       hr.divider.divider-fade.divider-dark.my-5
       .row
         .col-lg-4.mb-5.mb-lg-0
-          a(href='index.html')
+          a(href='/')
             img(alt='Zerobase logo', src='/assets/img/ZerobaseLogo_Dark.png', style="width:200px;")
           p.mt-4.text-sm.opacity-8.pr-lg-4
             | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world. Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
@@ -57,7 +58,7 @@ footer#footer-main.position-relative
             li
               router-link(to='/testing') Testing Facilities
             li
-              router-link(to='/community') Community
+              router-link(to='/community') Communities
         .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
           h6.heading.mb-3 Zerobase Foundation
           ul.list-unstyled
