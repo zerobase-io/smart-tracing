@@ -19,6 +19,8 @@ $(() => {
     { path: '/terms',          component: { template: window.puglatizer.pages.terms()}},
     { path: '/feedback',       component: { template: window.puglatizer.pages.feedback()}},
     { path: '/contact',        component: { template: window.puglatizer.pages.contact()}},
+    { path: '/volunteer',        component: { template: window.puglatizer.pages.volunteer_landing()}},
+
 
 
 
