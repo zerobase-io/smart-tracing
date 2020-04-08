@@ -1,0 +1,112 @@
+.content.m-5
+  .container-fluid.w-100
+    .row
+      // Earnings (Monthly) Card Example
+      .col-xl-3.col-md-6.mb-4
+        .card.border-left-primary.shadow.h-100.py-2
+          .card-body
+            .row.no-gutters.align-items-center
+              .col.mr-2
+                .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 Zerobase Avg Check-ins (Monthly)
+                .h5.mb-0.font-weight-bold.text-gray-800 40,000
+              .col-auto
+                i.fas.fa-calendar.fa-2x.text-gray-300
+
+      // Earnings (Monthly) Card Example
+      .col-xl-3.col-md-6.mb-4
+        .card.border-left-success.shadow.h-100.py-2
+          .card-body
+            .row.no-gutters.align-items-center
+              .col.mr-2
+                .text-xs.font-weight-bold.text-success.text-uppercase.mb-1 Check-ins (Total)
+                .h5.mb-0.font-weight-bold.text-gray-800 215,128
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-300
+
+      // Earnings (Monthly) Card Example
+      .col-xl-3.col-md-6.mb-4
+        .card.border-left-info.shadow.h-100.py-2
+          .card-body
+            .row.no-gutters.align-items-center
+              .col.mr-2
+                .text-xs.font-weight-bold.text-info.text-uppercase.mb-1 Check-in Locations
+                .row.no-gutters.align-items-center
+                  .col-auto
+                    .h5.mb-0.mr-3.font-weight-bold.text-gray-800 50
+                  .col
+                    .progress.progress-sm.mr-2
+                      .progress-bar.bg-info(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+              .col-auto
+                i.fas.fa-clipboard-list.fa-2x.text-gray-300
+
+      // Pending Requests Card Example
+      .col-xl-3.col-md-6.mb-4
+        .card.border-left-warning.shadow.h-100.py-2
+          .card-body
+            .row.no-gutters.align-items-center
+              .col.mr-2
+                .text-xs.font-weight-bold.text-warning.text-uppercase.mb-1 Pending Locations
+                .h5.mb-0.font-weight-bold.text-gray-800 18
+              .col-auto
+                i.fas.fa-comments.fa-2x.text-gray-300
+    .row
+      // Area Chart
+      .col-xl-8.col-lg-7
+        .card.shadow.mb-4
+          // Card Header - Dropdown
+          .card-header.py-3.d-flex.flex-row.align-items-center.justify-content-between
+            h6.m-0.font-weight-bold.text-primary Coronavirus Overview
+            .dropdown.no-arrow
+              a#dropdownMenuLink.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.fas.fa-ellipsis-v.fa-sm.fa-fw.text-gray-400
+              .dropdown-menu.dropdown-menu-right.shadow.animated--fade-in(aria-labelledby='dropdownMenuLink')
+                .dropdown-header Dropdown Header:
+                a.dropdown-item(href='#') Week
+                a.dropdown-item(href='#') Month
+                .dropdown-divider
+                a.dropdown-item(href='#') Total
+          // Card Body
+          .card-body
+            .chart-area
+              .chartjs-size-monitor
+                .chartjs-size-monitor-expand
+                  div
+                .chartjs-size-monitor-shrink
+                  div
+              canvas#myAreaChart.chartjs-render-monitor(width='1138' height='640' style='display: block; height: 320px; width: 569px;')
+      // Pie Chart
+      .col-xl-4.col-lg-5
+        .card.shadow.mb-4
+          // Card Header - Dropdown
+          .card-header.py-3.d-flex.flex-row.align-items-center.justify-content-between
+            h6.m-0.font-weight-bold.text-primary Revenue Sources
+            .dropdown.no-arrow
+              a#dropdownMenuLink.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.fas.fa-ellipsis-v.fa-sm.fa-fw.text-gray-400
+              .dropdown-menu.dropdown-menu-right.shadow.animated--fade-in(aria-labelledby='dropdownMenuLink')
+                .dropdown-header Dropdown Header:
+                a.dropdown-item(href='#') Action
+                a.dropdown-item(href='#') Another action
+                .dropdown-divider
+                a.dropdown-item(href='#') Something else here
+          // Card Body
+          .card-body
+            .chart-pie.pt-4.pb-2
+              .chartjs-size-monitor
+                .chartjs-size-monitor-expand
+                  div
+                .chartjs-size-monitor-shrink
+                  div
+              canvas#myPieChart.chartjs-render-monitor(width='502' height='490' style='display: block; height: 245px; width: 251px;')
+            .mt-4.text-center.small
+              span.mr-2
+                i.fas.fa-circle.text-primary
+                |  Direct
+              span.mr-2
+                i.fas.fa-circle.text-success
+                |  Social
+              span.mr-2
+                i.fas.fa-circle.text-info
+                |  Referral
+
+
