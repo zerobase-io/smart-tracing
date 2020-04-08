@@ -19,6 +19,7 @@ $(() => {
 	  { path: '/terms', component: { template: pages.terms()} },
 	  { path: '/feedback', component: { template: pages.feedback()} },
 	  { path: '/contact', component: { template: pages.contact()} },
+		{ path: '/volunteer', component: { template: pages.volunteer_landing()}},
 
 	  //- special routes-------------------------------------------------------------//
 	  { path: '/business/register',
