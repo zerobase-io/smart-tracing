@@ -6,6 +6,19 @@ const fs = require('fs');
 const pug = require('pug');
 const puglatizer = require('puglatizer');
 
+const typescriptFiles = [
+	'src/controller.ts',
+	'src/scanner.ts',
+	'src/addressVal.ts',
+	'src/phoneVal.ts',
+	'src/inputMask.ts',
+];
+
+const javascriptFiles = [
+	'/src/router.js',
+];
+
+
 const transpileToJavascript = () =>
   new Promise((resolve, reject) => {
     fs.writeFile(`${__dirname}/public/controller.js`,'', function(err){
@@ -13,7 +26,7 @@ const transpileToJavascript = () =>
         reject(err);
       }
       const tsConfig = fs.readFileSync(__dirname + '/tsconfig.json');
-      const program = ts.createProgram(['src/controller.ts','src/scanner.ts','src/addressVal.ts', 'src/phoneVal.ts','src/router.ts'], JSON.parse(tsConfig).compilerOptions);
+      const program = ts.createProgram(typescriptFiles, JSON.parse(tsConfig).compilerOptions);
 
       program.emit(undefined, (fileName, data) => {
         // hack to remove exports definition which breaks the build
@@ -25,19 +38,22 @@ const transpileToJavascript = () =>
           console.log(`Javascript transpiled for ${fileName}`);
           resolve();
         });
-        // fs.writeFile(`${__dirname}/public/controller.js`, data, function(err) {
-        //   if (err) {
-        //     reject(err);
-        //   }
-        //   console.log(`Javascript transpiled for ${fileName}`);
-        //   resolve();
-        // });
       });
+			javascriptFiles.map(filePath => {
+				const jsFileData = fs.readFileSync(__dirname + filePath)
+				fs.appendFile(`${__dirname}/public/controller.js`, jsFileData, (e) => {
+					if (e) {
+						console.log('Error loading JS file:', filePath, e);
+					} else {
+						console.log(`Javascript transpiled for ${filePath}`);
+					}
+				});
+			});
     })
   });
 
 
-const pugToJs = () => 
+const pugToJs = () =>
   new Promise((resolve, reject)=> {
     puglatizer(__dirname + '/src/templates',__dirname + '/public/templates.js', {}, function (err, templates) {
       if(err){
@@ -171,4 +187,10 @@ const convertPugtoHTML = () => {
   });
 };
 
-module.exports = { transpileToJavascript, pugToJs, minifyJs, minifyCss, convertPugtoHTML };
+module.exports = {
+	transpileToJavascript,
+	pugToJs,
+	minifyJs,
+	minifyCss,
+	convertPugtoHTML
+};
