@@ -83,7 +83,7 @@ watch(srcDir, { recursive: true }, (evt, fileName) => {
       convertPugtoHTML();
     })
     .catch(console.log);
-  } else if (fileExt === 'ts') {
+  } else if (fileExt === 'ts' || fileExt === 'js') {
     transpileToJavascript()
       .then(() => {
         pugToJs().then(()=>{

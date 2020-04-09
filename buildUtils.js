@@ -7,7 +7,6 @@ const pug = require('pug');
 const puglatizer = require('puglatizer');
 
 const typescriptFiles = [
-	'src/controller.ts',
 	'src/scanner.ts',
 	'src/addressVal.ts',
 	'src/phoneVal.ts',
@@ -25,6 +24,16 @@ const transpileToJavascript = () =>
       if(err){
         reject(err);
       }
+
+			const controllerFileData = fs.readFileSync(__dirname + '/src/controller.js')
+			fs.appendFile(`${__dirname}/public/controller.js`, controllerFileData, (e) => {
+				if (e) {
+					console.log('Error loading JS file:', '/src/controller.js', e);
+				} else {
+					console.log('Javascript transpiled for /src/controller.js');
+				}
+			});
+			
       const tsConfig = fs.readFileSync(__dirname + '/tsconfig.json');
       const program = ts.createProgram(typescriptFiles, JSON.parse(tsConfig).compilerOptions);
 
@@ -35,10 +44,11 @@ const transpileToJavascript = () =>
           if (err) {
             reject(err);
           }
-          console.log(`Javascript transpiled for ${fileName}`);
+          console.log(`Typescript transpiled for ${fileName}`);
           resolve();
         });
       });
+
 			javascriptFiles.map(filePath => {
 				const jsFileData = fs.readFileSync(__dirname + filePath)
 				fs.appendFile(`${__dirname}/public/controller.js`, jsFileData, (e) => {
@@ -79,7 +89,7 @@ const minifyJs = compressor => {
     sync: true,
     callback: function(err, value) {
       console.log('minifying');
-      if (err != null) {
+      if (err) {
         console.log('error minifying controller.js', err);
       }
 
