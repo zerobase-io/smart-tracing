@@ -5,6 +5,8 @@
         h3.mb-5 Register your business
         .alert.alert-warning.d-none(role='alert')
           | Some of your information could not be verified, please try again. Having trouble? Contact info@zerobase.io.
+        .alert.alert-warning.d-none(role='alert', id='submit-business-warning')
+          | Please accept the privacy policy before continuing.
         .alert.alert-success.d-none(role='alert')
           i.fe.fe-check.mr-2
           | Great! Check your email to access your codes &mdash; 
@@ -40,6 +42,13 @@
                 input.form-control(type='email', name='email', placeholder='Email address', required)
               .input-icon.mb-2
                 input.form-control(type='text', name='phone', placeholder='Phone number', id='business-phone' required)
+              .mb-3
+                label.form-check
+                  input.form-check-input(type='checkbox', name='agree', id='submit-business-agree')
+                  span.form-check-label
+                    | I agree to the 
+                    a(id='privacy-policy', href='#', tabindex='-1') privacy policy
+                    | .
               .form-footer
                 button.btn.btn-primary.btn-block(type="submit", id="submit-business") Generate your codes
           .col-12.col-md-5

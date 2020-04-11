@@ -48,7 +48,7 @@ const controller = (() => ({
 						$('a[href="#page-code"]').tab('show');
 				}
 				if (callback) {
-					callback(inputs);
+					callback({fingerprint});
 				}
 			},
 			error: e => {
@@ -186,7 +186,7 @@ const controller = (() => ({
 		jQuery.ajax(Object.assign(defaultRequestOpts, req));
 	},
 	scan: (inputs, callback) => {
-		const scannedId = localStorage.getItem('dvid');
+		const scannedId = inputs.sdvid
 		console.log('scan -> scannedId:', scannedId);
 		const postData = {
 			scannedId,
