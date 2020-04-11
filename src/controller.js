@@ -24,14 +24,12 @@ const defaultRequestOpts = { // TODO: simplify requests
 };
 
 const controller = (() => ({
-	create: (inputs, callback) => { // TODO: Re-name to something more explicit -> createDevice?
-		console.log('create -> inputs:', inputs);
+	create: ({ fingerprint }, callback) => { // TODO: Re-name to something more explicit -> createDevice?
+		console.log('create -> fingerprint:', fingerprint);
 		const now = Date.now();
-		const id = 1; // this seems wrong -Tom
-		const { ip, fingerprint } = inputs; // may be null
 		const req = {
 			url: `${API_HOST}/devices/`,
-			data: JSON.stringify({ id, fingerprint }),
+			data: JSON.stringify({ fingerprint }),
 			type: 'POST',
 			success: responseData => {
 				console.log('Device ID created:', responseData.id);
@@ -77,7 +75,7 @@ const controller = (() => ({
 			data: JSON.stringify(postData),
 			type: 'POST',
 			success: responseData => {
-				console.log('User ID Created:', data.id);
+				console.log('User ID Created:', responseData.id);
 				$('#notify-warning').addClass('d-none');
 				$('#notify-success').removeClass('d-none');
 				$(inputs.button_id).removeClass('btn-loading');
@@ -188,8 +186,8 @@ const controller = (() => ({
 		jQuery.ajax(Object.assign(defaultRequestOpts, req));
 	},
 	scan: (inputs, callback) => {
-		console.log('scan -> inputs:', inputs);
 		const scannedId = localStorage.getItem('dvid');
+		console.log('scan -> scannedId:', scannedId);
 		const postData = {
 			scannedId,
 			type: 'DEVICE_TO_SCANNABLE',
@@ -214,7 +212,6 @@ const controller = (() => ({
 			},
 			error: e => {
 				console.log('Error from "scan":', e);
-				console.log('Arguments from "scan":', inputs);
 				$('#scan-notice-loading').addClass('d-none');
 				$('#scan-notice-error').removeClass('d-none');
 
