@@ -19,9 +19,21 @@ $(() => {
 	  { path: '/terms', component: { template: pages.terms()} },
 	  { path: '/feedback', component: { template: pages.feedback()} },
 	  { path: '/contact', component: { template: pages.contact()} },
-		{ path: '/volunteer', component: { template: pages.volunteer_landing()}},
+	  { path: '/volunteer', component: { template: pages.volunteer_landing()}},
 
 	  //- special routes-------------------------------------------------------------//
+	  { path: '/test',
+	    component: {
+	      template: pages.home(),
+	      mounted(){
+	      	if(window.location.hostname.split('.')[0] === 'localhost' || 'staging'){
+	      		$('body').on('click', '#scan-button', ()=>{
+	        		router.push('/s/0724ce8a-05ac-496c-a66b-12573c2221fc').catch(err => {})
+	        	})
+	      	}
+	      }
+	    }
+	  },
 	  { path: '/business/register',
 	    component: {
 	      template: pages.business_register(),
