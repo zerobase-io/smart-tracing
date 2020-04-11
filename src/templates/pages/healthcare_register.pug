@@ -5,6 +5,8 @@
         h3.mb-5 Register your healthcare organization
         .alert.alert-warning.d-none(role='alert')
           | Some of your information could not be verified, please try again
+        .alert.alert-warning.d-none(role='alert', id='submit-healthcare-warning')
+          | Please accept the privacy policy before continuing.
         .alert.alert-success.d-none(role='alert')
           i.fe.fe-check.mr-2
           | Great! Check your email to access your codes &mdash; 
@@ -31,7 +33,7 @@
                   option(value='HEALTH/DOCTOR_OFFICE') Hospital
                   option(value='HEALTH/HOSPITAL') Doctor Office
                   option(value='HEALTH/PHARMACY') Pharmacy
-                  option(value='HEALTH/OTHER') Pharmacy
+                  option(value='HEALTH/OTHER') Other
               .mb-3
                 label.form-check
                   input.form-check-input(type='checkbox', name='hasTestingFacilities')
@@ -44,6 +46,13 @@
                 input.form-control(type='email', name='email', placeholder='Email address', required)
               .input-icon.mb-2
                 input.form-control(type='tel', name='phone', placeholder='Phone number', id='healthcare-phone', required)
+              .mb-3
+                label.form-check
+                  input.form-check-input(type='checkbox', name='agree', id='submit-healthcare-agree')
+                  span.form-check-label
+                    | I agree to the 
+                    a(id='privacy-policy', href='#', tabindex='-1') privacy policy
+                    | .
               .form-footer
                 button.btn.btn-primary.btn-block(type="submit", id="submit-healthcare") Generate your codes
           .col-12.col-md-5

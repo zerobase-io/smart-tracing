@@ -7,10 +7,10 @@ const pug = require('pug');
 const puglatizer = require('puglatizer');
 
 const typescriptFiles = [
-	'src/scanner.ts',
-	'src/addressVal.ts',
-	'src/phoneVal.ts',
-	'src/inputMask.ts',
+	'src/typescript/scanner.ts',
+	'src/typescript/addressVal.ts',
+	'src/typescript/phoneVal.ts',
+	'src/typescript/inputMask.ts',
 ];
 
 const javascriptFiles = [
