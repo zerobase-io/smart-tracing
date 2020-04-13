@@ -7,7 +7,6 @@
     "start:dev": "RUNTIME_ENV=dev node devServer.js",
     "serve": "http-server ./public",
     "start": "node devServer.js",
-
     "start:next": "react-app-rewired start",
     "build:next": "react-app-rewired build"
   },
@@ -28,7 +27,6 @@
     "qrcodejs": "^1.0.0",
     "typescript": "^3.8.3",
     "uglifycss": "0.0.29",
-
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
@@ -42,7 +40,6 @@
     "inquirer": "^7.1.0",
     "lodash": "^4.17.15",
     "node-watch": "^0.6.3",
-
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
