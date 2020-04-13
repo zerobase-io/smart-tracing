@@ -20,6 +20,7 @@ $(() => {
 	  { path: '/feedback', component: { template: pages.feedback()} },
 	  { path: '/contact', component: { template: pages.contact()} },
 	  { path: '/volunteer', component: { template: pages.volunteer_landing()}},
+	  { path: '/team', component: { template: pages.our_team()}},
 
 	  //- special routes-------------------------------------------------------------//
 	  { path: '/test',
