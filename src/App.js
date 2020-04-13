@@ -20,7 +20,7 @@ const CustomLink = styled(Link)`
 const Home = () => {
   return (
     <div className="App-container">
-      <Logo src="/logo.png" alt="logo" />
+      <Logo src="/assets/img/logo_icon_200.png" alt="logo" />
       <h1>Zerobase</h1>
       <p>Privacy-First Contact Tracing for Communities</p>
       <CustomLink to="/scan" rel="noopener noreferrer">
