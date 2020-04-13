@@ -2,10 +2,14 @@
   "name": "zerobase-frontend",
   "version": "1.0.3",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "build:dev": "RUNTIME_API_HOST='https://api.staging.zerobase.io' RUNTIME_ENV=dev npm run build",
-    "serve": "http-server ./build"
+    "build": "node build.js",
+    "build:dev": "RUNTIME_API_HOST='https://api.staging.zerobase.io' RUNTIME_ENV=dev node build.js",
+    "start:dev": "RUNTIME_ENV=dev node devServer.js",
+    "serve": "http-server ./public",
+    "start": "node devServer.js",
+
+    "start:next": "react-app-rewired start",
+    "build:next": "react-app-rewired build"
   },
   "dependencies": {
     "@node-minify/core": "^4.1.2",
