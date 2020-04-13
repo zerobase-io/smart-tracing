@@ -1,3 +1,4 @@
+// TODO: Remove this config file once we move away from TypeScript
 {
   "compilerOptions": {
     "target": "es5",
