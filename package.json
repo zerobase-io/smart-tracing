@@ -8,7 +8,8 @@
     "serve": "http-server ./public",
     "start": "node devServer.js",
     "start:next": "react-app-rewired start",
-    "build:next": "react-app-rewired build"
+    "build:next": "react-app-rewired build",
+    "prettier": "prettier --write \"src/*.{ts,tsx,js,json,md,mdx,scss}\""
   },
   "dependencies": {
     "@node-minify/core": "^4.1.2",
