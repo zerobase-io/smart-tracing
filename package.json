@@ -21,18 +21,19 @@
     "@types/jquery": "^3.3.33",
     "http-server": "^0.12.1",
     "imask": "^6.0.3",
+    "jquery": "^3.5.0",
     "jsqr": "^1.2.0",
     "node-minify": "^3.6.0",
     "pug": "^2.0.3",
     "puglatizer": "^1.1.9",
     "qrcodejs": "^1.0.0",
-    "typescript": "^3.8.3",
-    "uglifycss": "0.0.29",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "typescript": "^3.8.3",
+    "uglifycss": "0.0.29"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.24.0",
