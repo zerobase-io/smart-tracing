@@ -31,10 +31,8 @@ $(() => {
       component: {
         template: pages.home(),
         mounted() {
-          if (
-            window.location.hostname.split('.')[0] === 'localhost' ||
-            'staging'
-          ) {
+          const hostname = window.location.hostname.split('.')[0];
+          if (hostname === 'localhost' || hostname === 'staging') {
             $('body').on('click', '#scan-button', () => {
               router
                 .push('/s/0724ce8a-05ac-496c-a66b-12573c2221fc')
@@ -146,7 +144,6 @@ $(() => {
           navigator.mediaDevices
             .getUserMedia({ video: { facingMode: 'environment' } })
             .then((stream) => {
-              // @ts-ignore
               video.srcObject = stream;
               video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
               video.play();
