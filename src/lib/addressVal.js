@@ -1,6 +1,7 @@
 import $ from 'jquery';
+import places from 'places.js';
 
-const addressVal = (() => {
+export const addressVal = (() => {
   let top;
   return {
     init: (root, div_selector) => {
@@ -98,3 +99,5 @@ const addressVal = (() => {
     },
   };
 })();
+
+export default addressVal;

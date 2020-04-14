@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Fingerprint2 from 'fingerprintjs2';
 
 let runtimeConfig = {};
 const runtimeConfigElement = document.getElementById('runtime-config');
@@ -25,7 +26,7 @@ const defaultRequestOpts = {
   processData: false,
 };
 
-const controller = (() => ({
+export const controller = (() => ({
   create: (inputs, callback) => {
     const { fingerprint } = inputs;
     // TODO: Re-name to something more explicit -> createDevice?
@@ -324,3 +325,5 @@ const controller = (() => ({
     }
   },
 }))();
+
+export default controller;

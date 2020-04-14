@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import IMask from 'imask';
 
 $(() => {
   // Input Mask

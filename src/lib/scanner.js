@@ -1,5 +1,10 @@
-const scanning = (() => {
+import jsQR from 'jsqr';
+import Howl from 'howler';
+
+export const scanning = (() => {
   let requestId;
+  // Make sure that the defined path will resolve properly
+  const sound = new Howl({ src: ['/assets/audio/beep.mp3'] });
   return {
     //video: document.createElement('video'),
     drawLine: (canvas, begin, end, color) => {
@@ -88,3 +93,5 @@ const scanning = (() => {
     },
   };
 })();
+
+export default scanning;

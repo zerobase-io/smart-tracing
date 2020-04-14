@@ -1,6 +1,8 @@
 import $ from 'jquery';
+// This is probably not going to work, but the package lacks documentation and needs to be tested
+import { intlTelInputUtils } from 'intl-tel-input';
 
-const phoneVal = (() => {
+export const phoneVal = (() => {
   return {
     init: (div_selector) => {
       var intlInput = window.intlTelInput(
@@ -20,3 +22,5 @@ const phoneVal = (() => {
     },
   };
 })();
+
+export default phoneVal;

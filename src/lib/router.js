@@ -1,5 +1,10 @@
 import $ from 'jquery';
 
+import controller from './controller';
+import scanning from './scanner';
+import phoneVal from './phoneVal';
+import addressVal from './addressVal';
+
 $(() => {
   // - Page Routing ---------------------------//
   const { pages, views } = window.puglatizer;
@@ -70,10 +75,10 @@ $(() => {
       beforeEnter: (to, from, next) => {
         const sdvid = to.params.pathMatch;
         const dvid =
-          localStorage.getItem('dvid') == 'undefined'
+          localStorage.getItem('dvid') === 'undefined'
             ? undefined
             : localStorage.getItem('dvid');
-        history.replaceState(null, null, '/');
+        window.history.replaceState(null, null, '/');
 
         if (sdvid && window.innerWidth < 750) {
           if (dvid) {
@@ -136,7 +141,6 @@ $(() => {
         template: pages.scan(),
         mounted() {
           console.log('scanning');
-          window.sound = new Howl({ src: ['/assets/audio/beep.mp3'] });
 
           const video = document.createElement('video');
           const canvasElement = document.getElementById('canvas'); // as HTMLCanvasElement;
@@ -162,16 +166,15 @@ $(() => {
       },
     },
   ];
-  const router = new VueRouter({
+  const router = {
     mode: 'history',
     routes: routes,
     scrollBehavior(to, from, savedPosition) {
       return { x: 0, y: 0 };
     },
-  });
-  const app = new Vue({
-    router,
-  }).$mount('#app');
+  };
+
+  console.log('router: ', router);
 
   // Modals --------------------------------------------------//
 
@@ -205,7 +208,7 @@ $(() => {
       const formElements = {};
       $(e.currentTarget)
         .serializeArray()
-        .map((entry) => {
+        .forEach((entry) => {
           formElements[entry['name']] = entry['value'];
         });
       //formElements['modal_id'] = '#modal-register-business';
@@ -226,14 +229,14 @@ $(() => {
       const formElements = {};
       $(e.currentTarget)
         .serializeArray()
-        .map((entry) => {
+        .forEach((entry) => {
           formElements[entry['name']] = entry['value'];
         });
       //formElements['modal_id'] = '#modal-register-healthcare';
       formElements['modal_id'] = '#body-healthcare-register';
       formElements['button_id'] = '#submit-healthcare';
       formElements['hasTestingFacilities'] =
-        formElements['hasTestingFacilities'] == 'on' ? true : false;
+        formElements['hasTestingFacilities'] === 'on' ? true : false;
       console.log(formElements);
       controller.submit_organization(formElements);
     } else {
