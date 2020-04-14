@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import './styles/overrides.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
