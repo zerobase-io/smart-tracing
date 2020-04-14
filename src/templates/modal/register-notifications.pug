@@ -1,6 +1,6 @@
 #modal-register-notifications.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true')
   .modal-dialog.modal-dialog-centered.modal-dialog-scrollable(role='document')
-    .modal-content(style="min-height:90vh")
+    .modal-content(style='{{"minHeight":"90vh"}}')
       .modal-header
         h5.modal-title Opt-in for Notifications
         button.close(type='button', data-dismiss='modal', aria-label='Close')
@@ -11,12 +11,12 @@
         .card
           .card-body
             .px-3
-              .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='width: 200px;')
+              .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='{{"width":"200px"}}')
                 .d-flex.flex-justify-between.flex-items-center.py-4
-                  span.avatar.avatar-md.avatar-shadow(style="background-image:url(/assets/img/anon-2.png)")
+                  span.avatar.avatar-md.avatar-shadow(style='{{"backgroundImage":"url(/assets/img/anon-2.png)"}}')
                   span.avatar.avatar-lg.bg-white.avatar-shadow
                     |🔔
-                  span.avatar.avatar-md(style="background-image:url(/assets/img/logo_icon_200.jpg)")
+                  span.avatar.avatar-md(style='{{"backgroundImage":"url(/assets/img/logo_icon_200.jpg)"}}')
             p.text-center If you'd like, we can notify you in the future if you may have been exposed to COVID-19. We keep your information safe and are proud to put your privacy first. Please read our Privacy Policy before accepting and proceeding.
         .alert.alert-warning.text-left.d-none.mt-4(role='alert', id='notify-warning')
           i.fe.fe-alert-triangle.mr-2
@@ -30,7 +30,7 @@
             input.form-check-input.m-0(type='checkbox', id='notify-agree')
             a.ml-2.text-blue(id="privacy-policy") Privacy Policy
           input.form-control(id='notify-phone' type='text', name='input-mask', data-mask='+0 (000) 000-0000', data-mask-visible='true', placeholder='+0 (000) 000-0000', autocomplete='off')
-        a.btn.btn-primary.btn-block.mt-0(href='#', id="notify-submit" style="border-radius: 0px 0px 3px 3px;")
+        a.btn.btn-primary.btn-block.mt-0(href='#', id="notify-submit" style='{{"borderRadius":"0px 0px 3px 3px"}}')
           | Keep me notified
 
       .modal-footer
