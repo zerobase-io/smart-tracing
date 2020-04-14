@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(() => {
   // - Page Routing ---------------------------//
   const { pages, views } = window.puglatizer;

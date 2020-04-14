@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(() => {
   // Input Mask
   const maskElementList = [].slice.call(

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const phoneVal = (() => {
   return {
     init: (div_selector) => {

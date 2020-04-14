@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const addressVal = (() => {
   let top;
   return {

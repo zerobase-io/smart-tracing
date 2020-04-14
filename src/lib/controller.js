@@ -1,4 +1,5 @@
-// "use strict";
+import $ from 'jquery';
+
 let runtimeConfig = {};
 const runtimeConfigElement = document.getElementById('runtime-config');
 if (runtimeConfigElement) {
@@ -25,7 +26,8 @@ const defaultRequestOpts = {
 };
 
 const controller = (() => ({
-  create: ({ fingerprint }, callback) => {
+  create: (inputs, callback) => {
+    const { fingerprint } = inputs;
     // TODO: Re-name to something more explicit -> createDevice?
     console.log('create -> fingerprint:', fingerprint);
     const req = {
@@ -60,7 +62,7 @@ const controller = (() => ({
         console.log('Arguments from "create":', inputs);
       },
     };
-    jQuery.ajax(Object.assign(defaultRequestOpts, req));
+    $.ajax(Object.assign(defaultRequestOpts, req));
   },
   create_user: (inputs) => {
     console.log('create_user -> inputs:', inputs);
@@ -95,7 +97,7 @@ const controller = (() => ({
         $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
       },
     };
-    jQuery.ajax(Object.assign(defaultRequestOpts, req));
+    $.ajax(Object.assign(defaultRequestOpts, req));
   },
   submit_organization: (inputs) => {
     console.log('submit_organization -> inputs:', inputs);
@@ -152,7 +154,7 @@ const controller = (() => ({
         $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
       },
     };
-    jQuery.ajax(Object.assign(defaultRequestOpts, req));
+    $.ajax(Object.assign(defaultRequestOpts, req));
   },
   submit_site: (inputs) => {
     console.log('submit_site -> inputs:', inputs);
@@ -195,7 +197,7 @@ const controller = (() => ({
         $(inputs.modal_id).find('.alert-warning').removeClass('d-none');
       },
     };
-    jQuery.ajax(Object.assign(defaultRequestOpts, req));
+    $.ajax(Object.assign(defaultRequestOpts, req));
   },
   scan: (inputs, callback) => {
     const scannedId = inputs.sdvid;
@@ -233,7 +235,7 @@ const controller = (() => ({
         }
       },
     };
-    jQuery.ajax(Object.assign(defaultRequestOpts, req));
+    $.ajax(Object.assign(defaultRequestOpts, req));
   },
   fetchIP: (data, callback) => {
     console.log('fetchIP -> data:', data);
@@ -259,7 +261,7 @@ const controller = (() => ({
         console.log('Arguments from "fetchIp":', data, callback);
       },
     };
-    jQuery.ajax(req);
+    $.ajax(req);
   },
   fingerprint: (data, callback) => {
     console.log('fingerprint -> data, callback:', data, callback);
