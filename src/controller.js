@@ -186,7 +186,8 @@ const controller = (() => ({
 		jQuery.ajax(Object.assign(defaultRequestOpts, req));
 	},
 	scan: (inputs, callback) => {
-		const scannedId = inputs.sdvid
+		const scannedId = inputs.sdvid;
+		const deviceId = localStorage.getItem('dvid');
 		console.log('scan -> scannedId:', scannedId);
 		const postData = {
 			scannedId,
@@ -195,7 +196,7 @@ const controller = (() => ({
 		};
 		console.log('scan -> postData:', postData);
 		const req = {
-			url: `${API_HOST}/devices/${scannedId}/check-ins`,
+			url: `${API_HOST}/devices/${deviceId}/check-ins`,
 			data: JSON.stringify(postData),
 			type: 'POST',
 			success: responseData => {
