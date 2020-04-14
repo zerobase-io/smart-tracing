@@ -47,7 +47,7 @@ const Scan = () => {
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" id="app">
       <Router>
         <Switch>
           <Route path="/scan">
