@@ -14,6 +14,7 @@ public/templates.js
 .python-version
 # OS generated files #
 ######################
+.vscode/
 .DS_Store
 .DS_Store?
 ._*
@@ -34,7 +35,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
