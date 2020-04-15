@@ -4,7 +4,10 @@ import Fingerprint2 from 'fingerprintjs2';
 let runtimeConfig = {};
 const runtimeConfigElement = document.getElementById('runtime-config');
 if (runtimeConfigElement) {
-  runtimeConfig = JSON.parse(runtimeConfigElement.innerHTML);
+  // runtimeConfig = JSON.parse(runtimeConfigElement.innerHTML);
+
+  // TODO: Use .env config
+  runtimeConfig = JSON.parse('{"API_HOST":"https://api.staging.zerobase.io"}');
 }
 
 const { ENV, API_HOST } = runtimeConfig;

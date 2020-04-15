@@ -1,5 +1,8 @@
+import $ from 'jquery';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import controller from './lib/controller';
 
 import Primary from './components/navigation/Primary';
 import Secondary from './components/navigation/Secondary';
@@ -28,6 +31,77 @@ import VolunteerLandingPage from './components/pages/VolunteerLanding';
 import OurTeamPage from './components/pages/OurTeam';
 
 const App = () => {
+  // Modals --------------------------------------------------//
+  $('body').on('click', '#privacy-policy', () => {
+    $('#modal-privacy-policy').modal('show');
+  });
+  $('body').on('click', '#show-registration', () => {
+    $('#modal-register-notice').modal('show');
+  });
+  $('body').on('click', '#show-feedback', () => {
+    $('#modal-feedback').modal('show');
+  });
+  $('body').on('click', '#show-register-notifications', () => {
+    $('#modal-register-notifications').modal('show');
+  });
+
+  // Forms (Need refactor) --------------------------------------------------//
+  $('body').on('submit', 'form.register-business', (e) => {
+    e.preventDefault();
+    if ($('#submit-business-agree').prop('checked') === true) {
+      $('#submit-business').addClass('btn-loading');
+      const formElements = {};
+      $(e.currentTarget)
+        .serializeArray()
+        .forEach((entry) => {
+          formElements[entry['name']] = entry['value'];
+        });
+      //formElements['modal_id'] = '#modal-register-business';
+      formElements['modal_id'] = '#body-business-register';
+      formElements['button_id'] = '#submit-business';
+      formElements['hasTestingFacilities'] = false;
+      console.log(formElements);
+      controller.submit_organization(formElements);
+    } else {
+      $('#submit-business-warning').removeClass('d-none');
+    }
+  });
+
+  $('body').on('submit', 'form.register-healthcare', (e) => {
+    e.preventDefault();
+    if ($('#submit-healthcare-agree').prop('checked') === true) {
+      $('#submit-business').addClass('btn-loading');
+      const formElements = {};
+      $(e.currentTarget)
+        .serializeArray()
+        .forEach((entry) => {
+          formElements[entry['name']] = entry['value'];
+        });
+      //formElements['modal_id'] = '#modal-register-healthcare';
+      formElements['modal_id'] = '#body-healthcare-register';
+      formElements['button_id'] = '#submit-healthcare';
+      formElements['hasTestingFacilities'] =
+        formElements['hasTestingFacilities'] === 'on' ? true : false;
+      console.log(formElements);
+      controller.submit_organization(formElements);
+    } else {
+      $('#submit-healthcare-warning').removeClass('d-none');
+    }
+  });
+
+  $('body').on('click', '#notify-submit', (e) => {
+    e.preventDefault();
+    if ($('#notify-agree').prop('checked') === true) {
+      $('#notify-submit').addClass('btn-loading');
+      controller.create_user({
+        phone: $('#notify-phone').val(),
+        button_id: '#notify-submit',
+      });
+    } else {
+      $('#notify-warning').removeClass('d-none');
+    }
+  });
+
   return (
     <>
       <div id="app">
