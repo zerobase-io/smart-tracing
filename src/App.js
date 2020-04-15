@@ -10,6 +10,7 @@ import RegisterNotifications from './components/modal/RegisterNotifications';
 import PrivacyPolicy from './components/modal/PrivacyPolicy';
 import Home from './components/pages/Home';
 import Privacy from './components/pages/Privacy';
+import NotFound from './components/views/errors/NotFound';
 
 const App = () => {
   return (
@@ -23,9 +24,10 @@ const App = () => {
               <Route path="/privacy">
                 <Privacy />
               </Route>
-              <Route path="/">
+              <Route exact path="/">
                 <Home />
               </Route>
+              <Route component={NotFound} />
             </Switch>
           </Router>
         </div>
