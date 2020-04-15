@@ -1,6 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'tabler-react/dist/Tabler.css';
+import './assets/css/tabler.css';
 import './assets/css/icons.css';
+import './assets/css/layout.css';
 import './assets/css/overrides.css';
 
 import React from 'react';
