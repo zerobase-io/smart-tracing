@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
 import Primary from './components/navigation/Primary';
 import Secondary from './components/navigation/Secondary';
 import Footer from './components/navigation/Footer';
@@ -15,7 +14,7 @@ import Privacy from './components/pages/Privacy';
 const App = () => {
   return (
     <>
-      <div className="App" id="app">
+      <div id="app">
         <div className="page">
           <Primary />
           <Secondary />

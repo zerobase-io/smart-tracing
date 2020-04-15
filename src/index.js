@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/overrides.css';
-import './styles/layout.css';
+import 'tabler-react/dist/Tabler.css';
+import './assets/css/icons.css';
+import './assets/css/overrides.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
