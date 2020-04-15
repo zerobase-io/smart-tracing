@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/modal/register_notifications.pug';
+import template from '../../templates/modal/register-notifications.pug';
 
 class RegisterNotifications extends React.Component {
   render() {

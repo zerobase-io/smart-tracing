@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/our_team.pug';
+import template from '../../templates/pages/our_team.pug';
 
 class OurTeam extends React.Component {
   render() {

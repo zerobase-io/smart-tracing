@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/views/errors/500.pug';
+import template from '../../templates/views/errors/500.pug';
 
 class InternalServerError extends React.Component {
   render() {

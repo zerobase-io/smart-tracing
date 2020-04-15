@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/modal/feedback.pug';
+import template from '../../templates/modal/feedback.pug';
 
 class Feedback extends React.Component {
   render() {

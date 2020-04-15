@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/modal/privacy_policy.pug';
+import template from '../../templates/modal/privacy-policy.pug';
 
 class PrivacyPolicy extends React.Component {
   render() {

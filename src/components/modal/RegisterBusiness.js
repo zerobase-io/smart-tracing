@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/modal/register_business.pug';
+import template from '../../templates/modal/register-business.pug';
 
 class RegisterBusiness extends React.Component {
   render() {

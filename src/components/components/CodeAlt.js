@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/components/code_alt.pug';
+import template from '../../templates/components/code-alt.pug';
 
 class CodeAlt extends React.Component {
   render() {

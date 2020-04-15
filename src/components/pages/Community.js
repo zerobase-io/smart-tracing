@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/community.pug';
+import template from '../../templates/pages/community.pug';
 
 class Community extends React.Component {
   render() {

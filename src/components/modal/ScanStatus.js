@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/modal/scan_status.pug';
+import template from '../../templates/modal/scan-status.pug';
 
 class ScanStatus extends React.Component {
   render() {

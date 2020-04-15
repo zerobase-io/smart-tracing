@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/business_landing.pug';
+import template from '../../templates/pages/business_landing.pug';
 
 class BusinessLanding extends React.Component {
   render() {

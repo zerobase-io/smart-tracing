@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/volunteer_landing.pug';
+import template from '../../templates/pages/volunteer_landing.pug';
 
 class VolunteerLanding extends React.Component {
   render() {

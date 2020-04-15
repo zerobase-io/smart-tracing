@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/terms.pug';
+import template from '../../templates/pages/terms.pug';
 
 class Terms extends React.Component {
   render() {

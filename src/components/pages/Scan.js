@@ -1,5 +1,5 @@
 import React from 'react';
-import template from '../../../templates/pages/scan.pug';
+import template from '../../templates/pages/scan.pug';
 
 class Scan extends React.Component {
   render() {
