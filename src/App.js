@@ -30,6 +30,8 @@ import ContactPage from './components/pages/Contact';
 import VolunteerLandingPage from './components/pages/VolunteerLanding';
 import OurTeamPage from './components/pages/OurTeam';
 import ScanPage from './components/pages/Scan';
+import BusinessRegisterPage from './components/pages/BusinessRegister';
+import HealthCareRegisterPage from './components/pages/HealthCareRegister';
 
 const App = () => {
   // Modals --------------------------------------------------//
@@ -152,6 +154,15 @@ const App = () => {
               </Route>
               <Route path="/scan">
                 <ScanPage />
+              </Route>
+              <Route path="/test">
+                <HomePage />
+              </Route>
+              <Route path="/business/register">
+                <BusinessRegisterPage />
+              </Route>
+              <Route path="/healthcare/register">
+                <HealthCareRegisterPage />
               </Route>
               <Route exact path="/">
                 <HomePage />
