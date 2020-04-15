@@ -2,19 +2,12 @@
   "name": "zerobase-frontend",
   "version": "1.0.3",
   "scripts": {
-    "build": "node build.js",
-    "build:dev": "RUNTIME_API_HOST='https://api.staging.zerobase.io' RUNTIME_ENV=dev node build.js",
-    "start:dev": "RUNTIME_ENV=dev node devServer.js",
-    "serve": "http-server ./public",
-    "start": "node devServer.js",
-    "start:next": "react-app-rewired start",
-    "build:next": "react-app-rewired build",
-    "prettier": "prettier --write \"src/*.{ts,tsx,js,json,md,mdx,scss}\""
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "prettier": "prettier --write \"src/*.{ts,tsx,js,json,md,mdx,scss}\"",
+    "serve": "http-server ./build"
   },
   "dependencies": {
-    "@node-minify/core": "^4.1.2",
-    "@node-minify/google-closure-compiler": "^4.1.2",
-    "@node-minify/uglify-js": "^4.1.2",
     "bootstrap": "^4.4.1",
     "fingerprintjs2": "^2.1.0",
     "howler": "^2.1.3",
@@ -23,23 +16,16 @@
     "intl-tel-input": "^16.1.0",
     "jquery": "^3.5.0",
     "jsqr": "^1.2.0",
-    "node-minify": "^3.6.0",
     "places.js": "^1.18.1",
-    "pug": "^2.0.3",
-    "puglatizer": "^1.1.9",
     "qrcodejs": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0",
-    "uglifycss": "0.0.29"
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
-    "express": "^4.17.1",
-    "inquirer": "^7.1.0",
     "lodash": "^4.17.15",
-    "node-watch": "^0.6.3",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -51,9 +37,6 @@
     "prettier": "^2.0.4",
     "pug-as-jsx-loader": "^1.0.83",
     "react-app-rewired": "^2.1.5"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     "IE 9"
