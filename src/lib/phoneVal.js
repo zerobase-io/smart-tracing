@@ -1,6 +1,5 @@
 import $ from 'jquery';
 // This is probably not going to work, but the package lacks documentation and needs to be tested
-import { intlTelInputUtils } from 'intl-tel-input';
 
 export const phoneVal = (() => {
   return {
@@ -13,7 +12,7 @@ export const phoneVal = (() => {
       );
       $(div_selector).blur(function () {
         $(div_selector).val(
-          intlInput.getNumber(intlTelInputUtils.numberFormat.E164),
+          intlInput.getNumber(window.intlTelInputUtils.numberFormat.E164),
         );
       });
       if (window.innerWidth > 750) {
