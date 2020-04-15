@@ -29,6 +29,7 @@ import FeedbackPage from './components/pages/Feedback';
 import ContactPage from './components/pages/Contact';
 import VolunteerLandingPage from './components/pages/VolunteerLanding';
 import OurTeamPage from './components/pages/OurTeam';
+import ScanPage from './components/pages/Scan';
 
 const App = () => {
   // Modals --------------------------------------------------//
@@ -148,6 +149,9 @@ const App = () => {
               </Route>
               <Route path="/team">
                 <OurTeamPage />
+              </Route>
+              <Route path="/scan">
+                <ScanPage />
               </Route>
               <Route exact path="/">
                 <HomePage />
