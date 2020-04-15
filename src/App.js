@@ -1,16 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Primary from './components/navigation/Primary';
 import Secondary from './components/navigation/Secondary';
 import Footer from './components/navigation/Footer';
-import Register from './components/modal/Register';
-import ScanStatus from './components/modal/ScanStatus';
-import Feedback from './components/modal/Feedback';
-import RegisterNotifications from './components/modal/RegisterNotifications';
-import PrivacyPolicy from './components/modal/PrivacyPolicy';
-import Home from './components/pages/Home';
-import Privacy from './components/pages/Privacy';
-import NotFound from './components/views/errors/NotFound';
+
+import RegisterModal from './components/modal/Register';
+import ScanStatusModal from './components/modal/ScanStatus';
+import FeedbackModal from './components/modal/Feedback';
+import RegisterNotificationsModal from './components/modal/RegisterNotifications';
+import PrivacyPolicyModal from './components/modal/PrivacyPolicy';
+
+import HomePage from './components/pages/Home';
+import NotFoundPage from './components/views/errors/NotFound';
+import AboutUsPage from './components/pages/AboutUs';
+import IndividualsLandingPage from './components/pages/IndividualsLanding';
+import CommunityPage from './components/pages/Community';
+import BusinessLandingPage from './components/pages/BusinessLanding';
+import TestingsiteLandingPage from './components/pages/TestingsiteLanding';
+import NotificationsPage from './components/pages/Notifications';
+import PrivacyPage from './components/pages/Privacy';
+import PrivacyLandingPage from './components/pages/PrivacyLanding';
+import TermsPage from './components/pages/Terms';
+import FeedbackPage from './components/pages/Feedback';
+import ContactPage from './components/pages/Contact';
+import VolunteerLandingPage from './components/pages/VolunteerLanding';
+import OurTeamPage from './components/pages/OurTeam';
 
 const App = () => {
   return (
@@ -21,25 +36,59 @@ const App = () => {
           <Secondary />
           <Router>
             <Switch>
+              <Route path="/about">
+                <AboutUsPage />
+              </Route>
+              <Route path="/individual">
+                <IndividualsLandingPage />
+              </Route>
+              <Route path="/community">
+                <CommunityPage />
+              </Route>
+              <Route path="/businesses">
+                <BusinessLandingPage />
+              </Route>
+              <Route path="/testing">
+                <TestingsiteLandingPage />
+              </Route>
+              <Route path="/notifications">
+                <NotificationsPage />
+              </Route>
+              <Route path="/privacy-policy">
+                <PrivacyPage />
+              </Route>
               <Route path="/privacy">
-                <Privacy />
+                <PrivacyLandingPage />
+              </Route>
+              <Route path="/terms">
+                <TermsPage />
+              </Route>
+              <Route path="/feedback">
+                <FeedbackPage />
+              </Route>
+              <Route path="/contact">
+                <ContactPage />
+              </Route>
+              <Route path="/volunteer">
+                <VolunteerLandingPage />
+              </Route>
+              <Route path="/team">
+                <OurTeamPage />
               </Route>
               <Route exact path="/">
-                <Home />
+                <HomePage />
               </Route>
-              <Route component={NotFound} />
+              <Route component={NotFoundPage} />
             </Switch>
           </Router>
         </div>
         <Footer />
       </div>
-      <Register />
-      {/* <RegisterBusiness /> */}
-      {/* <RegisterHealthcare /> */}
-      <ScanStatus />
-      <Feedback />
-      <RegisterNotifications />
-      <PrivacyPolicy />
+      <RegisterModal />
+      <ScanStatusModal />
+      <FeedbackModal />
+      <RegisterNotificationsModal />
+      <PrivacyPolicyModal />
     </>
   );
 };
