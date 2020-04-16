@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import React from 'react';
+// import $ from 'jquery';
+import React,  { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import controller from './lib/controller';
@@ -32,6 +32,8 @@ import OurTeamPage from './components/pages/OurTeam';
 import ScanPage from './components/pages/Scan';
 import BusinessRegisterPage from './components/pages/BusinessRegister';
 import HealthCareRegisterPage from './components/pages/HealthCareRegister';
+
+import Scanner from './components/components/Scanner';
 
 const App = () => {
   // Modals --------------------------------------------------//
@@ -105,59 +107,6 @@ const App = () => {
     }
   });
 
-  const renderSdvidRoute = (props) => {
-    const sdvid = props.match.params.dvid;
-    const dvid =
-      localStorage.getItem('dvid') === 'undefined'
-        ? undefined
-        : localStorage.getItem('dvid');
-    window.history.replaceState(null, null, '/');
-
-    if (sdvid && window.innerWidth < 750) {
-      if (dvid) {
-        console.log('Has registered ID on scan');
-        $('#modal-scan-notice').modal('show');
-        // Please note this callback pattern to pass data down the "chain"
-        // Unfortunately cannot use Async Await due to coverage issues.
-        controller.fetchIP({ sdvid }, (data) => {
-          controller.fingerprint(data, (fingerprintData) => {
-            controller.scan(fingerprintData, () => {
-              return <HomePage />;
-            });
-          });
-        });
-      } else {
-        console.log('Does not have registed ID on scan');
-        // patch, since if user hits cancel its never routed to init
-        if (window.innerWidth < 750) {
-          $('#desktop-notice').addClass('d-none');
-        }
-        $('#mobile-functions').addClass('d-none');
-        $('#registration-notice').removeClass('d-none');
-        $('#modal-register-notice').modal('show');
-        $('body').on('click', '#register-notice-agree', () => {
-          $('#register-notice-agree').addClass('btn-loading');
-          $('#modal-scan-notice').modal('show');
-          controller.fetchIP({ sdvid }, (data) => {
-            console.log('IP -> fingerprint:', data);
-            controller.fingerprint(data, (fingerprintData) => {
-              console.log('fingerprint -> create :', fingerprintData);
-              controller.create(fingerprintData, (createData) => {
-                console.log('create -> scan: ', createData);
-                controller.scan(createData, () => {
-                  return <HomePage />;
-                });
-              });
-            });
-          });
-        });
-      }
-    } else {
-      console.log('Invalid Access Point');
-      return <HomePage />;
-    }
-  };
-
   return (
     <>
       <div id="app">
@@ -217,7 +166,7 @@ const App = () => {
               <Route path="/healthcare/register">
                 <HealthCareRegisterPage />
               </Route>
-              <Route path="/s/:dvid" render={renderSdvidRoute} />
+              <Route path="/s/:sdvid" component={Scanner} />
               <Route exact path="/">
                 <HomePage />
               </Route>

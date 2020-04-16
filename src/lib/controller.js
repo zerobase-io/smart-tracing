@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 import Fingerprint2 from 'fingerprintjs2';
 
 let runtimeConfig = {};

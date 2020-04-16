@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 // This is probably not going to work, but the package lacks documentation and needs to be tested
 
 export const phoneVal = (() => {
