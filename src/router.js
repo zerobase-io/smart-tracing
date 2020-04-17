@@ -21,6 +21,7 @@ $(() => {
 		{ path: '/contact', component: { template: pages.contact()} },
 		{ path: '/volunteer', component: { template: pages.volunteer_landing()}},
 		{ path: '/team', component: { template: pages.our_team()}},
+		{ path: '/terms', component: { template: pages.terms()}},
 
 		//- special routes-------------------------------------------------------------//
 		{ path: '/test',
@@ -235,7 +236,7 @@ $(() => {
 			$('#submit-healthcare-warning').removeClass('d-none');
 		}
 	});
-	
+
 	$('body').on('click', '#notify-submit', (e)=>{
 		e.preventDefault();
 		if($('#notify-agree').prop('checked') === true){
