@@ -11,7 +11,7 @@ class Home extends React.Component {
     console.log('Hostname: ', hostname);
     if (hostname === 'localhost' || hostname === 'staging') {
       $('body').on('click', '#scan-button', () => {
-        this.props.history.push('/s/0724ce8a-05ac-496c-a66b-12573c2221fc');
+        this.props.history.push('/s/aa90875a-e15e-4b7e-97e9-fde8cda615b2');
       });
     }
   }

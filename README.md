@@ -3,14 +3,6 @@ Zerobase Core Platform
 
 This repository contains the front end for the Zerobase smart tracing platform. Refer to the [smart-tracing-api repo](https://github.com/zerobase-io/smart-tracing-api) for the API server.
 
-# TODO
-
-* Doctor/Medical Professional test confirmation flow
-* COVID-19 incidents dashboard utilizing [Covid-19-api](https://github.com/mathdroid/covid-19-api)
-* Landing Page Revision
-* Documentation Framework
-* Blog / Article Framework seperate from the core 
-
 ## Running the project
     
     git clone https://github.com/zerobase-io/smart-tracing.git
