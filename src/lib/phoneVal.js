@@ -1,5 +1,5 @@
-// import $ from 'jquery';
-// This is probably not going to work, but the package lacks documentation and needs to be tested
+// Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
+/* eslint no-undef: 0 */
 
 export const phoneVal = (() => {
   return {

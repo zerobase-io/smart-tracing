@@ -1,5 +1,7 @@
-// import $ from 'jquery';
-import React,  { useState, useEffect } from 'react';
+// Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
+/* eslint no-undef: 0 */
+
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import controller from './lib/controller';

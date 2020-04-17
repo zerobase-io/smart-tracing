@@ -1,4 +1,6 @@
-import $ from 'jquery';
+// Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
+/* eslint no-undef: 0 */
+
 import places from 'places.js';
 
 export const addressVal = (() => {

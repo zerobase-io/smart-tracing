@@ -1,11 +1,14 @@
+// Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
+/* eslint no-undef: 0 */
+
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Home from '../pages/Home';
-import controller from '../../lib/controller.js'
+import controller from '../../lib/controller';
 
 class Scanner extends React.Component {
-  componentDidMount(){
-  	// stateless functional component -> function component to replicate lifecycle behavior
+  componentDidMount() {
+    // stateless functional component -> function component to replicate lifecycle behavior
     const sdvid = this.props.match.params.sdvid;
     const dvid =
       localStorage.getItem('dvid') === 'undefined'
@@ -23,8 +26,8 @@ class Scanner extends React.Component {
         controller.fetchIP({ sdvid }, (data) => {
           controller.fingerprint(data, (fingerprintData) => {
             controller.scan(fingerprintData, () => {
-              	// Pushing to the router history
-      			this.props.history.push('/');
+              // Pushing to the router history
+              this.props.history.push('/');
             });
           });
         });
@@ -47,8 +50,8 @@ class Scanner extends React.Component {
               controller.create(fingerprintData, (createData) => {
                 console.log('create -> scan: ', createData);
                 controller.scan(createData, () => {
-                  	// Pushing to the router history
-      				this.props.history.push('/');
+                  // Pushing to the router history
+                  this.props.history.push('/');
                 });
               });
             });
@@ -62,7 +65,7 @@ class Scanner extends React.Component {
     }
   }
   render() {
-    return <Home/>;
+    return <Home />;
   }
 }
 
