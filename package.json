@@ -6,6 +6,7 @@
     "build": "react-app-rewired build",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,md,mdx,scss}\"",
     "lint": "./node_modules/.bin/eslint ./src",
+    "lint:fix": "./node_modules/.bin/eslint ./src --fix",
     "serve": "http-server ./build"
   },
   "dependencies": {
