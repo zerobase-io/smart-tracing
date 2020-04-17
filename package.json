@@ -4,7 +4,8 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "prettier": "prettier --write \"src/*.{ts,tsx,js,json,md,mdx,scss}\"",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,md,mdx,scss}\"",
+    "lint": "./node_modules/.bin/eslint ./src",
     "serve": "http-server ./build"
   },
   "dependencies": {
