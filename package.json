@@ -27,17 +27,39 @@
     "start": "node devServer.js"
   },
   "devDependencies": {
+    "@applitools/eyes-images": "^4.12.38",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "babel-jest": "^25.3.0",
+    "chalk": "^4.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "expect-puppeteer": "^4.4.0",
     "express": "^4.17.1",
     "inquirer": "^7.1.0",
+    "jest": "^25.3.0",
+    "jest-environment-node": "^25.3.0",
+    "jest-environment-puppeteer": "^4.4.0",
+    "jest-html-reporter": "^3.1.0",
+    "jest-junit": "^10.0.0",
+    "jest-puppeteer": "^4.4.0",
     "lodash": "^4.17.15",
-    "node-watch": "^0.6.3"
+    "mkdirp": "^1.0.4",
+    "node-watch": "^0.6.3",
+    "puppeteer": "^2.1.1",
+    "puppeteer-full-page-screenshot": "^1.0.5",
+    "rimraf": "^3.0.2"
+  },
+  "jest": {
+    "extraGlobals": [
+      "Math"
+    ],
+    "testEnvironment": "node"
   }
 }
