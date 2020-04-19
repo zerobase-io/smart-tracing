@@ -23,4 +23,20 @@ Commits to master will automatically rebuild staging.zerobase.io.
 *   `./public` - all the files in this folder are served as static assets for your site. Customise and add your own css, client-side javascript, images, etc. here. Any `.less` files will be automatically compiled into `.css` files.
 *   `./src` - Contains all of the front end code we write that is bundled up and served. The build process is only currently set up to handle changes to controller.ts.
 
+*  `./tests` - Contains UI automation for both Desktop and Mobile (emulated) versions using Jest and Puppeteer. Image comparison is provided by Applitools if the APPLITOOLS_API_KEY environment variable is set. See the examples below for running the different test suites:
 
+Running mobile tests locally:
+
+```npm run test-mobile```
+
+Running desktop tests locally:
+
+```npm run test-desktop```
+
+Running mobile tests locally (headless):
+
+```npm run test-mobile-headless```
+
+Running desktop tests locally (headless):
+
+```npm run test-desktop-headless```
