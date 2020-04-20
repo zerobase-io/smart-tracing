@@ -12,10 +12,7 @@ if (runtimeConfigElement) {
   runtimeConfig = JSON.parse('{"API_HOST":"https://api.staging.zerobase.io"}');
 }
 
-const { ENV, API_HOST } = runtimeConfig;
-
-// Remove Console Log for non-dev environment
-console.log = ENV === 'dev' ? console.log : () => {};
+const { API_HOST } = runtimeConfig;
 
 console.log('runtime config: ', runtimeConfig);
 
