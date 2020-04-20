@@ -53,26 +53,6 @@ const App = () => {
   });
 
   // Forms (Need refactor) --------------------------------------------------//
-  $('body').on('submit', 'form.register-business', (e) => {
-    e.preventDefault();
-    if ($('#submit-business-agree').prop('checked') === true) {
-      $('#submit-business').addClass('btn-loading');
-      const formElements = {};
-      $(e.currentTarget)
-        .serializeArray()
-        .forEach((entry) => {
-          formElements[entry['name']] = entry['value'];
-        });
-      //formElements['modal_id'] = '#modal-register-business';
-      formElements['modal_id'] = '#body-business-register';
-      formElements['button_id'] = '#submit-business';
-      formElements['hasTestingFacilities'] = false;
-      console.log(formElements);
-      controller.submit_organization(formElements);
-    } else {
-      $('#submit-business-warning').removeClass('d-none');
-    }
-  });
 
   $('body').on('submit', 'form.register-healthcare', (e) => {
     e.preventDefault();
