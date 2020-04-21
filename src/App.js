@@ -159,9 +159,6 @@ const App = () => {
               <Route path="/scan">
                 <ScanPage />
               </Route>
-              <Route path="/test">
-                <HomePage />
-              </Route>
               <Route path="/business/register">
                 <BusinessRegisterPage />
               </Route>
