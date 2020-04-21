@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react';
-//import template from '../../templates/modal/feedback.pug';
 
 class Feedback extends React.Component {
   render() {
