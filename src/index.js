@@ -1,4 +1,3 @@
-import 'intl-tel-input/build/css/intlTelInput.min.css';
 import './assets/css/tabler.css';
 import './assets/css/icons.css';
 import './assets/css/layout.css';
