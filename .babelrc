@@ -8,5 +8,5 @@
       }
     ]
   ],
-  "plugins": ["transform-react-jsx"]
+  "plugins": ["transform-react-jsx", "@babel/plugin-transform-runtime"]
 }
