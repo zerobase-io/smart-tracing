@@ -4,6 +4,7 @@
   "scripts": {
     "start": "cross-env REACT_APP_API_HOST=https://api.staging.zerobase.io react-app-rewired start",
     "build": "react-app-rewired build",
+    "build:dev": "cross-env REACT_APP_API_HOST=https://api.staging.zerobase.io react-app-rewired build",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,md,mdx,scss}\"",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
