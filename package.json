@@ -10,6 +10,7 @@
     "serve": "http-server ./build"
   },
   "dependencies": {
+    "algolia-places-react": "^1.5.1",
     "bootstrap": "^4.4.1",
     "fingerprintjs2": "^2.1.0",
     "howler": "^2.1.3",
