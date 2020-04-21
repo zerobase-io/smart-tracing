@@ -8,10 +8,10 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "serve": "serve -s build -l 8080",
-    "test-desktop": "HEADLESS=false JEST_PUPPETEER_CONFIG=jest-puppeteer.config.js jest --runInBand tests/specs/desktop",
-    "test-mobile": "HEADLESS=false JEST_PUPPETEER_CONFIG=jest-puppeteer.mobile.config.js jest --runInBand tests/specs/mobile",
-    "test-desktop-headless": "HEADLESS=true JEST_PUPPETEER_CONFIG=jest-puppeteer.config.js jest --runInBand tests/specs/desktop",
-    "test-mobile-headless": "HEADLESS=true JEST_PUPPETEER_CONFIG=jest-puppeteer.mobile.config.js jest --runInBand tests/specs/mobile"
+    "test-desktop": "cross-env HEADLESS=false JEST_PUPPETEER_CONFIG=jest-puppeteer.config.js jest --runInBand tests/specs/desktop",
+    "test-mobile": "cross-env HEADLESS=false JEST_PUPPETEER_CONFIG=jest-puppeteer.mobile.config.js jest --runInBand tests/specs/mobile",
+    "test-desktop-headless": "cross-env HEADLESS=true JEST_PUPPETEER_CONFIG=jest-puppeteer.config.js jest --runInBand tests/specs/desktop",
+    "test-mobile-headless": "cross-env HEADLESS=true JEST_PUPPETEER_CONFIG=jest-puppeteer.mobile.config.js jest --runInBand tests/specs/mobile"
   },
   "dependencies": {
     "algolia-places-react": "^1.5.1",
