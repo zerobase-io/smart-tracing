@@ -1,20 +1,12 @@
 // Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
 /* eslint no-undef: 0 */
-
+import config from '../config';
 import Fingerprint2 from 'fingerprintjs2';
 
-let runtimeConfig = {};
-const runtimeConfigElement = document.getElementById('runtime-config');
-if (runtimeConfigElement) {
-  // runtimeConfig = JSON.parse(runtimeConfigElement.innerHTML);
+const { ENV, API_HOST } = config;
 
-  // TODO: Use .env config
-  runtimeConfig = JSON.parse('{"API_HOST":"https://api.staging.zerobase.io"}');
-}
-
-const { API_HOST } = runtimeConfig;
-
-console.log('runtime config: ', runtimeConfig);
+// Remove Console Log for non-dev environment
+console.log = ENV === 'development' ? console.log : () => {};
 
 if (API_HOST == null) {
   throw new Error('API_HOST not in runtime config!');
