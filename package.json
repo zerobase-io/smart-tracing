@@ -2,16 +2,17 @@
   "name": "zerobase-frontend",
   "version": "1.0.3",
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "cross-env REACT_APP_API_HOST=https://api.staging.zerobase.io react-app-rewired start",
     "build": "react-app-rewired build",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,md,mdx,scss}\"",
-    "lint": "./node_modules/.bin/eslint ./src",
-    "lint:fix": "./node_modules/.bin/eslint ./src --fix",
-    "serve": "http-server ./build"
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "serve": "serve -s build -l 8080"
   },
   "dependencies": {
     "algolia-places-react": "^1.5.1",
     "bootstrap": "^4.4.1",
+    "core-js": "^3.6.5",
     "fingerprintjs2": "^2.1.0",
     "howler": "^2.1.3",
     "http-server": "^0.12.1",
@@ -26,18 +27,20 @@
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "serve": "^11.3.0",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
-    "lodash": "^4.17.15",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "cross-env": "^7.0.2",
     "customize-cra": "^0.9.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-prettier": "^3.1.3",
+    "lodash": "^4.17.15",
     "prettier": "^2.0.4",
     "pug-as-jsx-loader": "^1.0.83",
     "react-app-rewired": "^2.1.5"
