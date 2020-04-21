@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
 /* eslint no-undef: 0 */
 
@@ -10,7 +11,7 @@ import QrReader from 'react-qr-reader';
 //import template from '../../templates/pages/scan.pug';
 
 // // This is an example of how you override an existing component with custom CSS
-// const QrReaderContainer = styled(Link)`
+// const Wrapper = styled(Link)`
 //   color: #61dafb;
 // `;
 
@@ -21,9 +22,11 @@ class Scan extends React.Component {
       delay: 500,
       sound: new Howl({ src: ['/assets/audio/beep.mp3'] }),
       result: 'No result',
+      legacyMode: false,
     };
 
     this.handleScan = this.handleScan.bind(this);
+    this.openImageDialog = this.openImageDialog.bind(this);
   }
   handleScan(result) {
     if (result) {
@@ -33,26 +36,64 @@ class Scan extends React.Component {
     }
   }
   handleError(err) {
+    alert(
+      'This app does not have permission to access your camera. Instead, you may take a picture of the QR code.',
+    );
+    this.setState({ legacyMode: true });
     console.error(err);
+  }
+  openImageDialog() {
+    this.refs.scanner.openImageDialog();
   }
   render() {
     const previewStyle = {
-      height: '100vh',
-      // width: '100%',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
     };
-
+    const wrapperStyle = {
+      position: 'relative',
+      height: '100vh',
+      overflow: 'hidden',
+    };
+    const featuredStyle = {
+      position: 'absolute',
+      width: 'calc(85vh)' /*'calc(100vh * (1000 / 562))',*/,
+      minWwidth: '100%',
+      minHheight: '100%',
+      // top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    };
+    const { legacyMode } = this.state;
     return (
-      <div>
-        <QrReader
-          delay={this.state.delay}
-          style={previewStyle}
-          onError={this.handleError}
-          onScan={this.handleScan}
-        />
-        <div className="ocrloader" style={{ position: 'absolute' }}>
-          <em></em>
-          <div></div>
-          <span></span>
+      <div style={wrapperStyle}>
+        <div style={featuredStyle}>
+          <QrReader
+            ref="scanner"
+            delay={this.state.delay}
+            style={previewStyle}
+            onError={this.handleError}
+            onScan={this.handleScan}
+            showViewFinder={false}
+            facingMode="environment"
+            legacyMode={legacyMode}
+          />
+          {legacyMode && (
+            <a
+              className="btn btn-primary mt-6 md-5"
+              onClick={this.openImageDialog.bind(this)}
+            >
+              Take a picture
+            </a>
+          )}
+          <div className="ocrloader" style={{ position: 'absolute' }}>
+            <em></em>
+            <div></div>
+            <span></span>
+          </div>
         </div>
       </div>
     );
