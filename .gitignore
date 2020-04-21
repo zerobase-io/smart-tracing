@@ -1,5 +1,10 @@
 node_modules
 
+# Test files
+junit.xml
+test-report.html
+tests/screenshots/*.png
+tests/screenshots/*.jpg
 
 # Build files
 public/controller.js
