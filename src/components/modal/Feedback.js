@@ -8,7 +8,7 @@ class Feedback extends React.Component {
       <div
         className="modal modal-blur fade"
         id="modal-feedback"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-hidden="true"
       >
@@ -39,8 +39,8 @@ class Feedback extends React.Component {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  strokeLineCap="round"
-                  strokeLineJoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
