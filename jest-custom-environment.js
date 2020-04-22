@@ -1,6 +1,6 @@
 const PuppeteerEnvironment = require('jest-environment-puppeteer');
 const Eyes = require('@applitools/eyes-images').Eyes;
-const path = require('path');
+// const path = require('path');
 
 class CustomPuppeteerEnvironment extends PuppeteerEnvironment {
   constructor(config) {
