@@ -11,7 +11,7 @@ export default class RegisterHealthcarePage {
       hasTestingFacilities: 'input[name=hasTestingFacilities]',
       pocName: 'input[name=contact_name]',
       pocEmail: 'input[name=email]',
-      pocPhone: 'input[id=healthcare-phone]',
+      pocPhone: 'input[name=phone]',
       submitButton: 'button[id=submit-healthcare]',
       submitButtonDisabled: 'button[id=submit-healthcare][disabled=disabled]',
       privacyTermsCheckbox: 'input[id=submit-healthcare-agree]',
@@ -43,7 +43,7 @@ export default class RegisterHealthcarePage {
     await page.focus(this.selectors.registrationForm);
   }
 
-  async enterSiteInfo(data = { siteName, siteAddress }) {
+  async enterSiteInfo(data) {
     await page.waitForSelector(this.selectors.organizationName);
     await page.click(this.selectors.organizationName);
     await page.keyboard.type(data.siteName);
