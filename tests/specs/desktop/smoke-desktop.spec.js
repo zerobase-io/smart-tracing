@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 
-const re = new RegExp(/path: '(?<name>.*)',/gi);
-const router = readFileSync('src/router.js').toString('utf-8');
+const re = new RegExp(/path="(?<name>.*)"/gi);
+const router = readFileSync('src/App.js').toString('utf-8');
 let matches;
 
 const paths = [];
@@ -11,7 +11,7 @@ const paths = [];
 while ((matches = re.exec(router)) !== null) {
   const path = matches[1];
   // TODO: find a workaround not to ignore "/scan": https://github.com/puppeteer/puppeteer/issues/4404
-  if (path !== '/s/*' && path !== '*' && path !== '/scan') {
+  if (path !== '/s/:sdvid' && path !== '*' && path !== '/scan') {
     paths.push(path);
   }
 }
@@ -43,7 +43,7 @@ describe('Zerobase Desktop - Smoke Test All Routes', () => {
 
     // TODO: Respect environment
 
-    await page.goto(`http://localhost:8080${path}`, {
+    await page.goto(`http://localhost:3000${path}`, {
       waitUntil: 'networkidle2',
     });
 
