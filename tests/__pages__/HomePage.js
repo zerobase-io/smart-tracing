@@ -25,6 +25,7 @@ export default class HomePage {
     await page.click(this.selectors.businessMenuItem, {
       waitUntil: 'domcontentloaded',
     });
+    await page.waitFor(2000);
   }
 
   async selectHealthcare() {
@@ -32,5 +33,6 @@ export default class HomePage {
     await page.click(this.selectors.healthcareMenuItem, {
       waitUntil: 'domcontentloaded',
     });
+    await page.waitFor(2000);
   }
 }
