@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
     jquery: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'react-app',
@@ -28,6 +28,6 @@ module.exports = {
     browser: true,
     context: true,
     jestPuppeteer: true,
-    "$": true,
-  }
+    $: true,
+  },
 };

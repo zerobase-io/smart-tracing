@@ -24,7 +24,7 @@ export default class RegisterHealthcarePage {
   async register() {
     await page.waitForSelector(this.selectors.registerButton);
 
-    await page.$eval(this.selectors.registerButton, e => {
+    await page.$eval(this.selectors.registerButton, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
 
@@ -36,7 +36,7 @@ export default class RegisterHealthcarePage {
 
   async waitForRegistrationForm() {
     await page.waitForSelector(this.selectors.registrationForm);
-    await page.$eval(this.selectors.registrationForm, e => {
+    await page.$eval(this.selectors.registrationForm, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
     await page.waitFor(2000);
@@ -61,7 +61,7 @@ export default class RegisterHealthcarePage {
   }
 
   async checkAdministerTests() {
-    await page.$eval(this.selectors.hasTestingFacilities, e => {
+    await page.$eval(this.selectors.hasTestingFacilities, (e) => {
       e.click();
     });
   }
@@ -86,7 +86,7 @@ export default class RegisterHealthcarePage {
 
   async submit() {
     await page.waitForSelector(this.selectors.submitButton, { visible: true });
-    await page.$eval(this.selectors.alertSuccess, e => {
+    await page.$eval(this.selectors.alertSuccess, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
     // TODO: wait until scrolled into view instead of using explicit waits
@@ -99,29 +99,38 @@ export default class RegisterHealthcarePage {
   async verifyPrivacyWarning() {
     await page.waitForSelector(this.selectors.alertWarning, { visible: true });
     await page.waitForSelector(this.selectors.alertWarning);
-    await page.$eval(this.selectors.alertWarning, e => {
+    await page.$eval(this.selectors.alertWarning, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
 
-    await expect(page).toMatchElement(this.selectors.alertWarning, { text: 'Please accept the privacy policy before continuing.' });
+    await expect(page).toMatchElement(this.selectors.alertWarning, {
+      text: 'Please accept the privacy policy before continuing.',
+    });
   }
 
   async verifyPhoneValidationWarning() {
     // TODO: update with unique ID
-    await page.waitForSelector(this.selectors.alertPhoneValidationWarning, { visible: true });
+    await page.waitForSelector(this.selectors.alertPhoneValidationWarning, {
+      visible: true,
+    });
     await page.waitForSelector(this.selectors.alertPhoneValidationWarning);
-    await page.$eval(this.selectors.alertPhoneValidationWarning, e => {
+    await page.$eval(this.selectors.alertPhoneValidationWarning, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
 
-    await expect(page).toMatchElement(this.selectors.alertPhoneValidationWarning, { text: 'Some of your information could not be verified, please try again' });
+    await expect(page).toMatchElement(
+      this.selectors.alertPhoneValidationWarning,
+      {
+        text:
+          'Some of your information could not be verified, please try again',
+      },
+    );
   }
-
 
   async verifySuccess() {
     await page.waitForSelector(this.selectors.alertSuccess, { visible: true });
     await page.waitForSelector(this.selectors.alertSuccess);
-    await page.$eval(this.selectors.alertSuccess, e => {
+    await page.$eval(this.selectors.alertSuccess, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
   }

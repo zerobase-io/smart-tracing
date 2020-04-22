@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 
-const re = new RegExp(/path: '(?<name>.*)',/ig);
+const re = new RegExp(/path: '(?<name>.*)',/gi);
 const router = readFileSync('src/router.js').toString('utf-8');
 let matches;
 
@@ -43,14 +43,23 @@ describe('Zerobase Desktop - Smoke Test All Routes', () => {
 
     // TODO: Respect environment
 
-    await page.goto(`http://localhost:8080${path}`, { waitUntil: 'networkidle2' });
+    await page.goto(`http://localhost:8080${path}`, {
+      waitUntil: 'networkidle2',
+    });
 
     // await page.waitForNavigation();
 
-    const fullPageScreenshotHack = readFileSync(`${__dirname}/../../utils/fullPageScreenshot.js`).toString('utf-8');
+    const fullPageScreenshotHack = readFileSync(
+      `${__dirname}/../../utils/fullPageScreenshot.js`,
+    ).toString('utf-8');
     await page.evaluate(fullPageScreenshotHack);
 
-    const img = await page.screenshot({ path: `${__dirname}/../../screenshots/desktop-smoke-${path.split('/').join('')}.png`, fullPage: true });
+    const img = await page.screenshot({
+      path: `${__dirname}/../../screenshots/desktop-smoke-${path
+        .split('/')
+        .join('')}.png`,
+      fullPage: true,
+    });
 
     if (global.eyes) {
       await eyes.checkImage(img, `${path}`);

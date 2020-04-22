@@ -21,7 +21,7 @@ export default class RegisterBusinessPage {
 
   async enroll() {
     await page.waitForSelector(this.selectors.enrollButton);
-    await page.$eval(this.selectors.enrollButton, e => {
+    await page.$eval(this.selectors.enrollButton, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
     // await page.$eval(this.selectors.enrollButton, (el) => el.scrollIntoView())
@@ -34,7 +34,7 @@ export default class RegisterBusinessPage {
 
   async waitForRegistrationForm() {
     await page.waitForSelector(this.selectors.registrationForm);
-    await page.$eval(this.selectors.registrationForm, e => {
+    await page.$eval(this.selectors.registrationForm, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
     await page.waitFor(2000);
@@ -73,23 +73,35 @@ export default class RegisterBusinessPage {
   }
 
   async verifyPrivacyWarning() {
-    await page.waitForSelector(this.selectors.alertPrivacyWarning, { visible: true });
-    await page.$eval(this.selectors.alertPrivacyWarning, e => {
+    await page.waitForSelector(this.selectors.alertPrivacyWarning, {
+      visible: true,
+    });
+    await page.$eval(this.selectors.alertPrivacyWarning, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
 
-    await expect(page).toMatchElement(this.selectors.alertPrivacyWarning, { text: 'Please accept the privacy policy before continuing.' });
+    await expect(page).toMatchElement(this.selectors.alertPrivacyWarning, {
+      text: 'Please accept the privacy policy before continuing.',
+    });
   }
 
   async verifyPhoneValidationWarning() {
     // TODO: update with unique ID
-    await page.waitForSelector(this.selectors.alertPhoneValidationWarning, { visible: true });
+    await page.waitForSelector(this.selectors.alertPhoneValidationWarning, {
+      visible: true,
+    });
     await page.waitForSelector(this.selectors.alertPhoneValidationWarning);
-    await page.$eval(this.selectors.alertPhoneValidationWarning, e => {
+    await page.$eval(this.selectors.alertPhoneValidationWarning, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
 
-    await expect(page).toMatchElement(this.selectors.alertPhoneValidationWarning, { text: 'Some of your information could not be verified, please try again' });
+    await expect(page).toMatchElement(
+      this.selectors.alertPhoneValidationWarning,
+      {
+        text:
+          'Some of your information could not be verified, please try again',
+      },
+    );
   }
 
   async acceptPrivacyTerms() {
@@ -99,7 +111,7 @@ export default class RegisterBusinessPage {
   async submit() {
     // await page.keyboard.press("Enter")
     await page.waitForSelector(this.selectors.submitButton, { visible: true });
-    await page.$eval(this.selectors.alertSuccess, e => {
+    await page.$eval(this.selectors.alertSuccess, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
     await page.waitFor(2000);
@@ -112,7 +124,7 @@ export default class RegisterBusinessPage {
   async verifySuccess() {
     await page.waitForSelector(this.selectors.alertSuccess, { visible: true });
     await page.waitForSelector(this.selectors.alertSuccess);
-    await page.$eval(this.selectors.alertSuccess, e => {
+    await page.$eval(this.selectors.alertSuccess, (e) => {
       e.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     });
   }
