@@ -34,6 +34,7 @@ import OurTeamPage from './components/pages/OurTeam';
 import ScanPage from './components/pages/Scan';
 import BusinessRegisterPage from './components/pages/BusinessRegister';
 import HealthCareRegisterPage from './components/pages/HealthCareRegister';
+import TestPage from './components/pages/Test';
 
 import Scanner from './components/components/Scanner';
 
@@ -146,6 +147,9 @@ const App = () => {
                 <HealthCareRegisterPage />
               </Route>
               <Route path="/s/:sdvid" component={Scanner} />
+              <Route path="/test">
+                <TestPage />
+              </Route>
               <Route exact path="/">
                 <HomePage />
               </Route>
