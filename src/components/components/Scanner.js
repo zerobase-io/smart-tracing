@@ -23,14 +23,19 @@ class Scanner extends React.Component {
         $('#modal-scan-notice').modal('show');
         // Please note this callback pattern to pass data down the "chain"
         // Unfortunately cannot use Async Await due to coverage issues.
-        controller.fetchIP({ sdvid }, (data) => {
-          controller.fingerprint(data, (fingerprintData) => {
-            controller.scan(fingerprintData, () => {
-              // Pushing to the router history
-              this.props.history.push('/');
-            });
+        controller.fingerprint({ sdvid }, (fingerprintData) => {
+          controller.scan(fingerprintData, () => {
+            this.props.history.push('/');
           });
         });
+        // controller.fetchIP({ sdvid }, (data) => {
+        //   controller.fingerprint(data, (fingerprintData) => {
+        //     controller.scan(fingerprintData, () => {
+        //       // Pushing to the router history
+        //       this.props.history.push('/');
+        //     });
+        //   });
+        // });
       } else {
         console.log('Does not have registed ID on scan');
         // patch, since if user hits cancel its never routed to init
@@ -43,19 +48,29 @@ class Scanner extends React.Component {
         $('body').on('click', '#register-notice-agree', () => {
           $('#register-notice-agree').addClass('btn-loading');
           $('#modal-scan-notice').modal('show');
-          controller.fetchIP({ sdvid }, (data) => {
-            console.log('IP -> fingerprint:', data);
-            controller.fingerprint(data, (fingerprintData) => {
-              console.log('fingerprint -> create :', fingerprintData);
-              controller.create(fingerprintData, (createData) => {
-                console.log('create -> scan: ', createData);
-                controller.scan(createData, () => {
-                  // Pushing to the router history
-                  this.props.history.push('/');
-                });
+          controller.fingerprint({ sdvid }, (fingerprintData) => {
+            console.log('fingerprint -> create :', fingerprintData);
+            controller.create(fingerprintData, (createData) => {
+              console.log('create -> scan: ', createData);
+              controller.scan(createData, () => {
+                // Pushing to the router history
+                this.props.history.push('/');
               });
             });
           });
+          // controller.fetchIP({ sdvid }, (data) => {
+          //   console.log('IP -> fingerprint:', data);
+          //   controller.fingerprint(data, (fingerprintData) => {
+          //     console.log('fingerprint -> create :', fingerprintData);
+          //     controller.create(fingerprintData, (createData) => {
+          //       console.log('create -> scan: ', createData);
+          //       controller.scan(createData, () => {
+          //         // Pushing to the router history
+          //         this.props.history.push('/');
+          //       });
+          //     });
+          //   });
+          // });
         });
       }
     } else {
