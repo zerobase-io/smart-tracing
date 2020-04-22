@@ -1,5 +1,4 @@
 // Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
-/* eslint no-undef: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 
 import React, { useState } from 'react';
@@ -9,6 +8,8 @@ import controller from '../../lib/controller';
 import AddressField from '../components/Form/AddressField';
 import PhoneNumberField from '../components/Form/PhoneNumberField';
 
+import LocationImage from '../../assets/img/info/location.png';
+
 const Container = styled.div`
   padding: 0;
 `;
@@ -17,8 +18,8 @@ const BusinessRegister = () => {
   const [orgName, setOrgName] = useState('');
   const [address, setAddress] = useState(null);
   const [type, setType] = useState();
-  const [email, setEmail] = useState('');
   const [contactName, setContactName] = useState('');
+  const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [acceptedPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
   const handlePrivacyPolicyCheckbox = () =>
@@ -91,6 +92,7 @@ const BusinessRegister = () => {
                       type="text"
                       name="org_name"
                       placeholder="Business name"
+                      required="required"
                       value={orgName}
                       onChange={(e) => {
                         setOrgName(e.target.value);
@@ -200,7 +202,7 @@ const BusinessRegister = () => {
                 <div className="card mt-4">
                   <img
                     className="card-img-top"
-                    src="/assets/img/info/location.png"
+                    src={LocationImage}
                     alt="Cashier stands behind computer monitor with Zerobase QR code next to monitor while man posts QR code on the wall."
                   />
                   <div className="card-body">
