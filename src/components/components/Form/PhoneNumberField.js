@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 
-const PhoneNumberField = ({ required, onChange, onBlur }) => {
+const PhoneNumberField = ({ required, onChange, name }) => {
   const ref = useRef(null);
 
   return (
@@ -23,7 +23,7 @@ const PhoneNumberField = ({ required, onChange, onBlur }) => {
         input.updateValFromNumber(newValue);
         onChange(newValue);
       }}
-      fieldName="phone"
+      fieldName={name}
       telInputProps={{
         id: 'business-phone',
         required: required ? 'required' : null,

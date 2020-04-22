@@ -53,7 +53,7 @@ const splitAddress = (x) => {
   return { number: number, space: ' ', street: a.join(' ') };
 };
 
-const AddressField = ({ placeholder, required, onChange, onBlur }) => {
+const AddressField = ({ placeholder, name, required, onChange, onBlur }) => {
   let inputRef;
   const onChangeHandler = (changes) => {
     const { suggestion } = changes;
@@ -111,6 +111,7 @@ const AddressField = ({ placeholder, required, onChange, onBlur }) => {
       autoCapitalize="none"
       spellCheck="false"
       required={required ? 'required' : null}
+      name={name}
     />
   );
 };

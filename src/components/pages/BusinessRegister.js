@@ -101,6 +101,7 @@ const BusinessRegister = () => {
                     <AddressField
                       placeholder="Type and select location"
                       required={true}
+                      name="org_place"
                       onChange={(addr) => {
                         if (!addr) {
                           setAddress(null);
@@ -155,6 +156,7 @@ const BusinessRegister = () => {
                   <div className="input-icon mb-2">
                     <PhoneNumberField
                       placeholder="Phone number"
+                      name="phone"
                       required={true}
                       onChange={(phoneNum) => {
                         if (!phoneNum) {
