@@ -13,7 +13,8 @@
   },
   "buildpacks": [
     {
-      "url": "heroku/nodejs"
+      "url": "https://github.com/mars/create-react-app-buildpack"
+      //"url": "heroku/nodejs"
     }
   ],
   "image": "heroku/nodejs",
@@ -21,9 +22,6 @@
   "env": {
     "NODE_ENV": {
       "value": "production"
-    },
-    "REACT_APP_API_HOST": {
-      "value": "https://api.staging.zerobase.io"
     }
   }
 }
