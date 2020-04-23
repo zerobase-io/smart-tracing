@@ -1,21 +1,21 @@
-#modal-scan-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', style='display:none;', data-backdrop="static", data-keyboard="false")
+#modal-scan-notice.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', style='{{"display":"none"}}', data-backdrop="static", data-keyboard="false")
   .modal-dialog.modal-sm.modal-dialog-centered(role='document')
     .modal-content.py-4
-      .modal-body.text-center.py-2(style="min-height:100vh;")
+      .modal-body.text-center.py-2(style='{{"minHeight":"100vh"}}')
 
         #scan-notice-loading.vertical-center
-          .spinner-border.text-gray(role='status' style="width:3.5rem;height:3.5rem;")
+          .spinner-border.text-gray(role='status' style='{{"width":"3.5rem","height":"3.5rem"}}')
           h2.pt-4 Connecting...
           .text-muted This will only take a moment
 
         #scan-notice-error.d-none
           .px-3
-            .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='width: 200px;')
+            .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='{{"width":"200px"}}')
               .d-flex.flex-justify-between.flex-items-center.py-4
-                span.avatar.avatar-md.avatar-shadow(style="background-image:url(/assets/img/anon-2.png)")
+                span.avatar.avatar-md.avatar-shadow(style='{{"backgroundImage":"url(/assets/img/anon-2.png)"}}')
                 span.avatar.avatar-lg.bg-warning
-                  i.fe.fe-x(style="color:white")
-                span.avatar.avatar-md(style="background-image:url(/assets/img/logo_icon_200.jpg)")
+                  i.fe.fe-x(style='{{"color":"white"}}')
+                span.avatar.avatar-md(style='{{"backgroundImage":"url(/assets/img/logo_icon_200.jpg)"}}')
             h2.text-center.mb-4 Scan Error
           h4#scan-notice-error-code
           .alert.alert-warning.text-center.mt-4(role='alert')
@@ -33,12 +33,12 @@
 
         #scan-notice-success.d-none
           .px-3
-            .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='width: 200px;')
+            .DashedConnection.mb-0.mx-auto.d-block.d-md-none(style='{{"width":"200px"}}')
               .d-flex.flex-justify-between.flex-items-center.py-4
-                span.avatar.avatar-md.avatar-shadow(style="background-image:url(/assets/img/anon-2.png)")
+                span.avatar.avatar-md.avatar-shadow(style='{{"backgroundImage":"url(/assets/img/anon-2.png)"}}')
                 span.avatar.avatar-lg.bg-success-scan
-                  i.fe.fe-check(style="color:white")
-                span.avatar.avatar-md(style="background-image:url(/assets/img/logo_icon_200.jpg)")
+                  i.fe.fe-check(style='{{"color":"white"}}')
+                span.avatar.avatar-md(style='{{"backgroundImage":"url(/assets/img/logo_icon_200.jpg)"}}')
                 
             h2.text-center.mb-4 Scan Succeeded
             .text-muted#scan-notice-success-datetime Jan 19, 2019 01:10:22
@@ -54,4 +54,4 @@
           a.btn.btn-secondary.btn-block.btn-md(href='/')
             | Continue to Zerobase
           .text-muted.small.mt-2#scan-notice-id some-id
-          //-svg#scan-notice-barcode-id(style="width:100%;")
+          //-svg#scan-notice-barcode-id(style='{{"width":"100%"}}')

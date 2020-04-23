@@ -14,13 +14,13 @@ footer#footer-main.position-relative
               //-       path(d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20')
               //-       path(d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z')
               //-   span.btn-inner--text Documentation
-              router-link.btn.btn-github.my-2.ml-0.ml-sm-3(to='/volunteer') Join Us
+              a.btn.btn-secondary.my-2.ml-0.ml-sm-3(href='/volunteer') Join Us
 
       hr.divider.divider-fade.divider-dark.my-5
       .row
         .col-lg-4.mb-5.mb-lg-0
           a(href='/')
-            img(alt='Zerobase logo', src='/assets/img/ZerobaseLogo_Dark.png', style="width:200px;")
+            img(alt='Zerobase logo', src='/assets/img/ZerobaseLogo_Dark.png', style='{{"width":"200px"}}')
           p.mt-4.text-sm.opacity-8.pr-lg-4
             | The Zerobase Foundation is a nonprofit organization whose mission is to build free, open source public health technology for the good of communities around the world. Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
           ul.nav.mt-4
@@ -43,33 +43,33 @@ footer#footer-main.position-relative
           h6.heading.mb-3 Register
           ul.list-unstyled
             li
-              router-link(to='/business/register') As a Business
+              a(href='/business/register') As a Business
             li
-              router-link(to='/healthcare/register') As a Healthcare Provider
+              a(href='/healthcare/register') As a Healthcare Provider
             li
-              router-link(to='/healthcare/register') As a Testing Facility
+              a(href='/healthcare/register') As a Testing Facility
         .col-lg-2.col-6.col-sm-4.ml-lg-auto.mb-5.mb-lg-0
           h6.heading.mb-3 Information For
           ul.list-unstyled
             li
-              router-link(to='/individual') Individuals
+              a(href='/individual') Individuals
             li
-              router-link(to='/businesses') Businesses & Locations
+              a(href='/businesses') Businesses & Locations
             li
-              router-link(to='/testing') Testing Facilities
+              a(href='/testing') Testing Facilities
             li
-              router-link(to='/community') Communities
+              a(href='/community') Communities
         .col-lg-2.col-6.col-sm-4.mb-5.mb-lg-0
           h6.heading.mb-3 Zerobase Foundation
           ul.list-unstyled
             li
-              router-link(to='/about') About Us
+              a(href='/about') About Us
             li
-              router-link(to='/team') Our Team
+              a(href='/team') Our Team
             li
-              router-link(to='/contact') Contact Us
+              a(href='/contact') Contact Us
             li
-              router-link(to='/feedback') Feedback
+              a(href='/feedback') Feedback
 
       hr.divider.divider-fade.divider-dark.my-4
       .row.align-items-center.justify-content-md-between.pb-4
@@ -83,6 +83,6 @@ footer#footer-main.position-relative
             li.nav-item
               a.nav-link(href='/terms', target='_blank') Terms
             li.nav-item
-              router-link.nav-link(to='/privacy-policy') Privacy & Cookies Policy
+              a.nav-link(href='/privacy-policy') Privacy & Cookies Policy
             //-li.nav-item
-              router-link.nav-link(to='/privacy-policy') Cookies
+              a.nav-link(href='/privacy-policy') Cookies

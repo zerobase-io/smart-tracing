@@ -3,11 +3,11 @@
     .row
        .col-12
           .card.mb-0
-            .hero-img-height.hero-img-cover-center(style='background-image: url(/assets/img/info/ZBHero_Mission.jpg); filter:brightness(70%)', alt='Zerobase logo over highway heading into city.')
+            .hero-img-height.hero-img-cover-center(style='{{"backgroundImage":"url(/assets/img/info/ZBHero_Mission.jpg)","filter":"brightness(70%)"}}', alt='Zerobase logo over highway heading into city.')
   .container
     .row.m-2
-      .col-12(style="margin: 0 auto;")
-        .card(style="border:none; background-color:").shadow-none
+      .col-12(style='{{"margin":"0 auto"}}')
+        .card(style='{{"border":"none"}}').shadow-none
           .card-body.shadow-none
             .row.align-items-center
               .col-lg-12.d-flex.justify-content-center.text-center
@@ -15,7 +15,7 @@
 
             .row.align-items-center
               .col-lg-12.text-center
-                img(src="/assets/img/info/ZerobaseLogo_light.png" style="width:50%", alt='Zerobase Logo')
+                img(src="/assets/img/info/ZerobaseLogo_light.png" style='{{"width":"50%"}}', alt='Zerobase Logo')
 
     .row.m-4.mb-6
         .col-lg-6.col-12.pr-lg-5
@@ -26,7 +26,7 @@
             | Contact tracing is the identification of likely disease-spreading interaction between individuals－it is a crucial part of modern pandemic response.
           p.lead.lh-180
             | Zerobase enables local communities to establish their first line of defense against COVID-19 outbreaks in a way that is private, easy to use, and helps to alleviate the manual issues involved in contact tracing and individualized testing.
-          a.btn.btn-outline-dark.font-weight-normal(href='https://www.who.int/features/qa/contact-tracing/en/' role="button" style="border-color: #65C6E1; color:#65C6E1") More about contact tracing
+          a.btn.btn-outline-dark.font-weight-normal(href='https://www.who.int/features/qa/contact-tracing/en/' role="button" style='{{"borderColor":"#65C6E1","color":"#65C6E1"}}') More about contact tracing
 
     .row.m-4.p-5.mt-5.border-top.border-secondary.pb-4.pt-4
         .col-12.col-lg-12.pr-lg-5.mt-6
@@ -66,11 +66,11 @@
 
     .row.text-align-center
         .col-lg-4.col-12
-            img(src='/assets/img/info/1.png' style='width: 100%; display: inline-block; opacity: 1;', alt='Man posting QR code on wall.')
+            img(src='/assets/img/info/1.png' style='{{"width":"100%","display":"inline-block","opacity":"1"}}', alt='Man posting QR code on wall.')
         .col-lg-4.col-12
-            img(style='width: 100%; display: inline-block; opacity: 1;' src='/assets/img/info/3.png', alt='Man scanning QR code on wall. Woman waiting behind him on phone.')
+            img(style='{{"width":"100%","display":"inline-block","opacity":"1"}}' src='/assets/img/info/3.png', alt='Man scanning QR code on wall. Woman waiting behind him on phone.')
         .col-lg-4.col-12
-            img(style='width: 100%; display: inline-block; opacity: 1;' src='/assets/img/info/4.png' , alt='Woman patient in hospital bed. Doctor scans the patients phone with his phone.')
+            img(style='{{"width":"100%","display":"inline-block","opacity":"1"}}' src='/assets/img/info/4.png' , alt='Woman patient in hospital bed. Doctor scans the patients phone with his phone.')
     .row.text-align-center.mt-5
         .col-12
             .card.m-5
@@ -85,10 +85,10 @@
                         |   – this is as simple as pointing a phone’s camera at the sign; it takes just a few seconds, and no app download is required. Here is an example code that you can scan right now:
                         br
 
-                     li.mb-4(style='text-align: center; display: block')
+                     li.mb-4(style='{{"textAlign":"center","display":"block"}}')
                         img.text-center.w-md-100.w-lg-30(src='/assets/img/sample_zerobase_qr.jpg', alt='Zerobase QR code.')
 
-                     li.mb-4(style='display: block')
+                     li.mb-4(style='{{"display":"block"}}')
                         | Individuals may choose to share their phone number in order to be notified by public health authorities (or automatically by Zerobase, if so desired) if they have been exposed. By default, no personal information is required
                         | and if we don't have access to your phone number, we'll still try to notify you the next time you check in to any location.
                      li.mb-4
@@ -137,7 +137,7 @@
           p
             | An individual’s identity is never deduced by the system, and any personal information shared voluntarily is stored securely. Zerobase is built from the ground up with security and privacy in mind and abides by relevant local, state, and federal laws.
             | To read more about how we put your privacy first, click
-            router-link.text-wrap(to='/privacy-policy')     here.
+            a.text-wrap(href='/privacy-policy')     here.
 
     .row.m-4.justify-content-between.mb-5
       .col-lg-3.col-md-12.col-12.text-lg-right

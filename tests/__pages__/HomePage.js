@@ -1,7 +1,7 @@
 export default class HomePage {
   constructor() {
     // TODO: Target different environments
-    this.homePageURL = 'http://localhost:8080/';
+    this.homePageURL = 'http://localhost:3000/';
     this.selectors = {
       dropdown: '.dropdown-toggle',
       dropdownActive: '.dropdown-menu.show',
@@ -22,11 +22,17 @@ export default class HomePage {
 
   async selectBusiness() {
     await page.waitForSelector(this.selectors.businessMenuItem);
-    await page.click(this.selectors.businessMenuItem, { waitUntil: 'domcontentloaded' });
+    await page.click(this.selectors.businessMenuItem, {
+      waitUntil: 'domcontentloaded',
+    });
+    await page.waitFor(2000);
   }
 
   async selectHealthcare() {
     await page.waitForSelector(this.selectors.healthcareMenuItem);
-    await page.click(this.selectors.healthcareMenuItem, { waitUntil: 'domcontentloaded' });
+    await page.click(this.selectors.healthcareMenuItem, {
+      waitUntil: 'domcontentloaded',
+    });
+    await page.waitFor(2000);
   }
 }

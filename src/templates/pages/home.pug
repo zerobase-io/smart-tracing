@@ -1,9 +1,9 @@
 .content.pt-0
   .container-fluid.p-0
-    .row(style='padding:0;')
+    .row(style='{{"padding":"0"}}')
       .col-12
         .card.mb-0
-          .hero-img-height.hero-img-cover-center(style='background-image: url(/assets/img/QR_Codes_Main_ZB_dark.jpg); filter:brightness(70%);', alt='Phone scanning Zerobase QR code.')
+          .hero-img-height.hero-img-cover-center(style='{{"backgroundImage":"url(/assets/img/QR_Codes_Main_ZB_dark.jpg)","filter":"brightness(70%)"}}', alt='Phone scanning Zerobase QR code.')
           .card-img-overlay.text-center.d-flex.align-items-center
             .container
               h1.text-white Help Your Community End Coronavirus
@@ -11,22 +11,22 @@
               a.btn.btn-primary.mt-6.md-5(href='/privacy')
                 i.fe.fe-eye.mr-2
                 | Read Our Privacy-First Commitment
-  .container(style='padding:0;')
+  .container(style='{{"padding":"0"}}')
     .row
-      .col-12(style="margin: 0 auto;")
-        .card.mt-4.mb-4(style="border:none; background-color:").shadow-none
+      .col-12(style='{{"margin":"0 auto"}}')
+        .card.mt-4.mb-4(style='{{"border":"none"}}').shadow-none
           .card-body
             .row.row-sm.align-items-center.shadow-none
               .col-md-4.col-12.text-center
                 img.w-50(src="/assets/img/ZerobaseLogo_icon.png", alt='Zerobase Logo')
-                //-span.avatar.avatar-xl.rounded.mr-5(style='background-image: url(/assets/img/ZerobaseLogo_icon.png); background-color:white;')
+                //-span.avatar.avatar-xl.rounded.mr-5(style='{{"backgroundImage":"url(/assets/img/ZerobaseLogo_icon.png)","backgroundColor":"white"}}')
               .col-md-8.col-12
                 h1 Our Mission
                 p.lead.lh-190
                   | The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world.
                   | Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19.
     .row.mt-0.mt-md-4
-      router-link.col-12.col-md-4.order-1.d-flex.align-items-stretch(to='/businesses', style="color:black")
+      a.col-12.col-md-4.order-1.d-flex.align-items-stretch(href='/businesses', style='{{"color":"black"}}')
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_location.jpg', alt='Man putting open sign in window.')
           .card-body
@@ -34,7 +34,7 @@
             p
               | Play a vital role in stopping the spread of coronavirus in your community by enabling anonymous check-ins at your door in seconds. Stay ahead of the curve and keep your patrons and staff safe.
 
-      router-link.col-12.col-md-4.order-1.d-flex.align-items-stretch(to='/testing', style="color:black")
+      a.col-12.col-md-4.order-1.d-flex.align-items-stretch(href='/testing', style='{{"color":"black"}}')
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_testing.jpg', alt='Nurse with clip board talking to patient.')
           .card-body
@@ -42,7 +42,7 @@
             p
                 | Use our powerful tracing technology to maximize the value of every COVID-19 test in your area and keep your community safe.
 
-      router-link.col-12.col-md-4.order-1.d-flex.align-items-stretch(to='/community', style="color:black")
+      a.col-12.col-md-4.order-1.d-flex.align-items-stretch(href='/community', style='{{"color":"black"}}')
         .card.hover-translate-y-n10.hover-shadow-lg
           img.card-img-top(src='/assets/img/info/ZB_containers_community.jpg', alt='Woman at podium speaking to audience.')
           .card-body

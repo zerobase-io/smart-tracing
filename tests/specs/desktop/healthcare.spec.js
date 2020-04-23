@@ -25,19 +25,30 @@ describe('Zerobase - Desktop - Register Healthcare', () => {
 
     await healthcarePage.waitForRegistrationForm();
 
-    await healthcarePage.enterSiteInfo({ siteName: 'Fake Site Name', siteAddress: 'Fake Site Address' });
+    await healthcarePage.enterSiteInfo({
+      siteName: 'Fake Site Name',
+      siteAddress: 'Fake Site Address',
+    });
 
     await healthcarePage.selectFacilityType('HEALTH/DOCTOR_OFFICE');
     await healthcarePage.checkAdministerTests();
 
     // Google's phone number
-    await healthcarePage.enterContactInformation({ name: 'Fake Contact', email: 'zerobase@mailinator.com', phone: '+16502530000' });
+    await healthcarePage.enterContactInformation({
+      name: 'Fake Contact',
+      email: 'zerobase@mailinator.com',
+      phone: '+16502530000',
+    });
     await healthcarePage.acceptPrivacyTerms();
 
     await healthcarePage.submit();
     await healthcarePage.verifySuccess();
 
-    await page.screenshot({ path: './tests/screenshots/registeHealthcare-success.jpg', type: 'jpeg', fullPage: true });
+    await page.screenshot({
+      path: './tests/screenshots/registeHealthcare-success.jpg',
+      type: 'jpeg',
+      fullPage: true,
+    });
   });
 
   it('should ask the user to accept the privacy terms before registering', async () => {
@@ -50,18 +61,29 @@ describe('Zerobase - Desktop - Register Healthcare', () => {
 
     await healthcarePage.waitForRegistrationForm();
 
-    await healthcarePage.enterSiteInfo({ siteName: 'Fake Site Name', siteAddress: 'Fake Site Address' });
+    await healthcarePage.enterSiteInfo({
+      siteName: 'Fake Site Name',
+      siteAddress: 'Fake Site Address',
+    });
 
     await healthcarePage.selectFacilityType('HEALTH/DOCTOR_OFFICE');
     await healthcarePage.checkAdministerTests();
 
     // Google's phone number
-    await healthcarePage.enterContactInformation({ name: 'Fake Contact', email: 'zerobase@mailinator.com', phone: '+16502530000' });
+    await healthcarePage.enterContactInformation({
+      name: 'Fake Contact',
+      email: 'zerobase@mailinator.com',
+      phone: '+16502530000',
+    });
 
     await healthcarePage.submit();
     await healthcarePage.verifyPrivacyWarning();
 
-    await page.screenshot({ path: './tests/screenshots/registeHealthcare-warning.jpg', type: 'jpeg', fullPage: true });
+    await page.screenshot({
+      path: './tests/screenshots/registeHealthcare-warning.jpg',
+      type: 'jpeg',
+      fullPage: true,
+    });
   });
 
   it('should show an error if the phone is invalid', async () => {
@@ -74,18 +96,29 @@ describe('Zerobase - Desktop - Register Healthcare', () => {
 
     await healthcarePage.waitForRegistrationForm();
 
-    await healthcarePage.enterSiteInfo({ siteName: 'Fake Site Name', siteAddress: 'Fake Site Address' });
+    await healthcarePage.enterSiteInfo({
+      siteName: 'Fake Site Name',
+      siteAddress: 'Fake Site Address',
+    });
 
     await healthcarePage.selectFacilityType('HEALTH/DOCTOR_OFFICE');
     await healthcarePage.checkAdministerTests();
 
     // Google's phone number
-    await healthcarePage.enterContactInformation({ name: 'Fake Contact', email: 'zerobase@mailinator.com', phone: 'f' });
+    await healthcarePage.enterContactInformation({
+      name: 'Fake Contact',
+      email: 'zerobase@mailinator.com',
+      phone: 'f',
+    });
 
     await healthcarePage.acceptPrivacyTerms();
     await healthcarePage.submit();
     await healthcarePage.verifyPhoneValidationWarning();
 
-    await page.screenshot({ path: './tests/screenshots/registeHealthcare-phone-warning.jpg', type: 'jpeg', fullPage: true });
+    await page.screenshot({
+      path: './tests/screenshots/registeHealthcare-phone-warning.jpg',
+      type: 'jpeg',
+      fullPage: true,
+    });
   });
 });

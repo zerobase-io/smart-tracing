@@ -1,4 +1,4 @@
-console.log("LOADED jest-puppeteer.config.js");
+console.log('LOADED jest-puppeteer.config.js');
 
 module.exports = {
   launch: {
@@ -7,5 +7,5 @@ module.exports = {
     sloMo: 1000,
     ignoreHTTPSErrors: true,
     // defaultViewport: null
-  }
-}
+  },
+};
