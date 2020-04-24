@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles';
 
-// These are the different buttons types
+// These are the styles of the different buttons types
 // It helps a lot with reusability and changes in future
 const btnTypes = {
   primary: {

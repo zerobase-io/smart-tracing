@@ -1,6 +1,6 @@
 // These are the main colors in the app
 // Any components should use colors which are defined here
-// There shouldn't be cases where we are supposed to define custom colors across the apps
+// There shouldn't be cases where we are supposed to define custom colors across the app
 
 export const colors = {
   primary: '#293742',
