@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles';
 
-const btnStyles = {
+// These are the different buttons types
+// It helps a lot with reusability and changes in future
+const btnTypes = {
   primary: {
     color: colors.light,
     backgroundColor: colors.primary,
@@ -45,19 +47,22 @@ const btnStyles = {
   },
 };
 
+// These are some helper functions, but they can be nested inside the styled component as well
 const getColor = (props) =>
-  props.btnStyle
-    ? btnStyles[props.btnStyle]['color']
-    : btnStyles['default']['color'];
+  props.type ? btnTypes[props.type]['color'] : btnTypes['default']['color'];
 const getBackgroundColor = (props) =>
-  props.btnStyle
-    ? btnStyles[props.btnStyle]['backgroundColor']
-    : btnStyles['default']['backgroundColor'];
+  props.type
+    ? btnTypes[props.type]['backgroundColor']
+    : btnTypes['default']['backgroundColor'];
 const getBorderColor = (props) =>
-  props.btnStyle
-    ? btnStyles[props.btnStyle]['borderColor']
-    : btnStyles['default']['borderColor'];
+  props.type
+    ? btnTypes[props.type]['borderColor']
+    : btnTypes['default']['borderColor'];
 
+// The button styled component
+// Basically this is pure CSS, but since we use string literals - ``
+// we can inject some JS inside - ${...}
+// This makes it extremely powerful and easy to build reusable and customizable components
 const ButtonComponent = styled.button`
   width: 100%;
   max-width: 400px;
@@ -69,9 +74,9 @@ const ButtonComponent = styled.button`
   border: 1px solid ${getBorderColor};
 `;
 
-const Button = ({ onClick, btnStyle, children }) => {
+const Button = ({ onClick, type, children }) => {
   return (
-    <ButtonComponent onClick={onClick} btnStyle={btnStyle}>
+    <ButtonComponent onClick={onClick} type={type}>
       {children}
     </ButtonComponent>
   );
