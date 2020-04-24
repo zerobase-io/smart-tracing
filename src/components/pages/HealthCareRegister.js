@@ -17,7 +17,7 @@ const Container = styled.div`
 const HealthCareRegister = () => {
   const [orgName, setOrgName] = useState('');
   const [address, setAddress] = useState(null);
-  const [type, setType] = useState();
+  const [type, setType] = useState('HEALTH/DOCTOR_OFFICE');
   const [contactName, setContactName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(null);
@@ -192,7 +192,7 @@ const HealthCareRegister = () => {
                       />
                       <span className="form-check-label">
                         I agree to the{' '}
-                        <a id="privacy-policy" href="#" tabindex="-1">
+                        <a id="privacy-policy" href="#" tabIndex="-1">
                           privacy policy
                         </a>
                         .

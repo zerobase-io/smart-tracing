@@ -17,7 +17,7 @@ const Container = styled.div`
 const BusinessRegister = () => {
   const [orgName, setOrgName] = useState('');
   const [address, setAddress] = useState(null);
-  const [type, setType] = useState();
+  const [type, setType] = useState('BUSINESS/OTHER');
   const [contactName, setContactName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(null);
