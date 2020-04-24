@@ -123,7 +123,7 @@ export const controller = (() => ({
       success: (responseData) => {
         console.log('submit_organization -> responseData:', responseData);
         let category, subcategory;
-        if (inputs.type.length > 0) {
+        if (inputs && inputs.type && inputs.type.length > 0) {
           category = inputs.type.split('/')[0];
           subcategory = inputs.type.split('/')[1];
         }
