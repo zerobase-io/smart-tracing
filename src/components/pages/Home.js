@@ -1,5 +1,6 @@
 // Temporary disable the eslint run `no-undef` because of the global $ (jQuery)
 /* eslint no-undef: 0 */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
@@ -72,9 +73,9 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="row mt-0 mt-md-4">
-            <router-link
+            <a
               className="col-12 col-md-4 order-1 d-flex align-items-stretch"
-              to="/businesses"
+              href="/businesses"
               style={{ color: 'black' }}
             >
               <div className="card hover-translate-y-n10 hover-shadow-lg">
@@ -93,10 +94,10 @@ class Home extends React.Component {
                   </p>
                 </div>
               </div>
-            </router-link>
-            <router-link
+            </a>
+            <a
               className="col-12 col-md-4 order-1 d-flex align-items-stretch"
-              to="/testing"
+              href="/testing"
               style={{ color: 'black' }}
             >
               <div className="card hover-translate-y-n10 hover-shadow-lg">
@@ -114,10 +115,10 @@ class Home extends React.Component {
                   </p>
                 </div>
               </div>
-            </router-link>
-            <router-link
+            </a>
+            <a
               className="col-12 col-md-4 order-1 d-flex align-items-stretch"
-              to="/community"
+              href="/community"
               style={{ color: 'black' }}
             >
               <div className="card hover-translate-y-n10 hover-shadow-lg">
@@ -136,7 +137,7 @@ class Home extends React.Component {
                   </p>
                 </div>
               </div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
