@@ -37,6 +37,7 @@ import HealthCareRegisterPage from './components/pages/HealthCareRegister';
 import TestPage from './components/pages/Test';
 
 import Scanner from './components/components/Scanner';
+import SelfReportingPage from './components/pages/SelfReporting';
 
 const App = () => {
   // Modals --------------------------------------------------//
@@ -68,81 +69,74 @@ const App = () => {
     }
   });
 
-  return (
-    <>
-      <div id="app">
-        <div className="page">
-          <Primary />
-          <Secondary />
-          <Router>
-            <Switch>
-              <Route path="/about">
-                <AboutUsPage />
-              </Route>
-              <Route path="/individual">
-                <IndividualsLandingPage />
-              </Route>
-              <Route path="/community">
-                <CommunityPage />
-              </Route>
-              <Route path="/businesses">
-                <BusinessLandingPage />
-              </Route>
-              <Route path="/testing">
-                <TestingsiteLandingPage />
-              </Route>
-              <Route path="/notifications">
-                <NotificationsPage />
-              </Route>
-              <Route path="/privacy-policy">
-                <PrivacyPage />
-              </Route>
-              <Route path="/privacy">
-                <PrivacyLandingPage />
-              </Route>
-              <Route path="/terms">
-                <TermsPage />
-              </Route>
-              <Route path="/feedback">
-                <FeedbackPage />
-              </Route>
-              <Route path="/contact">
-                <ContactPage />
-              </Route>
-              <Route path="/volunteer">
-                <VolunteerLandingPage />
-              </Route>
-              <Route path="/team">
-                <OurTeamPage />
-              </Route>
-              <Route path="/scan">
-                <ScanPage />
-              </Route>
-              <Route path="/business/register">
-                <BusinessRegisterPage />
-              </Route>
-              <Route path="/healthcare/register">
-                <HealthCareRegisterPage />
-              </Route>
-              <Route path="/s/:sdvid" component={Scanner} />
-              <Route path="/test">
-                <TestPage />
-              </Route>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Router>
+  const MainLayout = ({ children }) => {
+    return (
+      <>
+        <div id="app">
+          <div className="page">
+            <Primary />
+            <Secondary />
+            {children}
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      <RegisterModal />
-      <ScanStatusModal />
-      <FeedbackModal />
-      <RegisterNotificationsModal />
-      <PrivacyPolicyModal />
-    </>
+        <RegisterModal />
+        <ScanStatusModal />
+        <FeedbackModal />
+        <RegisterNotificationsModal />
+        <PrivacyPolicyModal />
+      </>
+    );
+  };
+
+  const MainLayoutRoute = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={(props) => (
+          <MainLayout>
+            <Component {...props} />
+          </MainLayout>
+        )}
+      />
+    );
+  };
+
+  return (
+    <Router>
+      <Switch>
+        <MainLayoutRoute path="/about" component={AboutUsPage} />
+        <MainLayoutRoute
+          path="/individual"
+          component={IndividualsLandingPage}
+        />
+        <MainLayoutRoute path="/community" component={CommunityPage} />
+        <MainLayoutRoute path="/businesses" component={BusinessLandingPage} />
+        <MainLayoutRoute path="/testing" component={TestingsiteLandingPage} />
+        <MainLayoutRoute path="/notifications" component={NotificationsPage} />
+        <MainLayoutRoute path="/privacy-policy" component={PrivacyPage} />
+        <MainLayoutRoute path="/privacy" component={PrivacyLandingPage} />
+        <MainLayoutRoute path="/terms" component={TermsPage} />
+        <MainLayoutRoute path="/feedback" component={FeedbackPage} />
+        <MainLayoutRoute path="/contact" component={ContactPage} />
+        <MainLayoutRoute path="/volunteer" component={VolunteerLandingPage} />
+        <MainLayoutRoute path="/team" component={OurTeamPage} />
+        <MainLayoutRoute path="/scan" component={ScanPage} />
+        <MainLayoutRoute
+          path="/business/register"
+          component={BusinessRegisterPage}
+        />
+        <MainLayoutRoute
+          path="/healthcare/register"
+          component={HealthCareRegisterPage}
+        />
+        <MainLayoutRoute path="/s/:sdvid" component={Scanner} />
+        <MainLayoutRoute path="/test" component={TestPage} />
+        <MainLayoutRoute exact path="/" component={HomePage} />
+        <Route path="/self-reporting" component={SelfReportingPage} />
+        <MainLayoutRoute path="*" component={NotFoundPage} />
+      </Switch>
+    </Router>
   );
 };
 
