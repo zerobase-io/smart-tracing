@@ -32,7 +32,7 @@ const btnTypes = {
   },
   successSolid: {
     color: colors.dark,
-    backgroundColor: colors.lightGreen,
+    backgroundColor: colors.lighterGreen,
     borderColor: colors.green,
   },
   info: {

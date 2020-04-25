@@ -11,7 +11,7 @@ export const colors = {
   lighterGray: '#D3D4D5',
   lightestGray: '#FBFBFB',
   green: '#79B977',
-  lightGreen: '#E3F0CF',
+  lighterGreen: '#E3F0CF',
   yellow: '#FDDF9B',
   lighterYellow: '#FEEFCD',
   blue: '#67C4E0',
