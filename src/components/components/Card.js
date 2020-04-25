@@ -26,7 +26,7 @@ const getBackgroundColor = (props) =>
     : cardTypes['default']['backgroundColor'];
 
 const CardContainer = styled.div`
-  height: 200px;
+  min-height: 200px;
   max-width: 500px;
   border-radius: 2px;
   margin: 15px 0 0;
