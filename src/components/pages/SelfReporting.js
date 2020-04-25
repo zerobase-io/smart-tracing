@@ -46,6 +46,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 `;
 const Footer = styled.div`
   width: 100%;
@@ -57,6 +58,35 @@ const Footer = styled.div`
 const Image = styled.img`
   width: 80%;
   margin: 0 auto;
+`;
+const SurveyQuestion = styled.div`
+  width: 100%;
+  background-color: ${colors.lighterGreen};
+  border: 1px solid ${colors.green};
+  border-radius: 2px;
+  font-size: ${fontSizes.large};
+  padding: 5px 15px;
+  text-align: center;
+  font-weight: bold;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const SelectWrapper = styled.div`
+  width: 100%;
+  background-color: ${colors.lighterGreen};
+  border: 1px solid ${colors.green};
+  border-radius: 2px;
+  font-size: ${fontSizes.primary};
+  padding: 10px;
+`;
+const Select = styled.div``;
+const SelectQuestion = styled.p``;
+const OptionLabel = styled.label`
+  & > input {
+    margin-right: 10px;
+  }
 `;
 
 const SurveyLayout = ({ children }) => {
@@ -81,22 +111,59 @@ const SurveyLayout = ({ children }) => {
             history.push('/');
           }}
         >
-          Continue to Zerobase
+          Back to Zerobase
         </Button>
       </Footer>
     </Container>
   );
 };
 
-const Step1 = ({ onUpdate, nextStep }) => {
+const PlanningStep1 = ({ onUpdate, nextStep }) => {
   const history = useHistory();
   return (
-    <div>
-      <p>When have you been tested for COVID-19</p>
+    <SurveyLayout>
+      <SurveyQuestion>
+        If you'd like, you can let us know when you will be tested, and we'll
+        set a reminder notification, so you can update us on the result
+      </SurveyQuestion>
       <Button
         type="infoSolid"
         onClick={() => {
-          onUpdate('when', 'In the past two weeks');
+          console.log('Openning calendar...');
+          console.log('Updating form with the picked date...');
+          // onUpdate(...)
+          console.log('Submitting the form...');
+          // onSubmit(...)
+          history.replace('/self-reporting/thank-you');
+        }}
+      >
+        I'm getting tested on
+      </Button>
+      <Button>I prefer not to answer</Button>
+    </SurveyLayout>
+  );
+};
+
+const WasTestedStep1 = ({ onUpdate, nextStep }) => {
+  const history = useHistory();
+  return (
+    <SurveyLayout>
+      <SurveyQuestion>When have you been tested for COVID-19?</SurveyQuestion>
+      <Button
+        type="defaultSolid"
+        onClick={() => {
+          console.log('Updating the form...');
+          // onUpdate(...)
+          history.push(nextStep);
+        }}
+      >
+        Whithin the past few days
+      </Button>
+      <Button
+        type="infoSolid"
+        onClick={() => {
+          console.log('Updating the form...');
+          // onUpdate(...)
           history.push(nextStep);
         }}
       >
@@ -105,53 +172,104 @@ const Step1 = ({ onUpdate, nextStep }) => {
       <Button
         type="defaultSolid"
         onClick={() => {
-          onUpdate('when', 'In the past month');
+          console.log('Updating the form...');
+          // onUpdate(...)
           history.push(nextStep);
         }}
       >
         In the past month
       </Button>
-    </div>
+      <Button>I prefer not to answer</Button>
+    </SurveyLayout>
   );
 };
 
-const Step2 = ({ onUpdate, onSubmit, nextStep }) => {
+const WasTestedStep2 = ({ onUpdate, nextStep }) => {
   const history = useHistory();
   return (
-    <div>
-      <h1>Page 2</h1>
+    <SurveyLayout>
+      <SurveyQuestion>What was the result of your test?</SurveyQuestion>
       <Button
+        type="defaultSolid"
         onClick={() => {
-          onUpdate('email', 'veselin@gmail.com');
+          console.log('Updating the form...');
+          // onUpdate(...)
+          console.log('Submitting the form...');
+          // onSubmit(...)
+          history.replace('/self-reporting/thank-you');
         }}
       >
-        Update data
+        I was tested negative
       </Button>
       <Button
+        type="infoSolid"
         onClick={() => {
-          onSubmit();
-          history.push(nextStep);
+          console.log('Updating the form...');
+          // onUpdate(...)
+          console.log('Submitting the form...');
+          // onSubmit(...)
+          history.replace('/self-reporting/thank-you');
         }}
       >
-        Sumbit
+        I was tested positive
       </Button>
-    </div>
+      <Button
+        type="defaultSolid"
+        onClick={() => {
+          console.log('Updating the form...');
+          // onUpdate(...)
+          console.log('Submitting the form...');
+          // onSubmit(...)
+          history.replace('/self-reporting/thank-you');
+        }}
+      >
+        My test is not back yet
+      </Button>
+      <Button>I prefer not to answer</Button>
+    </SurveyLayout>
   );
 };
 
-const Step3 = ({ rootRoute }) => {
-  const history = useHistory();
+const SingleSelectQuestion = ({ question, options }) => {
   return (
-    <div>
-      <h1>Page 3</h1>
-      <Button
-        onClick={() => {
-          history.replace(rootRoute);
-        }}
-      >
-        Go back
-      </Button>
-    </div>
+    <SelectWrapper>
+      <SelectQuestion>{question}</SelectQuestion>
+      <Select>
+        {options &&
+          options.map((o) => {
+            return (
+              <div key={o.value}>
+                <OptionLabel>
+                  <input type="radio" value={o.value} name={question} />
+                  {o.label}
+                </OptionLabel>
+              </div>
+            );
+          })}
+      </Select>
+    </SelectWrapper>
+  );
+};
+
+const NotSureStep1 = ({ onUpdate, nextStep }) => {
+  const options = [
+    {
+      value: 'under-18',
+      label: 'I am under 18',
+    },
+    {
+      value: 'between-18-and-64',
+      label: 'I am between 18 and 64',
+    },
+    {
+      value: 'no-answer',
+      label: 'I prefer not the answer',
+    },
+  ];
+  return (
+    <SurveyLayout>
+      <SingleSelectQuestion question="How old are you?" options={options} />
+    </SurveyLayout>
   );
 };
 
@@ -192,7 +310,7 @@ const ThankYouPage = () => {
             history.push('/');
           }}
         >
-          Continue to Zerobase
+          Back to Zerobase
         </Button>
       </Footer>
     </Container>
@@ -291,19 +409,13 @@ const NotFeelingWellLanding = () => {
 const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
   let { path } = useRouteMatch();
   const notSureSteps = [
-    (props) => <Step1 {...props} />,
-    (props) => <Step2 {...props} />,
-    (props) => <Step3 {...props} />,
+    (props) => <NotSureStep1 {...props} />,
+    // TODO: Add the rest
   ];
-  const planningSteps = [
-    (props) => <Step1 {...props} />,
-    (props) => <Step2 {...props} />,
-    (props) => <Step3 {...props} />,
-  ];
+  const planningSteps = [(props) => <PlanningStep1 {...props} />];
   const wasTestedSteps = [
-    (props) => <Step1 {...props} />,
-    (props) => <Step2 {...props} />,
-    (props) => <Step3 {...props} />,
+    (props) => <WasTestedStep1 {...props} />,
+    (props) => <WasTestedStep2 {...props} />,
   ];
   return (
     <Switch>
