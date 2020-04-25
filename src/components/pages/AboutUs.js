@@ -11,13 +11,13 @@ import SampleQRImage from '../../assets/img/sample_zerobase_qr.jpg';
 class AboutUs extends React.Component {
   render() {
     return (
-      <div class="content m-0 p-0 w-100">
-        <div class="container-fluid w-100 p-0 mb-2 mb-md-6">
-          <div class="row">
-            <div class="col-12">
-              <div class="card mb-0">
+      <div className="content m-0 p-0 w-100">
+        <div className="container-fluid w-100 p-0 mb-2 mb-md-6">
+          <div className="row">
+            <div className="col-12">
+              <div className="card mb-0">
                 <div
-                  class="hero-img-height hero-img-cover-center"
+                  className="hero-img-height hero-img-cover-center"
                   style={{
                     backgroundImage: `url(${ZBHeroMissionImage})`,
                     filter: 'brightness(70%)',
@@ -28,18 +28,18 @@ class AboutUs extends React.Component {
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row m-2">
-            <div class="col-12" style={{ margin: '0 auto' }}>
-              <div class="card shadow-none" style={{ border: 'none' }}>
-                <div class="card-body shadow-none">
-                  <div class="row align-items-center">
-                    <div class="col-lg-12 d-flex justify-content-center text-center">
+        <div className="container">
+          <div className="row m-2">
+            <div className="col-12" style={{ margin: '0 auto' }}>
+              <div className="card shadow-none" style={{ border: 'none' }}>
+                <div className="card-body shadow-none">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12 d-flex justify-content-center text-center">
                       <h1>Everything You Need To Know About</h1>
                     </div>
                   </div>
-                  <div class="row align-items-center">
-                    <div class="col-lg-12 text-center">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12 text-center">
                       <img
                         src={LogoLight}
                         style={{ width: '50%' }}
@@ -51,28 +51,28 @@ class AboutUs extends React.Component {
               </div>
             </div>
           </div>
-          <div class="row m-4 mb-6">
-            <div class="col-lg-6 col-12 pr-lg-5">
-              <p class="h1 lh-180 mb-3">
+          <div className="row m-4 mb-6">
+            <div className="col-lg-6 col-12 pr-lg-5">
+              <p className="h1 lh-180 mb-3">
                 Zerobase is a free, privacy-first contact tracing platform that
                 empowers both individuals and local officials to stop the spread
                 of COVID-19.
               </p>
             </div>
-            <div class="col-lg-6 col-12">
-              <p class="lead lh-180">
+            <div className="col-lg-6 col-12">
+              <p className="lead lh-180">
                 Contact tracing is the identification of likely
                 disease-spreading interaction between individuals－it is a
                 crucial part of modern pandemic response.
               </p>
-              <p class="lead lh-180">
+              <p className="lead lh-180">
                 Zerobase enables local communities to establish their first line
                 of defense against COVID-19 outbreaks in a way that is private,
                 easy to use, and helps to alleviate the manual issues involved
                 in contact tracing and individualized testing.
               </p>
               <a
-                class="btn btn-outline-dark font-weight-normal"
+                className="btn btn-outline-dark font-weight-normal"
                 href="https://www.who.int/features/qa/contact-tracing/en/"
                 role="button"
                 style={{ borderColor: '#65C6E1', color: '#65C6E1' }}
@@ -81,27 +81,27 @@ class AboutUs extends React.Component {
               </a>
             </div>
           </div>
-          <div class="row m-4 p-5 mt-5 border-top border-secondary pb-4 pt-4">
-            <div class="col-12 col-lg-12 pr-lg-5 mt-6">
-              <p class="h1 lh-180 mb-3 font-weight-normal">
+          <div className="row m-4 p-5 mt-5 border-top border-secondary pb-4 pt-4">
+            <div className="col-12 col-lg-12 pr-lg-5 mt-6">
+              <p className="h1 lh-180 mb-3 font-weight-normal">
                 We built Zerobase to help real people
               </p>
             </div>
           </div>
-          <div class="row m-4">
-            <div class="col-lg-4 col-12 text-center mb-2">
+          <div className="row m-4">
+            <div className="col-lg-4 col-12 text-center mb-2">
               <img
-                class="w-75 mt-3 mb-3 card-img"
+                className="w-75 mt-3 mb-3 card-img"
                 src={EarthImage}
                 alt="Satellite of earth."
               />
             </div>
-            <div class="col-12 col-lg-8">
-              <div class="row">
-                <div class="col-12">
-                  <p class="h1 lh-180 mb-4 text-justify">Zerobase:</p>
+            <div className="col-12 col-lg-8">
+              <div className="row">
+                <div className="col-12">
+                  <p className="h1 lh-180 mb-4 text-justify">Zerobase:</p>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div className="col-lg-6 col-12">
                   <h2>Puts Privacy First.</h2>
                   <p>
                     We provide an effective tracing solution for local
@@ -109,7 +109,7 @@ class AboutUs extends React.Component {
                     privacy or reducing trust.
                   </p>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div className="col-lg-6 col-12">
                   <h2>Is Easy to Use.</h2>
                   <p>
                     Anyone with a smartphone can use Zerobase by simply opening
@@ -118,8 +118,8 @@ class AboutUs extends React.Component {
                   </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-6 col-12">
+              <div className="row">
+                <div className="col-lg-6 col-12">
                   <h2>Is Accessible.</h2>
                   <p>
                     Zerobase’s coverage is worldwide, supporting Edge (low-speed
@@ -128,7 +128,7 @@ class AboutUs extends React.Component {
                     matter where they are.
                   </p>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div className="col-lg-6 col-12">
                   <h2>Is Free.</h2>
                   <p>
                     Our infrastructure is free to use. From New York City to
@@ -140,29 +140,29 @@ class AboutUs extends React.Component {
               </div>
             </div>
           </div>
-          <div class="row m-4 p-5 mt-5 border-top border-secondary pb-4 pt-4">
-            <div class="col-12 col-lg-12 pr-lg-5 mt-6">
-              <p class="h1 lh-180 mb-3 font-weight-normal text-align-center">
+          <div className="row m-4 p-5 mt-5 border-top border-secondary pb-4 pt-4">
+            <div className="col-12 col-lg-12 pr-lg-5 mt-6">
+              <p className="h1 lh-180 mb-3 font-weight-normal text-align-center">
                 Here’s how Zerobase could protect your community:
               </p>
             </div>
           </div>
-          <div class="row text-align-center">
-            <div class="col-lg-4 col-12">
+          <div className="row text-align-center">
+            <div className="col-lg-4 col-12">
               <img
                 src={InfoImage1}
                 style={{ width: '100%', display: 'inline-block', opacity: '1' }}
                 alt="Man posting QR code on wall."
               />
             </div>
-            <div class="col-lg-4 col-12">
+            <div className="col-lg-4 col-12">
               <img
                 style={{ width: '100%', display: 'inline-block', opacity: '1' }}
                 src={InfoImage3}
                 alt="Man scanning QR code on wall. Woman waiting behind him on phone."
               />
             </div>
-            <div class="col-lg-4 col-12">
+            <div className="col-lg-4 col-12">
               <img
                 style={{ width: '100%', display: 'inline-block', opacity: '1' }}
                 src={InfoImage4}
@@ -170,12 +170,12 @@ class AboutUs extends React.Component {
               />
             </div>
           </div>
-          <div class="row text-align-center mt-5">
-            <div class="col-12">
-              <div class="card m-5">
-                <div class="card-body p-5">
-                  <ol class="h4 font-weight-normal">
-                    <li class="mb-4">
+          <div className="row text-align-center mt-5">
+            <div className="col-12">
+              <div className="card m-5">
+                <div className="card-body p-5">
+                  <ol className="h4 font-weight-normal">
+                    <li className="mb-4">
                       <strong>
                         Paper printouts with unique Zerobase QR codes
                       </strong>{' '}
@@ -184,7 +184,7 @@ class AboutUs extends React.Component {
                       entrances, pharmacies, doctors' offices, and places of
                       worship.
                     </li>
-                    <li class="mb-4">
+                    <li className="mb-4">
                       <strong>
                         People entering a participating location scan the code
                       </strong>{' '}
@@ -195,16 +195,16 @@ class AboutUs extends React.Component {
                       <br />
                     </li>
                     <li
-                      class="mb-4"
+                      className="mb-4"
                       style={{ textAlign: 'center', display: 'block' }}
                     >
                       <img
-                        class="text-center w-md-100 w-lg-30"
+                        className="text-center w-md-100 w-lg-30"
                         src={SampleQRImage}
                         alt="Zerobase QR code."
                       />
                     </li>
-                    <li class="mb-4" style={{ display: 'block' }}>
+                    <li className="mb-4" style={{ display: 'block' }}>
                       Individuals may choose to share their phone number in
                       order to be notified by public health authorities (or
                       automatically by Zerobase, if so desired) if they have
@@ -213,7 +213,7 @@ class AboutUs extends React.Component {
                       we'll still try to notify you the next time you check in
                       to any location.
                     </li>
-                    <li class="mb-4">
+                    <li className="mb-4">
                       <strong>
                         If an individual receives a COVID-19 test,
                       </strong>{' '}
@@ -223,7 +223,7 @@ class AboutUs extends React.Component {
                       printed at testing centers or distributed to drive-through
                       sites.
                     </li>
-                    <li class="mb-4">
+                    <li className="mb-4">
                       <strong>
                         Zerobase’s contact tracing technology anonymously
                         analyzes
@@ -234,7 +234,7 @@ class AboutUs extends React.Component {
                       that they were near to construct a list of individuals
                       that may have been exposed.
                     </li>
-                    <li class="mb-4">
+                    <li className="mb-4">
                       <strong>Public health officials can identify</strong> the
                       community touchpoints through which the virus seems to be
                       spreading most rapidly. They can also notify the
@@ -247,42 +247,42 @@ class AboutUs extends React.Component {
             </div>
           </div>
           <hr />
-          <div class="row m-4 p-5 mt-5 pb-4 pt-4">
-            <div class="col-12 col-lg-12 pr-lg-5 mt-6">
-              <p class="h1 lh-180 mb-1 font-weight-normal text-align-center">
+          <div className="row m-4 p-5 mt-5 pb-4 pt-4">
+            <div className="col-12 col-lg-12 pr-lg-5 mt-6">
+              <p className="h1 lh-180 mb-1 font-weight-normal text-align-center">
                 FAQs
               </p>
             </div>
           </div>
-          <div class="row m-4 justify-content-between mb-5">
-            <div class="col-lg-3 col-md-12 col-12 text-lg-right">
-              <h4 class="m-0">
+          <div className="row m-4 justify-content-between mb-5">
+            <div className="col-lg-3 col-md-12 col-12 text-lg-right">
+              <h4 className="m-0">
                 Can’t large companies do this at scale with their location
                 history?
               </h4>
-              <h4 class="mb-4">How is Zerobase unique?</h4>
+              <h4 className="mb-4">How is Zerobase unique?</h4>
             </div>
-            <div class="col-lg-8 col-12">
-              <p class="h3 font-weight-normal">
+            <div className="col-lg-8 col-12">
+              <p className="h3 font-weight-normal">
                 Other approaches can indeed geo-tag your movements at all times.
                 But there are tradeoffs to those approaches:
               </p>
               <ul>
-                <li class="mb-2">
+                <li className="mb-2">
                   Location data is extremely imprecise, sometimes off by over
                   300 feet, especially indoors. Zerobase not only pinpoints the
                   exact locations of community touchpoints, it is designed to
                   focus on the specific high-traffic areas where the virus is
                   most likely to spread - for example, inside buildings.
                 </li>
-                <li class="mb-2">
+                <li className="mb-2">
                   While they have location history for their enrolled users,
                   they are missing data for individuals who are not users of
                   their platform. Zerobase is unique in that 100% of users are
                   immediately enrolled via an instant check-in at all
                   participating locations.
                 </li>
-                <li class="mb-2">
+                <li className="mb-2">
                   GPS solutions log locations for the 99.99% of the day that an
                   infected individual spends<i> not</i> transmitting the virus.
                   Zerobase homes in on the critical moments in public spaces
@@ -290,7 +290,7 @@ class AboutUs extends React.Component {
                   focused determinations.
                 </li>
               </ul>
-              <p class="bg-secondary text-white p-3">
+              <p className="bg-secondary text-white p-3">
                 Fundamentally, location tracking is both ineffective and
                 unnecessary. Putting privacy first is critical to establishing
                 trust and community buy-in. In many communities, there has been
@@ -301,32 +301,32 @@ class AboutUs extends React.Component {
               </p>
             </div>
           </div>
-          <div class="row m-4 justify-content-between mb-5">
-            <div class="col-lg-3 col-md-12 col-12 text-lg-right">
-              <h4 class="mb-0">What information is collected</h4>
-              <h4 class="mb-4">by Zerobase?</h4>
+          <div className="row m-4 justify-content-between mb-5">
+            <div className="col-lg-3 col-md-12 col-12 text-lg-right">
+              <h4 className="mb-0">What information is collected</h4>
+              <h4 className="mb-4">by Zerobase?</h4>
             </div>
-            <div class="col-lg-8 col-12">
+            <div className="col-lg-8 col-12">
               <p>
                 An individual’s identity is never deduced by the system, and any
                 personal information shared voluntarily is stored securely.
                 Zerobase is built from the ground up with security and privacy
                 in mind and abides by relevant local, state, and federal laws.
                 To read more about how we put your privacy first, click
-                <a class="text-wrap" href="/privacy-policy">
+                <a className="text-wrap" href="/privacy-policy">
                   {' '}
                   here.
                 </a>
               </p>
             </div>
           </div>
-          <div class="row m-4 justify-content-between mb-5">
-            <div class="col-lg-3 col-md-12 col-12 text-lg-right">
-              <h4 class="mb-4">
+          <div className="row m-4 justify-content-between mb-5">
+            <div className="col-lg-3 col-md-12 col-12 text-lg-right">
+              <h4 className="mb-4">
                 What is required to use Zerobase in your community?
               </h4>
             </div>
-            <div class="col-lg-8 col-md-12 col-12">
+            <div className="col-lg-8 col-md-12 col-12">
               <p>
                 A computer and a printer are all that is required for
                 businesses, public locations, and healthcare providers to
@@ -336,8 +336,8 @@ class AboutUs extends React.Component {
             </div>
           </div>
           <hr />
-          <div class="row m-4 align-items-center">
-            <div class="col-lg-12 text-center">
+          <div className="row m-4 align-items-center">
+            <div className="col-lg-12 text-center">
               <h2>For press inquiries, please contact press@zerobase.io</h2>
             </div>
           </div>
