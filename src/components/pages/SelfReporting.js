@@ -14,6 +14,8 @@ import Card from '../components/Card';
 import ThankYouImage from '../../assets/img/self-reporting/thankyou_v1.png';
 import FeelingGoodImage from '../../assets/img/self-reporting/feeling-good.png';
 import NotFeelingWellImage from '../../assets/img/self-reporting/not-feeling-well.png';
+import PlanningGetTestedImage from '../../assets/img/self-reporting/planning-get-tested.png';
+import WasTestedImage from '../../assets/img/self-reporting/was-tested.png';
 
 const Title = styled.h1`
   font-size: ${fontSizes.large};
@@ -26,14 +28,18 @@ const Text = styled.p`
   margin: 15px;
   font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
 `;
+const SmallText = styled.p`
+  font-size: ${fontSizes.small};
+  text-align: center;
+  margin: 15px;
+  font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
+`;
 const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
-`;
-const ThankYouContainer = styled(Container)`
-  height: 100vh;
 `;
 const Content = styled.div`
   flex: 1;
@@ -52,6 +58,35 @@ const Image = styled.img`
   width: 80%;
   margin: 0 auto;
 `;
+
+const SurveyLayout = ({ children }) => {
+  const history = useHistory();
+  return (
+    <Container>
+      <SmallText>
+        This assessment does not replace a medical diagnosis. If you need
+        immediate medical attention, contact your healthcare provider and let
+        them know you are concerned about COVID-19. If there is a medical
+        emergency call the emergency call center of your country
+      </SmallText>
+      <Content>{children}</Content>
+      <Footer>
+        <Text>
+          Remember, we never share your personel data! This information will
+          help us to indicate regions with not enough testing facilities or
+          access to health services
+        </Text>
+        <Button
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Continue to Zerobase
+        </Button>
+      </Footer>
+    </Container>
+  );
+};
 
 const Step1 = ({ onUpdate, nextStep }) => {
   const history = useHistory();
@@ -137,7 +172,7 @@ const MultiStepForm = ({ onUpdate, onSubmit, steps, root }) => {
 const ThankYouPage = () => {
   const history = useHistory();
   return (
-    <ThankYouContainer>
+    <Container>
       <Title>Keep community healty</Title>
       <Content>
         <Image src={ThankYouImage} alt="thank-you" />
@@ -160,13 +195,151 @@ const ThankYouPage = () => {
           Continue to Zerobase
         </Button>
       </Footer>
-    </ThankYouContainer>
+    </Container>
+  );
+};
+
+const SelfReportLanding = ({ onUpdate }) => {
+  let { url } = useRouteMatch();
+  const history = useHistory();
+  return (
+    <Container>
+      <Text>
+        Want to help us gather information about the risk of COVID-19 in your
+        community? All we need is a few answers
+      </Text>
+      <Card
+        type="info"
+        title="I'm feeling good and healthy today"
+        subtitle="See tips from health professionals to stay safe"
+        img={FeelingGoodImage}
+        onClick={() => {
+          onUpdate('haveSymptoms', false);
+          history.push(`${url}/thank-you`);
+        }}
+      />
+      <Card
+        type="default"
+        title="I haven't been feeling well"
+        subtitle="Let us know your symptoms here"
+        img={NotFeelingWellImage}
+        onClick={() => {
+          onUpdate('haveSymptoms', true);
+          history.push(`${url}/not-feeling-well`);
+        }}
+      />
+      <Button
+        type="successSolid"
+        onClick={() => {
+          console.log('No time... Subscribing the user for notifications...');
+        }}
+      >
+        I don't have time now, but keep me notified
+      </Button>
+      <Footer background={true}>
+        <Text>How are we doing? We'd love to hear from you!</Text>
+        <Button type="success">Give us feedback</Button>
+        <Button
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Continue to Zerobase
+        </Button>
+        <Text>3a7796c9-d87b-4041-870d-38646c4133c4</Text>
+      </Footer>
+    </Container>
+  );
+};
+
+const NotFeelingWellLanding = () => {
+  let { url } = useRouteMatch();
+  const history = useHistory();
+  return (
+    <SurveyLayout>
+      <Card
+        type="default"
+        title="I'm not sure if I should get tested for COVID-19"
+        img={NotFeelingWellImage}
+        onClick={() => {
+          // onUpdate('haveSymptoms', true);
+          history.push(`${url}/not-sure/1`);
+        }}
+      />
+      <Card
+        type="info"
+        title="I'm planning on getting tested for COVID-19"
+        img={PlanningGetTestedImage}
+        onClick={() => {
+          // onUpdate('haveSymptoms', false);
+          history.push(`${url}/planning/1`);
+        }}
+      />
+      <Card
+        type="info"
+        title="I've been tested for COVID-19"
+        img={WasTestedImage}
+        onClick={() => {
+          // onUpdate('haveSymptoms', false);
+          history.push(`${url}/was-tested/1`);
+        }}
+      />
+    </SurveyLayout>
+  );
+};
+
+const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
+  let { path } = useRouteMatch();
+  const notSureSteps = [
+    (props) => <Step1 {...props} />,
+    (props) => <Step2 {...props} />,
+    (props) => <Step3 {...props} />,
+  ];
+  const planningSteps = [
+    (props) => <Step1 {...props} />,
+    (props) => <Step2 {...props} />,
+    (props) => <Step3 {...props} />,
+  ];
+  const wasTestedSteps = [
+    (props) => <Step1 {...props} />,
+    (props) => <Step2 {...props} />,
+    (props) => <Step3 {...props} />,
+  ];
+  return (
+    <Switch>
+      <Route exact path={path}>
+        <NotFeelingWellLanding onUpdate={onUpdate} />
+      </Route>
+      <Route path={`${path}/not-sure/:stepId`}>
+        <MultiStepForm
+          onUpdate={onUpdate}
+          onSubmit={onSubmit}
+          root="/self-reporting"
+          steps={notSureSteps}
+        />
+      </Route>
+      <Route path={`${path}/planning/:stepId`}>
+        <MultiStepForm
+          onUpdate={onUpdate}
+          onSubmit={onSubmit}
+          root="/self-reporting"
+          steps={planningSteps}
+        />
+      </Route>
+      <Route path={`${path}/was-tested/:stepId`}>
+        <MultiStepForm
+          onUpdate={onUpdate}
+          onSubmit={onSubmit}
+          root="/self-reporting"
+          steps={wasTestedSteps}
+        />
+      </Route>
+    </Switch>
   );
 };
 
 const SelfReporting = () => {
-  let { path, url } = useRouteMatch();
-  const history = useHistory();
+  let { path } = useRouteMatch();
   const [formData, setFormData] = useState(null);
 
   const updateForm = (key, value) => {
@@ -182,74 +355,16 @@ const SelfReporting = () => {
     );
   };
 
-  const steps = [
-    (props) => <Step1 {...props} />,
-    (props) => <Step2 {...props} />,
-    (props) => <Step3 {...props} />,
-  ];
-
   return (
     <Switch>
       <Route exact path={path}>
-        <Container>
-          <Text>
-            Want to help us gather information about the risk of COVID-19 in
-            your community? All we need is a few answers
-          </Text>
-          <Card
-            type="info"
-            title="I'm feeling good and healthy today"
-            subtitle="See tips from health professionals to stay safe"
-            img={FeelingGoodImage}
-            onClick={() => {
-              updateForm('haveSymptoms', false);
-              history.push(`${url}/thank-you`);
-            }}
-          />
-          <Card
-            type="default"
-            title="I haven't been feeling well"
-            subtitle="Let us know your symptoms here"
-            img={NotFeelingWellImage}
-            onClick={() => {
-              updateForm('haveSymptoms', true);
-              history.push(`${url}/report-symptoms/1`);
-            }}
-          />
-          <Button
-            type="successSolid"
-            onClick={() => {
-              console.log(
-                'No time... Subscribing the user for notifications...',
-              );
-            }}
-          >
-            I don't have time now, but keep me notified
-          </Button>
-          <Footer background={true}>
-            <Text>How are we doing? We'd love to hear from you!</Text>
-            <Button type="success">Give us feedback</Button>
-            <Button
-              onClick={() => {
-                history.push('/');
-              }}
-            >
-              Continue to Zerobase
-            </Button>
-            <Text>3a7796c9-d87b-4041-870d-38646c4133c4</Text>
-          </Footer>
-        </Container>
+        <SelfReportLanding onUpdate={updateForm} />
       </Route>
       <Route path={`${path}/thank-you`}>
         <ThankYouPage />
       </Route>
-      <Route path={`${path}/report-symptoms/:stepId`}>
-        <MultiStepForm
-          onUpdate={updateForm}
-          onSubmit={onSubmit}
-          root="/self-reporting"
-          steps={steps}
-        />
+      <Route path={`${path}/not-feeling-well`}>
+        <NotFeelingWellPage onUpdate={updateForm} onSubmit={onSubmit} />
       </Route>
     </Switch>
   );
