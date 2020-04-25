@@ -105,6 +105,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        {/* These are all the Main Layout (header, footer, etc.) routes */}
         <MainLayoutRoute path="/about" component={AboutUsPage} />
         <MainLayoutRoute
           path="/individual"
@@ -133,7 +134,11 @@ const App = () => {
         <MainLayoutRoute path="/s/:sdvid" component={Scanner} />
         <MainLayoutRoute path="/test" component={TestPage} />
         <MainLayoutRoute exact path="/" component={HomePage} />
+
+        {/* These routes are self contained they don't include the Main Layout */}
         <Route path="/self-reporting" component={SelfReportingPage} />
+
+        {/* This is the route handler which matches when none of the routes above match */}
         <MainLayoutRoute path="*" component={NotFoundPage} />
       </Switch>
     </Router>
