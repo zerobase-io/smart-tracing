@@ -27,10 +27,9 @@ const getBackgroundColor = (props) =>
 
 const CardContainer = styled.div`
   height: 200px;
-  width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 2px;
-  margin: 5px;
+  margin: 15px 0 0;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -39,7 +38,6 @@ const CardContainer = styled.div`
 `;
 const Image = styled.img`
   width: 100px;
-  height: 100px;
 `;
 const Content = styled.div`
   flex: 1;
@@ -55,9 +53,9 @@ const Subtitle = styled.div`
   font-style: italic;
 `;
 
-const Card = ({ title, subtitle, img, type }) => {
+const Card = ({ title, subtitle, img, type, onClick }) => {
   return (
-    <CardContainer type={type}>
+    <CardContainer type={type} onClick={onClick}>
       <Image src={img} />
       <Content>
         <Title>{title}</Title>
