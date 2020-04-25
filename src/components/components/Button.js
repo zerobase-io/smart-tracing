@@ -65,10 +65,10 @@ const getBorderColor = (props) =>
 // This makes it extremely powerful and easy to build reusable and customizable components
 const ButtonComponent = styled.button`
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   min-height: 44px;
   border-radius: 2px;
-  margin: 5px;
+  margin: 15px 0 0;
   color: ${getColor};
   background-color: ${getBackgroundColor};
   border: 1px solid ${getBorderColor};
