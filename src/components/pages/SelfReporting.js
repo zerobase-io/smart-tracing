@@ -73,6 +73,16 @@ const SurveyQuestion = styled.div`
   align-items: center;
   justify-content: center;
 `;
+const HeaderLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+const FooterLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 const SelectWrapper = styled.div`
   width: 100%;
   background-color: ${colors.lighterGreen};
@@ -117,6 +127,54 @@ const SurveyLayout = ({ children }) => {
     </Container>
   );
 };
+
+const SurveyHeader = () => {
+  const history = useHistory();
+  return (
+    <HeaderLayout>
+      <Button
+        onClick={() => {
+          // onSubmit(...)
+          history.push('/');
+        }}
+      >
+        Back
+      </Button>
+      <Button
+        onClick={() => {
+          // onSubmit(...)
+          history.push('/');
+        }}
+      >
+        Cancel
+      </Button>
+    </HeaderLayout>
+    )
+};
+
+const SurveyFooter = (nextStep) => {
+  let { url } = useRouteMatch();
+  const history = useHistory();
+  return (
+    <FooterLayout>
+      <Button
+        onClick={() => {
+          //Todo: Add navigation
+        }}
+      >
+        Next
+      </Button>
+      <Button
+        onClick={() => {
+          //Todo: Add navigation
+        }}
+      >
+        Skip
+      </Button>
+    </FooterLayout>
+  )
+
+}
 
 const PlanningStep1 = ({ onUpdate, nextStep }) => {
   const history = useHistory();
@@ -251,7 +309,22 @@ const SingleSelectQuestion = ({ question, options }) => {
   );
 };
 
+const RadioButtonQuestion = ({onUpdate, options, question, nextStep}) => {
+  return (
+    <div>
+      <SurveyHeader/>
+      <SurveyLayout>
+        <SingleSelectQuestion question={question} options={options} />
+        <SurveyFooter
+          nextStep = {nextStep}
+        />
+      </SurveyLayout>
+    </div>
+  );
+}
+
 const NotSureStep1 = ({ onUpdate, nextStep }) => {
+  const question = 'How old are you?';
   const options = [
     {
       value: 'under-18',
@@ -267,9 +340,52 @@ const NotSureStep1 = ({ onUpdate, nextStep }) => {
     },
   ];
   return (
-    <SurveyLayout>
-      <SingleSelectQuestion question="How old are you?" options={options} />
-    </SurveyLayout>
+    <RadioButtonQuestion question={question} options={options} nextStep={nextStep}/>
+  );
+};
+
+const NotSureStep4 = ({ onUpdate, nextStep}) => {
+  const options = [
+    {
+      value: 'contact-none',
+      label: 'None.',
+    },
+    {
+      value: 'contact-1',
+      label: '1',
+    },
+    {
+      value: 'contact-2-4',
+      label: '2-4',
+    },
+    {
+      value: 'contact-5-10',
+      label: '5-10',
+    },
+    {
+      value: 'contact-more-than-10',
+      label: '10+'
+    }
+  ];
+  return (
+    <RadioButtonQuestion question="On a daily basis, with how many people are you in contact with outside your home?" options={options} nextStep={nextStep} />
+  );
+};
+
+const NotSureStep5 = ({ onUpdate, nextStep}) => {
+  const options = [
+    {
+      value: 'exposed-yes',
+      label: 'Yes',
+    },
+    {
+      value: 'exposed-no',
+      label: 'No',
+    },
+
+  ];
+  return (
+      <RadioButtonQuestion question="Do you have reason to believe you are likely to have been exposed to COVID-19 recently?" options={options} nextStep={nextStep} />
   );
 };
 
@@ -291,17 +407,17 @@ const ThankYouPage = () => {
   const history = useHistory();
   return (
     <Container>
-      <Title>Keep community healty</Title>
+      <Title>Keep community healthy</Title>
       <Content>
         <Image src={ThankYouImage} alt="thank-you" />
         <Text bold={true}>
           Thank you for letting us know! With this you keep your community
-          healthy! Keep up the good job and stay healty!
+          healthy! Keep up the good job and stay health y!
         </Text>
       </Content>
       <Footer>
         <Text>
-          Remember, we never share your personel data! This information will
+          Remember, we never share your personal data! This information will
           help us to indicate regions with not enough testing facilities or
           access to health services
         </Text>
@@ -410,6 +526,8 @@ const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
   let { path } = useRouteMatch();
   const notSureSteps = [
     (props) => <NotSureStep1 {...props} />,
+    (props) => <NotSureStep4 {...props} />,
+    (props) => <NotSureStep5 {...props} />,
     // TODO: Add the rest
   ];
   const planningSteps = [(props) => <PlanningStep1 {...props} />];
