@@ -159,14 +159,18 @@ const SurveyFooter = (nextStep) => {
     <FooterLayout>
       <Button
         onClick={() => {
+          console.log(nextStep)
           //Todo: Add navigation
+          history.push(nextStep.nextStep);
         }}
       >
         Next
       </Button>
       <Button
         onClick={() => {
+          console.log(nextStep)
           //Todo: Add navigation
+          history.push(nextStep.nextStep);
         }}
       >
         Skip
@@ -400,7 +404,7 @@ const NotSureStep5 = ({ onUpdate, nextStep}) => {
       <RadioButtonQuestion
         question= {question}
         options={options}
-        nextStep={nextStep}
+        nextStep={"/self-reporting/thank-you"}
       />
   );
 };
