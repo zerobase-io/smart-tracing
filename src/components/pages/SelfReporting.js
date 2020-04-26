@@ -135,7 +135,7 @@ const SurveyHeader = () => {
       <Button
         onClick={() => {
           // onSubmit(...)
-          history.push('/');
+          history.goBack();
         }}
       >
         Back
@@ -314,7 +314,10 @@ const RadioButtonQuestion = ({onUpdate, options, question, nextStep}) => {
     <div>
       <SurveyHeader/>
       <SurveyLayout>
-        <SingleSelectQuestion question={question} options={options} />
+        <SingleSelectQuestion
+          question={question}
+          options={options}
+        />
         <SurveyFooter
           nextStep = {nextStep}
         />
