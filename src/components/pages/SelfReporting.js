@@ -343,11 +343,15 @@ const NotSureStep1 = ({ onUpdate, nextStep }) => {
     },
   ];
   return (
-    <RadioButtonQuestion question={question} options={options} nextStep={nextStep}/>
+    <RadioButtonQuestion
+      question={question}
+      options={options}
+      nextStep={nextStep}/>
   );
 };
 
 const NotSureStep4 = ({ onUpdate, nextStep}) => {
+  const question = "On a daily basis, with how many people are you in contact with outside your home?"
   const options = [
     {
       value: 'contact-none',
@@ -371,11 +375,16 @@ const NotSureStep4 = ({ onUpdate, nextStep}) => {
     }
   ];
   return (
-    <RadioButtonQuestion question="On a daily basis, with how many people are you in contact with outside your home?" options={options} nextStep={nextStep} />
+    <RadioButtonQuestion
+      question={question}
+      options={options}
+      nextStep={nextStep}
+    />
   );
 };
 
 const NotSureStep5 = ({ onUpdate, nextStep}) => {
+  const question = "Do you have reason to believe you are likely to have been exposed to COVID-19 recently?"
   const options = [
     {
       value: 'exposed-yes',
@@ -388,7 +397,11 @@ const NotSureStep5 = ({ onUpdate, nextStep}) => {
 
   ];
   return (
-      <RadioButtonQuestion question="Do you have reason to believe you are likely to have been exposed to COVID-19 recently?" options={options} nextStep={nextStep} />
+      <RadioButtonQuestion
+        question= {question}
+        options={options}
+        nextStep={nextStep}
+      />
   );
 };
 
