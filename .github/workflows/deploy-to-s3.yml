@@ -19,6 +19,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: 'production'
+          PUBLIC_URL: 'https://staging.zerobase.io'
           REACT_APP_API_HOST: 'https://api.staging.zerobase.io'
 
       - name: Run npm install production
