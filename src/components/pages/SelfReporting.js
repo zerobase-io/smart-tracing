@@ -99,10 +99,11 @@ const OptionLabel = styled.label`
   }
 `;
 
-const SurveyLayout = ({ children }) => {
+const SurveyLayout = ({ children, nextStep }) => {
   const history = useHistory();
   return (
     <Container>
+      <SurveyHeader />
       <SmallText>
         This assessment does not replace a medical diagnosis. If you need
         immediate medical attention, contact your healthcare provider and let
@@ -110,6 +111,7 @@ const SurveyLayout = ({ children }) => {
         emergency call the emergency call center of your country
       </SmallText>
       <Content>{children}</Content>
+      <SurveyFooter nextStep={nextStep}/>
       <Footer>
         <Text>
           Remember, we never share your personel data! This information will
@@ -152,32 +154,27 @@ const SurveyHeader = () => {
     )
 };
 
-const SurveyFooter = (nextStep) => {
+const SurveyFooter = ({nextStep}) => {
   let { url } = useRouteMatch();
   const history = useHistory();
-  return (
-    <FooterLayout>
-      <Button
-        onClick={() => {
-          console.log(nextStep)
-          //Todo: Add navigation
-          history.push(nextStep.nextStep);
-        }}
-      >
-        Next
-      </Button>
-      <Button
-        onClick={() => {
-          console.log(nextStep)
-          //Todo: Add navigation
-          history.push(nextStep.nextStep);
-        }}
-      >
-        Skip
-      </Button>
-    </FooterLayout>
-  )
-
+    return (
+      <FooterLayout>
+        <Button
+          onClick={() => {
+            history.push(nextStep);
+          }}
+        >
+          Next
+        </Button>
+        <Button
+          onClick={() => {
+            history.push(nextStep);
+          }}
+        >
+          Skip
+        </Button>
+      </FooterLayout>
+    )
 }
 
 const PlanningStep1 = ({ onUpdate, nextStep }) => {
@@ -313,17 +310,13 @@ const SingleSelectQuestion = ({ question, options }) => {
   );
 };
 
-const RadioButtonQuestion = ({onUpdate, options, question, nextStep}) => {
+const RadioButtonQuestion = ({onUpdate, options, question, nextStep, isSkippable}) => {
   return (
     <div>
-      <SurveyHeader/>
-      <SurveyLayout>
+      <SurveyLayout nextStep={nextStep}>
         <SingleSelectQuestion
           question={question}
           options={options}
-        />
-        <SurveyFooter
-          nextStep = {nextStep}
         />
       </SurveyLayout>
     </div>
@@ -350,7 +343,8 @@ const NotSureStep1 = ({ onUpdate, nextStep }) => {
     <RadioButtonQuestion
       question={question}
       options={options}
-      nextStep={nextStep}/>
+      nextStep={nextStep}
+    />
   );
 };
 
@@ -383,6 +377,7 @@ const NotSureStep4 = ({ onUpdate, nextStep}) => {
       question={question}
       options={options}
       nextStep={nextStep}
+      isSkippable={true}
     />
   );
 };
@@ -405,6 +400,7 @@ const NotSureStep5 = ({ onUpdate, nextStep}) => {
         question= {question}
         options={options}
         nextStep={"/self-reporting/thank-you"}
+        isSkippable = {false}
       />
   );
 };
