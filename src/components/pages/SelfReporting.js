@@ -99,7 +99,7 @@ const OptionLabel = styled.label`
   }
 `;
 
-const SurveyLayout = ({ children, nextStep, isSkippable = false }) => {
+const SurveyLayout = ({ children, nextStep, isSkippable = false, nextBtnEnabled }) => {
   const history = useHistory();
   return (
     <Container>
@@ -111,7 +111,7 @@ const SurveyLayout = ({ children, nextStep, isSkippable = false }) => {
         emergency call the emergency call center of your country
       </SmallText>
       <Content>{children}</Content>
-      <SurveyFooter nextStep={nextStep} isSkippable={isSkippable}/>
+      <SurveyFooter nextStep={nextStep} isSkippable={isSkippable} nextBtnEnabled={nextBtnEnabled}/>
       <Footer>
         <Text>
           Remember, we never share your personal data! This information will
@@ -154,18 +154,29 @@ const SurveyHeader = () => {
     )
 };
 
-const SurveyFooter = ({nextStep, isSkippable=false}) => {
+const SurveyFooter = ({nextStep, isSkippable=false, nextBtnEnabled=false}) => {
   let { url } = useRouteMatch();
   const history = useHistory();
     return (
       <FooterLayout>
-        <Button
-          onClick={() => {
-            history.push(nextStep);
-          }}
-        >
-          Next
-        </Button>
+        {
+          nextBtnEnabled &&
+          <Button
+            type="successSolid"
+            onClick={() => {
+              history.push(nextStep);
+            }}
+          >
+            Next
+          </Button>
+        }
+        {
+          !nextBtnEnabled &&
+          <Button>
+            Next
+          </Button>
+        }
+
         {
           isSkippable &&
           <Button
@@ -176,7 +187,6 @@ const SurveyFooter = ({nextStep, isSkippable=false}) => {
             Skip
           </Button>
         }
-
       </FooterLayout>
     )
 }
@@ -293,7 +303,7 @@ const WasTestedStep2 = ({ onUpdate, nextStep }) => {
   );
 };
 
-const SingleSelectQuestion = ({ question, options }) => {
+const SingleSelectQuestion = ({ question, options, onChange }) => {
   return (
     <SelectWrapper>
       <SelectQuestion>{question}</SelectQuestion>
@@ -303,7 +313,7 @@ const SingleSelectQuestion = ({ question, options }) => {
             return (
               <div key={o.value}>
                 <OptionLabel>
-                  <input type="radio" value={o.value} name={question} />
+                  <input type="radio" value={o.value} name={question} onChange={onChange}/>
                   {o.label}
                 </OptionLabel>
               </div>
@@ -315,12 +325,18 @@ const SingleSelectQuestion = ({ question, options }) => {
 };
 
 const RadioButtonQuestion = ({onUpdate, options, question, nextStep, isSkippable=false}) => {
+  const [nextBtnEnabled, setNextBtnValue] = useState(false);
   return (
     <div>
-      <SurveyLayout nextStep={nextStep} isSkippable={isSkippable}>
+      <SurveyLayout nextStep={nextStep} isSkippable={isSkippable} nextBtnEnabled={nextBtnEnabled}>
         <SingleSelectQuestion
           question={question}
           options={options}
+          onChange = {
+            () => {
+              setNextBtnValue(true)
+            }
+          }
         />
       </SurveyLayout>
     </div>
