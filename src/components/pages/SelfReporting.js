@@ -99,7 +99,7 @@ const OptionLabel = styled.label`
   }
 `;
 
-const SurveyLayout = ({ children, nextStep }) => {
+const SurveyLayout = ({ children, nextStep, isSkippable = false }) => {
   const history = useHistory();
   return (
     <Container>
@@ -111,7 +111,7 @@ const SurveyLayout = ({ children, nextStep }) => {
         emergency call the emergency call center of your country
       </SmallText>
       <Content>{children}</Content>
-      <SurveyFooter nextStep={nextStep}/>
+      <SurveyFooter nextStep={nextStep} isSkippable={isSkippable}/>
       <Footer>
         <Text>
           Remember, we never share your personel data! This information will
@@ -154,7 +154,7 @@ const SurveyHeader = () => {
     )
 };
 
-const SurveyFooter = ({nextStep}) => {
+const SurveyFooter = ({nextStep, isSkippable=false}) => {
   let { url } = useRouteMatch();
   const history = useHistory();
     return (
@@ -166,13 +166,17 @@ const SurveyFooter = ({nextStep}) => {
         >
           Next
         </Button>
-        <Button
-          onClick={() => {
-            history.push(nextStep);
-          }}
-        >
-          Skip
-        </Button>
+        {
+          isSkippable &&
+          <Button
+            onClick={() => {
+              history.push(nextStep);
+            }}
+          >
+            Skip
+          </Button>
+        }
+
       </FooterLayout>
     )
 }
@@ -310,10 +314,10 @@ const SingleSelectQuestion = ({ question, options }) => {
   );
 };
 
-const RadioButtonQuestion = ({onUpdate, options, question, nextStep, isSkippable}) => {
+const RadioButtonQuestion = ({onUpdate, options, question, nextStep, isSkippable=false}) => {
   return (
     <div>
-      <SurveyLayout nextStep={nextStep}>
+      <SurveyLayout nextStep={nextStep} isSkippable={isSkippable}>
         <SingleSelectQuestion
           question={question}
           options={options}
