@@ -114,7 +114,7 @@ const SurveyLayout = ({ children, nextStep, isSkippable = false }) => {
       <SurveyFooter nextStep={nextStep} isSkippable={isSkippable}/>
       <Footer>
         <Text>
-          Remember, we never share your personel data! This information will
+          Remember, we never share your personal data! This information will
           help us to indicate regions with not enough testing facilities or
           access to health services
         </Text>
