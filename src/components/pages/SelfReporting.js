@@ -168,7 +168,6 @@ const SurveyFooter = ({
   isSkippable = false,
   nextBtnEnabled = false,
 }) => {
-  let { url } = useRouteMatch();
   const history = useHistory();
   return (
     <FooterLayout>
