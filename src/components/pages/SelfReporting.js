@@ -99,7 +99,12 @@ const OptionLabel = styled.label`
   }
 `;
 
-const SurveyLayout = ({ children, nextStep, isSkippable = false, nextBtnEnabled }) => {
+const SurveyLayout = ({
+  children,
+  nextStep,
+  isSkippable = false,
+  nextBtnEnabled,
+}) => {
   const history = useHistory();
   return (
     <Container>
@@ -111,7 +116,11 @@ const SurveyLayout = ({ children, nextStep, isSkippable = false, nextBtnEnabled 
         emergency call the emergency call center of your country
       </SmallText>
       <Content>{children}</Content>
-      <SurveyFooter nextStep={nextStep} isSkippable={isSkippable} nextBtnEnabled={nextBtnEnabled}/>
+      <SurveyFooter
+        nextStep={nextStep}
+        isSkippable={isSkippable}
+        nextBtnEnabled={nextBtnEnabled}
+      />
       <Footer>
         <Text>
           Remember, we never share your personal data! This information will
@@ -151,45 +160,41 @@ const SurveyHeader = () => {
         Cancel
       </Button>
     </HeaderLayout>
-    )
+  );
 };
 
-const SurveyFooter = ({nextStep, isSkippable=false, nextBtnEnabled=false}) => {
-  let { url } = useRouteMatch();
+const SurveyFooter = ({
+  nextStep,
+  isSkippable = false,
+  nextBtnEnabled = false,
+}) => {
   const history = useHistory();
-    return (
-      <FooterLayout>
-        {
-          nextBtnEnabled &&
-          <Button
-            type="successSolid"
-            onClick={() => {
-              history.push(nextStep);
-            }}
-          >
-            Next
-          </Button>
-        }
-        {
-          !nextBtnEnabled &&
-          <Button>
-            Next
-          </Button>
-        }
+  return (
+    <FooterLayout>
+      {nextBtnEnabled && (
+        <Button
+          type="successSolid"
+          onClick={() => {
+            history.push(nextStep);
+          }}
+        >
+          Next
+        </Button>
+      )}
+      {!nextBtnEnabled && <Button>Next</Button>}
 
-        {
-          isSkippable &&
-          <Button
-            onClick={() => {
-              history.push(nextStep);
-            }}
-          >
-            Skip
-          </Button>
-        }
-      </FooterLayout>
-    )
-}
+      {isSkippable && (
+        <Button
+          onClick={() => {
+            history.push(nextStep);
+          }}
+        >
+          Skip
+        </Button>
+      )}
+    </FooterLayout>
+  );
+};
 
 const PlanningStep1 = ({ onUpdate, nextStep }) => {
   const history = useHistory();
@@ -313,7 +318,12 @@ const SingleSelectQuestion = ({ question, options, onChange }) => {
             return (
               <div key={o.value}>
                 <OptionLabel>
-                  <input type="radio" value={o.value} name={question} onChange={onChange}/>
+                  <input
+                    type="radio"
+                    value={o.value}
+                    name={question}
+                    onChange={onChange}
+                  />
                   {o.label}
                 </OptionLabel>
               </div>
@@ -324,24 +334,32 @@ const SingleSelectQuestion = ({ question, options, onChange }) => {
   );
 };
 
-const RadioButtonQuestion = ({onUpdate, options, question, nextStep, isSkippable=false}) => {
+const RadioButtonQuestion = ({
+  onUpdate,
+  options,
+  question,
+  nextStep,
+  isSkippable = false,
+}) => {
   const [nextBtnEnabled, setNextBtnValue] = useState(false);
   return (
     <div>
-      <SurveyLayout nextStep={nextStep} isSkippable={isSkippable} nextBtnEnabled={nextBtnEnabled}>
+      <SurveyLayout
+        nextStep={nextStep}
+        isSkippable={isSkippable}
+        nextBtnEnabled={nextBtnEnabled}
+      >
         <SingleSelectQuestion
           question={question}
           options={options}
-          onChange = {
-            () => {
-              setNextBtnValue(true)
-            }
-          }
+          onChange={() => {
+            setNextBtnValue(true);
+          }}
         />
       </SurveyLayout>
     </div>
   );
-}
+};
 
 const NotSureStep1 = ({ onUpdate, nextStep }) => {
   const question = 'How old are you?';
@@ -368,8 +386,9 @@ const NotSureStep1 = ({ onUpdate, nextStep }) => {
   );
 };
 
-const NotSureStep4 = ({ onUpdate, nextStep}) => {
-  const question = "On a daily basis, with how many people are you in contact with outside your home?"
+const NotSureStep4 = ({ onUpdate, nextStep }) => {
+  const question =
+    'On a daily basis, with how many people are you in contact with outside your home?';
   const options = [
     {
       value: 'contact-none',
@@ -389,8 +408,8 @@ const NotSureStep4 = ({ onUpdate, nextStep}) => {
     },
     {
       value: 'contact-more-than-10',
-      label: '10+'
-    }
+      label: '10+',
+    },
   ];
   return (
     <RadioButtonQuestion
@@ -402,8 +421,9 @@ const NotSureStep4 = ({ onUpdate, nextStep}) => {
   );
 };
 
-const NotSureStep5 = ({ onUpdate, nextStep}) => {
-  const question = "Do you have reason to believe you are likely to have been exposed to COVID-19 recently?"
+const NotSureStep5 = ({ onUpdate, nextStep }) => {
+  const question =
+    'Do you have reason to believe you are likely to have been exposed to COVID-19 recently?';
   const options = [
     {
       value: 'exposed-yes',
@@ -413,15 +433,14 @@ const NotSureStep5 = ({ onUpdate, nextStep}) => {
       value: 'exposed-no',
       label: 'No',
     },
-
   ];
   return (
-      <RadioButtonQuestion
-        question= {question}
-        options={options}
-        nextStep={"/self-reporting/thank-you"}
-        isSkippable = {false}
-      />
+    <RadioButtonQuestion
+      question={question}
+      options={options}
+      nextStep={'/self-reporting/thank-you'}
+      isSkippable={false}
+    />
   );
 };
 
