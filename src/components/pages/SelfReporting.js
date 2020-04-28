@@ -334,6 +334,32 @@ const SingleSelectQuestion = ({ question, options, onChange }) => {
   );
 };
 
+const MultiSelectQuestion = ({ question, options, onChange }) => {
+  return (
+    <SelectWrapper>
+      <SelectQuestion>{question}</SelectQuestion>
+      <Select>
+        {options &&
+          options.map((o) => {
+            return (
+              <div key={o.value}>
+                <OptionLabel>
+                  <input
+                    type="checkbox"
+                    value={o.value}
+                    name={question}
+                    onChange={onChange}
+                  />
+                  {o.label}
+                </OptionLabel>
+              </div>
+            );
+          })}
+      </Select>
+    </SelectWrapper>
+  );
+};
+
 const RadioButtonQuestion = ({
   onUpdate,
   options,
@@ -350,6 +376,33 @@ const RadioButtonQuestion = ({
         nextBtnEnabled={nextBtnEnabled}
       >
         <SingleSelectQuestion
+          question={question}
+          options={options}
+          onChange={() => {
+            setNextBtnValue(true);
+          }}
+        />
+      </SurveyLayout>
+    </div>
+  );
+};
+
+const CheckboxQuestion = ({
+  onUpdate,
+  options,
+  question,
+  nextStep,
+  isSkippable = false,
+}) => {
+  const [nextBtnEnabled, setNextBtnValue] = useState(false);
+  return (
+    <div>
+      <SurveyLayout
+        nextStep={nextStep}
+        isSkippable={isSkippable}
+        nextBtnEnabled={nextBtnEnabled}
+      >
+        <MultiSelectQuestion
           question={question}
           options={options}
           onChange={() => {
@@ -379,6 +432,51 @@ const NotSureStep1 = ({ onUpdate, nextStep }) => {
   ];
   return (
     <RadioButtonQuestion
+      question={question}
+      options={options}
+      nextStep={nextStep}
+    />
+  );
+};
+
+const NotSureStep2 = ({ onUpdate, nextStep }) => {
+  const question = 'Do you have any of these symptoms?';
+  const options = [
+    {
+      value: 'fever-chills-sweating',
+      label: 'Fevers, chills, sweating',
+    },
+    {
+      value: 'difficulty-breathing',
+      label: 'Difficulty breathing',
+    },
+    {
+      value: 'sore-throat',
+      label: 'Sore throat',
+    },
+    {
+      value: 'aching-throughout-body',
+      label: 'Aching throughout the body',
+    },
+    {
+      value: 'vomiting-diarrhea',
+      label: 'Vomiting or diarrhea',
+    },
+    {
+      value: 'migraines',
+      label: 'Migraines',
+    },
+    {
+      value: 'loss-taste-smell',
+      label: 'Loss of taste and smell / Changes in how food tastes',
+    },
+    {
+      value: 'None of the above',
+      label: 'None of the above',
+    },
+  ];
+  return (
+    <CheckboxQuestion
       question={question}
       options={options}
       nextStep={nextStep}
@@ -581,6 +679,7 @@ const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
   let { path } = useRouteMatch();
   const notSureSteps = [
     (props) => <NotSureStep1 {...props} />,
+    (props) => <NotSureStep2 {...props} />,
     (props) => <NotSureStep4 {...props} />,
     (props) => <NotSureStep5 {...props} />,
     // TODO: Add the rest
