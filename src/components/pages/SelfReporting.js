@@ -484,6 +484,35 @@ const NotSureStep2 = ({ onUpdate, nextStep }) => {
   );
 };
 
+const NotSureStep3 = ({ onUpdate, nextStep }) => {
+  const question = 'On a daily basis with how many people are in your home?';
+  const options = [
+    {
+      value: '1',
+      label: '1',
+    },
+    {
+      value: '2-4',
+      label: '2-4',
+    },
+    {
+      value: '5-10',
+      label: '5-10',
+    },
+    {
+      value: '10+',
+      label: '10+',
+    },
+  ];
+  return (
+    <RadioButtonQuestion
+      question={question}
+      options={options}
+      nextStep={nextStep}
+    />
+  );
+};
+
 const NotSureStep4 = ({ onUpdate, nextStep }) => {
   const question =
     'On a daily basis, with how many people are you in contact with outside your home?';
@@ -680,6 +709,7 @@ const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
   const notSureSteps = [
     (props) => <NotSureStep1 {...props} />,
     (props) => <NotSureStep2 {...props} />,
+    (props) => <NotSureStep3 {...props} />,
     (props) => <NotSureStep4 {...props} />,
     (props) => <NotSureStep5 {...props} />,
     // TODO: Add the rest
