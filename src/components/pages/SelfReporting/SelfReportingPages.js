@@ -58,7 +58,7 @@ const Footer = styled.div`
     props.background ? colors.lightestGray : 'inherit'};
 `;
 const Image = styled.img`
-  width: 80%;
+  max-width: 80%;
   margin: 0 auto;
 `;
 
@@ -80,6 +80,33 @@ export const ThankYouPage = () => {
           Thank you for letting us know! With this you keep your community
           healthy! Keep up the good job and stay health y!
         </Text>
+      </Content>
+      <Footer>
+        <Text>
+          Remember, we never share your personal data! This information will
+          help us to indicate regions with not enough testing facilities or
+          access to health services
+        </Text>
+        <Button
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Back to Zerobase
+        </Button>
+      </Footer>
+    </Container>
+  );
+};
+
+export const ErrorPage = () => {
+  const history = useHistory();
+  return (
+    <Container>
+      <Title>Keep community healthy</Title>
+      <Content>
+        <Image src={NotFeelingWellImage} alt="thank-you" />
+        <Text bold={true}>Oops! Something went wrong</Text>
       </Content>
       <Footer>
         <Text>
