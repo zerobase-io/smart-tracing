@@ -57,7 +57,7 @@ export const RadioButtonQuestion = ({
                       type="radio"
                       value={o.value}
                       name={question}
-                      onChange={onChange}
+                      onChange={() => setNextBtnValue(true)}
                     />
                     {o.label}
                   </OptionLabel>
@@ -98,7 +98,7 @@ export const CheckboxQuestion = ({
                       type="checkbox"
                       value={o.value}
                       name={question}
-                      onChange={onChange}
+                      onChange={() => setNextBtnValue(true)}
                     />
                     {o.label}
                   </OptionLabel>
