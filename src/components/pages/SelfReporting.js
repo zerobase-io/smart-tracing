@@ -4,6 +4,7 @@ import {
   NotFeelingWellPage,
   SelfReportLanding,
   ThankYouPage,
+  ErrorPage,
 } from './SelfReporting/SelfReportingPages';
 
 const SelfReporting = () => {
@@ -26,10 +27,13 @@ const SelfReporting = () => {
   return (
     <Switch>
       <Route exact path={path}>
-        <SelfReportLanding onUpdate={updateForm} />
+        <SelfReportLanding onUpdate={updateForm} onSubmit={onSubmit} />
       </Route>
       <Route path={`${path}/thank-you`}>
         <ThankYouPage />
+      </Route>
+      <Route path={`${path}/error`}>
+        <ErrorPage />
       </Route>
       <Route path={`${path}/not-feeling-well`}>
         <NotFeelingWellPage onUpdate={updateForm} onSubmit={onSubmit} />
