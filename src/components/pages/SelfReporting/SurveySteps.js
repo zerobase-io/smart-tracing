@@ -1,7 +1,13 @@
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button';
+import {
+  SelectWrapper,
+  Select,
+  OptionLabel,
+  SelectQuestion,
+} from '../../components/Form/SurveyComponents/SurveyQuestions';
 import { SurveyLayout } from '../../components/Form/SurveyComponents/SurveyLayout';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { colors, fontSizes } from '../../../styles';
 import {
@@ -297,8 +303,57 @@ export const NotSureStep5 = ({ onUpdate, nextStep }) => {
     <RadioButtonQuestion
       question={question}
       options={options}
-      nextStep={'/self-reporting/thank-you'}
+      nextStep={nextStep}
       isSkippable={false}
     />
+  );
+};
+
+export const NotSureStep6 = ({ onUpdate, nextStep }) => {
+  const question = 'What is your current temperature?';
+  const [nextBtnEnabled, setNextBtnValue] = useState(false);
+  return (
+    <div>
+      <SurveyLayout
+        nextStep={'/self-reporting/thank-you'}
+        isSkippable={true}
+        nextBtnEnabled={nextBtnEnabled}
+      >
+        <SelectWrapper>
+          <SelectQuestion>{question}</SelectQuestion>
+          <div>
+            <input type="text" name="temperature" />
+          </div>
+          <Select>
+            <div key="fahrenheit">
+              <OptionLabel>
+                <input
+                  type="radio"
+                  value="fahrenheit"
+                  name={question}
+                  onChange={() => {
+                    setNextBtnValue(true);
+                  }}
+                />
+                Fahrenheit
+              </OptionLabel>
+            </div>
+            <div key="celcius">
+              <OptionLabel>
+                <input
+                  type="radio"
+                  value="celcius"
+                  name={question}
+                  onChange={() => {
+                    setNextBtnValue(true);
+                  }}
+                />
+                Celcius
+              </OptionLabel>
+            </div>
+          </Select>
+        </SelectWrapper>
+      </SurveyLayout>
+    </div>
   );
 };

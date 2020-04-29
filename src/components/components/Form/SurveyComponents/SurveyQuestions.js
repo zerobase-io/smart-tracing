@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { colors, fontSizes } from '../../../../styles';
 
-const SelectWrapper = styled.div`
+export const SelectWrapper = styled.div`
   width: 100%;
   background-color: ${colors.lighterGreen};
   border: 1px solid ${colors.green};
@@ -11,9 +11,9 @@ const SelectWrapper = styled.div`
   font-size: ${fontSizes.primary};
   padding: 10px;
 `;
-const Select = styled.div``;
-const SelectQuestion = styled.p``;
-const OptionLabel = styled.label`
+export const Select = styled.div``;
+export const SelectQuestion = styled.p``;
+export const OptionLabel = styled.label`
   & > input {
     margin-right: 10px;
   }

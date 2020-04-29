@@ -12,6 +12,7 @@ import {
   NotSureStep3,
   NotSureStep4,
   NotSureStep5,
+  NotSureStep6,
   PlanningStep1,
   WasTestedStep1,
   WasTestedStep2,
@@ -195,6 +196,7 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
     (props) => <NotSureStep3 {...props} />,
     (props) => <NotSureStep4 {...props} />,
     (props) => <NotSureStep5 {...props} />,
+    (props) => <NotSureStep6 {...props} />,
     // TODO: Add the rest
   ];
   const planningSteps = [(props) => <PlanningStep1 {...props} />];
