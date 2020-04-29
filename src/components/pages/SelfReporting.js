@@ -1,21 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Switch,
-  Route,
-  useHistory,
-  useRouteMatch,
-  useParams,
-} from 'react-router-dom';
-import styled from 'styled-components';
-import { fontSizes, colors } from '../../styles';
-import Button from '../components/Button';
-import Card from '../components/Card';
-
-import ThankYouImage from '../../assets/img/self-reporting/thankyou_v1.png';
-import FeelingGoodImage from '../../assets/img/self-reporting/feeling-good.png';
-import NotFeelingWellImage from '../../assets/img/self-reporting/not-feeling-well.png';
-import PlanningGetTestedImage from '../../assets/img/self-reporting/planning-get-tested.png';
-import WasTestedImage from '../../assets/img/self-reporting/was-tested.png';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import {
   NotFeelingWellPage,
   SelfReportLanding,

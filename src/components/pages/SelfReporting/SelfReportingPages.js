@@ -17,10 +17,12 @@ import {
   WasTestedStep2,
 } from './SurveySteps';
 import React from 'react';
-import { MultiStepForm, SurveyLayout } from '../../components/Form/SurveyComponents/SurveyLayout';
+import {
+  MultiStepForm,
+  SurveyLayout,
+} from '../../components/Form/SurveyComponents/SurveyLayout';
 import styled from 'styled-components';
 import { colors, fontSizes } from '../../../styles';
-
 
 const Title = styled.h1`
   font-size: ${fontSizes.large};
@@ -52,7 +54,7 @@ const Footer = styled.div`
   margin-top: 30px;
   padding-bottom: 15px;
   background-color: ${(props) =>
-  props.background ? colors.lightestGray : 'inherit'};
+    props.background ? colors.lightestGray : 'inherit'};
 `;
 const Image = styled.img`
   width: 80%;
@@ -195,9 +197,7 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
     (props) => <NotSureStep5 {...props} />,
     // TODO: Add the rest
   ];
-  const planningSteps = [
-    (props) => <PlanningStep1 {...props} />
-    ];
+  const planningSteps = [(props) => <PlanningStep1 {...props} />];
   const wasTestedSteps = [
     (props) => <WasTestedStep1 {...props} />,
     (props) => <WasTestedStep2 {...props} />,

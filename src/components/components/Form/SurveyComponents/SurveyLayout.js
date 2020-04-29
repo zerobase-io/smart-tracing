@@ -35,7 +35,7 @@ const Footer = styled.div`
   margin-top: 30px;
   padding-bottom: 15px;
   background-color: ${(props) =>
-  props.background ? colors.lightestGray : 'inherit'};
+    props.background ? colors.lightestGray : 'inherit'};
 `;
 const HeaderLayout = styled.div`
   width: 100%;
@@ -178,5 +178,3 @@ const SurveyFooter = ({
     </FooterLayout>
   );
 };
-
-

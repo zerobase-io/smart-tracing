@@ -49,21 +49,21 @@ export const RadioButtonQuestion = ({
           <SelectQuestion>{question}</SelectQuestion>
           <Select>
             {options &&
-            options.map((o) => {
-              return (
-                <div key={o.value}>
-                  <OptionLabel>
-                    <input
-                      type="radio"
-                      value={o.value}
-                      name={question}
-                      onChange={() => setNextBtnValue(true)}
-                    />
-                    {o.label}
-                  </OptionLabel>
-                </div>
-              );
-            })}
+              options.map((o) => {
+                return (
+                  <div key={o.value}>
+                    <OptionLabel>
+                      <input
+                        type="radio"
+                        value={o.value}
+                        name={question}
+                        onChange={() => setNextBtnValue(true)}
+                      />
+                      {o.label}
+                    </OptionLabel>
+                  </div>
+                );
+              })}
           </Select>
         </SelectWrapper>
       </SurveyLayout>
@@ -90,21 +90,21 @@ export const CheckboxQuestion = ({
           <SelectQuestion>{question}</SelectQuestion>
           <Select>
             {options &&
-            options.map((o) => {
-              return (
-                <div key={o.value}>
-                  <OptionLabel>
-                    <input
-                      type="checkbox"
-                      value={o.value}
-                      name={question}
-                      onChange={() => setNextBtnValue(true)}
-                    />
-                    {o.label}
-                  </OptionLabel>
-                </div>
-              );
-            })}
+              options.map((o) => {
+                return (
+                  <div key={o.value}>
+                    <OptionLabel>
+                      <input
+                        type="checkbox"
+                        value={o.value}
+                        name={question}
+                        onChange={() => setNextBtnValue(true)}
+                      />
+                      {o.label}
+                    </OptionLabel>
+                  </div>
+                );
+              })}
           </Select>
         </SelectWrapper>
       </SurveyLayout>
