@@ -157,7 +157,7 @@ const BusinessRegister = () => {
                   </div>
                   <div className="input-icon mb-2">
                     <PhoneNumberField
-                      placeholder="Phone number"
+                      placeholder="(555) 555-1212"
                       name="phone"
                       required={true}
                       onChange={(phoneNum) => {
