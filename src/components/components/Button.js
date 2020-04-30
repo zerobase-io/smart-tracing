@@ -20,7 +20,7 @@ const btnTypes = {
     backgroundColor: colors.light,
     borderColor: colors.gray,
   },
-  defaultSolid: {
+  disabled: {
     color: colors.light,
     backgroundColor: colors.lighterGray,
     borderColor: colors.gray,
@@ -44,6 +44,11 @@ const btnTypes = {
     color: colors.light,
     backgroundColor: colors.blue,
     borderColor: colors.blue,
+  },
+  transparent: {
+    color: colors.primary,
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
   },
 };
 
@@ -72,11 +77,12 @@ const ButtonComponent = styled.button`
   color: ${getColor};
   background-color: ${getBackgroundColor};
   border: 1px solid ${getBorderColor};
+  outline: none;
 `;
 
-const Button = ({ onClick, type, children }) => {
+const Button = ({ onClick, type, children, disabled }) => {
   return (
-    <ButtonComponent onClick={onClick} type={type}>
+    <ButtonComponent onClick={onClick} type={disabled ? 'disabled' : type}>
       {children}
     </ButtonComponent>
   );
