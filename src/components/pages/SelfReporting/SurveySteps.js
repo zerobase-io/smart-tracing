@@ -127,39 +127,28 @@ export const WasTestedStep2 = ({ onUpdate }) => {
       >
         I was tested positive
       </Button>
-      <Button
-        type="infoSolid"
-        onClick={() => {
-          onUpdate('testResult', 'still-waiting', true);
-        }}
-      >
-        My test is not back yet
-      </Button>
-      <Button
-        onClick={() => {
-          onUpdate('testResult', 'n/a', true);
-        }}
-      >
-        I prefer not to answer
-      </Button>
     </SurveyLayout>
   );
 };
 
 export const NotSureStep1 = ({ onUpdate, nextStep }) => {
-  const [age, setAge] = useState(false);
+  const [age, setAge] = useState('UNDERAGE');
   const question = 'How old are you?';
   const options = [
     {
-      value: 'under-18',
+      value: 'UNDERAGE',
       label: 'I am under 18',
     },
     {
-      value: 'between-18-and-64',
+      value: 'GENERAL',
       label: 'I am between 18 and 64',
     },
     {
-      value: 'no-answer',
+      value: 'ELDERLY',
+      label: 'I am older than 64',
+    },
+    {
+      value: '',
       label: 'I prefer not the answer',
     },
   ];
@@ -188,35 +177,39 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
   const question = 'Do you have any of these symptoms?';
   const options = [
     {
-      value: 'fever-chills-sweating',
+      value: 'FEVER',
       label: 'Fevers, chills, sweating',
     },
     {
-      value: 'difficulty-breathing',
+      value: 'BREATHING',
       label: 'Difficulty breathing',
     },
     {
-      value: 'sore-throat',
+      value: 'NEW_COUGH',
+      label: 'New and increasing cough',
+    },
+    {
+      value: 'SORE_THROAT',
       label: 'Sore throat',
     },
     {
-      value: 'aching-throughout-body',
+      value: 'ACHING',
       label: 'Aching throughout the body',
     },
     {
-      value: 'vomiting-diarrhea',
+      value: 'VOMITING_DIARRHEA',
       label: 'Vomiting or diarrhea',
     },
     {
-      value: 'migraines',
+      value: 'MIGRAINES',
       label: 'Migraines',
     },
     {
-      value: 'loss-taste-smell',
+      value: 'LOSS_OF_TASTE',
       label: 'Loss of taste and smell / Changes in how food tastes',
     },
     {
-      value: 'none-of-the-above',
+      value: '',
       label: 'None of the above',
     },
   ];
@@ -251,23 +244,27 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep3 = ({ onUpdate, nextStep }) => {
-  const [dailyPeopleAtHome, setDailyPeopleAtHome] = useState(false);
+  const [dailyPeopleAtHome, setDailyPeopleAtHome] = useState('SINGLE');
   const question = 'On a daily basis with how many people are in your home?';
   const options = [
     {
-      value: '1',
+      value: 'SINGLE',
       label: '1',
     },
     {
-      value: '2-4',
-      label: '2-4',
+      value: 'PARTNER',
+      label: '2',
     },
     {
-      value: '5-10',
-      label: '5-10',
+      value: 'SMALL',
+      label: '3-5',
     },
     {
-      value: '10+',
+      value: 'MEDIUM',
+      label: '6-10',
+    },
+    {
+      value: 'LARGE',
       label: '10+',
     },
   ];
@@ -293,28 +290,28 @@ export const NotSureStep3 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep4 = ({ onUpdate, nextStep }) => {
-  const [dailyContacts, setDailyContacts] = useState(false);
+  const [dailyContacts, setDailyContacts] = useState('NONE');
   const question =
     'On a daily basis, with how many people are you in contact with outside your home?';
   const options = [
     {
-      value: 'contact-none',
-      label: 'None.',
+      value: 'NONE',
+      label: 'None',
     },
     {
-      value: 'contact-1',
+      value: 'SINGLE',
       label: '1',
     },
     {
-      value: 'contact-2-4',
+      value: 'SMALL',
       label: '2-4',
     },
     {
-      value: 'contact-5-10',
+      value: 'MEDIUM',
       label: '5-10',
     },
     {
-      value: 'contact-more-than-10',
+      value: 'LARGE',
       label: '10+',
     },
   ];
@@ -388,10 +385,18 @@ export const NotSureStep6 = ({ onUpdate, nextStep }) => {
       value: 'fahrenheit',
       label: 'Fahrenheit',
     },
+    {
+      value: 'kelvin',
+      label: 'Kelvin',
+    },
   ];
   const updateTemperature = (key, value) => {
     let updatedTemperature = { ...temperature };
-    updatedTemperature[key] = value;
+    if (key === 'value') {
+      updatedTemperature[key] = parseFloat(value);
+    } else {
+      updatedTemperature[key] = value;
+    }
     setTemperature(updatedTemperature);
   };
   return (
