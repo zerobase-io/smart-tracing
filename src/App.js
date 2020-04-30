@@ -38,6 +38,7 @@ import TestPage from './components/pages/Test';
 
 import Scanner from './components/components/Scanner';
 import SelfReportingPage from './components/pages/SelfReporting';
+import ScrollToTop from './components/utils/ScrollToTop';
 
 const App = () => {
   // Modals --------------------------------------------------//
@@ -104,6 +105,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         {/* These are all the Main Layout (header, footer, etc.) routes */}
         <MainLayoutRoute path="/about" component={AboutUsPage} />
