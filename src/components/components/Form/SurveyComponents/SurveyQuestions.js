@@ -1,113 +1,135 @@
-import { SurveyLayout } from './SurveyLayout';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { colors, fontSizes } from '../../../../styles';
 
-export const SelectWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   background-color: ${colors.lighterGreen};
   border: 1px solid ${colors.green};
   border-radius: 2px;
   font-size: ${fontSizes.primary};
   padding: 10px;
+  margin-bottom: 5px;
 `;
-export const Select = styled.div``;
-export const SelectQuestion = styled.p``;
-export const OptionLabel = styled.label`
+const OptionLabel = styled.label`
   & > input {
     margin-right: 10px;
   }
 `;
+const Input = styled.input`
+  width: 100%;
+  border: 1px solid #79b977;
+  padding: 5px;
+  outline: none;
+`;
 
 /**
- * Intended to be top level components used by survey steps
- * @param onUpdate
+ * A radio button question component
  * @param options
  * @param question
- * @param nextStep
- * @param isSkippable
+ * @param onChange
  * @returns {*}
  * @constructor
  */
-export const RadioButtonQuestion = ({
-  onUpdate,
-  options,
-  question,
-  nextStep,
-  isSkippable = false,
-}) => {
-  const [nextBtnEnabled, setNextBtnValue] = useState(false);
+export const RadioButtonQuestion = ({ value, options, question, onChange }) => {
   return (
-    <div>
-      <SurveyLayout
-        nextStep={nextStep}
-        isSkippable={isSkippable}
-        nextBtnEnabled={nextBtnEnabled}
-      >
-        <input type="text" />
-        <SelectWrapper>
-          <SelectQuestion>{question}</SelectQuestion>
-          <Select>
-            {options &&
-              options.map((o) => {
-                return (
-                  <div key={o.value}>
-                    <OptionLabel>
-                      <input
-                        type="radio"
-                        value={o.value}
-                        name={question}
-                        onChange={() => setNextBtnValue(true)}
-                      />
-                      {o.label}
-                    </OptionLabel>
-                  </div>
-                );
-              })}
-          </Select>
-        </SelectWrapper>
-      </SurveyLayout>
-    </div>
+    <Wrapper>
+      <p>{question}</p>
+      <div>
+        {options &&
+          options.map((o) => {
+            return (
+              <div key={o.value}>
+                <OptionLabel>
+                  <input
+                    type="radio"
+                    value={o.value}
+                    checked={value === o.value}
+                    name={question}
+                    onChange={(e) => {
+                      onChange(e.target.value);
+                    }}
+                  />
+                  {o.label}
+                </OptionLabel>
+              </div>
+            );
+          })}
+      </div>
+    </Wrapper>
   );
 };
 
-export const CheckboxQuestion = ({
-  onUpdate,
-  options,
-  question,
-  nextStep,
-  isSkippable = false,
-}) => {
-  const [nextBtnEnabled, setNextBtnValue] = useState(false);
+/**
+ * A checkbox question component
+ * @param options
+ * @param question
+ * @param onChange
+ * @returns {*}
+ * @constructor
+ */
+export const CheckboxQuestion = ({ options, question, onChange }) => {
+  const [values, setValues] = useState(
+    options.reduce(
+      (options, option) => ({
+        ...options,
+        [option.value]: false,
+      }),
+      {},
+    ),
+  );
+  const updateValue = (value) => {
+    let updatedValues = { ...values };
+    updatedValues[value] = !updatedValues[value];
+    setValues(updatedValues);
+    return updatedValues;
+  };
   return (
-    <div>
-      <SurveyLayout
-        nextStep={nextStep}
-        isSkippable={isSkippable}
-        nextBtnEnabled={nextBtnEnabled}
-      >
-        <SelectWrapper>
-          <SelectQuestion>{question}</SelectQuestion>
-          <Select>
-            {options &&
-              options.map((o) => {
-                return (
-                  <div key={o.value}>
-                    <OptionLabel>
-                      <input
-                        type="checkbox"
-                        value={o.value}
-                        name={question}
-                        onChange={() => setNextBtnValue(true)}
-                      />
-                      {o.label}
-                    </OptionLabel>
-                  </div>
-                );
-              })}
-          </Select>
-        </SelectWrapper>
-      </SurveyLayout>
-    </div>
+    <Wrapper>
+      <p>{question}</p>
+      <div>
+        {options &&
+          options.map((o) => {
+            return (
+              <div key={o.value}>
+                <OptionLabel>
+                  <input
+                    type="checkbox"
+                    name={question}
+                    checked={values[o.value]}
+                    onChange={() => {
+                      const updatedValues = updateValue(o.value);
+                      onChange(updatedValues);
+                    }}
+                  />
+                  {o.label}
+                </OptionLabel>
+              </div>
+            );
+          })}
+      </div>
+    </Wrapper>
+  );
+};
+
+/**
+ * A textfield question component
+ * @param onChange
+ * @param options
+ * @param question
+ * @returns {*}
+ * @constructor
+ */
+export const TextFieldQuestion = ({ question, placeholder, onChange }) => {
+  return (
+    <Wrapper>
+      <p>{question}</p>
+      <Input
+        placeholder={placeholder}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
+      />
+    </Wrapper>
   );
 };

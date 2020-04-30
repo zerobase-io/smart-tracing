@@ -1,16 +1,10 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Button from '../../Button';
 import styled from 'styled-components';
 import { colors, fontSizes } from '../../../../styles';
 import React from 'react';
 
 const Text = styled.p`
-  font-size: ${fontSizes.primary};
-  text-align: center;
-  margin: 15px;
-  font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
-`;
-const SmallText = styled.p`
   font-size: ${fontSizes.small};
   text-align: center;
   margin: 15px;
@@ -37,50 +31,91 @@ const Footer = styled.div`
   background-color: ${(props) =>
     props.background ? colors.lightestGray : 'inherit'};
 `;
-const HeaderLayout = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-`;
-const FooterLayout = styled.div`
+const NavigationLayout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
+const NavigationLayoutPrimary = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
 
 /**
- * SurveyLayout is the component currently the SelfReporting survey controller.
- * Could be refactored a bit to generalize.
- * @param children: {Styled Component}
+ * SurveyNavigation is the component which is used in every survey question
+ * to give the possibility for going back and forth and skip question if allowed
  * @param nextStep: String
  * @param isSkippable: Boolean
  * @param nextBtnEnabled: Boolean
  * @returns {Styled Component}
  * @constructor
  */
-
-export const SurveyLayout = ({
-  children,
+export const SurveyNavigation = ({
   nextStep,
+  isLast = false,
   isSkippable = false,
-  nextBtnEnabled,
+  nextBtnEnabled = false,
+  onNextBtnClick,
+  onSkipBtnClick,
 }) => {
   const history = useHistory();
   return (
+    <NavigationLayout>
+      <NavigationLayoutPrimary>
+        <Button
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          Back
+        </Button>
+        <Button
+          type="success"
+          disabled={!nextBtnEnabled}
+          onClick={() => {
+            onNextBtnClick();
+            if (!isLast) {
+              history.push(nextStep);
+            }
+          }}
+        >
+          {isLast ? 'Submit' : 'Next'}
+        </Button>
+      </NavigationLayoutPrimary>
+      {isSkippable && (
+        <Button
+          onClick={() => {
+            onSkipBtnClick();
+            history.push(nextStep);
+          }}
+        >
+          Skip
+        </Button>
+      )}
+    </NavigationLayout>
+  );
+};
+
+/**
+ * SurveyLayout is the component that adds some static information in the page
+ * and the Back to Zerobase button
+ * @param children: {Styled Component}
+ * @returns {Styled Component}
+ * @constructor
+ */
+
+export const SurveyLayout = ({ children }) => {
+  const history = useHistory();
+  return (
     <Container>
-      <SurveyHeader />
-      <SmallText>
+      <Text>
         This assessment does not replace a medical diagnosis. If you need
         immediate medical attention, contact your healthcare provider and let
         them know you are concerned about COVID-19. If there is a medical
         emergency call the emergency call center of your country
-      </SmallText>
+      </Text>
       <Content>{children}</Content>
-      <SurveyFooter
-        nextStep={nextStep}
-        isSkippable={isSkippable}
-        nextBtnEnabled={nextBtnEnabled}
-      />
       <Footer>
         <Text>
           Remember, we never share your personal data! This information will
@@ -96,85 +131,5 @@ export const SurveyLayout = ({
         </Button>
       </Footer>
     </Container>
-  );
-};
-
-/**
- * In charge of rendering the steps of the form, does some jquery stuff? idk tbh sorry
- * @param onUpdate
- * @param onSubmit
- * @param steps
- * @param root
- * @returns {*}
- * @constructor
- */
-export const MultiStepForm = ({ onUpdate, onSubmit, steps, root }) => {
-  let { stepId } = useParams();
-
-  const props = {
-    stepId,
-    nextStep: `${parseInt(stepId || 0) + 1}`,
-    rootRoute: root,
-    onUpdate,
-    onSubmit,
-  };
-
-  return steps[parseInt(stepId) - 1](props);
-};
-
-const SurveyHeader = () => {
-  const history = useHistory();
-  return (
-    <HeaderLayout>
-      <Button
-        onClick={() => {
-          // onSubmit(...)
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-      <Button
-        onClick={() => {
-          // onSubmit(...)
-          history.push('/');
-        }}
-      >
-        Cancel
-      </Button>
-    </HeaderLayout>
-  );
-};
-
-const SurveyFooter = ({
-  nextStep,
-  isSkippable = false,
-  nextBtnEnabled = false,
-}) => {
-  const history = useHistory();
-  return (
-    <FooterLayout>
-      {nextBtnEnabled && (
-        <Button
-          type="successSolid"
-          onClick={() => {
-            history.push(nextStep);
-          }}
-        >
-          Next
-        </Button>
-      )}
-      {!nextBtnEnabled && <Button>Next</Button>}
-
-      {isSkippable && (
-        <Button
-          onClick={() => {
-            history.push(nextStep);
-          }}
-        >
-          Skip
-        </Button>
-      )}
-    </FooterLayout>
   );
 };
