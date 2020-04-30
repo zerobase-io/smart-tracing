@@ -1,11 +1,14 @@
-import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
-import ThankYouImage from '../../../assets/img/self-reporting/thankyou_v1.png';
+import React from 'react';
+import styled from 'styled-components';
+import {
+  Route,
+  Switch,
+  useHistory,
+  useRouteMatch,
+  useParams,
+} from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import FeelingGoodImage from '../../../assets/img/self-reporting/feeling-good.png';
-import NotFeelingWellImage from '../../../assets/img/self-reporting/not-feeling-well.png';
-import PlanningGetTestedImage from '../../../assets/img/self-reporting/planning-get-tested.png';
-import WasTestedImage from '../../../assets/img/self-reporting/was-tested.png';
 import {
   NotSureStep1,
   NotSureStep2,
@@ -17,13 +20,13 @@ import {
   WasTestedStep1,
   WasTestedStep2,
 } from './SurveySteps';
-import React from 'react';
-import {
-  MultiStepForm,
-  SurveyLayout,
-} from '../../components/Form/SurveyComponents/SurveyLayout';
-import styled from 'styled-components';
+import { SurveyLayout } from '../../components/Form/SurveyComponents/SurveyLayout';
 import { colors, fontSizes } from '../../../styles';
+import ThankYouImage from '../../../assets/img/self-reporting/thankyou_v1.png';
+import FeelingGoodImage from '../../../assets/img/self-reporting/feeling-good.png';
+import NotFeelingWellImage from '../../../assets/img/self-reporting/not-feeling-well.png';
+import PlanningGetTestedImage from '../../../assets/img/self-reporting/planning-get-tested.png';
+import WasTestedImage from '../../../assets/img/self-reporting/was-tested.png';
 
 const Title = styled.h1`
   font-size: ${fontSizes.large};
@@ -61,6 +64,27 @@ const Image = styled.img`
   max-width: 80%;
   margin: 0 auto;
 `;
+
+/**
+ * In charge of rendering the steps of the form, does some jquery stuff? idk tbh sorry
+ * @param onUpdate
+ * @param steps
+ * @param root
+ * @returns {*}
+ * @constructor
+ */
+export const MultiStepForm = ({ onUpdate, steps, root }) => {
+  let { stepId } = useParams();
+
+  const props = {
+    stepId,
+    nextStep: `${parseInt(stepId || 0) + 1}`,
+    rootRoute: root,
+    onUpdate,
+  };
+
+  return steps[parseInt(stepId) - 1](props);
+};
 
 /**
  * Top level page components that handle Rendering the pages and survey
@@ -141,7 +165,7 @@ export const SelfReportLanding = ({ onUpdate }) => {
         subtitle="See tips from health professionals to stay safe"
         img={FeelingGoodImage}
         onClick={() => {
-          onUpdate('haveSymptoms', false);
+          onUpdate('report', 'feeling-good', true);
           history.push(`${url}/thank-you`);
         }}
       />
@@ -151,21 +175,22 @@ export const SelfReportLanding = ({ onUpdate }) => {
         subtitle="Let us know your symptoms here"
         img={NotFeelingWellImage}
         onClick={() => {
-          onUpdate('haveSymptoms', true);
+          onUpdate('report', 'not-feeling-well');
           history.push(`${url}/not-feeling-well`);
         }}
       />
-      <Button
+      {/* <Button
         type="successSolid"
         onClick={() => {
+          onUpdate('report', 'no-time');
           console.log('No time... Subscribing the user for notifications...');
         }}
       >
         I don't have time now, but keep me notified
-      </Button>
+      </Button> */}
       <Footer background={true}>
-        <Text>How are we doing? We'd love to hear from you!</Text>
-        <Button type="success">Give us feedback</Button>
+        {/* <Text>How are we doing? We'd love to hear from you!</Text>
+        <Button type="success">Give us feedback</Button> */}
         <Button
           onClick={() => {
             history.push('/');
@@ -173,13 +198,13 @@ export const SelfReportLanding = ({ onUpdate }) => {
         >
           Continue to Zerobase
         </Button>
-        <Text>3a7796c9-d87b-4041-870d-38646c4133c4</Text>
+        {/* <Text>3a7796c9-d87b-4041-870d-38646c4133c4</Text> */}
       </Footer>
     </Container>
   );
 };
 
-export const NotFeelingWellLanding = () => {
+export const NotFeelingWellLanding = ({ onUpdate }) => {
   let { url } = useRouteMatch();
   const history = useHistory();
   return (
@@ -189,7 +214,7 @@ export const NotFeelingWellLanding = () => {
         title="I'm not sure if I should get tested for COVID-19"
         img={NotFeelingWellImage}
         onClick={() => {
-          // onUpdate('haveSymptoms', true);
+          onUpdate('notFeelingWellReason', 'not-sure');
           history.push(`${url}/not-sure/1`);
         }}
       />
@@ -198,7 +223,7 @@ export const NotFeelingWellLanding = () => {
         title="I'm planning on getting tested for COVID-19"
         img={PlanningGetTestedImage}
         onClick={() => {
-          // onUpdate('haveSymptoms', false);
+          onUpdate('notFeelingWellReason', 'planning');
           history.push(`${url}/planning/1`);
         }}
       />
@@ -207,7 +232,8 @@ export const NotFeelingWellLanding = () => {
         title="I've been tested for COVID-19"
         img={WasTestedImage}
         onClick={() => {
-          // onUpdate('haveSymptoms', false);
+          onUpdate('notFeelingWellReason', 'tested');
+          onUpdate('', true);
           history.push(`${url}/was-tested/1`);
         }}
       />
@@ -215,7 +241,7 @@ export const NotFeelingWellLanding = () => {
   );
 };
 
-export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
+export const NotFeelingWellPage = ({ onUpdate }) => {
   let { path } = useRouteMatch();
   const notSureSteps = [
     (props) => <NotSureStep1 {...props} />,
@@ -224,7 +250,6 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
     (props) => <NotSureStep4 {...props} />,
     (props) => <NotSureStep5 {...props} />,
     (props) => <NotSureStep6 {...props} />,
-    // TODO: Add the rest
   ];
   const planningSteps = [(props) => <PlanningStep1 {...props} />];
   const wasTestedSteps = [
@@ -239,7 +264,6 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
       <Route path={`${path}/not-sure/:stepId`}>
         <MultiStepForm
           onUpdate={onUpdate}
-          onSubmit={onSubmit}
           root="/self-reporting"
           steps={notSureSteps}
         />
@@ -247,7 +271,6 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
       <Route path={`${path}/planning/:stepId`}>
         <MultiStepForm
           onUpdate={onUpdate}
-          onSubmit={onSubmit}
           root="/self-reporting"
           steps={planningSteps}
         />
@@ -255,7 +278,6 @@ export const NotFeelingWellPage = ({ onUpdate, onSubmit }) => {
       <Route path={`${path}/was-tested/:stepId`}>
         <MultiStepForm
           onUpdate={onUpdate}
-          onSubmit={onSubmit}
           root="/self-reporting"
           steps={wasTestedSteps}
         />

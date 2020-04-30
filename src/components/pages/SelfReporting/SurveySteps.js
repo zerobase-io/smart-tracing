@@ -1,18 +1,16 @@
-import { useHistory } from 'react-router-dom';
-import Button from '../../components/Button';
-import {
-  SelectWrapper,
-  Select,
-  OptionLabel,
-  SelectQuestion,
-} from '../../components/Form/SurveyComponents/SurveyQuestions';
-import { SurveyLayout } from '../../components/Form/SurveyComponents/SurveyLayout';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { colors, fontSizes } from '../../../styles';
+import Button from '../../components/Button';
+import {
+  SurveyLayout,
+  SurveyNavigation,
+} from '../../components/Form/SurveyComponents/SurveyLayout';
 import {
   CheckboxQuestion,
   RadioButtonQuestion,
+  TextFieldQuestion,
 } from '../../components/Form/SurveyComponents/SurveyQuestions';
 
 const SurveyQuestion = styled.div`
@@ -53,9 +51,8 @@ export const PlanningStep1 = ({ onUpdate, nextStep }) => {
         onClick={() => {
           console.log('Openning calendar...');
           console.log('Updating form with the picked date...');
-          // onUpdate(...)
           console.log('Submitting the form...');
-          // onSubmit(...)
+          // onUpdate(..., true)
           history.replace('/self-reporting/thank-you');
         }}
       >
@@ -72,7 +69,7 @@ export const WasTestedStep1 = ({ onUpdate, nextStep }) => {
     <SurveyLayout>
       <SurveyQuestion>When have you been tested for COVID-19?</SurveyQuestion>
       <Button
-        type="defaultSolid"
+        type="disabled"
         onClick={() => {
           console.log('Updating the form...');
           // onUpdate(...)
@@ -92,7 +89,7 @@ export const WasTestedStep1 = ({ onUpdate, nextStep }) => {
         In the past two weeks
       </Button>
       <Button
-        type="defaultSolid"
+        type="disabled"
         onClick={() => {
           console.log('Updating the form...');
           // onUpdate(...)
@@ -112,12 +109,11 @@ export const WasTestedStep2 = ({ onUpdate, nextStep }) => {
     <SurveyLayout>
       <SurveyQuestion>What was the result of your test?</SurveyQuestion>
       <Button
-        type="defaultSolid"
+        type="disabled"
         onClick={() => {
           console.log('Updating the form...');
-          // onUpdate(...)
           console.log('Submitting the form...');
-          // onSubmit(...)
+          // onUpdate(..., true)
           history.replace('/self-reporting/thank-you');
         }}
       >
@@ -127,21 +123,19 @@ export const WasTestedStep2 = ({ onUpdate, nextStep }) => {
         type="infoSolid"
         onClick={() => {
           console.log('Updating the form...');
-          // onUpdate(...)
           console.log('Submitting the form...');
-          // onSubmit(...)
+          // onUpdate(..., true)
           history.replace('/self-reporting/thank-you');
         }}
       >
         I was tested positive
       </Button>
       <Button
-        type="defaultSolid"
+        type="disabled"
         onClick={() => {
           console.log('Updating the form...');
-          // onUpdate(...)
           console.log('Submitting the form...');
-          // onSubmit(...)
+          // onUpdate(..., true)
           history.replace('/self-reporting/thank-you');
         }}
       >
@@ -153,6 +147,7 @@ export const WasTestedStep2 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep1 = ({ onUpdate, nextStep }) => {
+  const [age, setAge] = useState(false);
   const question = 'How old are you?';
   const options = [
     {
@@ -169,11 +164,23 @@ export const NotSureStep1 = ({ onUpdate, nextStep }) => {
     },
   ];
   return (
-    <RadioButtonQuestion
-      question={question}
-      options={options}
-      nextStep={nextStep}
-    />
+    <SurveyLayout>
+      <RadioButtonQuestion
+        question={question}
+        options={options}
+        value={age}
+        onChange={(value) => {
+          setAge(value);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={true}
+        onNextBtnClick={() => {
+          onUpdate('age', age);
+        }}
+      />
+    </SurveyLayout>
   );
 };
 
@@ -209,20 +216,42 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
       label: 'Loss of taste and smell / Changes in how food tastes',
     },
     {
-      value: 'None of the above',
+      value: 'none-of-the-above',
       label: 'None of the above',
     },
   ];
+  const [symptoms, setSymptoms] = useState(
+    options.reduce(
+      (options, option) => ({
+        ...options,
+        [option.value]: false,
+      }),
+      {},
+    ),
+  );
+
   return (
-    <CheckboxQuestion
-      question={question}
-      options={options}
-      nextStep={nextStep}
-    />
+    <SurveyLayout>
+      <CheckboxQuestion
+        question={question}
+        options={options}
+        onChange={(values) => {
+          setSymptoms(values);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={true}
+        onNextBtnClick={() => {
+          onUpdate('symptoms', symptoms);
+        }}
+      />
+    </SurveyLayout>
   );
 };
 
 export const NotSureStep3 = ({ onUpdate, nextStep }) => {
+  const [dailyPeopleAtHome, setDailyPeopleAtHome] = useState(false);
   const question = 'On a daily basis with how many people are in your home?';
   const options = [
     {
@@ -243,15 +272,28 @@ export const NotSureStep3 = ({ onUpdate, nextStep }) => {
     },
   ];
   return (
-    <RadioButtonQuestion
-      question={question}
-      options={options}
-      nextStep={nextStep}
-    />
+    <SurveyLayout>
+      <RadioButtonQuestion
+        question={question}
+        options={options}
+        value={dailyPeopleAtHome}
+        onChange={(value) => {
+          setDailyPeopleAtHome(value);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={true}
+        onNextBtnClick={() => {
+          onUpdate('dailyPeopleAtHome', dailyPeopleAtHome);
+        }}
+      />
+    </SurveyLayout>
   );
 };
 
 export const NotSureStep4 = ({ onUpdate, nextStep }) => {
+  const [dailyContacts, setDailyContacts] = useState(false);
   const question =
     'On a daily basis, with how many people are you in contact with outside your home?';
   const options = [
@@ -277,83 +319,109 @@ export const NotSureStep4 = ({ onUpdate, nextStep }) => {
     },
   ];
   return (
-    <RadioButtonQuestion
-      question={question}
-      options={options}
-      nextStep={nextStep}
-      isSkippable={true}
-    />
+    <SurveyLayout>
+      <RadioButtonQuestion
+        question={question}
+        options={options}
+        value={dailyContacts}
+        onChange={(value) => {
+          setDailyContacts(value);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={true}
+        onNextBtnClick={() => {
+          onUpdate('dailyContacts', dailyContacts);
+        }}
+      />
+    </SurveyLayout>
   );
 };
 
 export const NotSureStep5 = ({ onUpdate, nextStep }) => {
+  const [exposed, setExposed] = useState('false');
   const question =
     'Do you have reason to believe you are likely to have been exposed to COVID-19 recently?';
   const options = [
     {
-      value: 'exposed-yes',
-      label: 'Yes',
+      value: 'false',
+      label: 'No',
     },
     {
-      value: 'exposed-no',
-      label: 'No',
+      value: 'true',
+      label: 'Yes',
     },
   ];
   return (
-    <RadioButtonQuestion
-      question={question}
-      options={options}
-      nextStep={nextStep}
-      isSkippable={false}
-    />
+    <SurveyLayout>
+      <RadioButtonQuestion
+        question={question}
+        options={options}
+        value={exposed}
+        onChange={(value) => {
+          setExposed(value);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={true}
+        onNextBtnClick={() => {
+          onUpdate('exposed', exposed === 'true');
+        }}
+      />
+    </SurveyLayout>
   );
 };
 
 export const NotSureStep6 = ({ onUpdate, nextStep }) => {
-  const question = 'What is your current temperature?';
-  const [nextBtnEnabled, setNextBtnValue] = useState(false);
+  const [temperature, setTemperature] = useState({
+    unit: 'celsius',
+    value: null,
+  });
+  const options = [
+    {
+      value: 'celsius',
+      label: 'Celsius',
+    },
+    {
+      value: 'fahrenheit',
+      label: 'Fahrenheit',
+    },
+  ];
+  const updateTemperature = (key, value) => {
+    let updatedTemperature = { ...temperature };
+    updatedTemperature[key] = value;
+    setTemperature(updatedTemperature);
+  };
   return (
-    <div>
-      <SurveyLayout
-        nextStep={'/self-reporting/thank-you'}
-        isSkippable={true}
-        nextBtnEnabled={nextBtnEnabled}
-      >
-        <SelectWrapper>
-          <SelectQuestion>{question}</SelectQuestion>
-          <div>
-            <input type="text" name="temperature" />
-          </div>
-          <Select>
-            <div key="fahrenheit">
-              <OptionLabel>
-                <input
-                  type="radio"
-                  value="fahrenheit"
-                  name={question}
-                  onChange={() => {
-                    setNextBtnValue(true);
-                  }}
-                />
-                Fahrenheit
-              </OptionLabel>
-            </div>
-            <div key="celcius">
-              <OptionLabel>
-                <input
-                  type="radio"
-                  value="celcius"
-                  name={question}
-                  onChange={() => {
-                    setNextBtnValue(true);
-                  }}
-                />
-                Celcius
-              </OptionLabel>
-            </div>
-          </Select>
-        </SelectWrapper>
-      </SurveyLayout>
-    </div>
+    <SurveyLayout>
+      <TextFieldQuestion
+        type="text"
+        name="temperature"
+        placeholder="Enter your temperature..."
+        question="What is your current temperature?"
+        value={temperature.value}
+        onChange={(value) => {
+          updateTemperature('value', value);
+        }}
+      />
+      <RadioButtonQuestion
+        question="What is the temperature unit you measure in?"
+        value={temperature.unit}
+        options={options}
+        onChange={(value) => {
+          updateTemperature('unit', value);
+        }}
+      />
+      <SurveyNavigation
+        nextStep={nextStep}
+        nextBtnEnabled={temperature}
+        onNextBtnClick={() => {
+          onUpdate('temperature', temperature, true);
+        }}
+        isLast={true}
+      />
+    </SurveyLayout>
   );
 };
