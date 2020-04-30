@@ -12,7 +12,7 @@ const PhoneNumberField = ({ required, onChange, name }) => {
     <IntlTelInput
       inputClassName="form-control"
       style={{ width: '100%' }}
-      placeholder="Phone number"
+      placeholder="(555) 555-1212"
       onPhoneNumberChange={(valid, phone, country) => {
         onChange(phone);
       }}
