@@ -69,10 +69,9 @@ export const WasTestedStep1 = ({ onUpdate, nextStep }) => {
     <SurveyLayout>
       <SurveyQuestion>When have you been tested for COVID-19?</SurveyQuestion>
       <Button
-        type="disabled"
+        type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          // onUpdate(...)
+          onUpdate('testedOn', 'whiting-past-two-days');
           history.push(nextStep);
         }}
       >
@@ -81,40 +80,41 @@ export const WasTestedStep1 = ({ onUpdate, nextStep }) => {
       <Button
         type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          // onUpdate(...)
+          onUpdate('testedOn', 'in-the-past-two-weeks');
           history.push(nextStep);
         }}
       >
         In the past two weeks
       </Button>
       <Button
-        type="disabled"
+        type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          // onUpdate(...)
+          onUpdate('testedOn', 'in-the-past-month');
           history.push(nextStep);
         }}
       >
         In the past month
       </Button>
-      <Button>I prefer not to answer</Button>
+      <Button
+        onClick={() => {
+          onUpdate('testedOn', 'n/a');
+          history.push(nextStep);
+        }}
+      >
+        I prefer not to answer
+      </Button>
     </SurveyLayout>
   );
 };
 
-export const WasTestedStep2 = ({ onUpdate, nextStep }) => {
-  const history = useHistory();
+export const WasTestedStep2 = ({ onUpdate }) => {
   return (
     <SurveyLayout>
       <SurveyQuestion>What was the result of your test?</SurveyQuestion>
       <Button
-        type="disabled"
+        type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          console.log('Submitting the form...');
-          // onUpdate(..., true)
-          history.replace('/self-reporting/thank-you');
+          onUpdate('testResult', 'negative', true);
         }}
       >
         I was tested negative
@@ -122,26 +122,26 @@ export const WasTestedStep2 = ({ onUpdate, nextStep }) => {
       <Button
         type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          console.log('Submitting the form...');
-          // onUpdate(..., true)
-          history.replace('/self-reporting/thank-you');
+          onUpdate('testResult', 'positive', true);
         }}
       >
         I was tested positive
       </Button>
       <Button
-        type="disabled"
+        type="infoSolid"
         onClick={() => {
-          console.log('Updating the form...');
-          console.log('Submitting the form...');
-          // onUpdate(..., true)
-          history.replace('/self-reporting/thank-you');
+          onUpdate('testResult', 'still-waiting', true);
         }}
       >
         My test is not back yet
       </Button>
-      <Button>I prefer not to answer</Button>
+      <Button
+        onClick={() => {
+          onUpdate('testResult', 'n/a', true);
+        }}
+      >
+        I prefer not to answer
+      </Button>
     </SurveyLayout>
   );
 };

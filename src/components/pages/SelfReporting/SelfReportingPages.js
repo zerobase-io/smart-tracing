@@ -25,7 +25,7 @@ import { colors, fontSizes } from '../../../styles';
 import ThankYouImage from '../../../assets/img/self-reporting/thankyou_v1.png';
 import FeelingGoodImage from '../../../assets/img/self-reporting/feeling-good.png';
 import NotFeelingWellImage from '../../../assets/img/self-reporting/not-feeling-well.png';
-import PlanningGetTestedImage from '../../../assets/img/self-reporting/planning-get-tested.png';
+// import PlanningGetTestedImage from '../../../assets/img/self-reporting/planning-get-tested.png';
 import WasTestedImage from '../../../assets/img/self-reporting/was-tested.png';
 
 const Title = styled.h1`
@@ -218,7 +218,7 @@ export const NotFeelingWellLanding = ({ onUpdate }) => {
           history.push(`${url}/not-sure/1`);
         }}
       />
-      <Card
+      {/* <Card
         type="info"
         title="I'm planning on getting tested for COVID-19"
         img={PlanningGetTestedImage}
@@ -226,14 +226,13 @@ export const NotFeelingWellLanding = ({ onUpdate }) => {
           onUpdate('notFeelingWellReason', 'planning');
           history.push(`${url}/planning/1`);
         }}
-      />
+      /> */}
       <Card
         type="info"
         title="I've been tested for COVID-19"
         img={WasTestedImage}
         onClick={() => {
           onUpdate('notFeelingWellReason', 'tested');
-          onUpdate('', true);
           history.push(`${url}/was-tested/1`);
         }}
       />
