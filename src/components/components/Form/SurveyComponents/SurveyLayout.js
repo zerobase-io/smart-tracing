@@ -17,7 +17,6 @@ const Container = styled.div`
   padding: 2rem;
   max-width: 28rem;
   margin: 0 auto;
-
 `;
 const Content = styled.div`
   flex: 1;
