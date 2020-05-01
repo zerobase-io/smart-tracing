@@ -1,3 +1,4 @@
+import './assets/css/carbon-components.css';
 import './assets/css/tabler.css';
 import './assets/css/icons.css';
 import './assets/css/layout.css';

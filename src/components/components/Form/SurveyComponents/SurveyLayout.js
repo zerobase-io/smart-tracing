@@ -7,7 +7,6 @@ import React from 'react';
 const Text = styled.p`
   font-size: ${fontSizes.small};
   text-align: center;
-  margin: 15px;
   font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
 `;
 const Container = styled.div`
@@ -15,7 +14,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 15px;
+  padding: 2rem;
+  max-width: 28rem;
+  margin: 0 auto;
+
 `;
 const Content = styled.div`
   flex: 1;

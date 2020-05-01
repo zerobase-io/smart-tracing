@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { colors, fontSizes } from '../../../styles';
 import Button from '../../components/Button';
+import { DatePicker, DatePickerInput } from 'carbon-components-react';
 import {
   SurveyLayout,
   SurveyNavigation,
@@ -26,6 +27,12 @@ const SurveyQuestion = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const DatePickerContainer = styled.div`
+  width: 100%;
+  padding: 2rem;
+  min-height: 150px;
 `;
 
 /**
@@ -68,40 +75,42 @@ export const WasTestedStep1 = ({ onUpdate, nextStep }) => {
   return (
     <SurveyLayout>
       <SurveyQuestion>When have you been tested for COVID-19?</SurveyQuestion>
+      <DatePickerContainer>
+        <DatePicker
+          dateFormat="m/d/Y"
+          datePickerType="single"
+          id="date-picker"
+          light={false}
+          locale="en"
+          onChange={(e) => {
+            onUpdate('testedOn', e[0]);
+          }}
+          onClose={(e) => {
+            onUpdate('testedOn', e[0]);
+          }}
+          short={false}
+        >
+          <DatePickerInput
+            className="some-class"
+            disabled={false}
+            iconDescription="Icon description"
+            id="date-picker-input-id"
+            invalid={false}
+            invalidText="A valid value is required"
+            labelText=""
+            pattern="d{1,2}/d{4}"
+            placeholder="mm/dd/yyyy"
+            size={undefined}
+            type="text"
+          />
+        </DatePicker>
+      </DatePickerContainer>
       <Button
-        type="infoSolid"
         onClick={() => {
-          onUpdate('testedOn', 'whiting-past-two-days');
           history.push(nextStep);
         }}
       >
-        Whithin the past few days
-      </Button>
-      <Button
-        type="infoSolid"
-        onClick={() => {
-          onUpdate('testedOn', 'in-the-past-two-weeks');
-          history.push(nextStep);
-        }}
-      >
-        In the past two weeks
-      </Button>
-      <Button
-        type="infoSolid"
-        onClick={() => {
-          onUpdate('testedOn', 'in-the-past-month');
-          history.push(nextStep);
-        }}
-      >
-        In the past month
-      </Button>
-      <Button
-        onClick={() => {
-          onUpdate('testedOn', 'n/a');
-          history.push(nextStep);
-        }}
-      >
-        I prefer not to answer
+        Next
       </Button>
     </SurveyLayout>
   );

@@ -61,7 +61,7 @@ const submitReport = async (data) => {
         method: 'post',
         url: `${API_HOST}/devices/${deviceID}/reports/tests`,
         data: {
-          testDate: testedOn, // this is not an ISO date - we have past-two-days, past-two-weeks, past-month
+          testDate: testedOn.toISOString(), // this is not an ISO date - we have past-two-days, past-two-weeks, past-month
           result: testResult === 'positive',
           timestamp: new Date().toISOString(),
         },

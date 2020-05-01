@@ -44,7 +44,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 15px;
+  padding: 2rem;
+  max-width: 28rem;
+  margin: 0 auto;
 `;
 const Content = styled.div`
   flex: 1;
@@ -97,7 +99,7 @@ export const ThankYouPage = () => {
   const history = useHistory();
   return (
     <Container>
-      <Title>Keep community healthy</Title>
+      <Title>Thanks for keeping your community healthy!</Title>
       <Content>
         <Image src={ThankYouImage} alt="thank-you" />
         <Text bold={true}>
@@ -196,7 +198,7 @@ export const SelfReportLanding = ({ onUpdate }) => {
             history.push('/');
           }}
         >
-          Continue to Zerobase
+          Back to Zerobase
         </Button>
         {/* <Text>3a7796c9-d87b-4041-870d-38646c4133c4</Text> */}
       </Footer>
