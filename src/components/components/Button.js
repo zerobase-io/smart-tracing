@@ -82,7 +82,11 @@ const ButtonComponent = styled.button`
 
 const Button = ({ onClick, type, children, disabled }) => {
   return (
-    <ButtonComponent onClick={onClick} type={disabled ? 'disabled' : type}>
+    <ButtonComponent
+      onClick={onClick}
+      type={disabled ? 'disabled' : type}
+      disabled={disabled}
+    >
       {children}
     </ButtonComponent>
   );
