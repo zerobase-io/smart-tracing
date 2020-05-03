@@ -88,7 +88,9 @@ export const SurveyNavigation = ({
         <Button
           onClick={() => {
             onSkipBtnClick();
-            history.push(nextStep);
+            if (!isLast) {
+              history.push(nextStep);
+            }
           }}
         >
           Skip
