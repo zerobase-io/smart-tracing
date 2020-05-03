@@ -141,7 +141,7 @@ export const WasTestedStep2 = ({ onUpdate }) => {
 };
 
 export const NotSureStep1 = ({ onUpdate, nextStep }) => {
-  const [age, setAge] = useState('UNDERAGE');
+  const [age, setAge] = useState();
   const question = 'How old are you?';
   const options = [
     {
@@ -173,7 +173,7 @@ export const NotSureStep1 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={true}
+        nextBtnEnabled={age}
         onNextBtnClick={() => {
           onUpdate('age', age);
         }}
@@ -232,6 +232,8 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
     ),
   );
 
+  const selectedSymptoms = Object.keys(symptoms).filter((key) => symptoms[key]);
+
   return (
     <SurveyLayout>
       <CheckboxQuestion
@@ -243,7 +245,11 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={true}
+        nextBtnEnabled={
+          selectedSymptoms &&
+          selectedSymptoms.length &&
+          selectedSymptoms.length > 0
+        }
         onNextBtnClick={() => {
           onUpdate('symptoms', symptoms);
         }}
@@ -253,7 +259,7 @@ export const NotSureStep2 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep3 = ({ onUpdate, nextStep }) => {
-  const [dailyPeopleAtHome, setDailyPeopleAtHome] = useState('SINGLE');
+  const [dailyPeopleAtHome, setDailyPeopleAtHome] = useState();
   const question = 'On a daily basis with how many people are in your home?';
   const options = [
     {
@@ -289,7 +295,7 @@ export const NotSureStep3 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={true}
+        nextBtnEnabled={dailyPeopleAtHome}
         onNextBtnClick={() => {
           onUpdate('dailyPeopleAtHome', dailyPeopleAtHome);
         }}
@@ -299,7 +305,7 @@ export const NotSureStep3 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep4 = ({ onUpdate, nextStep }) => {
-  const [dailyContacts, setDailyContacts] = useState('NONE');
+  const [dailyContacts, setDailyContacts] = useState();
   const question =
     'On a daily basis, with how many people are you in contact with outside your home?';
   const options = [
@@ -336,7 +342,7 @@ export const NotSureStep4 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={true}
+        nextBtnEnabled={dailyContacts}
         onNextBtnClick={() => {
           onUpdate('dailyContacts', dailyContacts);
         }}
@@ -346,7 +352,7 @@ export const NotSureStep4 = ({ onUpdate, nextStep }) => {
 };
 
 export const NotSureStep5 = ({ onUpdate, nextStep }) => {
-  const [exposed, setExposed] = useState('false');
+  const [exposed, setExposed] = useState();
   const question =
     'Do you have reason to believe you are likely to have been exposed to COVID-19 recently?';
   const options = [
@@ -371,7 +377,7 @@ export const NotSureStep5 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={true}
+        nextBtnEnabled={exposed}
         onNextBtnClick={() => {
           onUpdate('exposed', exposed === 'true');
         }}
@@ -382,7 +388,7 @@ export const NotSureStep5 = ({ onUpdate, nextStep }) => {
 
 export const NotSureStep6 = ({ onUpdate, nextStep }) => {
   const [temperature, setTemperature] = useState({
-    unit: 'celsius',
+    unit: undefined,
     value: null,
   });
   const options = [
@@ -430,9 +436,13 @@ export const NotSureStep6 = ({ onUpdate, nextStep }) => {
       />
       <SurveyNavigation
         nextStep={nextStep}
-        nextBtnEnabled={temperature}
+        isSkippable={true}
+        nextBtnEnabled={temperature.unit && temperature.value}
         onNextBtnClick={() => {
           onUpdate('temperature', temperature, true);
+        }}
+        onSkipBtnClick={() => {
+          onUpdate('temperature', {}, true);
         }}
         isLast={true}
       />
