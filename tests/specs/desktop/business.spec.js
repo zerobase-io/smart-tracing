@@ -2,114 +2,114 @@ import HomePage from '../../__pages__/HomePage';
 import RegisterBusinessPage from '../../__pages__/RegisterBusinessPage';
 
 describe('Zerobase - Desktop - Register Business', () => {
-  let homePage;
-  let businessPage;
+    let homePage;
+    let businessPage;
 
-  beforeAll(async () => {
-    jest.setTimeout(60000);
-  });
-
-  beforeEach(async () => {
-    homePage = new HomePage();
-    businessPage = new RegisterBusinessPage();
-    await homePage.goTo();
-  });
-
-  it('should be able to register as a business', async () => {
-    await homePage.openMenu();
-    await homePage.selectBusiness();
-
-    expect(page.url()).toContain('/businesses');
-    await businessPage.enroll();
-
-    await businessPage.waitForRegistrationForm();
-
-    await businessPage.enterBusinessInfo({
-      name: 'Fake Business Name',
-      address: 'Fake Business Address',
+    beforeAll(async () => {
+        jest.setTimeout(60000);
     });
 
-    await businessPage.selectBusinessType('FINANCIAL/BANK');
-
-    // Google's phone number
-    await businessPage.enterContactInformation({
-      name: 'Fake Contact',
-      email: 'zerobase@mailinator.com',
-      phone: '+16502530000',
+    beforeEach(async () => {
+        homePage = new HomePage();
+        businessPage = new RegisterBusinessPage();
+        await homePage.goTo();
     });
 
-    await businessPage.acceptPrivacyTerms();
-    await businessPage.submit();
-    await businessPage.verifySuccess();
+    it('should be able to register as a business', async () => {
+        await homePage.openMenu();
+        await homePage.selectBusiness();
 
-    await page.screenshot({
-      path: './tests/screenshots/registerBusiness.jpg',
-      type: 'jpeg',
-    });
-  });
+        expect(page.url()).toContain('/businesses');
+        await businessPage.enroll();
 
-  it('should ask the user to accept the privacy terms before registering', async () => {
-    await homePage.openMenu();
-    await homePage.selectBusiness();
+        await businessPage.waitForRegistrationForm();
 
-    expect(page.url()).toContain('/businesses');
-    await businessPage.enroll();
+        await businessPage.enterBusinessInfo({
+            name: 'Fake Business Name',
+            address: 'Fake Business Address',
+        });
 
-    await businessPage.waitForRegistrationForm();
+        await businessPage.selectBusinessType('FINANCIAL/BANK');
 
-    await businessPage.enterBusinessInfo({
-      name: 'Fake Business Name',
-      address: 'Fake Business Address',
-    });
+        // Google's phone number
+        await businessPage.enterContactInformation({
+            name: 'Fake Contact',
+            email: 'zerobase@mailinator.com',
+            phone: '+16502530000',
+        });
 
-    await businessPage.selectBusinessType('FINANCIAL/BANK');
+        await businessPage.acceptPrivacyTerms();
+        await businessPage.submit();
+        await businessPage.verifySuccess();
 
-    // Google's phone number
-    await businessPage.enterContactInformation({
-      name: 'Fake Contact',
-      email: 'zerobase@mailinator.com',
-      phone: '+16502530000',
-    });
-
-    await businessPage.submit();
-    await businessPage.verifyPrivacyWarning();
-
-    await page.screenshot({
-      path: './tests/screenshots/registerBusiness.jpg',
-      type: 'jpeg',
-    });
-  });
-
-  it('should show an error if the phone is invalid', async () => {
-    await homePage.openMenu();
-    await homePage.selectBusiness();
-
-    expect(page.url()).toContain('/businesses');
-    await businessPage.enroll();
-
-    await businessPage.waitForRegistrationForm();
-
-    await businessPage.enterBusinessInfo({
-      name: 'Fake Business Name',
-      address: 'Fake Business Address',
+        await page.screenshot({
+            path: './tests/screenshots/registerBusiness.jpg',
+            type: 'jpeg',
+        });
     });
 
-    await businessPage.selectBusinessType('FINANCIAL/BANK');
+    it('should ask the user to accept the privacy terms before registering', async () => {
+        await homePage.openMenu();
+        await homePage.selectBusiness();
 
-    // Google's phone number
-    await businessPage.enterContactInformation({
-      name: 'Fake Contact',
-      email: 'zerobase@mailinator.com',
-      phone: 'f',
+        expect(page.url()).toContain('/businesses');
+        await businessPage.enroll();
+
+        await businessPage.waitForRegistrationForm();
+
+        await businessPage.enterBusinessInfo({
+            name: 'Fake Business Name',
+            address: 'Fake Business Address',
+        });
+
+        await businessPage.selectBusinessType('FINANCIAL/BANK');
+
+        // Google's phone number
+        await businessPage.enterContactInformation({
+            name: 'Fake Contact',
+            email: 'zerobase@mailinator.com',
+            phone: '+16502530000',
+        });
+
+        await businessPage.submit();
+        await businessPage.verifyPrivacyWarning();
+
+        await page.screenshot({
+            path: './tests/screenshots/registerBusiness.jpg',
+            type: 'jpeg',
+        });
     });
-    await businessPage.acceptPrivacyTerms();
 
-    await businessPage.submit();
-    await businessPage.verifyPhoneValidationWarning();
+    it('should show an error if the phone is invalid', async () => {
+        await homePage.openMenu();
+        await homePage.selectBusiness();
 
-    await page.screenshot({
-      path: './tests/screenshots/registerBusiness.jpg',
-      type: 'jpeg',
+        expect(page.url()).toContain('/businesses');
+        await businessPage.enroll();
+
+        await businessPage.waitForRegistrationForm();
+
+        await businessPage.enterBusinessInfo({
+            name: 'Fake Business Name',
+            address: 'Fake Business Address',
+        });
+
+        await businessPage.selectBusinessType('FINANCIAL/BANK');
+
+        // Google's phone number
+        await businessPage.enterContactInformation({
+            name: 'Fake Contact',
+            email: 'zerobase@mailinator.com',
+            phone: 'f',
+        });
+        await businessPage.acceptPrivacyTerms();
+
+        await businessPage.submit();
+        await businessPage.verifyPhoneValidationWarning();
+
+        await page.screenshot({
+            path: './tests/screenshots/registerBusiness.jpg',
+            type: 'jpeg',
+        });
     });
-  });
 });

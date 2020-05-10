@@ -9,11 +9,11 @@ const DIR = path.join(os.tmpdir(), 'jest_puppeteer_global_setup');
 
 // eslint-disable-next-line func-names
 module.exports = async function () {
-  console.log(chalk.green('Setup Puppeteer'));
-  const browser = await puppeteer.launch({});
-  // This global is not available inside tests but only in global teardown
-  global.browser = browser;
-  // Instead, we expose the connection details via file system to be used in tests
-  mkdirp.sync(DIR);
-  fs.writeFileSync(path.join(DIR, 'wsEndpoint'), browser.wsEndpoint());
+    console.log(chalk.green('Setup Puppeteer'));
+    const browser = await puppeteer.launch({});
+    // This global is not available inside tests but only in global teardown
+    global.browser = browser;
+    // Instead, we expose the connection details via file system to be used in tests
+    mkdirp.sync(DIR);
+    fs.writeFileSync(path.join(DIR, 'wsEndpoint'), browser.wsEndpoint());
 };

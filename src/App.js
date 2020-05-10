@@ -39,111 +39,111 @@ import TestPage from './components/pages/Test';
 import Scanner from './components/components/Scanner';
 
 const App = () => {
-  // Modals --------------------------------------------------//
-  $('body').on('click', '#privacy-policy', () => {
-    $('#modal-privacy-policy').modal('show');
-  });
-  $('body').on('click', '#show-registration', () => {
-    $('#modal-register-notice').modal('show');
-  });
-  $('body').on('click', '#show-feedback', () => {
-    $('#modal-feedback').modal('show');
-  });
-  $('body').on('click', '#show-register-notifications', () => {
-    $('#modal-register-notifications').modal('show');
-  });
+    // Modals --------------------------------------------------//
+    $('body').on('click', '#privacy-policy', () => {
+        $('#modal-privacy-policy').modal('show');
+    });
+    $('body').on('click', '#show-registration', () => {
+        $('#modal-register-notice').modal('show');
+    });
+    $('body').on('click', '#show-feedback', () => {
+        $('#modal-feedback').modal('show');
+    });
+    $('body').on('click', '#show-register-notifications', () => {
+        $('#modal-register-notifications').modal('show');
+    });
 
-  // Forms (Need refactor) --------------------------------------------------//
+    // Forms (Need refactor) --------------------------------------------------//
 
-  $('body').on('click', '#notify-submit', (e) => {
-    e.preventDefault();
-    if ($('#notify-agree').prop('checked') === true) {
-      $('#notify-submit').addClass('btn-loading');
-      controller.create_user({
-        phone: $('#notify-phone').val(),
-        button_id: '#notify-submit',
-      });
-    } else {
-      $('#notify-warning').removeClass('d-none');
-    }
-  });
+    $('body').on('click', '#notify-submit', (e) => {
+        e.preventDefault();
+        if ($('#notify-agree').prop('checked') === true) {
+            $('#notify-submit').addClass('btn-loading');
+            controller.create_user({
+                phone: $('#notify-phone').val(),
+                button_id: '#notify-submit',
+            });
+        } else {
+            $('#notify-warning').removeClass('d-none');
+        }
+    });
 
-  return (
-    <>
-      <div id="app">
-        <div className="page">
-          <Primary />
-          <Secondary />
-          <Router>
-            <Switch>
-              <Route path="/about">
-                <AboutUsPage />
-              </Route>
-              <Route path="/individual">
-                <IndividualsLandingPage />
-              </Route>
-              <Route path="/community">
-                <CommunityPage />
-              </Route>
-              <Route path="/businesses">
-                <BusinessLandingPage />
-              </Route>
-              <Route path="/testing">
-                <TestingsiteLandingPage />
-              </Route>
-              <Route path="/notifications">
-                <NotificationsPage />
-              </Route>
-              <Route path="/privacy-policy">
-                <PrivacyPage />
-              </Route>
-              <Route path="/privacy">
-                <PrivacyLandingPage />
-              </Route>
-              <Route path="/terms">
-                <TermsPage />
-              </Route>
-              <Route path="/feedback">
-                <FeedbackPage />
-              </Route>
-              <Route path="/contact">
-                <ContactPage />
-              </Route>
-              <Route path="/volunteer">
-                <VolunteerLandingPage />
-              </Route>
-              <Route path="/team">
-                <OurTeamPage />
-              </Route>
-              <Route path="/scan">
-                <ScanPage />
-              </Route>
-              <Route path="/business/register">
-                <BusinessRegisterPage />
-              </Route>
-              <Route path="/healthcare/register">
-                <HealthCareRegisterPage />
-              </Route>
-              <Route path="/s/:sdvid" component={Scanner} />
-              <Route path="/test">
-                <TestPage />
-              </Route>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Router>
-        </div>
-        <Footer />
-      </div>
-      <RegisterModal />
-      <ScanStatusModal />
-      <FeedbackModal />
-      <RegisterNotificationsModal />
-      <PrivacyPolicyModal />
-    </>
-  );
+    return (
+        <>
+            <div id="app">
+                <div className="page">
+                    <Primary />
+                    <Secondary />
+                    <Router>
+                        <Switch>
+                            <Route path="/about">
+                                <AboutUsPage />
+                            </Route>
+                            <Route path="/individual">
+                                <IndividualsLandingPage />
+                            </Route>
+                            <Route path="/community">
+                                <CommunityPage />
+                            </Route>
+                            <Route path="/businesses">
+                                <BusinessLandingPage />
+                            </Route>
+                            <Route path="/testing">
+                                <TestingsiteLandingPage />
+                            </Route>
+                            <Route path="/notifications">
+                                <NotificationsPage />
+                            </Route>
+                            <Route path="/privacy-policy">
+                                <PrivacyPage />
+                            </Route>
+                            <Route path="/privacy">
+                                <PrivacyLandingPage />
+                            </Route>
+                            <Route path="/terms">
+                                <TermsPage />
+                            </Route>
+                            <Route path="/feedback">
+                                <FeedbackPage />
+                            </Route>
+                            <Route path="/contact">
+                                <ContactPage />
+                            </Route>
+                            <Route path="/volunteer">
+                                <VolunteerLandingPage />
+                            </Route>
+                            <Route path="/team">
+                                <OurTeamPage />
+                            </Route>
+                            <Route path="/scan">
+                                <ScanPage />
+                            </Route>
+                            <Route path="/business/register">
+                                <BusinessRegisterPage />
+                            </Route>
+                            <Route path="/healthcare/register">
+                                <HealthCareRegisterPage />
+                            </Route>
+                            <Route path="/s/:sdvid" component={Scanner} />
+                            <Route path="/test">
+                                <TestPage />
+                            </Route>
+                            <Route exact path="/">
+                                <HomePage />
+                            </Route>
+                            <Route component={NotFoundPage} />
+                        </Switch>
+                    </Router>
+                </div>
+                <Footer />
+            </div>
+            <RegisterModal />
+            <ScanStatusModal />
+            <FeedbackModal />
+            <RegisterNotificationsModal />
+            <PrivacyPolicyModal />
+        </>
+    );
 };
 
 export default App;
