@@ -1,27 +1,26 @@
-nav#navbar-primary.navbar.navbar-expand-lg.navbar-light.navbar-primary
-  .container.navbar-mobile
-    .navbar-collapse
-      h6.navbar-heading Navigation
-      ul.nav.nav-tabs(data-toggle='tabs')
-        li.nav-item
-          a.nav-link.active(href='#tabs-home', data-toggle='tab')
-            | Home
-        li.nav-item.dropdown
-          a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Information
+nav#navbar-primary.navbar.navbar-expand-sm.navbar-light.navbar-secondary-blue.navbar-primary.py-2
+  //-.container.navbar-mobile
+  .container
+    .d-block.d-sm-none.small Privacy First Contact Tracing
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+      i.fe.fe-menu.mr-2
+      | Menu
+    .collapse.navbar-collapse(id="navbarNav")
+      ul.nav.nav-tabs.navbar-nav
+        li.nav-item.w-md-100
+          a.nav-link(href='/', id="nav-item-home") Home
+        li.nav-item.dropdown.w-md-100
+          a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Use Cases
           .dropdown-menu
-            a.dropdown-item(href='#tabs-about', data-toggle='tab')
-              | Overview
-            .dropdown-divider
-            span.dropdown-header Use Cases
-            a.dropdown-item(href='#tabs-individuals', data-toggle='tab')
-              i.fe.fe-user.mr-2
-              | Individual
-            a.dropdown-item(href='#tabs-businesses', data-toggle='tab')
-              i.fe.fe-home.mr-2
-              | Business or Public Location
-            a.dropdown-item(href='#tabs-healthcare', data-toggle='tab')
-              i.fe.fe-thermometer.mr-2
-              | Healthcare
-        li.nav-item
-          a.nav-link(href='#tabs-notifications', data-toggle='tab')
-            | Notifications
+            a.dropdown-item(href='/individual', id="nav-item-individuals") Individuals
+            a.dropdown-item(href='/community', id="nav-item-community") Community Officials
+            a.dropdown-item(href='/businesses', id="nav-item-business") Business or Public Locations
+            a.dropdown-item(href='/testing', id="nav-item-healthcare") Healthcare Testing Sites
+        li.nav-item.w-md-100
+          a.nav-link(href='/about', id="nav-item-about") About
+        li.nav-item.w-md-100
+          a.nav-link(href='/privacy', id="nav-item-privacy") Privacy
+        li.nav-item.w-md-100
+          a.nav-link(href='/team',    id="nav-item-team") Team
+        li.nav-item.w-md-100
+          a.nav-link(href='/contact', id="nav-item-contact") Contact Us

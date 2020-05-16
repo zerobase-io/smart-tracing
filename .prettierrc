@@ -1,7 +1,5 @@
 {
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "parser": "typescript"
-  }
-  
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth":4,
+}

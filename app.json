@@ -1,26 +1,25 @@
 {
-	"name": "smart-tracking",
-	"keywords": [
-		"coronavirus",
-		"covid",
-		"disease tracking"
-	],
-	"website": "https://zerobase.io/",
-	"repository": "https://github.com/zerobase-io/smart-tracing",
-	"logo": "https://zerobase.io/assets/img/zerobase_medium_logo.png",
-	"success_url": "/",
-	"formation": {
-		"web": {
-			"quantity": 1,
-			"size": "hobby"
-		}
-	},
-	"buildpacks": [
-		{
-			"url": "heroku/nodejs"
-		}
-	],
-	"image": "heroku/nodejs",
-	"addons": [],
-	"env": {}
+  "name": "smart-tracking",
+  "keywords": ["coronavirus", "covid", "disease tracking"],
+  "website": "https://zerobase.io/",
+  "repository": "https://github.com/zerobase-io/smart-tracing",
+  "logo": "https://zerobase.io/assets/img/zerobase_medium_logo.png",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "hobby"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/mars/create-react-app-buildpack"
+    }
+  ],
+  "addons": [],
+  "env": {
+    "NODE_ENV": {
+      "value": "production"
+    }
+  }
 }

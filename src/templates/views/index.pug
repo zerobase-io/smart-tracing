@@ -3,7 +3,7 @@ head
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1, viewport-fit=cover')
   meta(http-equiv='X-UA-Compatible', content='ie=edge')
-  title Zerobase - Smart Tracing That Keeps Communities Safe
+  title Zerobase - Privacy First Contact Tracing for Communities
   link(rel='preconnect', href='https://fonts.gstatic.com/', crossorigin='')
   meta(name='msapplication-TileColor', content='#206bc4')
   meta(name='theme-color', content='#206bc4')
@@ -13,67 +13,59 @@ head
   meta(name='HandheldFriendly', content='True')
   meta(name='MobileOptimized', content='320')
   meta(name='robots', content='noindex,nofollow,noarchive')
+
+  meta(name='description', content='Privacy first contact tracing for communities')
+  meta(property='og:url', content='https://www.zerobase.io')
+  meta(property='og:type', content='website')
+  meta(property='og:locale', content='en')
+  meta(property='og:site_name', content='Zerobase')
+  meta(property='og:image', content='https://www.zerobase.io/assets/img/logo_icon_200.png')
+  meta(property='og:image:width', content='200')
+  meta(property='og:image:height', content='200')
+  meta(name='twitter:site', content='@Zerobaseio')
+  meta(name='twitter:card', content='summary')
+  meta(name='twitter:image', content='https://www.zerobase.io/assets/img/logo_icon_200.png')
+
   link(rel='icon', href='/favicon.ico', type='image/x-icon')
   link(rel='shortcut icon', href='favicon.ico', type='image/x-icon')
-  //-Global site tag (gtag.js) - Google Analytics
-  script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
   script(type="application/json" id="runtime-config").
     {{ RUNTIME_CONFIG }}
-  script.
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-159876597-1');
+  //-Global site tag (gtag.js) - Google Analytics
+  //- script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-159876597-1')
+  //- script.
+  //-   window.dataLayer = window.dataLayer || [];
+  //-   function gtag(){dataLayer.push(arguments);}
+  //-   gtag('js', new Date());
+  //-   gtag('config', 'UA-159876597-1');
 
   link(href='/styles.min.css', rel='stylesheet')
 
 body
 
-  //- Component "Router"
-  .d-none
-    ul.nav.nav-tabs.nav-fill(data-toggle='tabs')
-      li.nav-item
-        a.nav-link.active(href='#page-main', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-scan', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-code', data-toggle='tab')
-      li.nav-item
-        a.nav-link(href='#page-code-alt', data-toggle='tab')
+  #app
+    
+    //- include ../toast/scanner-error
 
-  .tab-content
-    //- Main Component
-    #page-main.tab-pane.active.show
-      .page
-        include ../navigation/primary
-        include ../navigation/secondary
-        .tab-content
-          #tabs-home.tab-pane.active.show
-            include ../pages/home
-          #tabs-about.tab-pane
-            include ../pages/about
-          #tabs-individuals.tab-pane
-            include ../pages/individuals
-          #tabs-businesses.tab-pane
-            include ../pages/businesses
-          #tabs-healthcare.tab-pane
-            include ../pages/healthcare
-          //- #tabs-privacy.tab-pane
-          //-   include ../pages/privacy
-          //- #tabs-updates.tab-pane
-          //-   include ../pages/updates
-          //- #tabs-news.tab-pane
-          //-   include ../pages/news
-          #tabs-notifications.tab-pane
-            include ../pages/notifications
+    .page(style="overflow:hidden;")
+      include ../navigation/primary
+      include ../navigation/secondary
+    
+      router-view
 
-    //- Additional Components
-    include ../components/scan
-    include ../components/code
-    include ../components/code-alt
+    include ../navigation/footer
 
   include ../modal/register
+  //-include ../modal/register-business
+  //-include ../modal/register-healthcare
   include ../modal/scan-status
+  include ../modal/feedback
+  include ../modal/register-notifications
+  include ../modal/privacy-policy
 
+
+script(src='https://cdn.jsdelivr.net/npm/places.js@1.18.1')
+script(src='https://unpkg.com/vue/dist/vue.js')
+script(src='https://unpkg.com/vue-router/dist/vue-router.js')
 script(src='/main.min.js')
+script(src='https://static.airtable.com/js/embed/embed_snippet_v1.js')
 //-script(src='/controller.js')

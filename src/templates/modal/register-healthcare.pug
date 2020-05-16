@@ -1,0 +1,56 @@
+#modal-register-healthcare.modal.modal-blur.fade(tabindex='-1', role='dialog', aria-hidden='true', data-redirect='false', style='{{"display":"none"}}')
+  .modal-dialog.modal-dialog-centered.modal-lg(role='document')
+    .modal-content
+      button.close(type='button', data-dismiss='modal', aria-label='Close')
+        svg.icon(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+          line(x1='18', y1='6', x2='6', y2='18')
+          line(x1='6', y1='6', x2='18', y2='18')
+      .modal-body.py-5(style='{{"background":"white"}}')
+        .card-body
+          h3.mb-5 Register your healthcare organization
+          .alert.alert-warning.d-none(role='alert')
+            | Some of your information could not be verified, please try again
+          .alert.alert-success.d-none(role='alert')
+            i.fe.fe-check.mr-2
+            | Great! Check your email to access your codes &mdash; 
+            a.alert-link(href='#', target='_blank') check it out
+            | !
+          .row
+            .col-12.col-md-7
+              form.register-healthcare
+                label.form-label Organization Name
+                  input.form-control(type='text', name='org_name', placeholder='Organization name', required)
+                .input-icon.mb-2
+                  input.form-control(type='text', name='address', placeholder='Facility address', required)
+                label.form-label Facility Type
+                .mb-2
+                  select.form-select.healthcare-type(name='type')
+                    option(value='HEALTH/DOCTOR_OFFICE') Hospital
+                    option(value='HEALTH/HOSPITAL') Doctor Office
+                    option(value='HEALTH/PHARMACY') Pharmacy
+                .mb-3
+                  label.form-check
+                    input.form-check-input(type='checkbox', name='hasTestingFacilities')
+                    span.form-check-label
+                      | Our facility administers COVID-19 tests
+                label.form-label Point of Contact
+                .input-icon.mb-2
+                  input.form-control(type='name', name='contact_name', placeholder='Contact name', required)
+                .input-icon.mb-2
+                  input.form-control(type='email', name='email', placeholder='Email address', required)
+                .input-icon.mb-2
+                  input.form-control(type='phone', name='phone', placeholder='Phone number', required)
+                .form-footer
+                  button.btn.btn-primary.btn-block(type="submit", id="submit-healthcare") Generate your codes
+            .col-12.col-md-5
+              .card.mt-4
+                img.card-img-top(src='/assets/img/info/1-narrow.png', alt='Card top image')
+                .card-body
+                  .small 
+                    | Register below to receive your unique, single-use codes by email. Print them out, attach to your intake forms. 
+                    a(data-dismiss='modal', aria-label='Close', href='#tabs-healthcare', data-toggle='view') Click to learn more.
+                .card-footer
+                  .small 
+                    | Email us at 
+                    a(href="mailto:info@zerobase.io") info@zerobase.io
+                      

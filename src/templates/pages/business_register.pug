@@ -1,0 +1,65 @@
+.content
+	.container(style='{{"padding":"0"}}')
+		.card
+			.card-body#body-business-register
+				h3.mb-5 Register your business
+				.alert.alert-warning.d-none(role='alert')
+					| Some of your information could not be verified, please try again. Having trouble? Contact info@zerobase.io.
+				.alert.alert-warning.d-none(role='alert', id='submit-business-warning')
+					| Please accept the privacy policy before continuing.
+				.alert.alert-success.d-none(role='alert')
+					i.fe.fe-check.mr-2
+					| Great! Check your email to access your codes &mdash; 
+					a.alert-link(href='#', target='_blank') check it out
+					| !
+				.row
+					.col-12.col-md-7
+						form.register-business(autocomplete="off")
+							label.form-label Business Name
+								input.form-control(type='text', name='org_name', placeholder='Business name')
+							.input-icon.mb-2
+
+								input.form-control(type='text', name='org_place', placeholder='Type and select location', id="business-addr", autocomplete="off", autocorrect="off", autocapitalize="none", spellcheck="false", required)
+
+								input(type='hidden', name='premise',            id="business-premise")
+								input(type='hidden', name='thoroughfare',       id="business-thoroughfare")
+								input(type='hidden', name='locality',           id="business-locality")
+								input(type='hidden', name='administrativeArea', id="business-administrativeArea")
+								input(type='hidden', name='postalCode',         id="business-postalCode")
+								input(type='hidden', name='country',            id="business-country")
+
+							label.form-label Business Type
+							.mb-2
+								select.form-select.business-type(name='type')
+									option(value='BUSINESS/OTHER') Other
+									option(value='BUSINESS/GROCERY') Grocery
+									option(value='BUSINESS/RESTAURANT') Restaurant
+									option(value='FINANCIAL/BANK') Bank
+							label.form-label Contact Information
+							.input-icon.mb-2
+								input.form-control(type='name', name='contact_name', placeholder='Contact name', required)
+							.input-icon.mb-2
+								input.form-control(type='email', name='email', placeholder='Email address', required)
+							.input-icon.mb-2
+								input.form-control(type='text', name='phone', placeholder='Phone number', id='business-phone' required)
+							.mb-3
+								label.form-check
+									input.form-check-input(type='checkbox', name='agree', id='submit-business-agree')
+									span.form-check-label
+										| I agree to the 
+										a(id='privacy-policy', href='#', tabindex='-1') privacy policy
+										| .
+							.form-footer
+								button.btn.btn-primary.btn-block(type="submit", id="submit-business") Generate your codes
+					.col-12.col-md-5
+						.card.mt-4
+							img.card-img-top(src='/assets/img/info/location.png', alt='Cashier stands behind computer monitor with Zerobase QR code next to monitor while man posts QR code on the wall.')
+							.card-body
+								.small 
+									| Register to receive your unique codes by email. Print them out, place them up at entrances, cash registers, any touchpoint. 
+									a(href='/businesses') Click to learn more.
+							.card-footer
+								.small
+									| Email us at 
+									a(href="mailto:info@zerobase.io") info@zerobase.io
+											
