@@ -130,16 +130,16 @@ const HealthCareRegister = () => {
                                         <select
                                             className="form-select healthcare-type"
                                             name="type"
-                                            value={type}
+                                            value="HEALTH/DOCTOR_OFFICE
                                             onChange={(e) => {
                                                 setType(e.target.value);
                                             }}
                                         >
                                             <option value="HEALTH/DOCTOR_OFFICE">
-                                                Hospital
+                                                Doctor Office
                                             </option>
                                             <option value="HEALTH/HOSPITAL">
-                                                Doctor Office
+                                                Hospital
                                             </option>
                                             <option value="HEALTH/PHARMACY">
                                                 Pharmacy
