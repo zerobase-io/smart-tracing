@@ -14,10 +14,12 @@ const Container = styled.div`
     padding: 0;
 `;
 
+const initialBusinessType = 'BUSINESS/OTHER';
+
 const BusinessRegister = () => {
     const [orgName, setOrgName] = useState('');
     const [address, setAddress] = useState(null);
-    const [type, setType] = useState();
+    const [type, setType] = useState(initialBusinessType);
     const [contactName, setContactName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState(null);
@@ -132,7 +134,7 @@ const BusinessRegister = () => {
                                                 setType(e.target.value);
                                             }}
                                         >
-                                            <option value="BUSINESS/OTHER">
+                                            <option value={initialBusinessType}>
                                                 Other
                                             </option>
                                             <option value="BUSINESS/GROCERY">
