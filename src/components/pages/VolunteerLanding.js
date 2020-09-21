@@ -78,7 +78,7 @@ class VolunteerLanding extends React.Component {
                             <br />
                             <a
                                 className="btn btn-lg btn-dark my-2"
-                                href="https://airtable.com/shrLF5neOHKjsSkjD"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSenbQaMHQTFyULEz7etYqM6X9sckrRwggbD5RMFqNpKT5AR4w/viewform"
                                 target="_blank"
                             >
                                 Registration Form
