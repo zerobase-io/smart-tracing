@@ -7,37 +7,31 @@ This repository contains the front end for the Zerobase smart tracing platform. 
     git clone https://github.com/zerobase-io/smart-tracing.git
     cd smart-tracing
     npm install
-    npm start
+    npm run start
 
 ## GitHub Actions
 
 Commits to master will automatically rebuild staging.zerobase.io.
 
-## Building
-
-    REACT_APP_API_HOST=<url-of-the-api-host> npm run build
-
 ## Project structure
 
 - `./build` - all the files in this folder are served as static assets for your site. Do not change files manually in this folder.
-- `./src` - Contains all of the front end code we write that is bundled up and served. The build process is only currently set up to handle changes to controller.ts.
--  `./tests` - Contains UI automation for both Desktop and Mobile (emulated) versions using Jest and Puppeteer. 
+- `./src` - Contains all of the front end code we write that is bundled up and served.
+- 
+# Libraries used
 
-## Testing
-Image comparison is provided by Applitools if the APPLITOOLS_API_KEY environment variable is set. See the examples below for running the different test suites:
+* [Create React App](https://github.com/facebook/create-react-app/issues/6180) - [Typescript](https://create-react-app.dev/docs/adding-typescript#getting-started-with-typescript-and-react)
 
-Running mobile tests locally:
+* [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+    * We are specifically adding [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) for [Theme configuration](https://getbootstrap.com/docs/4.5/getting-started/theming/)
 
-    npm run test-mobile
+* [CRACO - Create React App Configuration Override](https://www.npmjs.com/package/@craco/craco):
+    * [craco-alias](https://github.com/risenforces/craco-alias): Relative path aliasing. (CRA only supports [Absolute Imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports))
 
-Running desktop tests locally:
+* [React Feather Icons](https://github.com/feathericons/react-feather) for feather icon components
 
-    npm run test-desktop
+* [React Router](https://reactrouter.com/web/guides/quick-start) for site routing
 
-Running mobile tests locally (headless):
-
-    npm run test-mobile-headless
-
-Running desktop tests locally (headless):
-
-    npm run test-desktop-headless
+# FAQ
+* Why are all the packages being used, put into the `dependencies` section of `package.json`?
+    * https://github.com/facebook/create-react-app/issues/6180

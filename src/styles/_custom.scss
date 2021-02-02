@@ -1,0 +1,8 @@
+@use "colors";
+@use "node_modules/bootstrap/scss/bootstrap.scss" with (
+$theme-colors: colors.$zb-theme,
+$nav-pills-link-active-bg: map-get(colors.$zb-theme, "teal-800"),
+$link-color: map-get(colors.$zb-theme, "teal-800"),
+$link-hover-color: map-get(colors.$zb-theme, "teal-600"),
+$link-hover-decoration: none
+);
