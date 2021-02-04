@@ -61,7 +61,11 @@ export default function SiteFooter() {
                                             <small className="px-3">Zerobase Foundation</small>
                                             <NavLink to="/about">About Us</NavLink>
                                             <NavLink to="/team">Our Team</NavLink>
-                                            <NavLink to="/contact">Contact Us</NavLink>
+                                            <Nav.Item>
+                                                <Nav.Link href="https://airtable.com/shrnYjRudkIBlXzr9">
+                                                    Contact Us
+                                                </Nav.Link>
+                                            </Nav.Item>
                                             <NavLink to="/policies/terms">Terms</NavLink>
                                             <NavLink to="/policies/privacy">Privacy &amp; Cookies Policy</NavLink>
                                         </Nav>

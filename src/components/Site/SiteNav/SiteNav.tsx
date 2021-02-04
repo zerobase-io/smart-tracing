@@ -62,7 +62,9 @@ const SiteNav = () => {
                                 title="Policies"
                             />
                             <NavLink to="/team">Team</NavLink>
-                            <NavLink to="/contact">Contact Us</NavLink>
+                            <Nav.Item>
+                                <Nav.Link href="https://airtable.com/shrnYjRudkIBlXzr9">Contact Us</Nav.Link>
+                            </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

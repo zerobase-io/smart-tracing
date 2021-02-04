@@ -13,7 +13,6 @@ const routeLazyFunc = (routeName: string): LazyExoticComponent<() => JSX.Element
 const Routes = [
     '/',
     '/about',
-    '/contact',
     '/info/businesses',
     '/info/communities',
     '/info/individuals',
