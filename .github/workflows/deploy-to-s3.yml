@@ -1,37 +1,37 @@
 name: Prepare and Deploy master
 
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@master
 
-      - name: Run npm install
-        run: npm install
+            - name: Run npm install
+              run: npm install
 
-      - name: Run npm build
-        run: npm run build
-        env:
-          NODE_ENV: 'production'
-          PUBLIC_URL: 'https://staging.zerobase.io'
-          REACT_APP_API_HOST: 'https://api.staging.zerobase.io'
+            - name: Run npm build
+              run: npm run build
+              env:
+                  NODE_ENV: 'production'
+                  PUBLIC_URL: 'https://staging.zerobase.io'
+                  REACT_APP_API_HOST: 'https://api.staging.zerobase.io'
 
-      - name: Run npm install production
-        run: npm install --production
+            - name: Run npm install production
+              run: npm install --production
 
-      - name: Upload Compiled Resources to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-east-1'
-          SOURCE_DIR: 'build'
+            - name: Upload Compiled Resources to S3
+              uses: jakejarvis/s3-sync-action@master
+              with:
+                  args: --acl public-read --follow-symlinks --delete
+              env:
+                  AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+                  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  AWS_REGION: 'us-east-1'
+                  SOURCE_DIR: 'build'

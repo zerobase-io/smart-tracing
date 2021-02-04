@@ -1,14 +1,14 @@
 @use "../../../styles/colors";
 
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
 
 .link {
-    color: map-get(colors.$zb-theme, "p-dark");
-    
+    color: map-get(colors.$zb-theme, 'p-dark');
+
     :hover {
-        color: map-get(colors.$zb-theme, "p-dark");
+        color: map-get(colors.$zb-theme, 'p-dark');
     }
 }
 
