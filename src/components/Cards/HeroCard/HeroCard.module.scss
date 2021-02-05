@@ -1,0 +1,15 @@
+.heroCard {
+    border-radius: 0;
+    height: 32rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.heroCardTop {
+    background-position: top;
+}
+
+.heroCardCenter {
+    background-position: center;
+}

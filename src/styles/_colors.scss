@@ -1,0 +1,136 @@
+$zb-theme: ();
+
+$teal-100: #e7f9fe;
+$teal-400: #7cddf8;
+$teal-600: #0cadda;
+$teal-800: #066079;
+
+$zb-theme: map-merge(
+    (
+        'teal-100': $teal-100,
+        'teal-400': $teal-400,
+        'teal-600': $teal-600,
+        'teal-800': $teal-800,
+    ),
+    $zb-theme
+);
+
+$blue-100: #e7f1fe;
+$blue-400: #5399ec;
+$blue-600: #2577d8;
+$blue-800: #095ec1;
+
+$zb-theme: map-merge(
+    (
+        'blue-100': $blue-100,
+        'blue-400': $blue-400,
+        'blue-600': $blue-600,
+        'blue-800': $blue-800,
+    ),
+    $zb-theme
+);
+
+$indigo-100: #edeff8;
+$indigo-400: #5d6e9e;
+$indigo-600: #41517e;
+$indigo-800: #273663;
+
+$zb-theme: map-merge(
+    (
+        'indigo-100': $indigo-100,
+        'indigo-400': $indigo-400,
+        'indigo-600': $indigo-600,
+        'indigo-800': $indigo-800,
+    ),
+    $zb-theme
+);
+
+$green-100: #ebf9f3;
+$green-400: #76caa6;
+$green-600: #4abb8b;
+$green-800: #36b37e;
+
+$zb-theme: map-merge(
+    (
+        'green-100': $green-100,
+        'green-400': $green-400,
+        'green-600': $green-600,
+        'green-800': $green-800,
+    ),
+    $zb-theme
+);
+
+$yellow-100: #fff7e5;
+$yellow-400: #ffd580;
+$yellow-600: #ffc44d;
+$yellow-800: #ffab00;
+
+$zb-theme: map-merge(
+    (
+        'yellow-100': $yellow-100,
+        'yellow-400': $yellow-400,
+        'yellow-600': $yellow-600,
+        'yellow-800': $yellow-800,
+    ),
+    $zb-theme
+);
+
+$orange-100: #ffebe5;
+$orange-400: #ff9b80;
+$orange-600: #ff734d;
+$orange-800: #ff6232;
+
+$zb-theme: map-merge(
+    (
+        'orange-100': $orange-100,
+        'orange-400': $orange-400,
+        'orange-600': $orange-600,
+        'orange-800': $orange-800,
+    ),
+    $zb-theme
+);
+
+$gray-200: #dddddd;
+$gray-400: #bbbbbb;
+$gray-600: #555555;
+$gray-800: #555555;
+
+$zb-theme: map-merge(
+    (
+        'gray-200': $gray-200,
+        'gray-400': $gray-400,
+        'gray-600': $gray-600,
+        'gray-800': $gray-800,
+    ),
+    $zb-theme
+);
+
+$primary-teal-dark: #1b2935;
+$primary-teal: $teal-400;
+$primary-white: #ffffff;
+
+$zb-theme: map-merge(
+    (
+        'p-dark': $primary-teal-dark,
+        'p': $primary-teal,
+        'p-white': $primary-white,
+    ),
+    $zb-theme
+);
+
+$secondary-blue-800: $blue-800;
+$secondary-indigo-800: $indigo-800;
+$secondary-yellow-800: $yellow-800;
+$secondary-green-800: $green-800;
+$secondary-orange-800: $orange-800;
+
+$zb-theme: map-merge(
+    (
+        's-blue': $secondary-blue-800,
+        's-indigo': $secondary-indigo-800,
+        's-yellow': $secondary-yellow-800,
+        's-green': $secondary-green-800,
+        's-orange': $secondary-orange-800,
+    ),
+    $zb-theme
+);
