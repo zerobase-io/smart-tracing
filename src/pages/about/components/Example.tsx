@@ -27,7 +27,7 @@ const Example = ({ show, handleClose }: ExampleProps) => (
             <p className="mx-auto">
                 Scanning into locations is easy!
                 <br />
-                Close this window continue reading about what happens next!
+                Close this window to continue reading about what happens next!
             </p>
         </Modal.Footer>
     </Modal>

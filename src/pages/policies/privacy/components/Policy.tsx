@@ -7,15 +7,6 @@ import Tab from 'react-bootstrap/Tab';
 
 const Policy = () => (
     <Container>
-        <Row className="my-5 justify-content-center align-content-center">
-            <Col className="text-center" xs="auto">
-                <h3 className="mb-0" id="policyTop">
-                    Privacy Policy
-                </h3>
-                <small className="text-muted">Last updated: 6 April 2020</small>
-            </Col>
-        </Row>
-        <hr className="my-5" />
         <Row className="mb-5 justify-content-center">
             <Tab.Container defaultActiveKey="#introduction">
                 <Row>
@@ -43,6 +34,7 @@ const Policy = () => (
                                 <strong>How to contact us</strong>
                             </ListGroup.Item>
                         </ListGroup>
+                        <small className="ml-2 text-muted">Last updated: 6 April 2020</small>
                     </Col>
                     <Col className="mt-lg-0 mt-3" lg={8} xs={12}>
                         <Tab.Content>
@@ -61,7 +53,7 @@ const Policy = () => (
                                     “Last Updated” date above.
                                 </p>
                                 <h5>
-                                    <strong>Links to Third Part Sites</strong>
+                                    <strong>Links to Third Party Sites</strong>
                                 </h5>
                                 <p>
                                     This notice does not apply to any third-party sites that may link to, or be

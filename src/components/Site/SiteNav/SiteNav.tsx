@@ -21,24 +21,22 @@ const SiteNav = () => {
 
     return (
         <header>
-            <Navbar variant="light" bg="indigo-100" expand="md">
+            <Navbar bg="indigo-100" expand="lg" variant="light">
                 <Container>
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id="navbar-nav">
-                        <Navbar.Brand href="/">
-                            <Image
-                                alt="Zerobase Logo"
-                                className="d-inline-block align-top"
-                                src={Logo}
-                                height="30"
-                                width="150"
-                            />
+                        <Navbar.Brand className="pt-1 pb-2" href="/">
+                            <Image alt="Zerobase Logo" src={Logo} height="31" width="150" />
                         </Navbar.Brand>
-                        <Nav variant="tabs" activeKey={location.pathname} className="w-100 mr-2">
+                        <Nav
+                            variant="tabs"
+                            activeKey={location.pathname}
+                            className="border-0 align-items-lg-center justify-content-around w-50"
+                        >
                             <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavDropdown
-                                id="nav-dropdown-info"
+                                color="indigo-100"
                                 items={[
                                     { text: 'Individuals', to: '/info/individuals' },
                                     { text: 'Community Officials', to: '/info/communities' },
@@ -51,16 +49,9 @@ const SiteNav = () => {
                                         to: '/info/testingSites',
                                     },
                                 ]}
-                                title="Info for..."
+                                toggleText="Users"
                             />
-                            <NavDropdown
-                                id="nav-dropdown-policies"
-                                items={[
-                                    { text: 'Privacy & Cookies', to: '/policies/privacy' },
-                                    { text: 'Terms of Use', to: '/policies/terms' },
-                                ]}
-                                title="Policies"
-                            />
+                            <NavLink to="/policies/privacy">Privacy</NavLink>
                             <NavLink to="/team">Team</NavLink>
                             <Nav.Item>
                                 <Nav.Link href="https://airtable.com/shrnYjRudkIBlXzr9">Contact Us</Nav.Link>

@@ -5,7 +5,6 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 
 /* Local Components */
-import InfoCard from '@/components/Cards/InfoCard/InfoCard';
 import LinkButton from '@/components/Buttons/LinkButton/LinkButton';
 import LinkCard from '@/components/Cards/LinkCard/LinkCard';
 import Overlay from '@/components/Cards/HeroCard/Overlay';
@@ -47,10 +46,12 @@ const Home = () => (
                 <Image src={ZerobaseIcon} height="200" width="200" alt="Zerobase Icon" />
             </Col>
             <Col className="text-p-dark">
-                <InfoCard
-                    info="The Zerobase Foundation is a nonprofit organization whose mission is to build open source public health technology for the good of communities around the world. Our free, privacy-first contact tracing empowers both individuals and communities to stop the spread of COVID-19."
-                    title="Our Mission"
-                />
+                <h2>Our Mission</h2>
+                <p className="lead">
+                    The Zerobase Foundation is a nonprofit organization whose mission is to build open source public
+                    health technology for the good of communities around the world. Our free, privacy-first contact
+                    tracing empowers both individuals and communities to stop the spread of COVID-19.
+                </p>
             </Col>
         </Row>
         <Row lg={3} md={2} sm={1} xs={1} className="justify-content-md-center">

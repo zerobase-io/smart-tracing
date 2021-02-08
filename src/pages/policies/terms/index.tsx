@@ -46,13 +46,13 @@ const Terms = () => (
                                 <strong>Indemnification</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#warranties">
-                                <strong>NO WARRANTIES, CONDITIONS, OR OTHER DUTIES</strong>
+                                <strong>No Warranties, Conditions, or Other Duties</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#damages">
-                                <strong>NO INCIDENTAL, CONSEQUENTIAL, OR CERTAIN OTHER DAMAGES</strong>
+                                <strong>No Incidental, Consequential, or Certain Other Damages</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#remedyLimitation">
-                                <strong>EXCLUSIVE REMEDY; DAMAGE LIMITATION</strong>
+                                <strong>Exclusive Remedy; Damage Limitation</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#sites">
                                 <strong>Linked Sites</strong>
@@ -61,7 +61,7 @@ const Terms = () => (
                                 <strong>Amendments</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#jurisdiction">
-                                <strong>GOVERNING LAW AND EXCLUSIVE JURISDICTION</strong>
+                                <strong>Governing Law and Exclusive Jurisdiction</strong>
                             </ListGroup.Item>
                             <ListGroup.Item action href="#children">
                                 <strong>Children</strong>
@@ -81,7 +81,7 @@ const Terms = () => (
                                     <strong>Introduction</strong>
                                 </h3>
                                 <h5>
-                                    <strong>ZEROBASE FOUNDATION TERMS OF USE</strong>
+                                    <strong>Zerobase Foundation Terms of Use</strong>
                                 </h5>
                                 <p>
                                     Zerobase.io is a website associated with the Zerobase Foundation, a nonprofit
@@ -162,7 +162,7 @@ const Terms = () => (
                             </Tab.Pane>
                             <Tab.Pane eventKey="#activitiesCommissions">
                                 <h3>
-                                    <strong>Site Activities & Commissions</strong>
+                                    <strong>Site Activities &amp; Commissions</strong>
                                 </h3>
 
                                 <h5>
@@ -269,7 +269,7 @@ const Terms = () => (
                             </Tab.Pane>
                             <Tab.Pane eventKey="#warranties">
                                 <h3>
-                                    <strong>NO WARRANTIES, CONDITIONS, OR OTHER DUTIES</strong>
+                                    <strong>No Warranties, Conditions, or Other Duties</strong>
                                 </h3>
 
                                 <p>
@@ -287,7 +287,7 @@ const Terms = () => (
                             </Tab.Pane>
                             <Tab.Pane eventKey="#damages">
                                 <h3>
-                                    <strong>NO INCIDENTAL, CONSEQUENTIAL, OR CERTAIN OTHER DAMAGES</strong>
+                                    <strong>No Incidental, Consequential, or Certain Other Damages</strong>
                                 </h3>
 
                                 <p>
@@ -306,7 +306,7 @@ const Terms = () => (
                             </Tab.Pane>
                             <Tab.Pane eventKey="#remedyLimitation">
                                 <h3>
-                                    <strong>EXCLUSIVE REMEDY; DAMAGE LIMITATION</strong>
+                                    <strong>Exclusive Remedy; Damage Limitation</strong>
                                 </h3>
 
                                 <p>
@@ -362,7 +362,7 @@ const Terms = () => (
                             </Tab.Pane>
                             <Tab.Pane eventKey="#jurisdiction">
                                 <h3>
-                                    <strong>GOVERNING LAW AND EXCLUSIVE JURISDICTION</strong>
+                                    <strong>Governing Law and Exclusive Jurisdiction</strong>
                                 </h3>
 
                                 <p>
