@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 
-
 const Commitment = () => (
     <>
         <Row className="text-p-dark" lg={2} xs={1}>
