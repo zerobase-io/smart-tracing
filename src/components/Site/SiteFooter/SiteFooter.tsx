@@ -82,7 +82,7 @@ export default function SiteFooter() {
                                     icon={<GitHub stroke="#066079" size="2em" />}
                                 />
                                 <NavLinkIcon
-                                    href="https://www.instagram.com/zerobase.app"
+                                    href="https://www.instagram.com/zerobase.io"
                                     icon={<Instagram stroke="#066079" size="2em" />}
                                 />
                                 <NavLinkIcon

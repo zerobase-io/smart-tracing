@@ -30,7 +30,7 @@ import ProfileJustin from '@/images/profiles/justin.jpg';
 /* Non founder profiles */
 const profiles: ProfileCardProps[] = [
     {
-        name: 'Gary Chivzever, MD',
+        name: 'Gary Chizever, MD',
         src: ProfileGary,
         title: 'Medical Lead',
     },
@@ -106,10 +106,10 @@ const Team = () => (
             </Col>
         </Row>
         <Row className="align-items-middle justify-content-center">
-            <Col xs="auto">
+            <Col xs={2}>
                 <ProfileCard name="Aron Szanto" src={ProfileAron} title="Founder" />
             </Col>
-            <Col lg={6}>
+            <Col lg={9}>
                 <p className="px-5">
                     Aron leads the Zerobase Foundation team. Aron’s background is in the study of the spread of
                     misinformation through social networks. He holds dual research and engineering appointments at
