@@ -17,7 +17,7 @@ const Individuals = () => (
             title: 'Individuals',
         }}
     >
-        <Row className="text-p-dark" lg={2} xs={1}>
+        <Row className="mx-3 mx-md-0 text-p-dark" lg={2} xs={1}>
             <Col>
                 <p className="h4">
                     <strong>
@@ -39,7 +39,7 @@ const Individuals = () => (
             </Col>
         </Row>
         <hr />
-        <Row className="text-p-dark">
+        <Row className="mx-3 mx-md-0 text-p-dark">
             <h2 className="my-5">
                 <strong>Here's how it works:</strong>
             </h2>
@@ -95,7 +95,7 @@ const Individuals = () => (
                 </Row>
             </Container>
         </Row>
-        <Row className="text-p-dark">
+        <Row className="mx-3 mx-md-0 text-p-dark">
             <Col>
                 <h3 className="mt-5 text-center">
                     By checking in anonymously to community touchpoints, you’re doing your part to keep your community

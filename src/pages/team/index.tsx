@@ -106,7 +106,7 @@ const Team = () => (
             </Col>
         </Row>
         <Row className="align-items-middle justify-content-center">
-            <Col xs={2}>
+            <Col className="d-flex justify-content-lg-end justify-content-center">
                 <ProfileCard name="Aron Szanto" src={ProfileAron} title="Founder" />
             </Col>
             <Col lg={9}>

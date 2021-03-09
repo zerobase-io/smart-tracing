@@ -18,7 +18,7 @@ const Communities = () => (
             title: 'Community and Public Officials',
         }}
     >
-        <div className="text-p-dark">
+        <Row className="mx-3 mx-md-0 text-p-dark">
             <h2>
                 <strong>Why should you partner with Zerobase?</strong>
             </h2>
@@ -69,9 +69,9 @@ const Communities = () => (
                     The second best time is now.
                 </strong>
             </h2>
-        </div>
+        </Row>
         <hr className="my-5" />
-        <Row>
+        <Row className="mx-3 mx-md-0">
             <Col className="text-p-dark">
                 <h3>
                     <strong>Lead your community in the fight against COVID-19.</strong>

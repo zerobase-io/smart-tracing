@@ -20,18 +20,18 @@ const Privacy = () => (
             title: 'Privacy First',
         }}
     >
-        <Row>
+        <Row className="mx-3 mx-md-0">
             <Col>
                 <Tab.Container defaultActiveKey="commitment">
-                    <Row className="mb-5">
-                        <Col>
-                            <Nav variant="pills" className="text-center justify-content-center">
-                                <Nav.Item className="mr-5">
+                    <Row className="justify-content-center mb-5">
+                        <Col md={5} xs={10}>
+                            <Nav variant="pills" className="text-center justify-content-center justify-content-md-between">
+                                <Nav.Item>
                                     <Nav.Link eventKey="commitment" href="#privacyTop">
                                         Our Privacy Commitment
                                     </Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="ml-5">
+                                <Nav.Item>
                                     <Nav.Link eventKey="policy" href="#privacyTop">
                                         Privacy Policy
                                     </Nav.Link>

@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 
 const Commitment = () => (
     <>
-        <Row className="text-p-dark" lg={2} xs={1}>
+        <Row className="mb-3 mb-md-0 text-p-dark" lg={2} xs={1}>
             <Col>
                 <p className="h4">
                     <strong>Zerobase is designed from the ground up to put your privacy first.</strong>
@@ -24,7 +24,7 @@ const Commitment = () => (
                 </p>
             </Col>
         </Row>
-        <Row className="text-p-dark" lg={2} xs={1}>
+        <Row className="mb-3 mb-md-0 text-p-dark" lg={2} xs={1}>
             <Col>
                 <p className="h4">
                     <strong>Zerobase was built to help real people.</strong>
@@ -43,12 +43,12 @@ const Commitment = () => (
         <Jumbotron className="bg-teal-600 mb-0" fluid>
             <Container>
                 <Row>
-                    <Col className="text-white">
+                    <Col className="text-center text-md-left text-white">
                         <h3>We do not work with advertisers.</h3>
                         <h3>We do not sell your information.</h3>
                         <h3>We adhere to industrial standards of data security.</h3>
                     </Col>
-                    <Col className="text-p-dark">
+                    <Col className="text-center text-md-left text-p-dark">
                         <h3>We firmly believe in:</h3>
                         <h2>
                             <strong>&ldquo;Big Data without Big Brother.&rdquo;</strong>

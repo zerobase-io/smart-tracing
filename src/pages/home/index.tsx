@@ -31,7 +31,7 @@ const Home = () => (
                     </Card.Title>
                     <Card.Title>Essential. Anonymous. Accessible to all.</Card.Title>
                     <LinkButton
-                        className="mt-5 shadow border-white border-bottom-0 border-right-0"
+                        className="mt-5"
                         to="/policies/privacy"
                         variant="p-dark"
                     >
@@ -55,7 +55,7 @@ const Home = () => (
             </Col>
         </Row>
         <Row lg={3} md={2} sm={1} xs={1} className="justify-content-md-center">
-            <Col>
+            <Col className="mb-md-0 mb-3">
                 <LinkCard
                     cardImgComp={<Card.Img src={Business} />}
                     fullCard
@@ -66,7 +66,7 @@ const Home = () => (
                     to="/info/businesses"
                 ></LinkCard>
             </Col>
-            <Col>
+            <Col className="mb-md-0 mb-3">
                 <LinkCard
                     cardImgComp={<Card.Img src={Healthcare} />}
                     fullCard
@@ -77,7 +77,7 @@ const Home = () => (
                     to="/info/testingSites"
                 ></LinkCard>
             </Col>
-            <Col>
+            <Col className="mb-md-0 mb-3">
                 <LinkCard
                     cardImgComp={<Card.Img src={Community} />}
                     fullCard

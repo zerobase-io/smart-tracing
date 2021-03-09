@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* Routing */
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -25,7 +25,7 @@ const SiteNav = () => {
                 <Container>
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id="navbar-nav">
-                        <Navbar.Brand className="pt-1 pb-2" href="/">
+                        <Navbar.Brand as={Link} className="pt-1 pb-2" to="/">
                             <Image alt="Zerobase Logo" src={Logo} height="31" width="150" />
                         </Navbar.Brand>
                         <Nav
@@ -33,7 +33,6 @@ const SiteNav = () => {
                             activeKey={location.pathname}
                             className="border-0 align-items-lg-center justify-content-around w-50"
                         >
-                            <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavDropdown
                                 color="indigo-100"
