@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 
-
 const Commitment = () => (
     <>
         <Row className="mb-3 mb-md-0 text-p-dark" lg={2} xs={1}>
@@ -44,6 +43,7 @@ const Commitment = () => (
             <Container>
                 <Row>
                     <Col className="text-center text-md-left text-white">
+
                         <h3>We do not work with advertisers.</h3>
                         <h3>We do not sell your information.</h3>
                         <h3>We adhere to industrial standards of data security.</h3>

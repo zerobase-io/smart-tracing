@@ -96,6 +96,7 @@ const Individuals = () => (
             </Container>
         </Row>
         <Row className="mx-3 mx-md-0 text-p-dark">
+
             <Col>
                 <h3 className="mt-5 text-center">
                     By checking in anonymously to community touchpoints, you’re doing your part to keep your community
