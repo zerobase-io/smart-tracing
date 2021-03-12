@@ -17,7 +17,7 @@ const TestingSite = () => (
             title: 'Healthcare and Testing Sites',
         }}
     >
-        <Row className="text-p-dark" lg={2} xs={1}>
+        <Row className="mx-3 mx-md-0 text-p-dark" lg={2} xs={1}>
             <Col>
                 <p className="h4">
                     <strong>
@@ -36,7 +36,7 @@ const TestingSite = () => (
             </Col>
         </Row>
         <hr className="my-5" />
-        <div className="text-p-dark">
+        <Row className="mx-3 mx-md-0 text-p-dark">
             <h5>
                 <p>
                     <strong>Our contact tracing platform monitors</strong> the spread of the virus throughout a
@@ -115,9 +115,9 @@ const TestingSite = () => (
                     provide the critical emergency care that our communities depend on.
                 </p>
             </h5>
-        </div>
+        </Row>
         <hr className="my-5" />
-        <Row>
+        <Row className="mx-3 mx-md-0">
             <Col className="text-p-dark">
                 <h3>
                     <strong>

@@ -16,7 +16,7 @@ const Businesses = () => (
             title: 'Businesses and Public Locations',
         }}
     >
-        <Row className="text-p-dark" lg={2} xs={1}>
+        <Row className="mx-3 mx-md-0 text-p-dark" lg={2} xs={1}>
             <Col>
                 <p className="h4">
                     <strong>
@@ -37,7 +37,7 @@ const Businesses = () => (
             </Col>
         </Row>
         <hr />
-        <div className="text-p-dark">
+        <Row className="mx-3 mx-md-0 text-p-dark">
             <h2>
                 <strong>Why should you partner with Zerobase?</strong>
             </h2>
@@ -76,9 +76,9 @@ const Businesses = () => (
                     revitalize your community.
                 </p>
             </h5>
-        </div>
+        </Row>
         <hr className="my-5" />
-        <Row>
+        <Row className="mx-3 mx-md-0">
             <Col className="text-p-dark">
                 <h3>
                     <strong>

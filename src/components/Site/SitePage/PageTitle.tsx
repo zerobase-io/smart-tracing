@@ -10,11 +10,11 @@ export type PageTitleProps = {
 
 const PageTitle = ({ id = '', subtext, title }: PageTitleProps) => (
     <Row className="mb-5 text-p-dark">
-        <Col xs={9}>
-            <h1 className="display-4" id={id}>
+        <Col xs={12}>
+            <h1 className="display-4 text-center" id={id}>
                 {title}
             </h1>
-            <h5>{subtext}</h5>
+            <h5 className="text-center">{subtext}</h5>
         </Col>
     </Row>
 );

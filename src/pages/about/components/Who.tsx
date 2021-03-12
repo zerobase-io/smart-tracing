@@ -16,24 +16,24 @@ const Who = () => (
     <>
         <Row className="mb-3 justify-content-center" id="whoTop">
             <Col xs="auto">
-                <h3>Everything You Need To Know About</h3>
+                <h3 className="text-center">Everything You Need To Know About</h3>
             </Col>
         </Row>
         <Row className="mb-5 justify-content-center">
-            <Col xs="auto">
-                <Image src={Logo} width={500} />
+            <Col md={9} xs={12}>
+                <Image src={Logo} fluid />
             </Col>
         </Row>
-        <Row className="mb-5" md={2}>
+        <Row className="mb-5" md={2} xs={1}>
             <Col>
-                <h3>
+                <h3 className="text-center text-md-left">
                     <p>
                         Zerobase is a free, privacy-first contact tracing platform that empowers both individuals and
                         local officials to stop the spread of COVID-19.
                     </p>
                 </h3>
             </Col>
-            <Col>
+            <Col className="text-center text-md-left">
                 <p>
                     Contact tracing is the identification of likely disease-spreading interaction between
                     individuals－it is a crucial part of modern pandemic response.
@@ -58,9 +58,9 @@ const Who = () => (
             <Col xs="auto">
                 <Image src={Earth} width={250} />
             </Col>
-            <Col lg={8} xs="auto">
+            <Col>
                 <Container>
-                    <Row>
+                    <Row md={2} xs={1}>
                         <Col>
                             <InfoCard
                                 info="We provide an effective tracing solution for local governments and communities without compromising individual privacy or reducing trust."

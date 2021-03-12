@@ -18,7 +18,8 @@ Commits to master will automatically rebuild staging.zerobase.io.
 - `./build` - all the files in this folder are served as static assets for your site. Do not change files manually in this folder.
 - `./src` - Contains all of the front end code we write that is bundled up and served.
 - 
-# Libraries used
+
+# Libraries/Tools used
 
 * [Create React App](https://github.com/facebook/create-react-app/issues/6180) - [Typescript](https://create-react-app.dev/docs/adding-typescript#getting-started-with-typescript-and-react)
 

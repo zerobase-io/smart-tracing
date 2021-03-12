@@ -47,7 +47,7 @@ export default function SiteFooter() {
                         <Col>
                             <Container>
                                 <Row className="justify-content-around">
-                                    <Col md={6} xs="auto">
+                                    <Col xs={6}>
                                         <Nav className="flex-column">
                                             <small className="px-3">Information For</small>
                                             <NavLink to="/info/individuals">Individuals</NavLink>
@@ -56,7 +56,7 @@ export default function SiteFooter() {
                                             <NavLink to="/info/testingSites">Testing Facilities</NavLink>
                                         </Nav>
                                     </Col>
-                                    <Col md={6} xs="auto">
+                                    <Col xs={6}>
                                         <Nav className="flex-column">
                                             <small className="px-3">Zerobase Foundation</small>
                                             <NavLink to="/about">About Us</NavLink>
@@ -74,8 +74,8 @@ export default function SiteFooter() {
                             </Container>
                         </Col>
                     </Row>
-                    <Row className="mt-3 justify-content-start">
-                        <Col md={6}>
+                    <Row className="mt-3">
+                        <Col className="d-flex justify-content-md-start justify-content-center" md={6}>
                             <Nav>
                                 <NavLinkIcon
                                     href="https://github.com/zerobase-io"
@@ -99,7 +99,7 @@ export default function SiteFooter() {
                                 />
                             </Nav>
                         </Col>
-                        <Col md={6}>
+                        <Col className="d-flex justify-content-md-end justify-content-center" md={6}>
                             <div className="text-right py-2">
                                 &copy; 2020{' '}
                                 <span>
@@ -112,7 +112,11 @@ export default function SiteFooter() {
                 </Container>
             </Jumbotron>
             <Container fluid>
-                <Row className="bg-p-dark text-white align-items-center justify-content-between text-center">
+                <Row
+                    className="bg-p-dark text-white align-items-center justify-content-md-between justify-content-center text-center"
+                    md={2}
+                    xs={1}
+                >
                     <Col>
                         <p className="my-3">Privacy-First Contact Tracing for Communities</p>
                     </Col>

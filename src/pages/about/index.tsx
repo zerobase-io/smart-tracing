@@ -18,7 +18,7 @@ const About = () => (
         <Row>
             <Col>
                 <Tab.Container defaultActiveKey="howItWorks">
-                    <Row>
+                    <Row className="mx-md-0 mx-2">
                         <Col>
                             <Tab.Content>
                                 <Tab.Pane eventKey="howItWorks">

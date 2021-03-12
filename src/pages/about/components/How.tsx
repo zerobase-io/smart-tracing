@@ -31,7 +31,7 @@ const How = () => {
         <>
             <Row className="mb-3 justify-content-center" id="howTop">
                 <Col xs="auto">
-                    <h3 className="mb-0">How Zerobase protects your community</h3>
+                    <h3 className="mb-0 text-center">How Zerobase protects your community</h3>
                 </Col>
             </Row>
             <Row className="mb-5 justify-content-center">
