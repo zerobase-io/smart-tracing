@@ -1,6 +1,6 @@
 {
-  "name": "smart-tracing-ts",
-  "version": "0.1.0",
+  "name": "smart-tracing",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.0.0",
