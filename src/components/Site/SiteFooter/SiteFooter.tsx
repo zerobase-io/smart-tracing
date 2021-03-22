@@ -105,7 +105,7 @@ export default function SiteFooter() {
                                 <span>
                                     <Link to="/">Zerobase</Link>.{' '}
                                 </span>
-                                All rights reserved. v2.0.1
+                                All rights reserved. v3.0.0
                             </div>
                         </Col>
                     </Row>
